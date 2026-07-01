@@ -166,7 +166,7 @@ const Presence = memo(() => {
 
     return (
         <section
-            className="py-section-mobile md:py-section-desktop px-4 md:px-8 bg-surface overflow-hidden"
+            className="pb-section-mobile md:pb-section-desktop px-4 md:px-8 bg-surface overflow-hidden"
             id="presence-section"
         >
             <div className="max-w-container-max mx-auto">
