@@ -84,7 +84,7 @@ const MediaGallery = () => {
         document.body.style.overflow = 'unset'
     }
 
-    // Handle keyboard escape key
+
     React.useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === 'Escape' && selectedImage) {
@@ -95,8 +95,8 @@ const MediaGallery = () => {
         return () => window.removeEventListener('keydown', handleKeyDown)
     }, [selectedImage])
 
-    // Recreates the previous hover treatment (gradient + description + "click to
-    // enlarge" + zoom icon) as content dropped into Masonry's renderOverlay slot.
+
+
     const renderOverlay = (item) => (
         <>
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />

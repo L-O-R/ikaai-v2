@@ -1,4 +1,4 @@
-// app/about/components/AboutStory.jsx
+
 import React from 'react'
 
 const AboutStory = () => {
@@ -26,13 +26,13 @@ const AboutStory = () => {
                         </p>
                     </div>
                     <div className="relative">
-                        <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-surface-container-low border border-border-neutral">
+                        <div className="aspect-4/3 rounded-2xl overflow-hidden bg-surface-container-low border border-border-neutral">
                             <div className="w-full h-full flex items-center justify-center text-primary/20">
                                 <span className="material-symbols-outlined text-8xl">photo_camera</span>
                             </div>
                         </div>
-                        <div className="absolute -bottom-6 -right-6 bg-primary text-white px-6 py-4 rounded-xl shadow-lg">
-                            <span className="font-statistic-num text-statistic-num block leading-none">15+</span>
+                        <div className="absolute -bottom-6 -right-3 lg:-right-6 bg-primary text-white px-6 py-4 rounded-xl shadow-lg">
+                            <span className="font-statistic-num font-semibold text-4xl md:text-6xl lg:text-statistic-num block leading-none">15+</span>
                             <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-primary-container/80">
                                 Years of Impact
                             </span>

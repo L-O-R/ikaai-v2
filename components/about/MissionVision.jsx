@@ -1,4 +1,4 @@
-// app/about/components/MissionVision.jsx
+
 import React from 'react'
 
 const MissionVision = () => {

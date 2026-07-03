@@ -1,4 +1,4 @@
-// app/about/components/LifeCulture.jsx
+
 import React from 'react'
 
 const cultureValues = [

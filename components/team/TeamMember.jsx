@@ -1,4 +1,4 @@
-// app/about/components/TeamMember.jsx
+
 import React from 'react'
 
 const TeamMember = ({ name, role, bio, image }) => {

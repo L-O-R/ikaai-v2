@@ -15,8 +15,8 @@ import { pageConfig } from './appconfig';
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-    const [openDropdown, setOpenDropdown] = useState(null) // track which dropdown is open (desktop)
-    const [mobileOpenAccordion, setMobileOpenAccordion] = useState(null) // for mobile accordion
+    const [openDropdown, setOpenDropdown] = useState(null)
+    const [mobileOpenAccordion, setMobileOpenAccordion] = useState(null)
     const pathname = usePathname()
 
     const theme = useHeaderTheme();
@@ -31,7 +31,7 @@ const Header = () => {
         setMobileOpenAccordion(null)
     }, [pathname])
 
-    // Prevent scroll when mobile menu is open
+
     useEffect(() => {
         if (isMobileMenuOpen) {
             document.body.style.overflow = 'hidden'
@@ -97,11 +97,10 @@ const Header = () => {
                                 <Link
                                     key={link.label}
                                     href={link.href}
-                                    className={`nav-link font-label-caps text-label-caps uppercase border-b-2 ${
-                                        isActive 
-                                            ? (headerTheme === 'dark' ? 'text-primary border-primary' : 'text-white border-white') 
+                                    className={`nav-link font-label-caps text-label-caps uppercase border-b-2 ${isActive
+                                            ? (headerTheme === 'dark' ? 'text-primary border-primary' : 'text-white border-white')
                                             : (headerTheme === 'dark' ? 'text-on-surface hover:text-on-surface/80 border-transparent hover:border-on-surface/60' : 'text-white hover:text-white/80 border-transparent hover:border-white/60')
-                                    } transition-colors whitespace-nowrap`}
+                                        } transition-colors whitespace-nowrap`}
                                 >
                                     {link.label}
                                 </Link>
@@ -174,9 +173,8 @@ const Header = () => {
                                         <Link
                                             key={link.label}
                                             href={link.href}
-                                            className={`block py-4 font-display-lg text-2xl transition-colors border-b border-border-neutral last:border-0 ${
-                                                isActive ? 'text-primary font-medium' : 'text-on-surface hover:text-primary'
-                                            }`}
+                                            className={`block py-4 font-display-lg text-2xl transition-colors border-b border-border-neutral last:border-0 ${isActive ? 'text-primary font-medium' : 'text-on-surface hover:text-primary'
+                                                }`}
                                             onClick={closeMobileMenu}
                                         >
                                             {link.label}

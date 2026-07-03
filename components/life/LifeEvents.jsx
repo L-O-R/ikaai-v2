@@ -1,4 +1,4 @@
-// app/about/components/LifeEvents.jsx
+
 import React from 'react'
 
 const eventsData = [

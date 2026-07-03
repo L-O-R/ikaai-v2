@@ -155,3 +155,25 @@ html {
   color: #757575;
   font-weight: 600;
 }
+
+
+@keyframes scrollDown {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(0.4rem);
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.animate-scroll-down {
+  animation: scrollDown 2s ease-in-out infinite;
+}

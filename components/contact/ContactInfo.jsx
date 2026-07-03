@@ -1,4 +1,4 @@
-// root/components/contact/ContactInfo.jsx
+
 'use client'
 
 import React from 'react'

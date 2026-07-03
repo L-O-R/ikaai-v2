@@ -6,7 +6,7 @@ const Dropdown = ({ label, items, isOpen, toggle, close, headerTheme, isActive }
     const pathname = usePathname();
     const dropdownRef = useRef(null)
 
-    // Close dropdown on outside click
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (
@@ -27,11 +27,10 @@ const Dropdown = ({ label, items, isOpen, toggle, close, headerTheme, isActive }
         <div className="relative" ref={dropdownRef}>
             <button
                 onClick={toggle}
-                className={`nav-link font-label-caps text-label-caps uppercase border-b-2 ${
-                    isActive 
-                        ? (headerTheme === 'dark' ? 'text-primary border-primary' : 'text-white border-white') 
+                className={`nav-link font-label-caps text-label-caps uppercase border-b-2 ${isActive
+                        ? (headerTheme === 'dark' ? 'text-primary border-primary' : 'text-white border-white')
                         : (headerTheme === 'dark' ? 'text-on-surface hover:text-on-surface/80 border-transparent hover:border-on-surface/60' : 'text-white hover:text-white/80 border-transparent hover:border-white/60')
-                } transition-colors flex items-center gap-1 focus:outline-none whitespace-nowrap`}
+                    } transition-colors flex items-center gap-1 focus:outline-none whitespace-nowrap`}
             >
                 {label}
                 <span
@@ -51,11 +50,10 @@ const Dropdown = ({ label, items, isOpen, toggle, close, headerTheme, isActive }
                         <NavItemLink
                             key={item.label}
                             item={item}
-                            className={`block px-4 py-3 font-body-md text-body-md transition-colors ${
-                                isItemActive 
-                                    ? 'bg-surface-container-low text-primary font-medium' 
+                            className={`block px-4 py-3 font-body-md text-body-md transition-colors ${isItemActive
+                                    ? 'bg-surface-container-low text-primary font-medium'
                                     : 'text-on-surface hover:bg-surface-container-low hover:text-primary'
-                            }`}
+                                }`}
                             onNavigate={close}
                         />
                     );

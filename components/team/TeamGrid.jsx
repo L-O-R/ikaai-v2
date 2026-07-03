@@ -1,4 +1,4 @@
-// app/about/components/TeamGrid.jsx
+
 import React from 'react'
 import TeamMember from './TeamMember'
 

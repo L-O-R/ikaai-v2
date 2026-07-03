@@ -3,23 +3,7 @@
 import Image from "next/image";
 import React, { memo } from "react";
 
-/**
- * LogoLoop — seamless vertical marquee column.
- *
- * The trick for a smooth infinite loop:
- *   - Render two identical lists inside ONE animated wrapper div.
- *   - Animate the WRAPPER by -50% (= exactly one list height).
- *   - The second list fills the gap as the first scrolls out → zero visible jump.
- *
- * Props:
- *   logos        — array of { src, alt, href? }
- *   direction    — "up" (default) | "down"
- *   logoHeight   — px height of each logo image (default 80)
- *   gap          — px gap between logos (default 36)
- *   speed        — seconds for one full cycle (default 10)
- *   pauseOnHover — boolean (default true)
- *   className    — extra classes on the outer clipping div
- */
+
 export const LogoLoop = memo(({
     logos,
     direction = "up",
@@ -86,7 +70,7 @@ export const LogoLoop = memo(({
     );
 
     return (
-        /* Outer div: clips overflow, applies the CSS mask fade */
+
         <div
             className={`relative overflow-hidden group select-none ${className}`}
             style={{
@@ -94,11 +78,7 @@ export const LogoLoop = memo(({
                 WebkitMaskImage: "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
             }}
         >
-            {/*
-              Inner wrapper: THIS is what animates.
-              Both lists move together so there is never a jump —
-              when list-1 scrolls off the top, list-2 takes its place exactly.
-            */}
+
             <div
                 className={`flex flex-col ${animClass} ${pauseClass}`}
                 style={{ "--marquee-duration": `${speed}s` }}

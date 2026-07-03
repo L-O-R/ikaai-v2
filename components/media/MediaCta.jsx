@@ -1,4 +1,4 @@
-// root/components/media/MediaCta.jsx
+
 'use client'
 
 import React from 'react'

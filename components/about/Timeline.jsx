@@ -1,4 +1,4 @@
-// app/about/components/Timeline.jsx
+
 'use client'
 
 import React from 'react'

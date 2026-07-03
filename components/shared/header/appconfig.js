@@ -1,4 +1,4 @@
-// appConfig.js
+
 export const pageConfig = {
     "/": {
         header: "light",
@@ -10,6 +10,15 @@ export const pageConfig = {
         header: "dark",
     },
     "/about/life": {
+        header: "dark",
+    },
+    "/careers": {
+        header: "dark",
+    },
+    "/work": {
+        header: "dark",
+    },
+    "/services": {
         header: "dark",
     },
     "/media": {

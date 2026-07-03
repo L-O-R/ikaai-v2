@@ -1,65 +1,9 @@
 "use client";
 
+import { servicesData } from "@/data/servicesData";
 import React, { useState } from "react";
 
-const servicesData = [
-    {
-        id: 1,
-        number: "01",
-        title: "Social & Development Research",
-        tags: ["Baseline Studies", "Endline Studies", "Needs Assessment", "Participatory Rural Appraisal", "Community Profiling", "Stakeholder Mapping"],
-        description:
-            "Evidence-based research across social, economic, and rural development sectors. We design rigorous studies to understand community needs, program contexts, and social determinants that shape development outcomes.",
-    },
-    {
-        id: 2,
-        number: "02",
-        title: "Monitoring & Evaluation",
-        tags: ["Theory of Change", "MEL Frameworks", "Program Evaluation", "Performance Indicators", "Logframe Design", "Data Quality Assurance", "Real-time Monitoring"],
-        description:
-            "Designing robust monitoring systems and evaluating development interventions. We build MEL frameworks, design indicators, and deliver evaluations that genuinely inform program improvement and accountability to funders.",
-    },
-    {
-        id: 3,
-        number: "03",
-        title: "Data Collection & Analytics",
-        tags: ["CAPI Surveys", "FGDs", "IDIs", "GIS Mapping", "Dashboards", "Data Visualisation", "Statistical Analysis"],
-        description:
-            "End-to-end primary data collection using CAPI, KoBoToolbox, and ODK. Quantitative surveys, qualitative FGDs and IDIs, GIS-based mapping, and analytics — turning raw field data into clean, decision-ready insights.",
-    },
-    {
-        id: 4,
-        number: "04",
-        title: "Impact Assessment",
-        tags: ["CSR Evaluation", "SDG Alignment", "Outcome Measurement", "Social Return on Investment", "Contribution Analysis", "Theory-based Evaluation"],
-        description:
-            "Measuring program outcomes, CSR effectiveness, and long-term social impact. We work with corporate foundations, government agencies, and NGOs to demonstrate accountability and tell the story of change with credible evidence.",
-    },
-    {
-        id: 5,
-        number: "05",
-        title: "Capacity Building",
-        tags: ["Training", "Workshops", "Institutional Strengthening", "Enumerators Training", "MEL Design", "Data Management", "Report Writing"],
-        description:
-            "Training institutions, researchers, enumerators, and community organisations to build lasting internal capacity. From field team inductions to executive workshops on MEL design — we transfer knowledge, not just deliverables.",
-    },
-    {
-        id: 6,
-        number: "06",
-        title: "Policy & Advisory Support",
-        tags: ["Policy Briefs", "Strategic Advisory", "Research Synthesis", "Evidence Gap Analysis", "Program Design", "Sectoral Assessments"],
-        description:
-            "Research-backed policy recommendations and strategic advisory for government bodies, bilateral agencies, and development foundations. We translate field evidence into actionable guidance that informs program design and public policy.",
-    },
-    {
-        id: 7,
-        number: "07",
-        title: "Knowledge Management & Dissemination",
-        tags: ["Knowledge Products", "Case Studies", "Research Reports", "Learning Briefs", "Documentation", "Knowledge Sharing", "Communications Strategy"],
-        description:
-            "Creating and disseminating knowledge products that make research accessible and actionable. From detailed reports to learning briefs and case studies — we ensure your findings reach the right audiences and drive real change.",
-    },
-];
+
 
 const Services = () => {
     const [openIndex, setOpenIndex] = useState(0);

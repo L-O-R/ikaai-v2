@@ -3,8 +3,9 @@
 import React, { useEffect, useRef, useState, useCallback, memo } from "react";
 import * as d3 from "d3";
 import { projectsData } from "@/data/project";
+import Link from "next/link";
 
-// Build highlighted states dynamically from projectsData
+
 const getHighlightedStates = () => {
     const stateMap = {};
     projectsData.forEach((project) => {
@@ -34,7 +35,7 @@ const Presence = memo(() => {
     const rafIdRef = useRef(null);
     const pathRefs = useRef({});
 
-    // Throttled tooltip update using requestAnimationFrame
+
     const updateTooltip = useCallback((event, name) => {
         if (!tooltipRef.current || !containerRef.current) return;
         if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
@@ -77,7 +78,7 @@ const Presence = memo(() => {
             .then((data) => {
                 projection.fitSize([width, height], data);
 
-                // Draw paths
+
                 svg
                     .selectAll("path")
                     .data(data.features)
@@ -95,7 +96,7 @@ const Presence = memo(() => {
                     )
                     .style("transition", "fill 0.15s ease") // smooth transition
                     .each(function (d) {
-                        // Store reference for later use
+
                         const name = d.properties.NAME_1;
                         if (HIGHLIGHTED[name]) {
                             pathRefs.current[name] = this;
@@ -104,7 +105,7 @@ const Presence = memo(() => {
                     .on("mouseenter", function (event, d) {
                         const name = d.properties.NAME_1;
                         if (!HIGHLIGHTED[name]) return;
-                        // Use CSS class instead of direct attr change
+
                         d3.select(this).classed("highlighted", true);
                         if (tooltipState && tooltipProjects) {
                             tooltipState.textContent = name;
@@ -128,7 +129,7 @@ const Presence = memo(() => {
                         }
                     });
 
-                // Add circles for highlighted states
+
                 svg
                     .selectAll("circle")
                     .data(data.features.filter((d) => HIGHLIGHTED[d.properties.NAME_1]))
@@ -142,7 +143,7 @@ const Presence = memo(() => {
                     .attr("stroke-width", 1.5)
                     .style("pointer-events", "none");
 
-                // Add CSS for hover effect (instead of JS)
+
                 const style = document.createElement("style");
                 style.textContent = `
           .india-state {
@@ -159,7 +160,7 @@ const Presence = memo(() => {
             .catch((err) => console.error("Map load error:", err));
 
         return () => {
-            // Cleanup
+
             if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
         };
     }, [isLoaded, updateTooltip]);
@@ -269,15 +270,15 @@ const Presence = memo(() => {
                             </div>
                         </div>
 
-                        <a
-                            href="#"
+                        <Link
+                            href="/work"
                             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-label-caps text-label-caps uppercase rounded-xl hover:bg-primary-container transition-colors"
                         >
                             Learn More
                             <span className="material-symbols-outlined text-sm">
                                 arrow_forward
                             </span>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

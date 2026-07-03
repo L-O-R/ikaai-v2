@@ -12,8 +12,7 @@ const OurApproach = () => {
                         We believe in systemic change driven by evidence and rooted in community participation. Our
                         methodology ensures interventions are sustainable, scalable, and contextually relevant.
                     </p>
-                    <a className="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary font-label-caps text-label-caps uppercase rounded-xl hover:bg-primary hover:text-white transition-colors"
-                        href="#">Read Our Full Strategy</a>
+
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-3 p-6 bg-surface-container-low rounded-2xl border border-border-neutral">

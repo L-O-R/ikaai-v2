@@ -15,7 +15,7 @@ const useMedia = (queries, values, defaultValue) => {
     const handler = () => setValue(get());
     queries.forEach(q => window.matchMedia(q).addEventListener('change', handler));
     return () => queries.forEach(q => window.matchMedia(q).removeEventListener('change', handler));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, [queries]);
 
   return value;
@@ -61,16 +61,16 @@ const Masonry = ({
   hoverScale = 0.95,
   blurToFocus = true,
   colorShiftOnHover = false,
-  // Added on top of the original React Bits source:
-  // - onItemClick: if provided, called instead of the default window.open(item.url).
-  //   Lets the parent drive a lightbox instead of forcing external navigation.
-  // - renderOverlay: optional (item) => JSX rendered on top of each tile, shown on hover.
+
+
+
+
   onItemClick,
   renderOverlay,
 }) => {
-  // Narrowed from the original 5-breakpoint version (5/4/3/2/1 columns) down to 3/2/1,
-  // to match this site's existing grid rhythm (grid-cols-1 / sm:grid-cols-2 / lg:grid-cols-3)
-  // instead of introducing a new, denser breakpoint system.
+
+
+
   const columns = useMedia(
     ['(min-width:1024px)', '(min-width:640px)'],
     [3, 2],

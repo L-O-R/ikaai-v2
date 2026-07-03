@@ -1,4 +1,4 @@
-// app/media/page.jsx
+
 import React from 'react'
 import {
     MediaHero,

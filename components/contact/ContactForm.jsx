@@ -1,4 +1,4 @@
-// root/components/contact/ContactForm.jsx
+
 'use client'
 
 import React, { useState } from 'react'
@@ -23,7 +23,7 @@ const ContactForm = () => {
         e.preventDefault()
         setIsSubmitting(true)
 
-        // Simulate form submission
+
         setTimeout(() => {
             setIsSubmitting(false)
             setIsSubmitted(true)

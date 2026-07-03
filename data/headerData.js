@@ -6,6 +6,7 @@ export const navLinks = [
             { label: 'About Us', href: '/about' },
             { label: 'Meet Our Team', href: '/about/team' },
             { label: 'Life at IKAAI', href: '/about/life' },
+            { label: 'Join Us', href: '/careers' },
         ],
     },
     { label: 'Media', href: '/media', type: 'link' },
