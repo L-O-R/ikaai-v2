@@ -6,7 +6,7 @@ const CtaSection = () => {
     return (
         <section className="py-20 md:py-28 px-4 md:px-8 bg-primary text-white">
             <div className="max-w-container-max mx-auto text-center">
-                <h2 className="font-headline-lg text-headline-lg text-white mb-6">
+                <h2 className="font-headline-lg font-semibold text-5xl md:text-7xl lg:text-headline-lg text-white mb-6">
                     Join Us in Transforming Rural India
                 </h2>
                 <p className="font-body-lg text-body-lg text-white/80 max-w-2xl mx-auto mb-8">
