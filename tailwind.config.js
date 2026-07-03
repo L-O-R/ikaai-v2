@@ -98,6 +98,8 @@ module.exports = {
             animation: {
                 marquee: "marquee var(--marquee-duration, 30s) linear infinite",
                 "marquee-reverse": "marquee-reverse var(--marquee-duration, 30s) linear infinite",
+                "marquee-vertical-up": "marquee-vertical-up var(--marquee-duration, 40s) linear infinite",
+                "marquee-vertical-down": "marquee-vertical-down var(--marquee-duration, 40s) linear infinite",
             },
             keyframes: {
                 marquee: {
@@ -107,6 +109,14 @@ module.exports = {
                 "marquee-reverse": {
                     "0%": { transform: "translateX(-100%)" },
                     "100%": { transform: "translateX(0%)" },
+                },
+                "marquee-vertical-up": {
+                    "0%": { transform: "translateY(0%)" },
+                    "100%": { transform: "translateY(-50%)" },
+                },
+                "marquee-vertical-down": {
+                    "0%": { transform: "translateY(-50%)" },
+                    "100%": { transform: "translateY(0%)" },
                 },
             }
         }

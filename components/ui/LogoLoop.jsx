@@ -1,143 +1,114 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
-import React, { memo, useMemo } from "react";
+import React, { memo } from "react";
 
-// Helper to convert size to CSS value
-const toCssLength = (value) =>
-    typeof value === "number" ? `${value}px` : value ?? undefined;
+/**
+ * LogoLoop — seamless vertical marquee column.
+ *
+ * The trick for a smooth infinite loop:
+ *   - Render two identical lists inside ONE animated wrapper div.
+ *   - Animate the WRAPPER by -50% (= exactly one list height).
+ *   - The second list fills the gap as the first scrolls out → zero visible jump.
+ *
+ * Props:
+ *   logos        — array of { src, alt, href? }
+ *   direction    — "up" (default) | "down"
+ *   logoHeight   — px height of each logo image (default 80)
+ *   gap          — px gap between logos (default 36)
+ *   speed        — seconds for one full cycle (default 10)
+ *   pauseOnHover — boolean (default true)
+ *   className    — extra classes on the outer clipping div
+ */
+export const LogoLoop = memo(({
+    logos,
+    direction = "up",
+    logoHeight = 80,
+    gap = 36,
+    speed = 10,
+    pauseOnHover = true,
+    className = "",
+}) => {
+    const animClass = direction === "down"
+        ? "animate-marquee-vertical-down"
+        : "animate-marquee-vertical-up";
 
-export const LogoLoop = memo(
-    ({
-        logos,
-        speed = 120,
-        direction = "left",
-        width = "100%",
-        logoHeight = 28,
-        gap = 32,
-        pauseOnHover = true,
-        fadeOut = false,
-        fadeOutColor,
-        scaleOnHover = false,
-        renderItem,
-        ariaLabel = "Partner logos",
-        className,
-        style,
-    }) => {
-        const duration = useMemo(() => {
-            const averageLogoWidth = logoHeight * 1.6;
-            const totalWidth = logos.length * (averageLogoWidth + gap);
-            return `${totalWidth / Math.max(1, speed)}s`;
-        }, [logos.length, logoHeight, gap, speed]);
+    const pauseClass = pauseOnHover ? "group-hover:[animation-play-state:paused]" : "";
 
-        const animationClass = direction === "right" ? "animate-marquee-reverse" : "animate-marquee";
-
-        // Build list elements
-        const renderLogoList = (isDuplicate) => (
-            <ul
-                className={`flex items-center shrink-0 ${animationClass} ${pauseOnHover ? "group-hover:[animation-play-state:paused]" : ""
-                    }`}
-                style={{
-                    gap: `${gap}px`,
-                    paddingRight: `${gap}px`,
-                    "--marquee-duration": duration,
-                }}
-                role="list"
-                aria-hidden={isDuplicate}
-            >
-                {logos.map((item, index) => {
-                    const key = `${isDuplicate ? "dup" : "orig"}-${index}`;
-                    if (renderItem) {
-                        return (
-                            <li className="shrink-0" key={key} role="listitem">
-                                {renderItem(item, index)}
-                            </li>
-                        );
-                    }
-
-                    const isNodeItem = "node" in item;
-                    const content = isNodeItem ? (
-                        <span className="inline-flex items-center">
-                            {item.node}
-                        </span>
+    const logoList = (isDuplicate) => (
+        <ul
+            aria-hidden={isDuplicate || undefined}
+            className="flex flex-col shrink-0"
+            style={{
+                gap: `${gap}px`,
+                // paddingBottom on the first copy so the seam gap matches item gap
+                paddingBottom: isDuplicate ? 0 : `${gap}px`,
+            }}
+        >
+            {logos.map((item, i) => (
+                <li
+                    key={`${isDuplicate ? "d" : "o"}-${i}`}
+                    className="border border-primary/15 p-2 rounded-xl shrink-0 flex items-center justify-center"
+                >
+                    {item.href ? (
+                        <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center rounded hover:opacity-80 transition-opacity"
+                        >
+                            <Image
+                                src={item.src}
+                                alt={item.alt ?? ""}
+                                width={160}
+                                height={160}
+                                loading="lazy"
+                                draggable={false}
+                                className=" p-1  object-contain pointer-events-none select-none"
+                                style={{ height: `${logoHeight}px`, width: "auto" }}
+                            />
+                        </a>
                     ) : (
                         <Image
                             src={item.src}
-                            srcSet={item.srcSet}
-                            sizes={item.sizes}
-                            width={120}
-                            height={120}
                             alt={item.alt ?? ""}
-                            title={item.title}
+                            width={160}
+                            height={160}
                             loading="lazy"
-                            decoding="async"
                             draggable={false}
-                            className={`block object-contain  pointer-events-none partner-logo transition-all duration-300 ${scaleOnHover ? "hover:scale-105" : ""
-                                }`}
-                            style={{ height: toCssLength(logoHeight), width: "auto" }}
+                            className="object-contain pointer-events-none select-none"
+                            style={{ height: `${logoHeight}px`, width: "auto" }}
                         />
-                    );
+                    )}
+                </li>
+            ))}
+        </ul>
+    );
 
-                    const itemContent = item.href ? (
-                        <a
-                            className="inline-flex items-center no-underline rounded transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-current focus-visible:outline-offset-2"
-                            href={item.href}
-                            target="_blank"
-                            rel="noreferrer noopener"
-                        >
-                            {content}
-                        </a>
-                    ) : (
-                        content
-                    );
-
-                    return (
-                        <li className="shrink-0" key={key} role="listitem">
-                            {itemContent}
-                        </li>
-                    );
-                })}
-            </ul>
-        );
-
-        return (
+    return (
+        /* Outer div: clips overflow, applies the CSS mask fade */
+        <div
+            className={`relative overflow-hidden group select-none ${className}`}
+            style={{
+                maskImage: "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
+                WebkitMaskImage: "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
+            }}
+        >
+            {/*
+              Inner wrapper: THIS is what animates.
+              Both lists move together so there is never a jump —
+              when list-1 scrolls off the top, list-2 takes its place exactly.
+            */}
             <div
-                className={`relative overflow-hidden w-full group flex select-none ${className || ""}`}
-                style={{
-                    width: toCssLength(width),
-                    ...style,
-                }}
-                role="region"
-                aria-label={ariaLabel}
+                className={`flex flex-col ${animClass} ${pauseClass}`}
+                style={{ "--marquee-duration": `${speed}s` }}
             >
-                {/* Fade overlays if enabled */}
-                {fadeOut && (
-                    <>
-                        <div
-                            className="absolute inset-y-0 left-0 w-24 pointer-events-none z-10"
-                            style={{
-                                background: `linear-gradient(to right, ${fadeOutColor || "var(--color-surface, white)"}, transparent)`,
-                            }}
-                        />
-                        <div
-                            className="absolute inset-y-0 right-0 w-24 pointer-events-none z-10"
-                            style={{
-                                background: `linear-gradient(to left, ${fadeOutColor || "var(--color-surface, white)"}, transparent)`,
-                            }}
-                        />
-                    </>
-                )}
-
-                {/* Inner track containing the duplicate lists */}
-                <div className="flex w-max shrink-0 relative z-0">
-                    {renderLogoList(false)}
-                    {renderLogoList(true)}
-                </div>
+                {logoList(false)}
+                {logoList(true)}
             </div>
-        );
-    }
-);
+        </div>
+    );
+});
 
 LogoLoop.displayName = "LogoLoop";
-
 export default LogoLoop;
