@@ -1,7 +1,8 @@
 import { Epilogue, Manrope } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/shared/Header";
+import Header from "@/components/shared/header/Header";
 import Footer from "@/components/shared/Footer";
+import { HeaderThemeProvider } from "./HeaderThemeProvider";
 
 const epilogue = Epilogue({
   variable: "--font-epilogue",
@@ -33,9 +34,11 @@ export default function RootLayout({ children }) {
       </head>
 
       <body className="min-h-full flex flex-col">
-        <Header />
-        {children}
-        <Footer />
+        <HeaderThemeProvider>
+          <Header />
+          {children}
+          <Footer />
+        </HeaderThemeProvider>
       </body>
     </html>
   );

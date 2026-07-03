@@ -8,7 +8,7 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-16 ">
                     {/* Left Column – Brand & Description */}
                     <div className="md:col-span-3 ">
-                        <h2 className="font-headline-lg text-headline-lg text-9xl text-inverse-on-surface">
+                        <h2 className="font-headline-lg font-semibold text-7xl lg:text-headline-lg lg:text-9xl text-inverse-on-surface">
                             Ikaai India
                         </h2>
                         <p className="mb-8 font-label-caps text-body-lg font-semibold uppercase tracking-widest text-inverse-on-surface mt-1">

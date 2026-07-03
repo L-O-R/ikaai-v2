@@ -175,15 +175,15 @@ const Presence = memo(() => {
                     <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
                         Our Presence
                     </span>
-                    <div className=" flex justify-between">
-                        <h2 className="font-headline-lg text-headline-lg text-on-surface max-w-2xl">
+                    <div className=" flex flex-col lg:flex-row justify-between">
+                        <h2 className="font-headline-lg font-semibold text-5xl md:text-7xl lg:text-headline-lg text-on-surface max-w-2xl">
                             Research with
                             <br />
                             National Reach.
                             <br />
                             Local Impact.
                         </h2>
-                        <p className="self-end font-body-md text-body-lg text-text-secondary max-w-xl mt-4">
+                        <p className="lg:self-end font-body-md text-body-lg text-text-secondary max-w-xl mt-4">
                             We have worked in states/UTs of Rajasthan, Maharashtra, Madhya
                             Pradesh and Delhi — with experts and consultants spread across India
                             including North Eastern states and remote terrains.
@@ -192,9 +192,9 @@ const Presence = memo(() => {
                 </div>
 
                 {/* Main Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
                     {/* Map */}
-                    <div className="md:col-span-7 relative" ref={containerRef}>
+                    <div className="lg:col-span-7 relative" ref={containerRef}>
                         <svg
                             ref={mapRef}
                             className="w-full h-auto"
@@ -214,7 +214,7 @@ const Presence = memo(() => {
                     </div>
 
                     {/* Stats + Pills */}
-                    <div className="md:col-span-5 flex flex-col gap-8">
+                    <div className="lg:col-span-5 flex flex-col gap-8">
                         <div className="grid grid-cols-2 gap-px bg-border-neutral rounded-2xl overflow-hidden border border-border-neutral">
                             <div className="bg-surface p-6">
                                 <span className="font-statistic-num text-4xl text-primary block">

@@ -9,13 +9,16 @@ const HeroSection = () => {
             <div className="video-overlay" />
             <div className='max-w-container-max w-full mx-auto z-10 flex flex-col justify-between'>
                 <div>
-                    <h1 className='text-6xl md:text-9xl lg:text-[14rem] capitalize font-semibold font-headline-lg leading-none'>ikaai India</h1>
-                    <p className='text-xl -mt-6 ml-4'>Research and Consultancy</p>
+                    <h1
+                        className=' text-headline-lg md:text-[8rem]  lg:text-[14rem] capitalize font-semibold font-headline-lg leading-none'>
+                        ikaai India
+                    </h1>
+                    <p className='text-xl lg:-mt-6 ml-1 md:ml-2 lg:ml-4'>Research and Consultancy</p>
                 </div>
-                <div className='flex justify-between'>
+                <div className='flex flex-col md:flex-row justify-between max-md:gap-4'>
                     <p className='self-end text-xl flex flex-col gap-1 '>
                         <span>Measuring impact</span>
-                        <span className='ml-10'>across Bharat</span>
+                        <span className='md:ml-10'>across Bharat</span>
                     </p>
                     <ul className='list-none space-y-2 text-xl'>
                         <li>Social & Development Research</li>

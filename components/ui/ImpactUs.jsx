@@ -59,14 +59,14 @@ const ImpactUs = () => {
 
     return (
         <div ref={containerRef} className="w-full py-16 z-10">
-            <div className="max-w-container-max mx-auto grid grid-cols-3 md:grid-cols-5 gap-8 md:gap-12 text-center px-4 md:px-8">
+            <div className="max-w-container-max mx-auto grid grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12  text-center px-4 md:px-8">
                 {stats.map((stat, idx) => (
                     <div key={idx} className="flex flex-col gap-1">
-                        <span className="font-statistic-num text-statistic-num text-primary">
+                        <span className="font-statistic-num text-5xl font-semibold md:text-statistic-num text-primary">
                             {counts[idx]}
                             {stat.suffix}
                         </span>
-                        <span className="font-label-caps text-label-caps uppercase tracking-widest text-text-muted">
+                        <span className="font-label-caps text-sm font-semibold md:text-label-caps uppercase tracking-widest text-text-muted">
                             {stat.label}
                         </span>
                     </div>

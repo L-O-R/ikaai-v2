@@ -3,11 +3,11 @@ import React from 'react'
 const OurApproach = () => {
     return (
         <section className="py-section-mobile md:py-section-desktop px-4 md:px-8 bg-surface" id="approach-section">
-            <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+            <div className="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
                 <div>
                     <span
                         className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">Methodology</span>
-                    <h2 className="font-headline-lg text-headline-lg text-on-surface mb-5">Our Approach</h2>
+                    <h2 className="font-headline-lg font-semibold text-5xl md:text-7xl lg:text-headline-lg text-on-surface mb-5">Our Approach</h2>
                     <p className="font-body-lg text-body-lg text-text-secondary mb-8">
                         We believe in systemic change driven by evidence and rooted in community participation. Our
                         methodology ensures interventions are sustainable, scalable, and contextually relevant.

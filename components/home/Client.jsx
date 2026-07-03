@@ -17,7 +17,7 @@ const Client = () => {
     return (
         <section className="py-20 bg-surface">
             <div className="max-w-container-max mx-auto px-4 md:px-8 mb-8">
-                <h2 className="font-headline-lg text-headline-lg font-semibold text-on-surface text-center mb-12">
+                <h2 className="font-headline-lg text-5xl lg:text-headline-md font-semibold text-on-surface text-center mb-12">
                     Our Clients
                 </h2>
                 <div className=" relative overflow-hidden space-y-20">

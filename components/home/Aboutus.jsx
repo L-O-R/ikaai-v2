@@ -6,7 +6,7 @@ const Aboutus = () => {
         <section className="py-section-mobile md:py-section-desktop px-4 md:px-8 bg-warm-beige">
             <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter">
                 <div className="md:col-span-8">
-                    <h2 className="font-headline-lg text-headline-md text-primary mb-6">
+                    <h2 className="font-headline-lg font-semibold text-5xl lg:text-headline-md text-primary mb-6">
                         Building stronger rural communities through research, innovation, and action.
                     </h2>
                 </div>

@@ -16,7 +16,7 @@ const Updates = () => {
                     <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
                         Updates
                     </span>
-                    <h2 className="font-headline-lg text-headline-lg text-on-surface">
+                    <h2 className="font-headline-lg font-semibold text-5xl md:text-7xl lg:text-headline-lg text-on-surface">
                         From Ikaai India
                     </h2>
                     <p className="font-body-md text-body-md text-text-secondary max-w-xl mt-4">
@@ -25,17 +25,18 @@ const Updates = () => {
                 </div>
 
                 {/* Grid - 2 columns on md, 1 on mobile */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
 
                     {updatesData.map((update) => (
                         <Link
                             href={update.link}
                             target="_blank"
                             rel="noopener noreferrer"
+                            key={update.id}
                         >
                             <div
-                                key={update.id}
-                                className="relative group h-85 bg-surface-container-low rounded-2xl overflow-hidden border border-border-neutral hover:shadow-lg transition-shadow duration-300"
+
+                                className="relative group h--auto lg:h-85 bg-surface-container-low rounded-2xl overflow-hidden border border-border-neutral hover:shadow-lg transition-shadow duration-300"
                             >
                                 {/* Image */}
                                 <div className="aspect-4/3 relative overflow-hidden bg-surface-container-high">
