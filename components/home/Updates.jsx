@@ -36,7 +36,7 @@ const Updates = () => {
                         >
                             <div
 
-                                className="relative group h--auto lg:h-85 bg-surface-container-low rounded-2xl overflow-hidden border border-border-neutral hover:shadow-lg transition-shadow duration-300"
+                                className="relative group h--auto lg:h-102 bg-surface-container-low rounded-2xl overflow-hidden border border-border-neutral hover:shadow-lg transition-shadow duration-300"
                             >
                                 {/* Image */}
                                 <div className="aspect-4/3 relative overflow-hidden bg-surface-container-high">
@@ -50,7 +50,7 @@ const Updates = () => {
                                 {/* Content */}
                                 <div className="p-5">
                                     <h3 className="font-headline-md text-xl text-on-surface group-hover:text-primary transition-colors duration-300 line-clamp-2">
-                                        {update.title}
+                                        {update.title.split(" ").length > 5 ? update.title.substring(0, 50) + "..." : update.title}
                                     </h3>
 
                                 </div>

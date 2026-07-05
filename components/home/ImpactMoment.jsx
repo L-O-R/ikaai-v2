@@ -5,7 +5,7 @@ export default function ImpactMoment() {
         <section>
             <div className="relative overflow-hidden">
                 {/* Image */}
-                <div className="relative min-h-[50vh] py-20 flex items-center">
+                <div className="relative min-h-screen py-20 flex items-center">
                     <Image
                         src="/emotional.png"
                         alt="Mother helping her daughter study in a rural Indian village."
