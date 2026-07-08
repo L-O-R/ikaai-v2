@@ -23,15 +23,15 @@ const Client = () => {
             <div className="max-w-container-max mx-auto px-4 md:px-8">
 
                 {/* Header */}
-                <div className="text-center mb-12 md:mb-16">
+                <div className=" mb-12 md:mb-16">
                     <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
                         Trusted By
                     </span>
-                    <h2 className="font-headline-lg font-semibold text-5xl md:text-7xl lg:text-headline-lg text-on-surface">
-                        Organizations That Trust Us
+                    <h2 className="font-headline-lg font-semibold text-5xl md:text-7xl lg:text-[6rem] text-on-surface">
+                        Clients & Partners
                     </h2>
-                    <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />
-                    <p className="font-body-md text-body-md text-text-secondary max-w-2xl mx-auto mt-4">
+                    <div className="w-16 h-0.5 bg-harvest-gold/60 mt-4" />
+                    <p className="font-body-md text-body-md text-text-secondary max-w-2xl mt-4">
                         Governments, NGOs, and development agencies that rely on our
                         research and development expertise to drive evidence-based change.
                     </p>

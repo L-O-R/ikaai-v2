@@ -48,10 +48,10 @@ const HeroSection = () => {
 
             <div className="max-w-container-max w-full mx-auto z-10 flex flex-col justify-between px-4 md:px-8 relative">
                 <div>
-                    <h1 className="text-headline-lg md:text-[8rem] lg:text-[14rem] capitalize font-semibold font-headline-lg leading-none tracking-tight">
+                    <h1 className="text-headline-lg md:text-[8rem] lg:text-[20rem] font-semibold font-headline-lg leading-none tracking-tighter">
                         ikaai India
                     </h1>
-                    <p className="text-xl lg:-mt-6 ml-1 md:ml-2 lg:ml-4">Research and Consultancy</p>
+                    <p className="text-xl md:text-3xl lg:-mt-6 ml-1 md:ml-2 lg:ml-4">Research and Consultancy</p>
                 </div>
 
                 <div className="flex flex-col md:flex-row justify-between max-md:gap-4">
