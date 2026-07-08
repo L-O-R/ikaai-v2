@@ -1,0 +1,24 @@
+{% extends "unfold/layouts/unauthenticated.html" %}
+
+{% load i18n unfold %}
+
+{% block title %}
+    IKAAI INDIA CMS | {{ site_title }}
+{% endblock %}
+
+{% block content %}
+    <div class="flex min-h-screen items-center justify-center bg-white px-4 dark:bg-base-900">
+        <div class="w-full max-w-sm">
+            <h1 class="mb-8 text-center text-2xl font-semibold tracking-normal text-font-important-light dark:text-font-important-dark">
+                IKAAI INDIA CMS
+            </h1>
+
+            {% include "unfold/helpers/messages.html" %}
+
+            {% url "accounts:google_login" as google_login_url %}
+            {% component "unfold/components/button.html" with href=google_login_url variant="primary" class="w-full" %}
+                {% translate "Continue with Google" %}
+            {% endcomponent %}
+        </div>
+    </div>
+{% endblock %}

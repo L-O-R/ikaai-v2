@@ -15,10 +15,10 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
 
 INSTALLED_APPS = [
-    #Third Party Admin
+    # Third Party Admin
     "unfold",
 
-    # django
+    # Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     "django_extensions",
 
     # Local Apps
-    'apps.accounts'
+    'apps.accounts',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +48,10 @@ MIDDLEWARE = [
 ]
 
 AUTH_USER_MODEL = "accounts.User"
+
+GOOGLE_CLIENT_ID = env("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = env("GOOGLE_CLIENT_SECRET")
+GOOGLE_REDIRECT_URI = env("GOOGLE_REDIRECT_URI")
 
 ROOT_URLCONF = 'config.urls'
 
