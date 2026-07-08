@@ -1,5 +1,6 @@
 from pathlib import Path
 import environ
+from django.templatetags.static import static
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -12,7 +13,11 @@ SECRET_KEY = env("SECRET_KEY")
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
 
+
 INSTALLED_APPS = [
+    #Third Party Admin
+    "unfold",
+
     # django
     'django.contrib.admin',
     'django.contrib.auth',
@@ -25,10 +30,10 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "corsheaders",
     "django_filters",
-    "unfold",
     "django_extensions",
 
     # Local Apps
+    'apps.accounts'
 ]
 
 MIDDLEWARE = [
@@ -41,6 +46,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTH_USER_MODEL = "accounts.User"
 
 ROOT_URLCONF = 'config.urls'
 
@@ -74,9 +81,13 @@ MEDIA_ROOT = BASE_DIR / "media"
 WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": env("DB_NAME"),
+        "USER": env("DB_USER"),
+        "PASSWORD": env("DB_PASSWORD"),
+        "HOST": env("DB_HOST"),
+        "PORT": env("DB_PORT"),
     }
 }
 
@@ -104,3 +115,10 @@ USE_I18N = True
 USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+UNFOLD = {
+    "SITE_TITLE": "IKAAI CMS",
+    "SITE_HEADER": "IKAAI INDIA",
+    "SITE_SUBHEADER": "Content Management System",
+    "SITE_SYMBOL": "dashboard",
+}
