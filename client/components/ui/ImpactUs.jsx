@@ -44,49 +44,38 @@ const ImpactUs = () => {
   }, []);
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container || stats.length === 0) return;
+    if (stats.length === 0 || hasAnimated) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
+    setHasAnimated(true);
 
-          const targets = stats.map((s) => s.value);
-          const duration = 2500;
-          const startTime = performance.now();
+    const targets = stats.map((s) => s.value);
+    const duration = 2500;
+    const startTime = performance.now();
 
-          const animate = (time) => {
-            const elapsed = time - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const easedProgress = easeOut(progress);
+    const animate = (time) => {
+      const elapsed = time - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOut(progress);
 
-            const newCounts = targets.map((target) =>
-              Math.round(target * easedProgress),
-            );
-            setCounts(newCounts);
+      setCounts(
+        targets.map((target) =>
+          Math.round(target * easedProgress)
+        )
+      );
 
-            if (progress < 1) {
-              animationFrameRef.current = requestAnimationFrame(animate);
-            }
-          };
-
-          animationFrameRef.current = requestAnimationFrame(animate);
-        }
-      },
-      { threshold: 0.3 },
-    );
-
-    observer.observe(container);
-    return () => {
-      observer.disconnect();
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-        animationFrameRef.current = null;
+      if (progress < 1) {
+        animationFrameRef.current = requestAnimationFrame(animate);
       }
     };
-  }, [hasAnimated, stats]);
+
+    animationFrameRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [stats]);
 
   if (isLoading) {
     return (

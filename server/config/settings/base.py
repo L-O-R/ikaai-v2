@@ -176,8 +176,8 @@ UNFOLD = {
     ),
     "SITE_URL": env("FRONTEND_LINK", default="http://localhost:3000"),
     "SITE_LOGO": {
-        "light": "/static/admin/images/logo-light.svg",
-        "dark": "/static/admin/images/logo-dark.svg",
+        "light": "/static/admin/images/logo-light.png",
+        "dark": "/static/admin/images/logo-light.png",
     },
     "SITE_FAVICONS": [
         {
@@ -229,8 +229,8 @@ UNFOLD = {
     ],
     "LOGIN": {
         "image": {
-            "light": "/static/admin/images/logo-light.svg",
-            "dark": "/static/admin/images/logo-dark.svg",
+            "light": "/static/admin/images/logo-light.png",
+            "dark": "/static/admin/images/logo-light.png",
         },
     },
 }
