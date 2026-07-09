@@ -1,0 +1,88 @@
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--admin-primary) !important;
+}
+
+.aligned .form-row,
+.form-row {
+    border-radius: var(--border-radius) !important;
+}
+
+.form-row {
+    padding: 1.15rem 1.25rem !important;
+    border: 1px solid var(--admin-border) !important;
+    border-radius: var(--border-radius) !important;
+    margin-bottom: 0.9rem !important;
+}
+
+
+.aligned .form-row {
+    padding-inline: 1rem !important;
+}
+
+.form-row > div {
+    margin-bottom: 0.9rem !important;
+}
+
+.form-row > div:last-child {
+    margin-bottom: 0 !important;
+}
+
+.form-row label {
+    display: inline-block !important;
+    margin-bottom: 0.45rem !important;
+    font-weight: 700 !important;
+}
+
+.errorlist {
+    color: var(--admin-danger) !important;
+}
+
+.form-row .help,
+.form-row .helptext {
+    margin-top: 0.4rem !important;
+    line-height: 1.45 !important;
+}
+
+.fieldBox .readonly,
+.readonly {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 2.75rem !important;
+    padding: 0.625rem 0.875rem !important;
+}
+
+.vCheckboxLabel {
+    font-weight: 600 !important;
+    color: var(--admin-text) !important;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([x-ref="searchInput"]),
+select,
+textarea,
+.vTextField,
+.vLargeTextField,
+.vURLField,
+.vDateField,
+.vTimeField,
+.vIntegerField,
+.vBigIntegerField,
+.vEmailField,
+.vFileField {
+    border: 1px solid var(--admin-border-strong) !important;
+    border-radius: var(--border-radius) !important;
+    background: var(--admin-surface) !important;
+    color: var(--admin-text) !important;
+    min-height: 2.75rem !important;
+    padding: 0.65rem 0.875rem !important;
+    box-shadow: none !important;
+    min-width: 30%;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--admin-focus) !important;
+    outline-offset: 2px !important;
+    border-color: var(--admin-focus) !important;
+}

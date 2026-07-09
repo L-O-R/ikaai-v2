@@ -1,0 +1,27 @@
+.results table,
+.change-list table,
+.dashboard table {
+    width: 100% !important;
+}
+
+.results th,
+.results td,
+.change-list th,
+.change-list td {
+    padding: 0.875rem 1rem !important;
+}
+
+.results thead th,
+.change-list thead th {
+    background: var(--color-base-100) !important;
+}
+
+.results tbody tr:nth-child(even),
+.change-list tbody tr:nth-child(even) {
+    background: color-mix(in srgb, var(--color-base-100) 55%, transparent) !important;
+}
+
+.results tbody tr:hover,
+.change-list tbody tr:hover {
+    background: color-mix(in srgb, var(--color-primary-50) 35%, transparent) !important;
+}

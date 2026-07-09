@@ -13,7 +13,11 @@ def admin_login(request):
     if request.user.is_authenticated and request.user.is_staff:
         return redirect("admin:index")
 
-    return render(request, "admin/login.html", admin.site.each_context(request))
+    return render(
+        request,
+        "registration/login.html",
+        admin.site.each_context(request),
+    )
 
 
 def google_login(request):

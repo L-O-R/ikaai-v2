@@ -1,0 +1,78 @@
+:root {
+    /* Light mode – direct hex values from your Tailwind config */
+    --admin-surface: #fcf9f8;               /* surface */
+    --admin-surface-elevated: #f6f3f2;      /* surface-container-low */
+    --admin-border: #bfcabb;                /* outline-variant */
+    --admin-border-strong: #707a6e;         /* outline */
+    --admin-text: #000;                  /* on-surface */
+    --admin-text-muted: #757575;            /* text-muted */
+    --admin-primary: #00511e;               /* primary */
+    --admin-primary-strong: #0d6b2d;        /* primary-container */
+    --admin-focus: #00511e;                 /* primary */
+    --admin-danger: #ba1a1a;                /* error */
+    --admin-sidebar-width: 13.75rem;        /* kept as a var because it's a length */
+}
+
+/* Typography overrides */
+html,
+body {
+    font-family: var(--font-manrope) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+#site-name,
+.font-semibold,
+.font-bold,
+.text-2xl,
+.text-xl {
+    font-family: var(--font-epilogue), serif !important;
+}
+
+body {
+    background: var(--admin-surface) !important;
+}
+
+#container,
+#content,
+.content,
+.content-wrapper,
+.dashboard #content {
+    border: none;
+    box-shadow: none;
+    border-radius: 0.25rem !important; /* hardcoded to your DEFAULT border-radius */
+}
+
+
+
+
+/* Sidebar */
+#nav-sidebar {
+
+    flex: 0 0 var(--admin-sidebar-width) !important;
+    background: var(--admin-surface-elevated) !important;
+    border-right: 1px solid var(--admin-border) !important;
+}
+
+fieldset > div{
+    border: none;
+}
+
+
+/* Class‑based dark mode (if you toggle .dark on <html>) */
+html.dark {
+    --admin-surface: #303030;
+    --admin-surface-elevated: #3a3a3a;
+    --admin-border: #707a6e;
+    --admin-border-strong: #8a9488;
+    --admin-text: #f3f0ef;
+    --admin-text-muted: #d0cdcc;
+    --admin-primary: #84d98e;
+    --admin-primary-strong: #92e99c;
+    --admin-focus: #84d98e;
+    --admin-danger: #ba1a1a;
+}

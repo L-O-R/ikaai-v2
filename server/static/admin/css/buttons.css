@@ -1,0 +1,32 @@
+.button,
+button,
+input[type="submit"],
+input[type="button"],
+.submit-row a,
+.object-tools a {
+    letter-spacing: 0 !important;
+}
+
+.button:focus-visible,
+button:focus-visible,
+input[type="submit"]:focus-visible,
+input[type="button"]:focus-visible,
+.submit-row a:focus-visible,
+.object-tools a:focus-visible {
+    outline: 2px solid var(--admin-focus) !important;
+    outline-offset: 2px !important;
+}
+
+.object-tools {
+    padding: 0.75rem !important;
+}
+
+.object-tools a {
+    background: var(--color-base-50) !important;
+    border: 1px solid var(--admin-border) !important;
+    color: var(--admin-text) !important;
+}
+
+.object-tools a:hover {
+    color: var(--admin-primary) !important;
+}
