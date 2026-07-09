@@ -1,0 +1,17 @@
+.agents
+.git
+.idea
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+db.sqlite3
+media
+staticfiles
+logs
+*.log
+Dockerfile
+.dockerignore

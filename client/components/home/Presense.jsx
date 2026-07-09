@@ -1,68 +1,101 @@
 "use client";
 
-import React, { useEffect, useRef, useState, useCallback, memo } from "react";
 import * as d3 from "d3";
-import { projectsData } from "@/data/project";
 import Link from "next/link";
+import { getProjectLocations } from "@/data/getProjectLocations";
+import { getErrorMessage } from "@/data/apiErrors";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+const INDIA_GEOJSON_URL =
+    "https://raw.githubusercontent.com/geohacker/india/master/state/india_state.geojson";
 
-const getHighlightedStates = () => {
-    const stateMap = {};
-    projectsData.forEach((project) => {
-        const state = project.location;
-        if (!stateMap[state]) {
-            stateMap[state] = { count: 0 };
-        }
-        stateMap[state].count += 1;
-    });
-    const result = {};
-    Object.keys(stateMap).forEach((state) => {
-        result[state] = {
-            projects: `${stateMap[state].count} Active Projects`,
-            color: "#116d2f",
-        };
-    });
-    return result;
+let indiaGeoJsonPromise;
+
+const getIndiaGeoJson = () => {
+    if (!indiaGeoJsonPromise) {
+        indiaGeoJsonPromise = fetch(INDIA_GEOJSON_URL)
+            .then((r) => {
+                if (!r.ok) throw new Error("Unable to load the India map.");
+                return r.json();
+            })
+            .catch((err) => {
+                indiaGeoJsonPromise = null;
+                throw err;
+            });
+    }
+
+    return indiaGeoJsonPromise;
 };
-
-const HIGHLIGHTED = getHighlightedStates();
 
 const Presence = memo(() => {
     const mapRef = useRef(null);
     const containerRef = useRef(null);
     const tooltipRef = useRef(null);
-    const [isLoaded, setIsLoaded] = useState(false);
     const rafIdRef = useRef(null);
-    const pathRefs = useRef({});
+    const [projects, setProjects] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState("");
 
+    const highlighted = useMemo(() => {
+        const stateMap = {};
 
-    const updateTooltip = useCallback((event, name) => {
+        projects.forEach((project) => {
+            const state = project.location?.trim();
+            if (!state) return;
+            stateMap[state] = (stateMap[state] || 0) + 1;
+        });
+
+        return Object.fromEntries(
+            Object.entries(stateMap).map(([state, count]) => [
+                state,
+                { projects: `${count} ${count === 1 ? "Project" : "Projects"}` },
+            ])
+        );
+    }, [projects]);
+
+    const updateTooltip = useCallback((event) => {
         if (!tooltipRef.current || !containerRef.current) return;
         if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
         rafIdRef.current = requestAnimationFrame(() => {
             const rect = containerRef.current.getBoundingClientRect();
-            const x = event.clientX - rect.left + 14;
-            const y = event.clientY - rect.top - 56;
-            tooltipRef.current.style.left = x + "px";
-            tooltipRef.current.style.top = y + "px";
+            tooltipRef.current.style.left = `${event.clientX - rect.left + 14}px`;
+            tooltipRef.current.style.top = `${event.clientY - rect.top - 56}px`;
         });
     }, []);
 
     useEffect(() => {
-        if (isLoaded || !containerRef.current) return;
+        let isMounted = true;
 
+        getProjectLocations()
+            .then((data) => {
+                if (isMounted) setProjects(data.results || []);
+            })
+            .catch((err) => {
+                if (isMounted) setError(getErrorMessage(err, "Unable to load project locations."));
+            })
+            .finally(() => {
+                if (isMounted) setIsLoading(false);
+            });
+
+        return () => {
+            isMounted = false;
+        };
+    }, []);
+
+    useEffect(() => {
+        if (isLoading || !containerRef.current) return;
+
+        let isMounted = true;
         const container = containerRef.current;
         const svg = d3.select(mapRef.current);
         const tooltip = tooltipRef.current;
         const tooltipState = tooltip?.querySelector("#tooltip-state");
         const tooltipProjects = tooltip?.querySelector("#tooltip-projects");
-
         const width = container.offsetWidth || 600;
         const height = width * 1.15;
 
-        svg
-            .attr("viewBox", `0 0 ${width} ${height}`)
-            .attr("preserveAspectRatio", "xMidYMid meet");
+        svg.selectAll("*").remove();
+        svg.attr("viewBox", `0 0 ${width} ${height}`).attr("preserveAspectRatio", "xMidYMid meet");
 
         const projection = d3.geoMercator()
             .center([82.5, 22.5])
@@ -71,13 +104,11 @@ const Presence = memo(() => {
 
         const path = d3.geoPath().projection(projection);
 
-        fetch(
-            "https://raw.githubusercontent.com/geohacker/india/master/state/india_state.geojson"
-        )
-            .then((r) => r.json())
+        getIndiaGeoJson()
             .then((data) => {
-                projection.fitSize([width, height], data);
+                if (!isMounted) return;
 
+                projection.fitSize([width, height], data);
 
                 svg
                     .selectAll("path")
@@ -85,43 +116,32 @@ const Presence = memo(() => {
                     .enter()
                     .append("path")
                     .attr("d", path)
-                    .attr("fill", (d) => {
+                    .attr("class", (d) => {
                         const name = d.properties.NAME_1;
-                        return HIGHLIGHTED[name] ? HIGHLIGHTED[name].color : "#e5e2e1";
+                        return highlighted[name]
+                            ? "india-state fill-primary stroke-surface cursor-pointer"
+                            : "india-state fill-surface-variant stroke-surface";
                     })
-                    .attr("stroke", "#fcf9f8")
                     .attr("stroke-width", 1)
-                    .style("cursor", (d) =>
-                        HIGHLIGHTED[d.properties.NAME_1] ? "pointer" : "default"
-                    )
-                    .style("transition", "fill 0.15s ease") // smooth transition
-                    .each(function (d) {
-
+                    .style("transition", "fill 0.15s ease")
+                    .on("mouseenter", function (_event, d) {
                         const name = d.properties.NAME_1;
-                        if (HIGHLIGHTED[name]) {
-                            pathRefs.current[name] = this;
-                        }
-                    })
-                    .on("mouseenter", function (event, d) {
-                        const name = d.properties.NAME_1;
-                        if (!HIGHLIGHTED[name]) return;
+                        if (!highlighted[name]) return;
 
-                        d3.select(this).classed("highlighted", true);
+                        d3.select(this).classed("fill-on-primary-container", true).classed("fill-primary", false);
                         if (tooltipState && tooltipProjects) {
                             tooltipState.textContent = name;
-                            tooltipProjects.textContent = HIGHLIGHTED[name].projects;
+                            tooltipProjects.textContent = highlighted[name].projects;
                             tooltip?.classList.remove("hidden");
                         }
                     })
-                    .on("mousemove", function (event, d) {
-                        const name = d.properties.NAME_1;
-                        if (!HIGHLIGHTED[name]) return;
-                        updateTooltip(event, name);
+                    .on("mousemove", (event, d) => {
+                        if (!highlighted[d.properties.NAME_1]) return;
+                        updateTooltip(event);
                     })
-                    .on("mouseleave", function (event, d) {
-                        const name = d.properties.NAME_1;
-                        if (!HIGHLIGHTED[name]) return;
-                        d3.select(this).classed("highlighted", false);
+                    .on("mouseleave", function (_event, d) {
+                        if (!highlighted[d.properties.NAME_1]) return;
+                        d3.select(this).classed("fill-on-primary-container", false).classed("fill-primary", true);
                         tooltip?.classList.add("hidden");
                         if (rafIdRef.current) {
                             cancelAnimationFrame(rafIdRef.current);
@@ -129,41 +149,29 @@ const Presence = memo(() => {
                         }
                     });
 
-
                 svg
                     .selectAll("circle")
-                    .data(data.features.filter((d) => HIGHLIGHTED[d.properties.NAME_1]))
+                    .data(data.features.filter((d) => highlighted[d.properties.NAME_1]))
                     .enter()
                     .append("circle")
                     .attr("cx", (d) => path.centroid(d)[0])
                     .attr("cy", (d) => path.centroid(d)[1])
                     .attr("r", 5)
-                    .attr("fill", "#D8A428")
-                    .attr("stroke", "#fff")
-                    .attr("stroke-width", 1.5)
-                    .style("pointer-events", "none");
-
-
-                const style = document.createElement("style");
-                style.textContent = `
-          .india-state {
-            transition: fill 0.15s ease;
-          }
-          .india-state.highlighted {
-            fill: #92e99c !important;
-          }
-        `;
-                svg.node().appendChild(style);
-
-                setIsLoaded(true);
+                    .attr("class", "fill-harvest-gold stroke-surface-container-lowest pointer-events-none")
+                    .attr("stroke-width", 1.5);
             })
-            .catch((err) => console.error("Map load error:", err));
+            .catch(() => {
+                if (isMounted) setError("Unable to load the India map.");
+            });
 
         return () => {
-
+            isMounted = false;
             if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
         };
-    }, [isLoaded, updateTooltip]);
+    }, [highlighted, isLoading, updateTooltip]);
+
+    const stateCount = Object.keys(highlighted).length;
+    const featuredCount = projects.filter((project) => project.featured || project.isFeatured).length;
 
     return (
         <section
@@ -171,55 +179,52 @@ const Presence = memo(() => {
             id="presence-section"
         >
             <div className="max-w-container-max mx-auto">
-                {/* Header */}
                 <div className="mb-12 md:mb-16">
                     <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
                         Our Presence
                     </span>
-                    <div className=" flex flex-col lg:flex-row justify-between">
-                        <h2 className="font-headline-lg font-semibold text-5xl md:text-7xl lg:text-headline-lg text-on-surface max-w-2xl">
-                            Research with
-                            <br />
+                    <div className="flex flex-col justify-between">
+                        <h2 className="font-headline-lg text-headline-lg text-on-surface ">
                             National Reach.
-                            <br />
-                            Local Impact.
+                            <br /> Local Impact.
                         </h2>
-                        <p className="lg:self-end font-body-md text-body-lg text-text-secondary max-w-xl mt-4">
-                            We have worked in states/UTs of Rajasthan, Maharashtra, Madhya
-                            Pradesh and Delhi — with experts and consultants spread across India
-                            including North Eastern states and remote terrains.
+                        <p className=" font-body-md text-body-lg text-text-secondary max-w-xl mt-4">
+                            Our project footprint is updated from the CMS, highlighting
+                            locations where published projects have taken place.
                         </p>
                     </div>
                 </div>
 
-                {/* Main Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
-                    {/* Map */}
-                    <div className="lg:col-span-7 relative" ref={containerRef}>
-                        <svg
-                            ref={mapRef}
-                            className="w-full h-auto"
-                            id="india-map"
-                        ></svg>
-                        {/* Tooltip */}
+                    <div className="lg:col-span-7 relative min-h-[320px]" ref={containerRef}>
+                        {isLoading ? (
+                            <div className="aspect-[1/1.15] rounded-2xl bg-surface-container-high animate-pulse" />
+                        ) : (
+                            <svg ref={mapRef} className="w-full h-auto" id="india-map" />
+                        )}
                         <div
                             ref={tooltipRef}
-                            className="absolute hidden pointer-events-none z-20 bg-inverse-surface text-white rounded-xl px-4 py-3 min-w-[180px] shadow-lg"
+                            className="absolute hidden pointer-events-none z-20 bg-inverse-surface text-inverse-on-surface rounded-xl px-4 py-3 min-w-[180px] shadow-lg"
                         >
-                            <p id="tooltip-state" className="font-headline-md text-sm text-white"></p>
+                            <p id="tooltip-state" className="font-headline-md text-sm text-inverse-on-surface" />
                             <p
                                 id="tooltip-projects"
-                                className="font-label-caps text-[10px] uppercase tracking-widest text-white/60 mt-1"
-                            ></p>
+                                className="font-label-caps text-[10px] uppercase tracking-widest text-inverse-on-surface/60 mt-1"
+                            />
                         </div>
                     </div>
 
-                    {/* Stats + Pills */}
                     <div className="lg:col-span-5 flex flex-col gap-8">
+                        {error && (
+                            <div className="rounded-xl border border-error-container bg-error-container/30 px-4 py-3 font-body-md text-body-md text-on-error-container">
+                                {error}
+                            </div>
+                        )}
+
                         <div className="grid grid-cols-2 gap-px bg-border-neutral rounded-2xl overflow-hidden border border-border-neutral">
                             <div className="bg-surface p-6">
                                 <span className="font-statistic-num text-4xl text-primary block">
-                                    {Object.keys(HIGHLIGHTED).length}
+                                    {stateCount}
                                 </span>
                                 <span className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mt-1">
                                     States
@@ -227,7 +232,7 @@ const Presence = memo(() => {
                             </div>
                             <div className="bg-surface p-6">
                                 <span className="font-statistic-num text-4xl text-primary block">
-                                    {projectsData.length}
+                                    {projects.length}
                                 </span>
                                 <span className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mt-1">
                                     Projects
@@ -235,7 +240,7 @@ const Presence = memo(() => {
                             </div>
                             <div className="bg-surface p-6 col-span-2">
                                 <span className="font-statistic-num text-5xl text-primary block">
-                                    {projectsData.filter((p) => p.isFeatured).length} Featured
+                                    {featuredCount} Featured
                                 </span>
                                 <span className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mt-1">
                                     Highlighted Projects
@@ -244,35 +249,24 @@ const Presence = memo(() => {
                         </div>
 
                         <div className="flex flex-col gap-3">
-                            <div className="flex items-center gap-3 px-5 py-4 rounded-xl bg-surface-container-low border border-border-neutral">
-                                <span className="material-symbols-outlined text-primary text-xl">
-                                    translate
-                                </span>
-                                <span className="font-body-md text-body-md text-on-surface">
-                                    No Language Barrier
-                                </span>
-                            </div>
-                            <div className="flex items-center gap-3 px-5 py-4 rounded-xl bg-surface-container-low border border-border-neutral">
-                                <span className="material-symbols-outlined text-primary text-xl">
-                                    bar_chart
-                                </span>
-                                <span className="font-body-md text-body-md text-on-surface">
-                                    Reliable Data
-                                </span>
-                            </div>
-                            <div className="flex items-center gap-3 px-5 py-4 rounded-xl bg-surface-container-low border border-border-neutral">
-                                <span className="material-symbols-outlined text-primary text-xl">
-                                    public
-                                </span>
-                                <span className="font-body-md text-body-md text-on-surface">
-                                    Nationwide Reach
-                                </span>
-                            </div>
+                            {["translate", "bar_chart", "public"].map((icon, index) => (
+                                <div
+                                    key={icon}
+                                    className="flex items-center gap-3 px-5 py-4 rounded-xl bg-surface-container-low border border-border-neutral"
+                                >
+                                    <span className="material-symbols-outlined text-primary text-xl">
+                                        {icon}
+                                    </span>
+                                    <span className="font-body-md text-body-md text-on-surface">
+                                        {["No Language Barrier", "Reliable Data", "Nationwide Reach"][index]}
+                                    </span>
+                                </div>
+                            ))}
                         </div>
 
                         <Link
                             href="/work"
-                            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-label-caps text-label-caps uppercase rounded-xl hover:bg-primary-container transition-colors"
+                            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-on-primary font-label-caps text-label-caps uppercase rounded-xl hover:bg-primary-container transition-colors"
                         >
                             Learn More
                             <span className="material-symbols-outlined text-sm">

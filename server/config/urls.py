@@ -4,6 +4,7 @@ from django.contrib.auth.views import LogoutView
 from django.urls import path, include
 from django.views.generic import RedirectView
 
+from apps.client_public_api import ClientListAPIView
 from apps.accounts.views import admin_login
 
 urlpatterns = [
@@ -22,4 +23,5 @@ urlpatterns = [
     path("api/statistics/", include("apps.statistics.urls")),
     path("api/projects/", include("apps.projects.urls")),
     path("api/inquiries/", include("apps.inquiries.urls")),
+    path("api/clients/", ClientListAPIView.as_view(), name="client-list"),
 ]

@@ -10,7 +10,7 @@ const AboutStory = () => {
                         <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-4">
                             Our Story
                         </span>
-                        <h2 className="font-headline-lg font-semibold text-5xl md:text-7xl lg:text-headline-lg text-on-surface mb-6">
+                        <h2 className="font-headline-lg text-headline-md text-on-surface mb-6">
                             Building Stronger Communities
                         </h2>
                         <div className="w-16 h-0.5 bg-harvest-gold/60 mb-6" />

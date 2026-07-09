@@ -21,16 +21,16 @@ const Services = () => {
         >
             <div className="max-w-container-max mx-auto">
                 {/* Header */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-end border-b border-border-neutral pb-8 md:pb-12 lg:pb-14 mb-0">
-                    <div className="lg:col-span-5">
+                <div className="grid grid-cols-1  gap-gutter items-end border-b border-border-neutral pb-8 md:pb-12 lg:pb-14 mb-0">
+                    <div>
                         <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
                             Our Services
                         </span>
-                        <h2 className="font-headline-lg font-semibold text-4xl md:text-5xl lg:text-headline-lg leading-snug text-on-surface">
+                        <h2 className="font-headline-lg text-headline-lg text-on-surface">
                             Capabilities We Offer
                         </h2>
                     </div>
-                    <div className="lg:col-span-6 lg:col-start-7 md:pb-2 mt-4 lg:mt-0">
+                    <div className="md:pb-2 mt-4 lg:mt-0">
                         <p className="font-body-lg text-body-lg text-text-secondary">
                             Helping governments, NGOs, CSR foundations and development agencies make evidence-based
                             decisions.

@@ -16,7 +16,7 @@ const Updates = () => {
                     <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
                         Updates
                     </span>
-                    <h2 className="font-headline-lg font-semibold text-5xl md:text-7xl lg:text-headline-lg text-on-surface">
+                    <h2 className="font-headline-lg text-headline-lg text-on-surface">
                         From Ikaai India
                     </h2>
                     <p className="font-body-md text-body-md text-text-secondary max-w-xl mt-4">

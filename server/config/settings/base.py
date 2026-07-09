@@ -15,7 +15,23 @@ environ.Env.read_env(str(BASE_DIR / '.env'))
 
 SECRET_KEY = env("SECRET_KEY")
 
+DEBUG = env.bool("DEBUG", default=False)
+
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
+
+CORS_ALLOWED_ORIGINS = env.list(
+    "CORS_ALLOWED_ORIGINS",
+    default=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ],
+)
+CORS_URLS_REGEX = r"^/api/.*$"
+
+CSRF_TRUSTED_ORIGINS = env.list(
+    "CSRF_TRUSTED_ORIGINS",
+    default=CORS_ALLOWED_ORIGINS,
+)
 
 
 
@@ -47,6 +63,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -100,9 +117,18 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 MEDIA_URL = "/media/"
 
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = env.path("MEDIA_ROOT", default=BASE_DIR / "media")
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
@@ -148,7 +174,7 @@ UNFOLD = {
     "SITE_SUBHEADER": env(
         "ADMIN_SITE_SUBHEADER", default=ADMIN_BRANDING["subheader"]
     ),
-    "SITE_URL": env("Frontend_link", default="http://localhost:3000"),
+    "SITE_URL": env("FRONTEND_LINK", default="http://localhost:3000"),
     "SITE_LOGO": {
         "light": "/static/admin/images/logo-light.svg",
         "dark": "/static/admin/images/logo-dark.svg",

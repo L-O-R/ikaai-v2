@@ -19,17 +19,13 @@ export default function ImpactMoment() {
 
                     {/* Content */}
                     <div className="relative z-10 flex h-full items-end">
-                        <div className="max-w-3xl px-10 md:px-16">
+                        <div className="max-w-4xl px-10 md:px-16">
                             <p className="mb-stack-md font-label-caps text-label-caps uppercase tracking-[0.2em] text-primary-fixed">
                                 Beyond the Data
                             </p>
 
-                            <h2 className="font-display-lg text-display-lg-mobile md:text-headline-lg text-on-primary">
-                                Real change
-                                <br />
-                                begins with
-                                <br />
-                                understanding.
+                            <h2 className="font-display-lg text-headline-md text-on-primary">
+                                Real change begins with understanding.
                             </h2>
 
                             <div className="mt-stack-lg h-[2px] w-24 bg-primary-fixed" />

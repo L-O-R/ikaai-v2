@@ -122,7 +122,7 @@ const MediaGallery = () => {
                     <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Gallery
                     </span>
-                    <h2 className="font-headline-lg font-semibold text-5xl md:text-7xl lg:text-headline-lg text-on-surface">
+                    <h2 className="font-headline-lg text-headline-lg text-on-surface">
                         Moments That Matter
                     </h2>
                     <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />

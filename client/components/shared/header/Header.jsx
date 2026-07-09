@@ -4,10 +4,9 @@ import { navLinks } from '@/data/headerData';
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Dropdown from './DropDown';
 import MobileAccordion from './MobileAccordian';
-import { useHeaderTheme } from '@/app/HeaderThemeProvider';
 import { pageConfig } from './appconfig';
 
 
@@ -19,12 +18,8 @@ const Header = () => {
     const [mobileOpenAccordion, setMobileOpenAccordion] = useState(null)
     const pathname = usePathname()
 
-    const theme = useHeaderTheme();
-    const pathnamefortheme = usePathname();
-
     const headerTheme =
-        pageConfig[pathnamefortheme]?.header ?? "light";
-    console.log(headerTheme)
+        pageConfig[pathname]?.header ?? "light";
 
     useEffect(() => {
         setIsMobileMenuOpen(false)
@@ -45,7 +40,7 @@ const Header = () => {
         setOpenDropdown(openDropdown === index ? null : index)
     }
 
-    const closeDropdown = () => setOpenDropdown(null)
+    const closeDropdown = useCallback(() => setOpenDropdown(null), [])
 
     const toggleMobileMenu = () => setIsMobileMenuOpen((v) => !v)
 
@@ -110,6 +105,7 @@ const Header = () => {
 
                     {/* Mobile Menu Toggle (visible button) — now shows below lg to match the nav breakpoint */}
                     <button
+                        type="button"
                         className="lg:hidden relative z-50 w-12 h-12 flex items-center justify-center focus:outline-none group rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 shrink-0"
                         onClick={toggleMobileMenu}
                         aria-label="Toggle menu"
@@ -145,6 +141,7 @@ const Header = () => {
                         <div className="relative flex flex-col h-full px-6 pt-20 pb-8 overflow-y-auto">
                             {/* Close button inside overlay */}
                             <button
+                                type="button"
                                 className="absolute top-4 right-4 lg:hidden z-50 w-12 h-12 flex items-center justify-center focus:outline-none group rounded-full bg-surface-container-low hover:bg-surface-container transition-all duration-300 border border-border-neutral"
                                 onClick={toggleMobileMenu}
                                 aria-label="Close menu"

@@ -19,6 +19,7 @@ The server manages website content such as clients, projects, project galleries,
 - [Running the Server](#running-the-server)
 - [Admin CMS](#admin-cms)
 - [Google OAuth Login](#google-oauth-login)
+- [CORS Setup](#cors-setup)
 - [Public APIs](#public-apis)
 - [Media and Static Files](#media-and-static-files)
 - [Email Notifications](#email-notifications)
@@ -136,7 +137,11 @@ Important behavior:
 
 - Client name is unique.
 - Client deletion is protected when projects reference the client.
-- There is no public clients API in the current version.
+- Public API exposes active clients ordered by `display_order` and `name`.
+
+Public route:
+
+- `GET /api/clients/`
 
 ### projects
 
@@ -268,11 +273,16 @@ DB_PASSWORD=your-password
 DB_HOST=localhost
 DB_PORT=5432
 
+MEDIA_ROOT= /media/
+
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 GOOGLE_REDIRECT_URI=http://127.0.0.1:8000/accounts/google/callback/
 
-Frontend_link=http://localhost:3000
+CORS_ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+CSRF_TRUSTED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+
+FRONTEND_LINK=http://localhost:3000
 
 EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
 DEFAULT_FROM_EMAIL=webmaster@localhost
@@ -283,6 +293,9 @@ EMAIL_HOST_USER=
 EMAIL_HOST_PASSWORD=
 EMAIL_USE_TLS=True
 EMAIL_USE_SSL=False
+CREATE_SUPERUSER=false
+DJANGO_SUPERUSER_EMAIL=admin@example.com
+DJANGO_SUPERUSER_PASSWORD=change-this-password
 ```
 
 ### Required Variables
@@ -304,7 +317,9 @@ EMAIL_USE_SSL=False
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `Frontend_link` | `http://localhost:3000` | Frontend URL shown in the admin theme. |
+| `CORS_ALLOWED_ORIGINS` | `http://localhost:3000,http://127.0.0.1:3000` | Comma-separated frontend origins allowed to call `/api/` routes from a browser. |
+| `CSRF_TRUSTED_ORIGINS` | Same as `CORS_ALLOWED_ORIGINS` | Comma-separated origins trusted for CSRF-protected browser requests such as admin/session flows. |
+| `FRONTEND_LINK` | `http://localhost:3000` | Frontend URL shown in the admin theme. |
 | `EMAIL_BACKEND` | Console backend | Django email backend. |
 | `DEFAULT_FROM_EMAIL` | `webmaster@localhost` | Sender email address. |
 | `CONTACT_NOTIFICATION_EMAIL` | Empty | Recipient for public inquiry notifications. |
@@ -391,6 +406,7 @@ Default local URLs:
 - Projects API: `http://127.0.0.1:8000/api/projects/`
 - Inquiries API: `http://127.0.0.1:8000/api/inquiries/`
 - Statistics API: `http://127.0.0.1:8000/api/statistics/`
+- Clients API: `http://127.0.0.1:8000/api/clients/`
 
 ## Admin CMS
 
@@ -437,6 +453,42 @@ Important rules:
 - If the user is inactive, login is denied.
 - If the user is not staff, login is denied.
 
+## CORS Setup
+
+CORS is enabled through `django-cors-headers`.
+
+The active settings are:
+
+```python
+CORS_ALLOWED_ORIGINS = env.list(
+    "CORS_ALLOWED_ORIGINS",
+    default=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ],
+)
+CORS_URLS_REGEX = r"^/api/.*$"
+CSRF_TRUSTED_ORIGINS = env.list(
+    "CSRF_TRUSTED_ORIGINS",
+    default=CORS_ALLOWED_ORIGINS,
+)
+```
+
+Important behavior:
+
+- CORS headers are only applied to routes under `/api/`.
+- The default allowed browser origins are `http://localhost:3000` and `http://127.0.0.1:3000`.
+- Add deployed frontend origins to `CORS_ALLOWED_ORIGINS` as comma-separated values.
+- `CSRF_TRUSTED_ORIGINS` defaults to the same origin list and can be overridden separately when needed.
+- `corsheaders.middleware.CorsMiddleware` is installed near the top of `MIDDLEWARE`, before Django's common and CSRF middleware.
+
+Example production values:
+
+```env
+CORS_ALLOWED_ORIGINS=https://ikaai.org,https://www.ikaai.org
+CSRF_TRUSTED_ORIGINS=https://ikaai.org,https://www.ikaai.org
+```
+
 ## Public APIs
 
 Detailed API contracts are documented in [API_DOCUMENTATION.md](API_DOCUMENTATION.md).
@@ -455,6 +507,7 @@ Current public endpoints:
 | `GET` | `/api/projects/<slug>/` | Get one active project by slug. |
 | `POST` | `/api/inquiries/` | Submit a public inquiry. |
 | `GET` | `/api/statistics/` | List active public statistics. |
+| `GET` | `/api/clients/` | List active clients. |
 
 The current URL configuration does not include an `/api/v1/` prefix. If API versioning is required, add it in `config/urls.py` and update tests/docs together.
 
