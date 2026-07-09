@@ -25,3 +25,11 @@ urlpatterns = [
     path("api/inquiries/", include("apps.inquiries.urls")),
     path("api/clients/", ClientListAPIView.as_view(), name="client-list"),
 ]
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns += static(
+    settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT,
+)
