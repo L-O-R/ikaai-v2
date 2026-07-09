@@ -3,6 +3,7 @@
 import ProjectCard from "@/components/ui/ProjectCard";
 import { getErrorMessage } from "@/data/apiErrors";
 import { getFeaturedProjects } from "@/data/getFeaturedProjects";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Projects = () => {
