@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ProjectCard from "../ui/ProjectCard";
 
 const loadingCards = [
@@ -45,7 +46,9 @@ const WorkGrid = ({
         ) : currentProjects.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-12">
             {currentProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+              <Link href={`/work/${project.slug}`} key={project.id}>
+                <ProjectCard project={project} />
+              </Link>
             ))}
           </div>
         ) : (
@@ -74,11 +77,10 @@ const WorkGrid = ({
               type="button"
               onClick={() => goToPage(currentPage - 1)}
               disabled={currentPage === 1}
-              className={`px-4 py-2 rounded-xl border border-border-neutral font-label-caps text-label-caps transition-all duration-300 flex items-center gap-1 ${
-                currentPage === 1
-                  ? "opacity-40 cursor-not-allowed text-text-muted"
-                  : "hover:bg-primary hover:text-on-primary hover:border-primary text-on-surface"
-              }`}
+              className={`px-4 py-2 rounded-xl border border-border-neutral font-label-caps text-label-caps transition-all duration-300 flex items-center gap-1 ${currentPage === 1
+                ? "opacity-40 cursor-not-allowed text-text-muted"
+                : "hover:bg-primary hover:text-on-primary hover:border-primary text-on-surface"
+                }`}
             >
               <span className="material-symbols-outlined text-sm">
                 chevron_left
@@ -93,11 +95,10 @@ const WorkGrid = ({
                   type="button"
                   key={pageNum}
                   onClick={() => goToPage(pageNum)}
-                  className={`w-10 h-10 rounded-full font-body-md text-body-md transition-all duration-300 ${
-                    currentPage === pageNum
-                      ? "bg-primary text-on-primary shadow-md"
-                      : "text-on-surface hover:bg-surface-container-high"
-                  }`}
+                  className={`w-10 h-10 rounded-full font-body-md text-body-md transition-all duration-300 ${currentPage === pageNum
+                    ? "bg-primary text-on-primary shadow-md"
+                    : "text-on-surface hover:bg-surface-container-high"
+                    }`}
                 >
                   {pageNum}
                 </button>
@@ -109,11 +110,10 @@ const WorkGrid = ({
               type="button"
               onClick={() => goToPage(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className={`px-4 py-2 rounded-xl border border-border-neutral font-label-caps text-label-caps transition-all duration-300 flex items-center gap-1 ${
-                currentPage === totalPages
-                  ? "opacity-40 cursor-not-allowed text-text-muted"
-                  : "hover:bg-primary hover:text-on-primary hover:border-primary text-on-surface"
-              }`}
+              className={`px-4 py-2 rounded-xl border border-border-neutral font-label-caps text-label-caps transition-all duration-300 flex items-center gap-1 ${currentPage === totalPages
+                ? "opacity-40 cursor-not-allowed text-text-muted"
+                : "hover:bg-primary hover:text-on-primary hover:border-primary text-on-surface"
+                }`}
             >
               Next
               <span className="material-symbols-outlined text-sm">

@@ -62,7 +62,9 @@ const Projects = () => {
                 ) : featured.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                         {featured.map((project) => (
-                            <ProjectCard key={project.id} project={project} />
+                            <Link href={`/work/${project.slug}`} key={project.id}>
+                                <ProjectCard project={project} />
+                            </Link>
                         ))}
                     </div>
                 ) : (
