@@ -4,7 +4,7 @@ import { navLinks } from '@/data/headerData';
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import Dropdown from './DropDown';
 import MobileAccordion from './MobileAccordian';
 import { pageConfig } from './appconfig';
@@ -17,6 +17,7 @@ const Header = () => {
     const [openDropdown, setOpenDropdown] = useState(null)
     const [mobileOpenAccordion, setMobileOpenAccordion] = useState(null)
     const pathname = usePathname()
+    const navRef = useRef(null);
 
     const headerTheme =
         pageConfig[pathname]?.header ?? "light";
@@ -36,8 +37,21 @@ const Header = () => {
         return () => { document.body.style.overflow = 'unset' }
     }, [isMobileMenuOpen])
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (navRef.current && !navRef.current.contains(event.target)) {
+                setOpenDropdown(null);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
     const toggleDropdown = (index) => {
+        console.log('toggleDropdown called with index:', index, 'current openDropdown:', openDropdown);
         setOpenDropdown(openDropdown === index ? null : index)
+        console.log(true)
     }
 
     const closeDropdown = useCallback(() => setOpenDropdown(null), [])
@@ -52,6 +66,7 @@ const Header = () => {
         setIsMobileMenuOpen(false)
         setMobileOpenAccordion(null)
     }
+    console.log('openDropdown in Header:', openDropdown);
 
     return (
         <header>
@@ -70,7 +85,7 @@ const Header = () => {
                     </Link>
 
                     {/* Desktop Navigation — switches on at lg, not md, so it never gets cramped on tablets */}
-                    <div className="hidden lg:flex items-center gap-5 xl:gap-8 flex-wrap justify-end ">
+                    <div className="hidden lg:flex items-center gap-5 xl:gap-8 flex-wrap justify-end " ref={navRef}>
                         {navLinks.map((link, index) => {
                             if (link.type === 'dropdown') {
                                 const isDropdownActive = link.items?.some(item => pathname === item.href);
@@ -93,8 +108,8 @@ const Header = () => {
                                     key={link.label}
                                     href={link.href}
                                     className={`nav-link font-label-caps text-label-caps uppercase border-b-2 ${isActive
-                                            ? (headerTheme === 'dark' ? 'text-primary border-primary' : 'text-white border-white')
-                                            : (headerTheme === 'dark' ? 'text-on-surface hover:text-on-surface/80 border-transparent hover:border-on-surface/60' : 'text-white hover:text-white/80 border-transparent hover:border-white/60')
+                                        ? (headerTheme === 'dark' ? 'text-primary border-primary' : 'text-white border-white')
+                                        : (headerTheme === 'dark' ? 'text-on-surface hover:text-on-surface/80 border-transparent hover:border-on-surface/60' : 'text-white hover:text-white/80 border-transparent hover:border-white/60')
                                         } transition-colors whitespace-nowrap`}
                                 >
                                     {link.label}
