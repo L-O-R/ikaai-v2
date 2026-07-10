@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { getErrorMessage } from "@/data/apiErrors";
-import { getClients } from "@/data/getClients";
+import { getErrorMessage } from "@/lib/api/apiErrors";
+import { getClients } from "@/lib/api/getClients";
 import LogoLoop from "../ui/LogoLoop";
 
 const Client = () => {
@@ -35,12 +35,12 @@ const Client = () => {
 
     return (
         <section className="py-20 md:py-28 bg-surface overflow-hidden">
-            <div className="max-w-container-max mx-auto px-4 md:px-8">
+            <div className="container mx-auto ">
                 <div className="mb-12 md:mb-16">
                     <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
                         Trusted By
                     </span>
-                    <h2 className="font-headline-lg text-[7vw] font-bold tracking-[-0.2rem] text-on-surface">
+                    <h2 className="font-headline-lg text-headline-lg font-bold tracking-[-0.2rem] text-on-surface">
                         Clients & Partners
                     </h2>
                     <div className="w-16 h-0.5 bg-harvest-gold/60 mt-4" />
@@ -109,7 +109,7 @@ const Client = () => {
                         </div>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 place-items-center">
+                    <div className="grid grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 place-items-center">
                         {clients.map((client) => (
                             <div
                                 key={client.alt}
@@ -120,8 +120,7 @@ const Client = () => {
                                     alt={client.alt}
                                     width={160}
                                     height={96}
-                                    unoptimized
-                                    className="max-h-24 w-auto object-contain"
+                                    className="w-full aspect-video object-contain"
                                 />
                             </div>
                         ))}

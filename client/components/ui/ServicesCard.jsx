@@ -5,7 +5,9 @@ import React from 'react'
 
 const ServiceCard = ({ service, index }) => {
     return (
-        <div
+        <div 
+        id
+={`${service.slug}`}
             className="group bg-surface rounded-2xl border border-border-neutral transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-primary/50 hover:bg-surface-container-low hover:shadow-xl hover:-translate-y-1 cursor-pointer"
         >
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 p-6 md:p-8 lg:p-10">
@@ -14,9 +16,6 @@ const ServiceCard = ({ service, index }) => {
                 <div className="md:col-span-1 flex flex-col items-start gap-2">
                     <span className="font-headline-md text-4xl md:text-5xl lg:text-6xl font-bold leading-none text-primary/15 group-hover:text-primary/40 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-105">
                         {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span className="material-symbols-outlined text-3xl text-primary/40 group-hover:text-primary transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
-                        {service.icon || 'arrow_forward'}
                     </span>
                 </div>
 

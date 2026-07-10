@@ -39,7 +39,7 @@ const ContactInfo = () => {
                 <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
                     Contact Information
                 </span>
-                <h2 className="font-headline-lg text-headline-lg text-on-surface mb-4">
+                <h2 className="font-headline-lg text-headline-md text-on-surface mb-4">
                     Get in Touch
                 </h2>
                 <div className="w-16 h-0.5 bg-harvest-gold/60 mb-6" />

@@ -55,4 +55,11 @@ export const heroData = {
     description:
       "A diverse team of researchers, development practitioners, and changemakers united by a common purpose - creating sustainable change in rural India.",
   },
+  stories: {
+    eyebrow: "Stories",
+    title: "Ideas, insights",
+    highlight: "and field notes",
+    description:
+      "Long-form articles from Ikaai India's work across research, learning, and development practice.",
+  },
 };

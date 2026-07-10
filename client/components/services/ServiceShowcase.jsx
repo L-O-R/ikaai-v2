@@ -3,7 +3,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { servicesData } from '@/data/servicesData'
+import { servicesData } from '@/lib/data/servicesData'
 import ServiceCard from '../ui/ServicesCard'
 
 const ServiceShowcase = () => {
@@ -11,8 +11,8 @@ const ServiceShowcase = () => {
     const secondGroup = servicesData.slice(3)
 
     return (
-        <section className="py-section-mobile md:py-section-desktop px-4 md:px-8 bg-warm-beige">
-            <div className="max-w-container-max mx-auto">
+        <section className="py-section-mobile md:py-section-desktop  bg-warm-beige">
+            <div className="container mx-auto">
 
                 {/* Section intro — minimal */}
                 <div className="text-center mb-16 md:mb-20">
@@ -39,15 +39,15 @@ const ServiceShowcase = () => {
                             className="object-cover"
                             sizes="100vw"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
                     </div>
 
                     {/* Field Note — overlaid on image */}
                     <div className="absolute bottom-0 left-0 p-8 md:p-12 lg:p-16 max-w-2xl">
-                        <span className="font-label-caps text-[10px] uppercase tracking-widest text-harvest-gold/80 block mb-3">
+                        <span className="font-label-caps text-body-md uppercase tracking-widest text-harvest-gold/80 block mb-3">
                             Field Note
                         </span>
-                        <p className="font-headline-md text-3xl md:text-4xl lg:text-5xl text-white leading-[1.1] tracking-tight">
+                        <p className="font-headline-md text-headline-md text-white leading-[1.1] tracking-tight">
                             Research begins<br />
                             <span className="text-harvest-gold/70">with listening.</span>
                         </p>

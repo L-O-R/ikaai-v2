@@ -6,7 +6,6 @@ const Dropdown = ({ label, items, isOpen, toggle, close, headerTheme, isActive }
     const pathname = usePathname();
     const dropdownRef = useRef(null)
 
-    console.log(isOpen)
 
     return (
         <div className="relative" ref={dropdownRef}>

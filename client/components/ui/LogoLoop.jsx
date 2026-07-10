@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { memo } from "react";
 
 export const LogoLoop = memo(({
@@ -18,7 +19,9 @@ export const LogoLoop = memo(({
     const pauseClass = pauseOnHover ? "group-hover:[animation-play-state:paused]" : "";
 
     const logoImage = (item, classNameOverride = "") => (
-        <img
+        <Image
+            width={100}
+            height={100}
             src={item.src}
             alt={item.alt ?? ""}
             loading="lazy"

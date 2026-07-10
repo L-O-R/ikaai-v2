@@ -18,6 +18,9 @@ export const pageConfig = {
     "/work": {
         header: "dark",
     },
+    "/work/*": {
+        header: "dark",
+    },
     "/services": {
         header: "dark",
     },
@@ -28,6 +31,6 @@ export const pageConfig = {
         header: "dark",
     },
     "/stories": {
-        header: "light",
+        header: "dark",
     },
 };

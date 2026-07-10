@@ -5,13 +5,13 @@ import React from 'react'
 
 const ContactMap = () => {
     return (
-        <section className="py-section-mobile md:py-section-desktop px-4 md:px-8 bg-warm-beige">
-            <div className="max-w-container-max mx-auto">
+        <section className="py-section-mobile md:py-section-desktop  bg-warm-beige">
+            <div className="container mx-auto">
                 <div className="text-center mb-10 md:mb-12">
                     <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
                         Find Us
                     </span>
-                    <h2 className="font-headline-lg text-headline-lg text-on-surface">
+                    <h2 className="font-headline-lg text-headline-md text-on-surface">
                         Our Location
                     </h2>
                     <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />

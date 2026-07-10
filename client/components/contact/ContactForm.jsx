@@ -1,7 +1,7 @@
 "use client";
 
-import { createInquiry } from "@/data/createInquiry";
-import { getErrorMessage, getFieldError } from "@/data/apiErrors";
+import { createInquiry } from "@/lib/api/createInquiry";
+import { getErrorMessage, getFieldError } from "@/lib/api/apiErrors";
 import { useState } from "react";
 
 const ContactForm = () => {

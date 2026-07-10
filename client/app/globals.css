@@ -61,11 +61,9 @@ html {
 }
 
 .cta-overlay {
-  background: linear-gradient(
-    135deg,
-    rgb(from var(--color-primary) r g b / 0.78) 0%,
-    rgb(from var(--color-primary) r g b / 0.72) 100%
-  );
+  background: linear-gradient(135deg,
+      rgb(from var(--color-primary) r g b / 0.78) 0%,
+      rgb(from var(--color-primary) r g b / 0.72) 100%);
 }
 
 .partner-logo {
@@ -187,4 +185,16 @@ html {
 
 .animate-scroll-down {
   animation: scrollDown 2s ease-in-out infinite;
+}
+
+::selection {
+  background-color: theme('colors.text-muted');
+
+  mix-blend-mode: difference;
+}
+
+/* Firefox fallback for selection rendering engine */
+::-moz-selection {
+  background-color: theme('colors.text-muted');
+  mix-blend-mode: difference;
 }

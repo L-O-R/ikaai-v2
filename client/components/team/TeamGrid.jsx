@@ -43,13 +43,13 @@ const teamData = [
 
 const TeamGrid = () => {
     return (
-        <section className="py-section-mobile md:py-section-desktop px-4 md:px-8 bg-surface">
-            <div className="max-w-container-max mx-auto">
+        <section className="py-section-mobile md:py-section-desktop  bg-surface">
+            <div className="container mx-auto">
                 <div className="text-center mb-12 md:mb-16">
                     <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Meet the Team
                     </span>
-                    <h2 className="font-headline-lg text-headline-lg text-on-surface">
+                    <h2 className="font-headline-lg text-headline-md text-on-surface">
                         Experts in Action
                     </h2>
                     <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />

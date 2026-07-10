@@ -1,4 +1,5 @@
 
+import Image from 'next/image'
 import React from 'react'
 
 const TeamMember = ({ name, role, bio, image }) => {
@@ -6,7 +7,7 @@ const TeamMember = ({ name, role, bio, image }) => {
         <div className="bg-surface rounded-2xl p-6 md:p-8 border border-border-neutral hover-lift transition-all duration-300 text-center group">
             <div className="w-24 h-24 mx-auto rounded-full bg-surface-container-high flex items-center justify-center mb-4 overflow-hidden border-2 border-border-neutral group-hover:border-primary transition-colors">
                 {image ? (
-                    <img src={image} alt={name} className="w-full h-full object-cover" />
+                    <Image width={100} height={100} src={image} alt={name} className="w-full h-full object-cover" />
                 ) : (
                     <span className="material-symbols-outlined text-4xl text-text-muted">person</span>
                 )}

@@ -4,7 +4,7 @@ import React from 'react'
 const AboutStory = () => {
     return (
         <section className=" bg-surface py-section-mobile md:py-section-desktop">
-            <div className="max-w-container-max mx-auto">
+            <div className="container mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
                     <div>
                         <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-4">

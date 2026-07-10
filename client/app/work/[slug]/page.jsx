@@ -1,21 +1,17 @@
-
 import React from 'react'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import PageHero from '@/components/ui/PageHero'
-import { getProjectDetail } from '@/data/getProjectDetail'
-
-
+import { getProjectDetail } from '@/lib/api/getProjectDetail'
+import ProjectCarousel from '@/components/work/ProjectCarousel'
 export const revalidate = 3600
 
 export async function generateStaticParams() {
-
     return []
 }
 
 const ProjectDetailPage = async ({ params }) => {
-    const { slug } = params
+    const { slug } = await params
 
     let project
     try {
@@ -28,129 +24,94 @@ const ProjectDetailPage = async ({ params }) => {
         notFound()
     }
 
+    const mainImage = project.img || project.cover_image || (project.gallery?.[0]?.image) || null
+    const hasGallery = project.gallery && project.gallery.length > 0
+
     return (
         <main className="bg-surface">
-
-            <PageHero
-                eyebrow="Project"
-                title={project.title}
-                highlight={project.location || ''}
-                description={project.description}
-            />
-
-
-            <section className="py-16 md:py-20 px-4 md:px-8 bg-surface">
-                <div className="max-w-container-max mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
-                        {/* Client Info */}
-                        {project.client && (
-                            <div>
-                                <span className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mb-3">
-                                    Client
-                                </span>
-                                <div className="flex items-center gap-4">
-                                    {project.client_logo && (
-                                        <div className="relative w-16 h-16 md:w-20 md:h-20 shrink-0">
-                                            <Image
-                                                src={project.client_logo}
-                                                alt={project.client}
-                                                fill
-                                                className="object-contain"
-                                                sizes="80px"
-                                            />
-                                        </div>
-                                    )}
-                                    <span className="font-headline-sm text-headline-sm text-on-surface">
-                                        {project.client}
-                                    </span>
-                                </div>
-                            </div>
-                        )}
-
-
-                        {project.statistics && project.statistics.length > 0 && (
-                            <div>
-                                <span className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mb-3">
-                                    Impact Numbers
-                                </span>
-                                <div className="grid grid-cols-2 gap-4">
-                                    {project.statistics.map((stat, index) => (
-                                        <div key={index} className="bg-surface-container-low rounded-xl p-4 border border-border-neutral">
-                                            <span className="material-symbols-outlined text-2xl text-primary/60 block mb-1">
-                                                {stat.material_symbol || 'trending_up'}
-                                            </span>
-                                            <span className="font-statistic-num text-3xl font-bold text-primary block">
-                                                {stat.value}
-                                            </span>
-                                            <span className="font-label-caps text-[10px] uppercase tracking-widest text-text-muted">
-                                                {stat.title}
-                                            </span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
+            {/* Header / Meta Navigation Title */}
+            <section className="pt-section-mobile md:pt-section-desktop bg-surface border-b border-border-neutral">
+                <div className="container">
+                    <div className='flex justify-between items-center mb-4'>
+                        <div className='flex items-center gap-2'>
+                            <Link href="/work" className="flex items-center gap-2 text-body-sm font-body-lg hover:text-primary transition-colors duration-300">
+                                <span className="material-symbols-outlined">arrow_back</span>
+                                <span>Back to work</span>
+                            </Link>
+                        </div>
                     </div>
+                    {project.location && (
+                        <span className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mb-3">
+                            {project.location}
+                        </span>
+                    )}
+                    <h1 className="font-headline-lg text-headline-lg text-on-surface">
+                        {project.title}
+                    </h1>
                 </div>
             </section>
 
-
-            {project.gallery && project.gallery.length > 0 && (
-                <section className="py-16 md:py-20 px-4 md:px-8 bg-warm-beige">
-                    <div className="max-w-container-max mx-auto">
-                        <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
-                            Gallery
-                        </span>
-                        <h2 className="font-headline-lg text-headline-lg text-on-surface mb-8">
-                            Project in Images
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                            {project.gallery.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className="group relative overflow-hidden rounded-2xl bg-surface-container-low border border-border-neutral hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-                                >
-                                    <div className="relative aspect-[4/3]">
-                                        <Image
-                                            src={item.image}
-                                            alt={item.caption || 'Project image'}
-                                            fill
-                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                                            sizes="(max-width: 768px) 100vw, 33vw"
-                                        />
+            {/* Description Block */}
+            {project.description && (
+                <section className="bg-surface border-b border-border-neutral py-16 space-y-12">
+                    <div className="container mx-auto ">
+                        <p className="font-body-lg text-body-lg text-on-surface/80 leading-relaxed">
+                            {project.description}
+                        </p>
+                    </div>
+                    {project.statistics && project.statistics.length > 0 && (
+                        <div className='container'>
+                            <span className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mb-3">
+                                Impact Numbers
+                            </span>
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                {project.statistics.map((stat, index) => (
+                                    <div key={index} className="bg-surface-container-low rounded-xl p-3 border border-border-neutral">
+                                        <span className="material-symbols-outlined text-primary/60 block mb-0.5">
+                                            {stat.material_symbol || 'trending_up'}
+                                        </span>
+                                        <span className="font-statistic-num text-headline-sm font-bold text-primary block">
+                                            {stat.value}
+                                        </span>
+                                        <span className="font-label-caps text-sm font-semibold text-text-muted">
+                                            {stat.title}
+                                        </span>
                                     </div>
-                                    {item.caption && (
-                                        <div className="p-4 bg-white/90 backdrop-blur-sm">
-                                            <p className="font-body-md text-body-md text-on-surface/80 leading-relaxed">
-                                                {item.caption}
-                                            </p>
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
+                    )}
+                </section>
+            )}
+
+            {/* CAROUSEL INJECTION AT 1 IMAGE PER SCREEN CONTAINER */}
+            {mainImage && (
+                <section className="py-12 md:py-16 bg-surface border-b border-border-neutral">
+                    <div className="container mx-auto">
+                        {hasGallery ? (
+                            <ProjectCarousel gallery={project.gallery} projectTitle={project.title} />
+                        ) : (
+                            /* Fallback single Banner view */
+                            <div className="relative w-full h-64 sm:h-96 md:h-[500px] rounded-2xl overflow-hidden bg-surface-container-low border border-border-neutral">
+                                <Image
+                                    src={mainImage}
+                                    alt={project.title}
+                                    fill
+                                    className="object-cover"
+                                    sizes="100vw"
+                                    priority
+                                />
+                            </div>
+                        )}
                     </div>
                 </section>
             )}
 
 
-            <section className="py-12 px-4 md:px-8 bg-surface">
-                <div className="max-w-container-max mx-auto text-center">
-                    <Link
-                        href="/projects"
-                        className="inline-flex items-center gap-2 font-label-caps text-label-caps uppercase text-primary hover:text-primary/80 transition-colors group"
-                    >
-                        <span className="material-symbols-outlined text-sm transition-transform group-hover:-translate-x-1">
-                            arrow_back
-                        </span>
-                        Back to All Projects
-                    </Link>
-                </div>
-            </section>
 
-
-            <section className="py-16 md:py-20 px-4 md:px-8 bg-primary text-white text-center">
-                <div className="max-w-container-max mx-auto">
+            {/* Contact Call to Action */}
+            <section className="py-16 md:py-20  bg-primary text-white text-center">
+                <div className="container mx-auto">
                     <h3 className="font-headline-md text-headline-md text-white mb-4">
                         Interested in Similar Work?
                     </h3>
@@ -169,4 +130,4 @@ const ProjectDetailPage = async ({ params }) => {
     )
 }
 
-export default ProjectDetailPage
+export default ProjectDetailPage;

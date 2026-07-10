@@ -49,13 +49,13 @@ All Axios configuration lives in `data/apiClient.js`. It sets the base URL, JSON
 
 Each backend call has its own file:
 
-- `data/getStatistics.js` -> `GET /api/statistics/`
-- `data/getClients.js` -> `GET /api/clients/`
-- `data/getFeaturedProjects.js` -> `GET /api/projects/?featured=true&page_size=4`
-- `data/getProjects.js` -> `GET /api/projects/`
-- `data/getProjectDetail.js` -> `GET /api/projects/{slug}/`
-- `data/getProjectLocations.js` -> `GET /api/projects/?page_size=48&ordering=location`
-- `data/createInquiry.js` -> `POST /api/inquiries/`
+- `api/getStatistics.js` -> `GET /api/statistics/`
+- `api/getClients.js` -> `GET /api/clients/`
+- `api/getFeaturedProjects.js` -> `GET /api/projects/?featured=true&page_size=4`
+- `api/getProjects.js` -> `GET /api/projects/`
+- `api/getProjectDetail.js` -> `GET /api/projects/{slug}/`
+- `api/getProjectLocations.js` -> `GET /api/projects/?page_size=48&ordering=location`
+- `api/createInquiry.js` -> `POST /api/inquiries/`
 
 Media URLs from Django are normalized in `data/apiMedia.js`, so relative paths like `/media/...` resolve against `NEXT_PUBLIC_API_ORIGIN`.
 
@@ -74,7 +74,7 @@ Media URLs from Django are normalized in `data/apiMedia.js`, so relative paths l
 The homepage client section is fully API-driven:
 
 1. `components/home/Client.jsx` calls `getClients()` on mount.
-2. `data/getClients.js` requests `/api/clients/`.
+2. `api/getClients.js` requests `/api/clients/`.
 3. Each logo path is normalized through `resolveMediaUrl()`.
 4. Clients without a usable logo are filtered out before rendering.
 5. Loading, error, empty, marquee, and static-grid states are handled in the component.

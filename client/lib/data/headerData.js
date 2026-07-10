@@ -12,6 +12,7 @@ export const navLinks = [
     { label: 'Media', href: '/media', type: 'link' },
     { label: 'Services', href: '/services', type: 'link' },
     { label: 'Our Work', href: '/work', type: 'link' },
+    { label: 'Stories', href: '/stories', type: 'link' },
     {
         label: 'Contact',
         type: 'dropdown',

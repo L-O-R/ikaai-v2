@@ -1,6 +1,6 @@
 "use client";
 
-import { navLinks } from '@/data/headerData';
+import { navLinks } from '@/lib/data/headerData';
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -9,8 +9,31 @@ import Dropdown from './DropDown';
 import MobileAccordion from './MobileAccordian';
 import { pageConfig } from './appconfig';
 
+/**
+ * Helper utility to match patterns like "/work/*" against dynamic current pathnames
+ */
+const getPageConfig = (pathname) => {
+    // 1. Check for immediate static exact matches
+    if (pageConfig[pathname]) {
+        return pageConfig[pathname];
+    }
 
+    // 2. Loop through config to find and evaluate wildcard '*' strings
+    const configKeys = Object.keys(pageConfig);
+    for (const key of configKeys) {
+        if (key.includes('*')) {
+            const regexString = `^${key.replace(/\/+/g, '\\/').replace(/\*/g, '.*')}$`;
+            const regex = new RegExp(regexString);
 
+            if (regex.test(pathname)) {
+                return pageConfig[key];
+            }
+        }
+    }
+
+    // Fallback default theme if route is completely absent from config mappings
+    return { header: "light" };
+};
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -19,14 +42,14 @@ const Header = () => {
     const pathname = usePathname()
     const navRef = useRef(null);
 
-    const headerTheme =
-        pageConfig[pathname]?.header ?? "light";
+    /* FIX: Evaluates the current dynamic pathname against wildcard definitions */
+    const currentConfig = getPageConfig(pathname);
+    const headerTheme = currentConfig?.header ?? "light";
 
     useEffect(() => {
         setIsMobileMenuOpen(false)
         setMobileOpenAccordion(null)
     }, [pathname])
-
 
     useEffect(() => {
         if (isMobileMenuOpen) {
@@ -49,13 +72,10 @@ const Header = () => {
     }, []);
 
     const toggleDropdown = (index) => {
-        console.log('toggleDropdown called with index:', index, 'current openDropdown:', openDropdown);
         setOpenDropdown(openDropdown === index ? null : index)
-        console.log(true)
     }
 
     const closeDropdown = useCallback(() => setOpenDropdown(null), [])
-
     const toggleMobileMenu = () => setIsMobileMenuOpen((v) => !v)
 
     const toggleMobileAccordion = (index) => {
@@ -66,12 +86,11 @@ const Header = () => {
         setIsMobileMenuOpen(false)
         setMobileOpenAccordion(null)
     }
-    console.log('openDropdown in Header:', openDropdown);
 
     return (
         <header>
             <nav className={`absolute top-0 left-0 w-full max-w-full z-50 transition-all duration-300 ease-in-out py-5 ${headerTheme === 'dark' ? 'text-on-surface' : 'text-white'} overflow-x-clip`} id="main-nav">
-                <div className="flex justify-between items-center w-full max-w-container-max mx-auto relative z-10 px-4 md:px-8">
+                <div className="flex justify-between items-center w-full max-w-container-max mx-auto relative z-10">
                     {/* Logo */}
                     <Link className="flex items-center justify-start gap-2 shrink-0" href="/" onClick={closeMobileMenu}>
                         <Image
@@ -84,7 +103,7 @@ const Header = () => {
                         />
                     </Link>
 
-                    {/* Desktop Navigation — switches on at lg, not md, so it never gets cramped on tablets */}
+                    {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center gap-5 xl:gap-8 flex-wrap justify-end " ref={navRef}>
                         {navLinks.map((link, index) => {
                             if (link.type === 'dropdown') {
@@ -118,7 +137,7 @@ const Header = () => {
                         })}
                     </div>
 
-                    {/* Mobile Menu Toggle (visible button) — now shows below lg to match the nav breakpoint */}
+                    {/* Mobile Menu Toggle */}
                     <button
                         type="button"
                         className="lg:hidden relative z-50 w-12 h-12 flex items-center justify-center focus:outline-none group rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 shrink-0"
@@ -143,7 +162,7 @@ const Header = () => {
                     </button>
                 </div>
 
-
+                {/* Mobile Menu Backdrop & Container */}
                 <div
                     className={`fixed inset-0 z-40 overflow-hidden transition-opacity duration-500 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                         }`}
@@ -154,7 +173,6 @@ const Header = () => {
                             }`}
                     >
                         <div className="relative flex flex-col h-full px-6 pt-20 pb-8 overflow-y-auto">
-                            {/* Close button inside overlay */}
                             <button
                                 type="button"
                                 className="absolute top-4 right-4 lg:hidden z-50 w-12 h-12 flex items-center justify-center focus:outline-none group rounded-full bg-surface-container-low hover:bg-surface-container transition-all duration-300 border border-border-neutral"
@@ -202,4 +220,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default Header;

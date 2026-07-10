@@ -1,6 +1,12 @@
 module.exports = {
     darkMode: "class",
     theme: {
+        container: {
+            center: true,          // auto margin
+            padding: '1rem',       // optional inner padding
+            maxWidth: { '2xl': '1280px' },
+
+        },
         extend: {
             colors: {
                 "inverse-primary": "#84d98e",
@@ -72,7 +78,7 @@ module.exports = {
                 "gutter": "32px",
                 "stack-sm": "12px",
                 "stack-md": "24px",
-                "container-max": "95%"
+                "container-max": "95%",
             },
             fontFamily: {
                 "statistic-num": ["var(--font-epilogue)", "sans-serif"],
@@ -85,16 +91,17 @@ module.exports = {
                 "body-md": ["var(--font-manrope)", "sans-serif"],
             },
             fontSize: {
-                "statistic-num": ["6.4rem", { lineHeight: "1.2em", fontWeight: "700" }],
+                "statistic-num": ["14vh", { lineHeight: "1.2em", fontWeight: "700" }],
                 "display-lg": ["80px", { lineHeight: "90px", letterSpacing: "-0.02em", fontWeight: "700" }],
-                "label-caps": ["1rem", { lineHeight: "1.4em", letterSpacing: "0.1em", fontWeight: "700" }],
-                "headline-xl": ["18vw", { lineHeight: "1.2em", letterSpacing: "-0.02em", fontWeight: "700" }],
-                "headline-lg": ["7vw", { lineHeight: "1.2em", letterSpacing: "-0.02em", fontWeight: "700" }],
-                "headline-md": ["4rem", { lineHeight: "1.2em", fontWeight: "700" }],
-                "headline-sm": ["2rem", { lineHeight: "1.2em", fontWeight: "600" }],
+                "label-caps": ["2vh", { lineHeight: "1.4em", letterSpacing: "0.1em", fontWeight: "700" }],
+                "headline-xl": ["12vw", { lineHeight: "1em", letterSpacing: "-0.02em", fontWeight: "700" }],
+                "headline-lg": ["5.5vw", { lineHeight: "1.2em", letterSpacing: "-0.02em", fontWeight: "700" }],
+                "headline-md": ["3vw", { lineHeight: "1.2em", fontWeight: "700" }],
+                "headline-sm": ["2vw", { lineHeight: "1.2em", fontWeight: "600" }],
                 "display-lg-mobile": ["48px", { lineHeight: "1.2em", letterSpacing: "-0.01em", fontWeight: "700" }],
-                "body-lg": ["20px", { lineHeight: "1.2em", fontWeight: "400" }],
-                "body-md": ["16px", { lineHeight: "1.2em", fontWeight: "400" }]
+                "body-lg": ["1.2vw", { lineHeight: "1.2em", fontWeight: "400" }],
+                "body-md": ["1.1vw", { lineHeight: "1.2em", fontWeight: "400" }],
+                "body-sm": ["0.7vw", { lineHeight: "1.2em", fontWeight: "400" }]
             },
             animation: {
                 marquee: "marquee var(--marquee-duration, 30s) linear infinite",
@@ -119,7 +126,7 @@ module.exports = {
                     "0%": { transform: "translateY(-50%)" },
                     "100%": { transform: "translateY(0%)" },
                 },
-            }
+            },
         }
     }
 };

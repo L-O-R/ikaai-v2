@@ -1,8 +1,8 @@
 "use client";
 
 import ProjectCard from "@/components/ui/ProjectCard";
-import { getErrorMessage } from "@/data/apiErrors";
-import { getFeaturedProjects } from "@/data/getFeaturedProjects";
+import { getErrorMessage } from "@/lib/api/apiErrors";
+import { getFeaturedProjects } from "@/lib/api/getFeaturedProjects";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -32,10 +32,10 @@ const Projects = () => {
 
     return (
         <section
-            className="py-section-mobile md:pt-section-desktop px-4 md:px-8 bg-warm-beige"
+            className="py-section-mobile md:pt-section-desktop  bg-warm-beige"
             id="projects-section"
         >
-            <div className="max-w-container-max mx-auto">
+            <div className="container mx-auto">
                 <div className="mb-12">
                     <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
                         Our Projects

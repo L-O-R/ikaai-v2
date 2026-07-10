@@ -2,8 +2,8 @@
 
 import WorkHeader from '@/components/work/WorkHeader';
 import WorkGrid from '@/components/work/WorkGrid';
-import { getProjects } from '@/data/getProjects';
-import { getErrorMessage } from '@/data/apiErrors';
+import { getProjects } from '@/lib/api/getProjects';
+import { getErrorMessage } from '@/lib/api/apiErrors';
 import { useEffect, useMemo, useState } from 'react';
 
 const ProjectsPage = () => {
@@ -81,8 +81,8 @@ const ProjectsPage = () => {
     return (
         <main className="bg-surface">
             <WorkHeader />
-            <section className="bg-warm-beige pt-section-mobile pb-6 px-4 md:px-8">
-                <div className="max-w-container-max mx-auto">
+            <section className="bg-warm-beige pt-section-mobile pb-6 ">
+                <div className="container mx-auto">
                     <div className="max-w-xl mb-12">
                         <div className="relative">
                             <span className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">

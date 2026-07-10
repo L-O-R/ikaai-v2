@@ -1,7 +1,7 @@
 "use client";
 
-import { getStatistics } from "@/data/getStatistics";
-import { getErrorMessage } from "@/data/apiErrors";
+import { getStatistics } from "@/lib/api/getStatistics";
+import { getErrorMessage } from "@/lib/api/apiErrors";
 import { useEffect, useRef, useState } from "react";
 
 const easeOut = (t) => 1 - (1 - t) ** 3;
@@ -80,7 +80,7 @@ const ImpactUs = () => {
   if (isLoading) {
     return (
       <div ref={containerRef} className="w-full py-16 z-10">
-        <div className="max-w-container-max mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center px-4 md:px-8">
+        <div className="container mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center ">
           {[0, 1, 2, 3].map((item) => (
             <div key={item} className="flex flex-col gap-3 items-center">
               <div className="h-14 w-24 rounded-xl bg-surface-container-high animate-pulse" />
@@ -104,7 +104,7 @@ const ImpactUs = () => {
 
   return (
     <div ref={containerRef} className="w-full py-16 z-10">
-      <div className="max-w-container-max mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center px-4 md:px-8">
+      <div className="container mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center ">
         {stats.map((stat, idx) => (
           <div key={stat.label} className="flex flex-col gap-1">
             <span className="font-statistic-num text-5xl font-semibold md:text-statistic-num text-primary">

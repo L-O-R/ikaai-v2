@@ -46,7 +46,7 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
             </div>
 
-            <div className="max-w-container-max w-full mx-auto z-10 flex flex-col justify-between px-4 md:px-8 relative">
+            <div className="max-w-container-max w-full mx-auto z-10 flex flex-col justify-between relative">
                 <div>
                     <h1 className="text-headline-xl  font-headline-lg">
                         ikaai India
@@ -57,7 +57,7 @@ const HeroSection = () => {
                 <div className="flex flex-col md:flex-row justify-between max-md:gap-4">
                     <p className="self-end text-xl flex flex-col gap-1">
                         <span>Measuring impact</span>
-                        <span className="md:ml-10">across Bharat</span>
+                        <span>across Bharat</span>
                     </p>
                     <ul className="list-none space-y-2 text-xl">
                         <li>Social & Development Research</li>

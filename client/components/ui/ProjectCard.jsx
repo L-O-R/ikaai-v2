@@ -1,6 +1,7 @@
 "use client";
 
-import { getProjectDetail } from "@/data/getProjectDetail";
+import { getProjectDetail } from "@/lib/api/getProjectDetail";
+import Image from "next/image";
 import { useState } from "react";
 
 const ProjectCard = ({ project }) => {
@@ -43,7 +44,9 @@ const ProjectCard = ({ project }) => {
 
             <div className="bg-surface p-2 rounded-2xl">
                 <div className="aspect-4/3 relative overflow-hidden rounded-xl group-hover:scale-[1.02] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
-                    <img
+                    <Image
+                        width={500}
+                        height={500}
                         src={imageSrc}
                         alt={project.title}
                         className="w-full h-full object-cover transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 group-hover:blur-xs"
@@ -52,7 +55,9 @@ const ProjectCard = ({ project }) => {
                     <div className="absolute inset-0 bg-inverse-surface/30 group-hover:bg-inverse-surface/70 flex items-center justify-center pointer-events-none transition-all duration-500 rounded-xl">
                         {project.clientLogo ? (
                             <div className="transition-transform duration-500 group-hover:scale-110">
-                                <img
+                                <Image
+                                    width={200}
+                                    height={200}
                                     src={project.clientLogo}
                                     alt={`${project.client || "Client"} logo`}
                                     className="h-30 w-auto object-contain opacity-40 group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
@@ -65,7 +70,7 @@ const ProjectCard = ({ project }) => {
                         )}
                     </div>
 
-                    <div className="absolute inset-x-3 bottom-3 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus:translate-y-0 group-focus:opacity-100 transition-all duration-300">
+                    {statsToShow.length > 0 && <div className="absolute inset-x-3 bottom-3 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus:translate-y-0 group-focus:opacity-100 transition-all duration-300">
                         <div className="rounded-xl bg-surface/95 border border-border-neutral p-3 shadow-lg">
                             {isLoadingStats ? (
                                 <p className="font-body-md text-body-md text-text-muted">Loading stats...</p>
@@ -87,7 +92,7 @@ const ProjectCard = ({ project }) => {
                                 </div>
                             ) : ("")}
                         </div>
-                    </div>
+                    </div>}
                 </div>
             </div>
         </div>

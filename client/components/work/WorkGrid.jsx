@@ -24,7 +24,7 @@ const WorkGrid = ({
 }) => {
   return (
     <section className="bg-warm-beige ">
-      <div className="pb-section-mobile lg:pb-section-desktop max-w-container-max mx-auto px-4 md:px-8">
+      <div className="pb-section-mobile lg:pb-section-desktop container mx-auto ">
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-12">
             {loadingCards.map((item) => (

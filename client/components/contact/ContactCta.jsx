@@ -6,9 +6,9 @@ import Link from 'next/link'
 
 const ContactCta = () => {
     return (
-        <section className="py-20 md:py-28 px-4 md:px-8 bg-primary text-white">
-            <div className="max-w-container-max mx-auto text-center">
-                <h2 className="font-headline-lg text-headline-lg text-white mb-6">
+        <section className="py-20 md:py-28  bg-primary text-white">
+            <div className="container mx-auto text-center">
+                <h2 className="font-headline-lg text-headline-md text-white mb-6">
                     Ready to Make a Difference?
                 </h2>
                 <p className="font-body-lg text-body-lg text-white/80 max-w-2xl mx-auto mb-8">

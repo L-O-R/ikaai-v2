@@ -59,6 +59,9 @@ INSTALLED_APPS = [
     'apps.clients',
     'apps.projects',
     'apps.inquiries',
+    'apps.updates',
+    'apps.blogs',
+    'apps.jobs',
 ]
 
 MIDDLEWARE = [
@@ -78,6 +81,23 @@ AUTH_USER_MODEL = "accounts.User"
 GOOGLE_CLIENT_ID = env("GOOGLE_CLIENT_ID")
 GOOGLE_CLIENT_SECRET = env("GOOGLE_CLIENT_SECRET")
 GOOGLE_REDIRECT_URI = env("GOOGLE_REDIRECT_URI")
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
+    ],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "IKAAI INDIA CMS API",
+    "DESCRIPTION": "API documentation for the IKAAI INDIA CMS.",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
+
 
 EMAIL_BACKEND = env(
     "EMAIL_BACKEND",
@@ -128,7 +148,7 @@ STORAGES = {
 
 MEDIA_URL = "/media/"
 
-MEDIA_ROOT = env.path("MEDIA_ROOT", default=BASE_DIR / "media")
+MEDIA_ROOT = env.path("MEDIA_ROOT", default=BASE_DIR/"media")
 
 WSGI_APPLICATION = 'config.wsgi.application'
 

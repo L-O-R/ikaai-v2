@@ -61,12 +61,12 @@ const TestimonialsSection = () => {
 
     return (
         <section
-            className="overflow-hidden py-section-mobile md:py-section-desktop px-4 md:px-8 bg-warm-beige"
+            className="overflow-hidden py-section-mobile md:py-section-desktop  bg-warm-beige"
             id="testimonial-section"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
-            <div className="max-w-container-max mx-auto">
+            <div className="container mx-auto">
 
                 {/* Slider Viewport — overflow-visible so text doesn't get cut */}
                 <div className="relative overflow-visible">
@@ -80,11 +80,11 @@ const TestimonialsSection = () => {
                                 className="min-w-full shrink-0 px-0"
                             >
                                 {/* Quote Content */}
-                                <div className="max-w-6xl mx-auto">
+                                <div className="max-w-5xl mx-auto">
                                     <span className="material-symbols-outlined text-5xl md:text-6xl text-primary/20 mb-4 block">
                                         format_quote
                                     </span>
-                                    <blockquote className="font-headline-lg text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-on-surface leading-[1.2] tracking-tight whitespace-normal wrap-break-word">
+                                    <blockquote className="font-headline-sm text-headline-sm font-normal text-on-surface leading-[1.2] tracking-tight whitespace-normal wrap-break-word">
                                         {testimonial.quote}
                                     </blockquote>
                                     <cite className="not-italic flex items-center gap-4 mt-8">
@@ -112,8 +112,8 @@ const TestimonialsSection = () => {
                         <button
                             key={index}
                             onClick={() => goToSlide(index)}
-                            className={`w-2 h-2 rounded-full transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${currentIndex === index
-                                ? 'w-12 h-2.5 bg-primary'
+                            className={`w-2 h-2 rounded-full transition-all duration-500 ease-in-out cursor-pointer ${currentIndex === index
+                                ? 'w-12 h-2.5 bg-primary cursor-default'
                                 : 'bg-border-neutral hover:bg-text-muted'
                                 }`}
                             aria-label={`Go to testimonial ${index + 1}`}

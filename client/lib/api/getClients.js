@@ -10,5 +10,7 @@ export const normalizeClient = (client) => ({
 
 export const getClients = async () => {
   const response = await apiClient.get("/clients/");
-  return (response.data || []).map(normalizeClient);
+  const list = response.data?.results || [];
+  return list.map(normalizeClient);
 };
+

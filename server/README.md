@@ -2,7 +2,7 @@
 
 Backend server for the IKAAI INDIA content management system. The project is a Django 5 application with Django REST Framework APIs, Google-only admin authentication, PostgreSQL storage, media uploads, and an Unfold-powered admin interface.
 
-The server manages website content such as clients, projects, project galleries, project statistics, organization-wide statistics, and public inquiries submitted from the website.
+The server manages website content such as clients, projects, project galleries, project statistics, organization-wide statistics, public inquiries submitted from the website, homepage updates/announcements, and blog posts.
 
 ## Table of Contents
 
@@ -70,8 +70,11 @@ The project intentionally favors clean, predictable Django patterns over unneces
 - Public inquiry submission endpoint.
 - Inquiry email notifications.
 - Public organization statistics endpoint.
+- Public updates/announcements endpoint.
+- Blog posts with categories, featured images, SEO fields, and related blogs.
+- Job openings with department, location, employment type, experience level, and a public job application submission endpoint.
 - Shared base models with UUID primary keys, timestamps, and active/inactive status.
-- Public read APIs return active content only.
+- Public read APIs return active/published content only.
 
 ## Project Structure
 
@@ -79,10 +82,13 @@ The project intentionally favors clean, predictable Django patterns over unneces
 server/
   apps/
     accounts/
+    blogs/
     clients/
     inquiries/
+    jobs/
     projects/
     statistics/
+    updates/
   common/
   config/
     settings/
@@ -220,6 +226,94 @@ Important behavior:
 Public route:
 
 - `GET /api/statistics/`
+
+### updates
+
+Stores public homepage updates/announcements.
+
+Important fields:
+
+- `title`
+- `image`
+- `link`
+- `display_order`
+- `is_active`
+
+Important behavior:
+
+- Public API returns active updates only.
+
+Public route:
+
+- `GET /api/updates/`
+
+### blogs
+
+Stores public blog posts and blog categories.
+
+Important fields:
+
+- `title`
+- `slug`
+- `excerpt`
+- `featured_image`
+- `category`
+- `author`
+- `reading_time`
+- `published_at`
+- `featured`
+- `content`
+- `meta_title`
+- `meta_description`
+- `og_image`
+- `canonical_url`
+- `is_active`
+
+Important behavior:
+
+- Public API returns only published blog posts.
+- Slugs are unique.
+- Blog detail includes full content, SEO fields, and related blogs.
+- Mounted under the unversioned `/api/` prefix, like the other public modules. It was previously documented under a versioned `/api/v1/` prefix; that has since been removed.
+
+Public routes:
+
+- `GET /api/blogs/`
+- `GET /api/blogs/<slug>/`
+
+### jobs
+
+Stores public job openings and job applications.
+
+Important fields:
+
+- `title`
+- `slug`
+- `department`
+- `location`
+- `employment_type`
+- `experience_level`
+- `salary`
+- `openings`
+- `description`
+- `responsibilities`
+- `requirements`
+- `benefits`
+- `application_deadline`
+- `display_order`
+- `is_active`
+
+Important behavior:
+
+- Public list/detail endpoints return only active job openings.
+- Listing supports filtering by `department`, `location`, `employment_type`, and `featured`, plus search and ordering.
+- Job applications are submitted through a separate write-only endpoint that validates the request is JSON and rejects applications to closed positions.
+
+Public routes:
+
+- `GET /api/jobs/jobs/`
+- `GET /api/jobs/jobs/<slug>/`
+- `POST /api/jobs/job-applications/`
 
 ## Architecture Rules
 
@@ -407,6 +501,10 @@ Default local URLs:
 - Inquiries API: `http://127.0.0.1:8000/api/inquiries/`
 - Statistics API: `http://127.0.0.1:8000/api/statistics/`
 - Clients API: `http://127.0.0.1:8000/api/clients/`
+- Updates API: `http://127.0.0.1:8000/api/updates/`
+- Blogs API: `http://127.0.0.1:8000/api/blogs/`
+- Jobs API: `http://127.0.0.1:8000/api/jobs/jobs/`
+- Job Applications API: `http://127.0.0.1:8000/api/jobs/job-applications/`
 
 ## Admin CMS
 
@@ -508,8 +606,14 @@ Current public endpoints:
 | `POST` | `/api/inquiries/` | Submit a public inquiry. |
 | `GET` | `/api/statistics/` | List active public statistics. |
 | `GET` | `/api/clients/` | List active clients. |
+| `GET` | `/api/updates/` | List active updates/announcements. |
+| `GET` | `/api/blogs/` | List published blog posts. |
+| `GET` | `/api/blogs/<slug>/` | Get one published blog post by slug. |
+| `GET` | `/api/jobs/jobs/` | List active job openings. |
+| `GET` | `/api/jobs/jobs/<slug>/` | Get one active job opening by slug. |
+| `POST` | `/api/jobs/job-applications/` | Submit a job application. |
 
-The current URL configuration does not include an `/api/v1/` prefix. If API versioning is required, add it in `config/urls.py` and update tests/docs together.
+All public endpoints are mounted under the unversioned `/api/` path. Blogs was previously documented under a versioned `/api/v1/` prefix; that has been removed. If versioning is reintroduced later, update `config/urls.py` and tests/docs together.
 
 ## Media and Static Files
 
@@ -571,6 +675,7 @@ Run tests for one app:
 python manage.py test apps.projects
 python manage.py test apps.inquiries
 python manage.py test apps.statistics
+python manage.py test apps.jobs
 ```
 
 Recommended checks before handing off work:
@@ -669,7 +774,3 @@ Only four active featured projects are allowed. Unfeature or deactivate another 
 ### Statistic cannot be saved as active
 
 Only four active organization statistics are allowed. Deactivate another statistic first.
-
-### API path confusion
-
-The active project routes are mounted under `/api/`, for example `/api/projects/`. The tests currently mention `/api/v1/` in some places, but the live URL configuration does not mount a versioned prefix.

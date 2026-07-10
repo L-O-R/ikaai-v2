@@ -6,6 +6,12 @@ from django.views.generic import RedirectView
 
 from apps.client_public_api import ClientListAPIView
 from apps.accounts.views import admin_login
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularSwaggerView,
+    SpectacularRedocView,
+)
+
 
 urlpatterns = [
     path("admin/login/", admin_login, name="admin_login"),
@@ -18,12 +24,16 @@ urlpatterns = [
         "admin/password_change/done/",
         RedirectView.as_view(url="/admin/", permanent=False),
     ),
-    path('admin/', admin.site.urls),
+    path("", RedirectView.as_view(url="/admin/", permanent=False)),
+    path("admin/", admin.site.urls),
     path("accounts/", include("apps.accounts.urls")),
     path("api/statistics/", include("apps.statistics.urls")),
     path("api/projects/", include("apps.projects.urls")),
     path("api/inquiries/", include("apps.inquiries.urls")),
+    path("api/updates/", include("apps.updates.urls")),
+    path("api/blogs/", include("apps.blogs.urls")),
     path("api/clients/", ClientListAPIView.as_view(), name="client-list"),
+    path("api/jobs/", include("apps.jobs.api.urls", namespace="jobs")),
 ]
 
 from django.conf import settings

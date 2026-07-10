@@ -42,12 +42,12 @@ class ProjectListSerializer(serializers.ModelSerializer):
             "short_description",
         )
 
-    def get_client_logo(self, obj):
+    def get_client_logo(self, obj) -> str | None:
         if not obj.client.logo:
             return None
         return obj.client.logo.url
 
-    def get_short_description(self, obj):
+    def get_short_description(self, obj) -> str:
         return Truncator(obj.description or "").chars(160)
 
 
@@ -73,7 +73,7 @@ class ProjectDetailSerializer(serializers.ModelSerializer):
             "gallery",
         )
 
-    def get_client_logo(self, obj):
+    def get_client_logo(self, obj) -> str | None:
         if not obj.client.logo:
             return None
         return obj.client.logo.url

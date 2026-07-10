@@ -27,8 +27,8 @@ const OurApproach = () => {
     ]
 
     return (
-        <section className="py-section-mobile md:py-section-desktop px-4 md:px-8 bg-surface" id="approach-section">
-            <div className="max-w-container-max mx-auto">
+        <section className="py-section-mobile md:py-section-desktop  bg-surface" id="approach-section">
+            <div className="container mx-auto">
 
                 {/* Header + Description - Left aligned */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-12 md:mb-16">

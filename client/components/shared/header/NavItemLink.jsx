@@ -9,7 +9,6 @@ const NavItemLink = ({ item, className, onNavigate }) => {
             rel={isExternal ? 'noopener noreferrer' : undefined}
             className={className}
             onClick={() => {
-                console.log("clicked", item.href);
                 if (onNavigate) onNavigate();
             }}
         >

@@ -2,7 +2,7 @@
 
 const PageHero = ({ eyebrow, title, highlight, description }) => {
   return (
-    <section className="relative min-h-screen flex items-center px-4 md:px-8 mb-12">
+    <section className="relative min-h-screen flex items-center  mb-12">
       <div className="max-w-container-max mx-auto w-full">
         <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
           {eyebrow}
