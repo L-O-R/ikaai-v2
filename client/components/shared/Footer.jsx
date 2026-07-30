@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Footer = () => {
     return (
@@ -31,36 +32,36 @@ const Footer = () => {
                                 </h4>
                                 <ul className="space-y-3">
                                     <li>
-                                        <a
-                                            href="#"
+                                        <Link
+                                            href="/about"
                                             className="font-body-md text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
                                         >
                                             About Us
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a
-                                            href="#"
+                                        <Link
+                                            href="/services"
                                             className="font-body-md text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
                                         >
                                             Our Programs
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a
-                                            href="#"
+                                        <Link
+                                            href="/work"
                                             className="font-body-md text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
                                         >
                                             Impact & Reach
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a
-                                            href="#"
+                                        <Link
+                                            href="/stories"
                                             className="font-body-md text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
                                         >
                                             Success Stories
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
@@ -70,36 +71,44 @@ const Footer = () => {
                                 </h4>
                                 <ul className="space-y-3">
                                     <li>
-                                        <a
-                                            href="#"
+                                        <Link
+                                            href="/media"
                                             className="font-body-md text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
                                         >
                                             Annual Reports
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a
-                                            href="#"
+                                        <Link
+                                            href="/media"
                                             className="font-body-md text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
                                         >
                                             Research Papers
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a
-                                            href="#"
+                                        <Link
+                                            href="/careers"
                                             className="font-body-md text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
                                         >
                                             Careers
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a
-                                            href="#"
+                                        <Link
+                                            href="/faq"
+                                            className="font-body-md text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
+                                        >
+                                            FAQs
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            href="/contact"
                                             className="font-body-md text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
                                         >
                                             Contact
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
@@ -129,21 +138,19 @@ const Footer = () => {
                 {/* Bottom Bar – small and gray */}
                 <div className="border-t border-inverse-on-surface/10 mt-12 pt-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-inverse-on-surface/40 text-xs">
                     <p className="font-body-md text-body-sm">
-                        &copy; 2024 IKAAI India. All rights reserved.
+                        &copy; 2023 IKAAI India. All rights reserved.
                     </p>
                     <div className="flex gap-6">
-                        <a
-                            href="#"
-                            className="font-label-caps text-body-sm uppercase tracking-widest hover:text-inverse-on-surface/70 transition-colors"
+                        <span
+                            className="font-label-caps text-body-sm uppercase tracking-widest text-inverse-on-surface/20 cursor-not-allowed select-none"
                         >
                             Privacy Policy
-                        </a>
-                        <a
-                            href="#"
-                            className="font-label-caps text-body-sm uppercase tracking-widest hover:text-inverse-on-surface/70 transition-colors"
+                        </span>
+                        <span
+                            className="font-label-caps text-body-sm uppercase tracking-widest text-inverse-on-surface/20 cursor-not-allowed select-none"
                         >
                             Terms of Service
-                        </a>
+                        </span>
                     </div>
                 </div>
             </div>

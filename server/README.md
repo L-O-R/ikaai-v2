@@ -2,7 +2,7 @@
 
 Backend server for the IKAAI INDIA content management system. The project is a Django 5 application with Django REST Framework APIs, Google-only admin authentication, PostgreSQL storage, media uploads, and an Unfold-powered admin interface.
 
-The server manages website content such as clients, projects, project galleries, project statistics, organization-wide statistics, public inquiries submitted from the website, homepage updates/announcements, and blog posts.
+The server manages website content such as clients, projects, project galleries, project statistics, organization-wide statistics, public inquiries submitted from the website, homepage updates/announcements, blog posts, and job openings with applications.
 
 ## Table of Contents
 
@@ -44,37 +44,39 @@ The project intentionally favors clean, predictable Django patterns over unneces
 
 ## Technology Stack
 
-- Python
+- Python 3.11+
 - Django 5.2
 - Django REST Framework
 - PostgreSQL
 - Authlib for Google OAuth
 - django-environ for environment configuration
 - django-filter for API filtering
-- drf-spectacular dependency is installed for schema support
-- django-unfold for the admin UI
+- drf-spectacular for OpenAPI schema generation
+- django-unfold for the Unfold-themed admin UI
 - Pillow for image uploads
-- django-cors-headers dependency is installed for CORS support
-- Gunicorn dependency is installed for production serving
-- Whitenoise dependency is installed for static file serving support
+- django-cors-headers for CORS support
+- Gunicorn for production serving
+- Whitenoise for static file serving
 
 ## Main Features
 
-- Google OAuth admin login.
+- Google OAuth admin login — no username/password sign-in.
 - Custom user model using email instead of username.
 - Admin-provisioned users only; Google login does not auto-create staff users.
+- Unfold-themed Django Admin with a custom dashboard showing live model counts and quick-action links.
+- Grouped sidebar navigation in the admin panel covering Content, Enquiries, Careers, and Admin sections.
 - Project management with cover image, client, description, location, featured flag, and display ordering.
 - Project gallery images.
 - Per-project statistics with Material Symbols icon names.
-- Reusable clients with logos.
-- Public inquiry submission endpoint.
-- Inquiry email notifications.
+- Reusable clients with logos — `description` field removed; clients are identified by name and logo only.
+- Public inquiry submission endpoint with email notification support.
 - Public organization statistics endpoint.
 - Public updates/announcements endpoint.
 - Blog posts with categories, featured images, SEO fields, and related blogs.
 - Job openings with department, location, employment type, experience level, and a public job application submission endpoint.
 - Shared base models with UUID primary keys, timestamps, and active/inactive status.
 - Public read APIs return active/published content only.
+- All public endpoints use the unversioned `/api/` prefix.
 
 ## Project Structure
 
@@ -92,9 +94,17 @@ server/
   common/
   config/
     settings/
+    admin_site.py       # Custom UnfoldAdminSite + IKAAIAdminConfig
+    dashboard.py        # DASHBOARD_CALLBACK — injects stats/quick-links
+    urls.py
   media/
   static/
+    admin/
+      css/              # Custom admin CSS (forms, theme, sidebar, etc.)
+      images/
   templates/
+    admin/
+      index.html        # Custom dashboard index template
   logs/
   manage.py
   requirements.txt
@@ -136,14 +146,16 @@ Important fields:
 - `logo`
 - `display_order`
 - `website`
-- `description`
 - `is_active`
+
+> **Note:** The `description` field was removed from the `Client` model in migration `0002_remove_client_description`. It is no longer present in the model, admin, or public API.
 
 Important behavior:
 
 - Client name is unique.
 - Client deletion is protected when projects reference the client.
 - Public API exposes active clients ordered by `display_order` and `name`.
+- Public API returns `name`, `logo`, and `website` only.
 
 Public route:
 
@@ -242,6 +254,7 @@ Important fields:
 Important behavior:
 
 - Public API returns active updates only.
+- Response is paginated.
 
 Public route:
 
@@ -274,7 +287,7 @@ Important behavior:
 - Public API returns only published blog posts.
 - Slugs are unique.
 - Blog detail includes full content, SEO fields, and related blogs.
-- Mounted under the unversioned `/api/` prefix, like the other public modules. It was previously documented under a versioned `/api/v1/` prefix; that has since been removed.
+- Mounted under the unversioned `/api/` prefix.
 
 Public routes:
 
@@ -285,7 +298,7 @@ Public routes:
 
 Stores public job openings and job applications.
 
-Important fields:
+Important fields (Job):
 
 - `title`
 - `slug`
@@ -307,7 +320,9 @@ Important behavior:
 
 - Public list/detail endpoints return only active job openings.
 - Listing supports filtering by `department`, `location`, `employment_type`, and `featured`, plus search and ordering.
-- Job applications are submitted through a separate write-only endpoint that validates the request is JSON and rejects applications to closed positions.
+- Job applications are submitted through a separate write-only endpoint.
+- Resume link must be a Google Drive or Google Docs URL — other URLs are rejected.
+- Applications to expired or closed positions are rejected with a `400` error.
 
 Public routes:
 
@@ -514,9 +529,42 @@ The CMS is available at:
 /admin/
 ```
 
-The login page is customized and uses Google OAuth.
+The login page is customized and uses Google OAuth only.
 
-Admin content is managed through Django Admin and the Unfold theme.
+### Dashboard
+
+The admin homepage shows a live dashboard with:
+
+- **Stats cards** — counts of active Projects, Clients, Blog Posts, Unread Inquiries, Statistics, Updates, Open Jobs, and Job Applications. Each card links directly to the corresponding admin changelist.
+- **Quick Actions** — one-click buttons to Add Project, Add Blog Post, Add Job, View Inquiries, Add Client, and Add Update.
+
+Dashboard data is injected via the `UNFOLD["DASHBOARD_CALLBACK"]` setting, which points to `config.dashboard.dashboard_callback`. To add or change dashboard stats or quick links, edit [`config/dashboard.py`](config/dashboard.py).
+
+### Sidebar Navigation
+
+The admin sidebar is grouped into four sections:
+
+| Section | Items |
+| --- | --- |
+| **Content** | Projects, Clients, Statistics, Blog Posts, Blog Categories, Updates |
+| **Enquiries** | Inquiries |
+| **Careers** | Jobs, Applications |
+| **Admin** | Users |
+
+Navigation is configured in `UNFOLD["SIDEBAR"]["navigation"]` inside `config/settings/base.py`.
+
+### Admin Site Architecture
+
+The admin uses a custom `IKAAIAdminSite` (a subclass of `unfold.sites.UnfoldAdminSite`) registered via `IKAAIAdminConfig` as the `default_site` in `INSTALLED_APPS`. This means all models decorated with `@admin.register` automatically register to the Unfold-themed site — no per-model `site=` argument is needed.
+
+Key files:
+
+| File | Purpose |
+| --- | --- |
+| `config/admin_site.py` | `IKAAIAdminConfig` (sets `default_site`) and `IKAAIAdminSite` (minimal subclass). |
+| `config/dashboard.py` | Dashboard callback — injects `dashboard_stats` and `quick_links` into the index context. |
+| `templates/admin/index.html` | Custom dashboard template using Unfold card components and Material Symbols icons. |
+| `static/admin/css/forms.css` | Widget icon fixes using CSS `mask-image` to style calendar, clock, lookup, add, edit, delete, and view-on-site icons. |
 
 Typical content workflow:
 
@@ -613,7 +661,7 @@ Current public endpoints:
 | `GET` | `/api/jobs/jobs/<slug>/` | Get one active job opening by slug. |
 | `POST` | `/api/jobs/job-applications/` | Submit a job application. |
 
-All public endpoints are mounted under the unversioned `/api/` path. Blogs was previously documented under a versioned `/api/v1/` prefix; that has been removed. If versioning is reintroduced later, update `config/urls.py` and tests/docs together.
+All public endpoints are mounted under the unversioned `/api/` path. If versioning is reintroduced later, update `config/urls.py` and tests/docs together.
 
 ## Media and Static Files
 
@@ -636,12 +684,14 @@ Configured settings:
 - `MEDIA_URL = "/media/"`
 - `MEDIA_ROOT = BASE_DIR / "media"`
 
-Project image upload paths:
+Upload paths:
 
 - Cover images: `projects/cover/`
 - Gallery images: `projects/gallery/`
 - Client logos: `clients/logos/`
 - User avatars: `users/avatars/`
+- Blog images: `blogs/`
+- Update images: `updates/`
 
 ## Email Notifications
 
@@ -663,7 +713,7 @@ The notification includes:
 
 ## Testing
 
-Run the test suite:
+Run the full test suite:
 
 ```bash
 python manage.py test
@@ -676,6 +726,15 @@ python manage.py test apps.projects
 python manage.py test apps.inquiries
 python manage.py test apps.statistics
 python manage.py test apps.jobs
+python manage.py test apps.updates
+python manage.py test apps.blogs
+python manage.py test apps.clients
+```
+
+Run the Django system check:
+
+```bash
+python manage.py check
 ```
 
 Recommended checks before handing off work:
@@ -684,6 +743,8 @@ Recommended checks before handing off work:
 python manage.py check
 python manage.py test
 ```
+
+The test suite runs 30 tests across all apps. All tests should pass with `OK` before merging or deploying.
 
 ## Deployment Notes
 
@@ -736,6 +797,12 @@ Before adding a new public API, document:
 - Error response JSON.
 - Status codes.
 
+When changing the admin dashboard:
+
+- Add/remove stat cards in `config/dashboard.py`.
+- Update sidebar navigation in `UNFOLD["SIDEBAR"]["navigation"]` in `config/settings/base.py`.
+- Update the dashboard template in `templates/admin/index.html` if layout changes are needed.
+
 ## Troubleshooting
 
 ### Google login redirects back but access is denied
@@ -774,3 +841,11 @@ Only four active featured projects are allowed. Unfeature or deactivate another 
 ### Statistic cannot be saved as active
 
 Only four active organization statistics are allowed. Deactivate another statistic first.
+
+### Admin dashboard shows only the welcome message (no stat cards or quick links)
+
+Ensure `UNFOLD["DASHBOARD_CALLBACK"]` is set to `"config.dashboard.dashboard_callback"` in `config/settings/base.py`. The `config/dashboard.py` module must exist and the function must return the mutated `context` dict.
+
+### Admin links return 404
+
+Ensure `INSTALLED_APPS` contains `'config.admin_site.IKAAIAdminConfig'` instead of `'django.contrib.admin'`. This registers the custom `IKAAIAdminSite` as Django's global default admin site so all `@admin.register` decorators route to it correctly.

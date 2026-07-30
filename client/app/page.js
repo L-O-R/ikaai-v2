@@ -3,8 +3,7 @@ import Client from "@/components/home/Client";
 import CtaSection from "@/components/home/CtaSection";
 import HeroSection from "@/components/home/HeroSection";
 import ImpactMoment from "@/components/home/ImpactMoment";
-import OurApproach from "@/components/home/OurApproach";
-import Presence from "@/components/home/Presense";
+import OurCommitmentSection from "@/components/home/OurCommitmentSection";
 import Projects from "@/components/home/Projects";
 import Services from "@/components/home/Services";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
@@ -19,9 +18,8 @@ export default function Home() {
       <ImpactMoment />
 
       <Services />
-      <OurApproach />
-      {/* <Presence /> */}
       <Projects />
+      <OurCommitmentSection />
       <Updates />
       <TestimonialsSection />
       <CtaSection />

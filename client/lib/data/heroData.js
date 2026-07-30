@@ -4,7 +4,7 @@ export const heroData = {
     title: "Unlocking Insights,",
     highlight: "Transforming Lives",
     description:
-      "IKAAI India is a research and development organization dedicated to empowering rural communities through rigorous evidence, sustainable livelihoods, and community-driven initiatives.",
+      "Ikaai India is research, advisory, and impact-driven consulting firm committed to transforming insights into meaningful action. We partner with governments, development organizations, corporations, and institutions to design, strengthen, and deliver solutions that create measurable and sustainable impact.",
   },
   contact: {
     eyebrow: "Get in Touch",

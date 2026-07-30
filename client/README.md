@@ -1,116 +1,99 @@
 # IKAAI India Client
 
-Next.js frontend for the IKAAI India public website. The client reads public CMS content from the Django backend and submits contact inquiries through the public API.
+Next.js frontend for the IKAAI India public web application. The client fetches public CMS content from the Django backend and handles inquiry submissions via API.
 
-## Stack
+---
 
-- Next.js App Router
-- React client components for dynamic homepage sections
-- Tailwind CSS for design tokens and responsive styling
-- Axios for public CMS API calls
+## 🛠️ Stack & Technologies
 
-## Environment
+- **Framework**: Next.js App Router (`/app` directory)
+- **UI Components**: React Client & Server Components
+- **Styling**: Tailwind CSS with custom design tokens (`tailwind.config.js`)
+- **HTTP Client**: Axios with centralized handling (`lib/data/apiClient.js`)
+- **Fonts**: `Epilogue` & `Manrope` via `next/font/google`
+- **Icons**: Material Symbols Outlined
 
-Create `client/.env.local` before running the app:
+---
+
+## 📂 Client Architecture & App Routes
+
+The Next.js App Router is structured across all core organizational routes:
+
+| Route Path | Description | Page Component | Metadata / SEO |
+| :--- | :--- | :--- | :--- |
+| `/` | Homepage with hero, stats, featured projects, clients, commitment, & map presence | [`app/page.js`](file:///e:/ikaai-v2/client/app/page.js) | Root Layout |
+| `/about` | Organization mission, vision, journey, and story | [`app/about/page.jsx`](file:///e:/ikaai-v2/client/app/about/page.jsx) | Page Metadata |
+| `/about/team` | Team members, researchers, and advisory board | [`app/about/team/page.jsx`](file:///e:/ikaai-v2/client/app/about/team/page.jsx) | Page Metadata |
+| `/about/life` | Organizational culture, field values, and life at IKAAI | [`app/about/life/page.jsx`](file:///e:/ikaai-v2/client/app/about/life/page.jsx) | Page Metadata |
+| `/services` | Research, monitoring & evaluation (M&E), baseline studies, and capacity building | [`app/services/page.jsx`](file:///e:/ikaai-v2/client/app/services/page.jsx) | Page Metadata |
+| `/work` | Interactive projects portfolio with backend search & pagination | [`app/work/page.jsx`](file:///e:/ikaai-v2/client/app/work/page.jsx) | [`app/work/layout.jsx`](file:///e:/ikaai-v2/client/app/work/layout.jsx) |
+| `/stories` | Blog articles & impact stories with live search & pagination | [`app/stories/page.jsx`](file:///e:/ikaai-v2/client/app/stories/page.jsx) | [`app/stories/layout.jsx`](file:///e:/ikaai-v2/client/app/stories/layout.jsx) |
+| `/careers` | Career opportunities, perks, culture, and open positions | [`app/careers/page.jsx`](file:///e:/ikaai-v2/client/app/careers/page.jsx) | Page Metadata |
+| `/media` | Field photo gallery, visual assets, and media archives | [`app/media/page.jsx`](file:///e:/ikaai-v2/client/app/media/page.jsx) | Page Metadata |
+| `/contact` | Inquiry form, contact details, map location, and office info | [`app/contact/page.jsx`](file:///e:/ikaai-v2/client/app/contact/page.jsx) | Page Metadata |
+| `/faq` | Frequently Asked Questions directory with category filtering & Schema markup | [`app/faq/page.js`](file:///e:/ikaai-v2/client/app/faq/page.js) | [`app/faq/layout.jsx`](file:///e:/ikaai-v2/client/app/faq/layout.jsx) |
+
+---
+
+## 📱 Web Manifest & PWA Configuration
+
+The web application manifest is defined at [`app/site.webmanifest`](file:///e:/ikaai-v2/client/app/site.webmanifest) and referenced globally in [`app/layout.js`](file:///e:/ikaai-v2/client/app/layout.js):
+
+- **File Path**: `client/app/site.webmanifest`
+- **Application Display**: `standalone` mode
+- **Theme & Background Color**: `#ffffff`
+- **Favicons & Touch Icons**: Linked from `/favicon/` (`16x16`, `32x32`, `48x48`, `180x180`)
+
+---
+
+## 🌐 Generative Engine Optimization (GEO) & SEO Strategy
+
+IKAAI INDIA implements full GEO and SEO optimizations for search crawlers and AI search agents (ChatGPT, Perplexity, ClaudeBot, Google SGE):
+
+1. **Entity JSON-LD Schema**:
+   - Organization level `NGO` schema embedded in `app/layout.js`.
+   - `FAQPage` schema embedded in `app/faq/page.js`.
+2. **Metadata Architecture**:
+   - Server-rendered pages (`about`, `services`, `careers`, `contact`, `media`, `about/team`, `about/life`) export static `metadata`.
+   - Client-rendered pages (`work`, `stories`, `faq`) use dedicated route layout wrappers (`layout.jsx`) to export server metadata.
+3. **Robots & AI Crawling**: Configured with `max-image-preview: "large"`, `max-snippet: -1`, and canonical base URL (`https://ikaaiindia.in`).
+
+---
+
+## ⚙️ Environment Configuration
+
+Create `.env.local` in `client/`:
 
 ```env
 NEXT_PUBLIC_API_ORIGIN=http://127.0.0.1:8000
 NEXT_PUBLIC_API_BASE_URL=http://127.0.0.1:8000/api
 ```
 
-Use the production backend origin and `/api` base URL when deploying.
+---
 
-## Local Setup
+## 🚀 Local Development
 
-From the `client` directory:
+From `client/`:
 
 ```bash
+# Install dependencies
 npm install
+
+# Run development server
 npm run dev
+
+# Build production bundle
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000). The backend should be running at the origin configured in `.env.local`.
+---
 
-## Backend Dependency
+## 🔌 Django Backend Integration
 
-The frontend expects the Django server to expose these public routes:
-
+The client interfaces with Django REST endpoints (`lib/api/`):
 - `GET /api/statistics/`
 - `GET /api/clients/`
 - `GET /api/projects/`
 - `GET /api/projects/{slug}/`
+- `GET /api/blogs/`
 - `POST /api/inquiries/`
-
-Run the Django app separately and make sure `NEXT_PUBLIC_API_ORIGIN` points to that server.
-
-## API Integration
-
-All Axios configuration lives in `data/apiClient.js`. It sets the base URL, JSON headers, timeout, and shared error handling.
-
-Each backend call has its own file:
-
-- `api/getStatistics.js` -> `GET /api/statistics/`
-- `api/getClients.js` -> `GET /api/clients/`
-- `api/getFeaturedProjects.js` -> `GET /api/projects/?featured=true&page_size=4`
-- `api/getProjects.js` -> `GET /api/projects/`
-- `api/getProjectDetail.js` -> `GET /api/projects/{slug}/`
-- `api/getProjectLocations.js` -> `GET /api/projects/?page_size=48&ordering=location`
-- `api/createInquiry.js` -> `POST /api/inquiries/`
-
-Media URLs from Django are normalized in `data/apiMedia.js`, so relative paths like `/media/...` resolve against `NEXT_PUBLIC_API_ORIGIN`.
-
-## Dynamic Sections
-
-- `components/ui/ImpactUs.jsx` loads organization statistics.
-- `components/contact/ContactForm.jsx` posts inquiry form data and displays API validation errors.
-- `components/home/Projects.jsx` loads up to 4 featured projects.
-- `components/home/Presense.jsx` derives map locations from published projects.
-- `app/work/page.jsx` loads all projects with backend pagination and search.
-- `components/ui/ProjectCard.jsx` fetches project detail on hover to show project stats.
-- `components/home/Client.jsx` loads active clients from `/api/clients/`. More than 6 clients use the 3-column marquee; 6 or fewer render as a centered grid.
-
-## Client Logo Section
-
-The homepage client section is fully API-driven:
-
-1. `components/home/Client.jsx` calls `getClients()` on mount.
-2. `api/getClients.js` requests `/api/clients/`.
-3. Each logo path is normalized through `resolveMediaUrl()`.
-4. Clients without a usable logo are filtered out before rendering.
-5. Loading, error, empty, marquee, and static-grid states are handled in the component.
-
-Expected API response:
-
-```json
-[
-  {
-    "name": "Example Client",
-    "logo": "/media/clients/logos/example.png",
-    "website": "https://example.org",
-    "description": "Optional public description."
-  }
-]
-```
-
-The rendered logo object uses:
-
-- `src` for the resolved logo URL
-- `alt` for the client name
-- `logo`, `website`, and `description` for future UI extensions
-
-## Error Handling
-
-Shared API errors are normalized in `data/apiClient.js`. UI components should use `getErrorMessage()` from `data/apiErrors.js` so users see friendly fallback messages when the backend is unavailable or validation fails.
-
-## Theme
-
-Brand colors, spacing, typography, radius, and animation tokens are defined in `tailwind.config.js`. Components should use Tailwind classes from that config instead of hard-coded color values.
-
-## Useful Commands
-
-```bash
-npm run dev
-npm run build
-npm run lint
-npm run format
-```

@@ -83,7 +83,7 @@ class UpdateAPITests(TestCase):
 
         response = client.get(url)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(set(response.data[0].keys()), {"title", "image", "link"})
+        self.assertEqual(set(response.data["results"][0].keys()), {"title", "image", "link"})
 
         post_response = client.post(url, {})
         self.assertEqual(post_response.status_code, 405)

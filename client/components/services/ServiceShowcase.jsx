@@ -33,7 +33,7 @@ const ServiceShowcase = () => {
                 <div className="relative w-full mb-16 md:mb-20">
                     <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '16/7' }}>
                         <Image
-                            src="/hero/woman_being_interviewed.jpg"
+                            src="/hero/woman-community-survey.jpg"
                             alt="Field researcher interviewing a rural woman"
                             fill
                             className="object-cover"
@@ -60,17 +60,6 @@ const ServiceShowcase = () => {
                     {secondGroup.map((service, index) => (
                         <ServiceCard key={service.id} service={service} index={index + 3} />
                     ))}
-                </div>
-
-                {/* Bottom CTA */}
-                <div className="text-center mt-16 md:mt-20">
-                    <p className="font-body-md text-body-md text-text-secondary">
-                        Need a custom solution?{' '}
-                        <a href="/contact" className="text-primary hover:underline font-semibold transition-colors duration-300">
-                            Let's talk
-                        </a>
-                        {' '}about how we can help.
-                    </p>
                 </div>
             </div>
         </section>

@@ -1,3 +1,7 @@
+/* =========================================================
+   Form rows & layout
+   ========================================================= */
+
 input[type="checkbox"],
 input[type="radio"] {
     accent-color: var(--admin-primary) !important;
@@ -14,7 +18,6 @@ input[type="radio"] {
     border-radius: var(--border-radius) !important;
     margin-bottom: 0.9rem !important;
 }
-
 
 .aligned .form-row {
     padding-inline: 1rem !important;
@@ -57,6 +60,10 @@ input[type="radio"] {
     color: var(--admin-text) !important;
 }
 
+/* =========================================================
+   Text inputs, selects, textareas
+   ========================================================= */
+
 input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([x-ref="searchInput"]),
 select,
 textarea,
@@ -85,4 +92,259 @@ textarea:focus {
     outline: 2px solid var(--admin-focus) !important;
     outline-offset: 2px !important;
     border-color: var(--admin-focus) !important;
+}
+
+/* =========================================================
+   Date / Time widget — calendar & clock trigger buttons
+   (Unfold renders id="calendarlink0"/"clocklink0" anchors
+   containing <span class="date-icon"> / <span class="clock-icon">)
+   ========================================================= */
+
+/* Inline the shortcut strip with the input */
+.datetimeshortcuts {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.3rem !important;
+    vertical-align: middle !important;
+}
+
+/* Hide "Today" / "Now" text links and the pipe separators */
+.datetimeshortcuts a:not([id^="calendarlink"]):not([id^="clocklink"]) {
+    display: none !important;
+}
+
+/* Button shell — matches any calendarlink0, calendarlink1 … */
+a[id^="calendarlink"],
+a[id^="clocklink"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 2.25rem !important;
+    height: 2.25rem !important;
+    border: 1px solid var(--admin-border-strong) !important;
+    border-radius: var(--border-radius) !important;
+    background: var(--admin-surface) !important;
+    color: var(--admin-text) !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: background 0.15s, border-color 0.15s, color 0.15s !important;
+    flex-shrink: 0 !important;
+}
+
+a[id^="calendarlink"]:hover,
+a[id^="clocklink"]:hover {
+    border-color: var(--admin-primary) !important;
+    color: var(--admin-primary) !important;
+    background: color-mix(in srgb, var(--admin-primary) 8%, transparent) !important;
+}
+
+/* Calendar icon — the <span class="date-icon"> inside the anchor */
+.date-icon {
+    display: inline-block !important;
+    width: 1.1rem !important;
+    height: 1.1rem !important;
+    background-color: currentColor !important;
+    -webkit-mask: url(/static/admin/img/icon-calendar.svg) no-repeat center / contain !important;
+    mask: url(/static/admin/img/icon-calendar.svg) no-repeat center / contain !important;
+}
+
+/* Clock icon — the <span class="clock-icon"> inside the anchor */
+.clock-icon {
+    display: inline-block !important;
+    width: 1.1rem !important;
+    height: 1.1rem !important;
+    background-color: currentColor !important;
+    -webkit-mask: url(/static/admin/img/icon-clock.svg) no-repeat center / contain !important;
+    mask: url(/static/admin/img/icon-clock.svg) no-repeat center / contain !important;
+}
+
+/* =========================================================
+   Clear-value (✕) buttons on FK / M2M / Date widgets
+   ========================================================= */
+
+.related-widget-wrapper .clear-related,
+.related-widget-wrapper a.related-lookup,
+.change-related,
+.delete-related,
+.view-related,
+.add-related,
+a.related-lookup {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 2.25rem !important;
+    height: 2.25rem !important;
+    border: 1px solid var(--admin-border-strong) !important;
+    border-radius: var(--border-radius) !important;
+    background: var(--admin-surface) !important;
+    color: var(--admin-text) !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    transition: background 0.15s, border-color 0.15s, color 0.15s !important;
+    flex-shrink: 0 !important;
+    vertical-align: middle !important;
+    background-image: none !important;
+}
+
+.related-widget-wrapper .clear-related:hover,
+.related-widget-wrapper a.related-lookup:hover,
+.change-related:hover,
+.delete-related:hover,
+.view-related:hover,
+.add-related:hover {
+    border-color: var(--admin-primary) !important;
+    background-color: color-mix(in srgb, var(--admin-primary) 8%, transparent) !important;
+    color: var(--admin-primary) !important;
+}
+
+/* Delete/clear icon button specific colour */
+.delete-related,
+.related-widget-wrapper .clear-related {
+    border-color: var(--admin-danger) !important;
+    color: var(--admin-danger) !important;
+}
+
+.delete-related:hover,
+.related-widget-wrapper .clear-related:hover {
+    border-color: var(--admin-danger) !important;
+    background-color: color-mix(in srgb, var(--admin-danger) 10%, transparent) !important;
+    color: var(--admin-danger) !important;
+}
+
+/* Hide raw <img> tags Django injects inside FK/M2M widget buttons */
+.related-lookup img,
+a.related-lookup img,
+.add-related img,
+.change-related img,
+.delete-related img,
+.view-related img,
+.related-widget-wrapper .clear-related img {
+    display: none !important;
+}
+
+/* Lookup/Search icon mask */
+.related-lookup::before,
+a.related-lookup::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 1.1rem !important;
+    height: 1.1rem !important;
+    background-color: currentColor !important;
+    -webkit-mask: url(/static/admin/img/search.svg) no-repeat center / contain !important;
+    mask: url(/static/admin/img/search.svg) no-repeat center / contain !important;
+}
+
+/* Add icon mask (+) */
+.add-related::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 1.1rem !important;
+    height: 1.1rem !important;
+    background-color: currentColor !important;
+    -webkit-mask: url(/static/admin/img/icon-addlink.svg) no-repeat center / contain !important;
+    mask: url(/static/admin/img/icon-addlink.svg) no-repeat center / contain !important;
+}
+
+/* Change icon mask (pencil) */
+.change-related::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 1.1rem !important;
+    height: 1.1rem !important;
+    background-color: currentColor !important;
+    -webkit-mask: url(/static/admin/img/icon-changelink.svg) no-repeat center / contain !important;
+    mask: url(/static/admin/img/icon-changelink.svg) no-repeat center / contain !important;
+}
+
+/* Delete/Clear icon mask (✕) */
+.delete-related::before,
+.related-widget-wrapper .clear-related::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 1.1rem !important;
+    height: 1.1rem !important;
+    background-color: currentColor !important;
+    -webkit-mask: url(/static/admin/img/icon-deletelink.svg) no-repeat center / contain !important;
+    mask: url(/static/admin/img/icon-deletelink.svg) no-repeat center / contain !important;
+}
+
+/* View related icon mask */
+.view-related::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 1.1rem !important;
+    height: 1.1rem !important;
+    background-color: currentColor !important;
+    -webkit-mask: url(/static/admin/img/icon-viewlink.svg) no-repeat center / contain !important;
+    mask: url(/static/admin/img/icon-viewlink.svg) no-repeat center / contain !important;
+}
+
+/* Wrapper keeps input + icon buttons in one row */
+.related-widget-wrapper {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    flex-wrap: nowrap !important;
+    vertical-align: middle !important;
+}
+
+/* =========================================================
+   View-on-site link (the eye icon in the object history bar)
+   ========================================================= */
+
+.object-tools a[href*="site"],
+.viewsitelink {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.3rem !important;
+    background-image: none !important;
+}
+
+.viewsitelink {
+    padding-left: 0.75rem !important;
+}
+
+.viewsitelink::before,
+.object-tools a[href*="site"]::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 1.1rem !important;
+    height: 1.1rem !important;
+    background-color: currentColor !important;
+    -webkit-mask: url(/static/admin/img/icon-viewlink.svg) no-repeat center / contain !important;
+    mask: url(/static/admin/img/icon-viewlink.svg) no-repeat center / contain !important;
+}
+
+
+/* =========================================================
+   Date hierarchy breadcrumb strip
+   ========================================================= */
+
+.date-hierarchy {
+    padding: 0.5rem 0 1rem !important;
+    font-size: 0.875rem !important;
+}
+
+.date-hierarchy a,
+.date-hierarchy span {
+    padding: 0.25rem 0.6rem !important;
+    border: 1px solid var(--admin-border) !important;
+    border-radius: var(--border-radius) !important;
+    background: var(--admin-surface) !important;
+    color: var(--admin-text) !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-weight: 500 !important;
+}
+
+.date-hierarchy a:hover {
+    border-color: var(--admin-primary) !important;
+    color: var(--admin-primary) !important;
+}
+
+.date-hierarchy .date-hierarchy-separator {
+    margin: 0 0.15rem !important;
+    border: none !important;
+    background: transparent !important;
+    color: var(--admin-text-muted) !important;
 }

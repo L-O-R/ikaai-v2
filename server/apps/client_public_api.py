@@ -20,7 +20,6 @@ class ClientSerializer(serializers.ModelSerializer):
             "name",
             "logo",
             "website",
-            "description",
         )
 
 

@@ -73,7 +73,7 @@ class InquiryTests(TestCase):
         client = APIClient()
 
         response = client.post(
-            "/api/v1/inquiries/",
+            "/api/inquiries/",
             {
                 "name": "Aarav",
                 "email": "aarav@example.com",
@@ -90,6 +90,6 @@ class InquiryTests(TestCase):
     def test_public_api_does_not_expose_get(self):
         client = APIClient()
 
-        response = client.get("/api/v1/inquiries/")
+        response = client.get("/api/inquiries/")
 
         self.assertEqual(response.status_code, 405)

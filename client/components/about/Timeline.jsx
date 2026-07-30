@@ -5,31 +5,60 @@ import React from 'react'
 
 const timelineData = [
     {
-        year: '2008',
-        title: 'The Beginning',
-        description: 'IKAAI India was founded with a vision to bridge research and rural development in Rajasthan.',
+        year: "2021",
+        title: "The Beginning",
+        description:
+            "Began our journey by undertaking freelance Monitoring & Evaluation and research assignments in different sectors across India.",
     },
     {
-        year: '2012',
-        title: 'Expanding Reach',
-        description: 'Expanded operations to Maharashtra and Madhya Pradesh, building a network of field researchers.',
+        year: "2022",
+        title: "Shared Vision",
+        description:
+            "Built a shared vision to create a research organization focused on quality, credibility, and impact.",
     },
     {
-        year: '2016',
-        title: 'Research Excellence',
-        description: 'Launched comprehensive baseline studies and impact assessments for government and NGO partners.',
+        year: "May 2023",
+        title: "Ikaai India Founded",
+        description:
+            "Founded Ikaai India with the mission of transforming data into meaningful insights and actionable recommendations.",
     },
     {
-        year: '2020',
-        title: 'National Presence',
-        description: 'Reached 8 states across India, impacting over 1 million lives through evidence-based interventions.',
+        year: "2024",
+        title: "Expansion",
+        description:
+            "Expanded into health, agriculture, livelihoods, governance, environment, energy, education, CSR, and public policy research.",
     },
     {
-        year: '2024',
-        title: 'Looking Forward',
-        description: 'Continuing to innovate with data-driven solutions for rural development and policy advisory.',
+        year: "December 2024",
+        title: "International Milestone",
+        description:
+            "Successfully completed our first internationally funded development evaluation project.",
     },
-]
+    {
+        year: "2025",
+        title: "Government Studies",
+        description:
+            "Began executing large-scale, multi-state research and evaluation studies for Government of India ministries and public institutions.",
+    },
+    {
+        year: "March 2025",
+        title: "DDA Empanelment",
+        description:
+            "Empanelled with the Delhi Development Authority (DDA), strengthening our presence in public sector research and urban development.",
+    },
+    {
+        year: "2026",
+        title: "Growing Impact",
+        description:
+            "Successfully completed 20+ studies and reached 1.25L+ respondents through large-scale studies across India.",
+    },
+    {
+        year: "Looking Ahead",
+        title: "The Future",
+        description:
+            "Expanding our expertise across seven core domains, strengthening partnerships across India, and building collaborations with global development organizations to create meaningful impact through research, advisory, and innovation.",
+    },
+];
 
 const Timeline = () => {
     return (

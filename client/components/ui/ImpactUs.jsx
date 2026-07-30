@@ -107,7 +107,7 @@ const ImpactUs = () => {
       <div className="container mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center ">
         {stats.map((stat, idx) => (
           <div key={stat.label} className="flex flex-col gap-1">
-            <span className="font-statistic-num text-5xl font-semibold md:text-statistic-num text-primary">
+            <span className="font-statistic-num  font-semibold text-statistic-num text-primary">
               {counts[idx]}
               {stat.suffix}
             </span>

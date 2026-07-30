@@ -46,7 +46,8 @@ class JobsAPITests(TestCase):
         response = self.client.get(reverse("jobs:job-list"))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data["count"], 2)
-        self.assertEqual(response.data["results"][0]["slug"], self.active_job.slug)
+        self.assertEqual(response.data["results"][0]["slug"], self.expired_job.slug)
+        self.assertEqual(response.data["results"][1]["slug"], self.active_job.slug)
 
     def test_job_detail_api_returns_active_job(self):
         response = self.client.get(reverse("jobs:job-detail", args=[self.active_job.slug]))
@@ -71,7 +72,7 @@ class JobsAPITests(TestCase):
             )
         response = self.client.get(reverse("jobs:job-list"), {"page_size": 5})
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data["count"], 16)
+        self.assertEqual(response.data["count"], 17)
         self.assertEqual(len(response.data["results"]), 5)
 
     def test_inactive_jobs_are_hidden(self):
@@ -110,7 +111,7 @@ class JobsAPITests(TestCase):
             "resume_drive_link": "https://example.com/file",
         }
         response = self.client.post(reverse("jobs:job-application-create"), payload, format="json")
-        self.assertContains(response, "resume_drive_link")
+        self.assertContains(response, "resume_drive_link", status_code=400)
 
     def test_job_application_is_created_and_notification_is_attempted(self):
         with self.settings(HR_NOTIFICATION_EMAIL="hr@example.com"):

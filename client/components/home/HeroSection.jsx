@@ -4,11 +4,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 
 const images = [
-    { src: '/hero/children_learning.jpg', label: 'Children Learning' },
-    { src: '/hero/woman_being_interviewed.jpg', label: 'Woman Being Interviewed' },
-    { src: '/hero/enumerator.jpg', label: 'Enumerator in the Field' },
-    { src: '/hero/community_meeting.jpg', label: 'Community Meeting' },
-    { src: '/hero/farmer.jpg', label: 'Farmer Interaction' },
+    { src: '/hero/community-livelihoods-rural-india.jpg', label: 'Strengthening Rural Livelihoods' },
+    { src: '/hero/community-research-field-visit.jpg', label: 'Research Begins With Listening' },
+    { src: '/hero/rural-household-community-engagement.jpg', label: 'Working Together for Inclusive Development' },
+    { src: '/hero/community-dialogue-village-meeting.jpg', label: 'Communities Shape Every Solution' },
+    { src: '/hero/mushroom-processing-value-chain.jpg', label: 'From Production to Prosperity' },
 ]
 
 const HeroSection = () => {

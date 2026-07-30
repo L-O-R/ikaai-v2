@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "unfold",
 
     # Django
-    'django.contrib.admin',
+    'config.admin_site.IKAAIAdminConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -189,6 +189,7 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 UNFOLD = {
+    "DASHBOARD_CALLBACK": "config.dashboard.dashboard_callback",
     "SITE_TITLE": env("ADMIN_SITE_TITLE", default=ADMIN_BRANDING["title"]),
     "SITE_HEADER": env("ADMIN_SITE_HEADER", default=ADMIN_BRANDING["header"]),
     "SITE_SUBHEADER": env(
@@ -199,7 +200,16 @@ UNFOLD = {
         "light": "/static/admin/images/logo-light.png",
         "dark": "/static/admin/images/logo-light.png",
     },
+    "SITE_ICON": {
+        "light": "/static/admin/images/icon.svg",
+        "dark": "/static/admin/images/icon.svg",
+    },
     "SITE_FAVICONS": [
+        {
+            "href": "/static/admin/images/favicon.ico",
+            "rel": "shortcut icon",
+            "type": "image/x-icon",
+        },
         {
             "href": "/static/admin/images/favicon.svg",
             "rel": "icon",
@@ -252,5 +262,86 @@ UNFOLD = {
             "light": "/static/admin/images/logo-light.png",
             "dark": "/static/admin/images/logo-light.png",
         },
+    },
+    # ── Sidebar navigation ──────────────────────────────────────────────────────
+    "SIDEBAR": {
+        "show_search": True,
+        "show_all_applications": False,
+        "navigation": [
+            {
+                "title": "Content",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Projects",
+                        "icon": "folder_open",
+                        "link": "/admin/projects/project/",
+                    },
+                    {
+                        "title": "Clients",
+                        "icon": "business",
+                        "link": "/admin/clients/client/",
+                    },
+                    {
+                        "title": "Statistics",
+                        "icon": "bar_chart",
+                        "link": "/admin/statistics/statistic/",
+                    },
+                    {
+                        "title": "Blog Posts",
+                        "icon": "article",
+                        "link": "/admin/blogs/blog/",
+                    },
+                    {
+                        "title": "Blog Categories",
+                        "icon": "label",
+                        "link": "/admin/blogs/blogcategory/",
+                    },
+                    {
+                        "title": "Updates",
+                        "icon": "campaign",
+                        "link": "/admin/updates/update/",
+                    },
+                ],
+            },
+            {
+                "title": "Enquiries",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Inquiries",
+                        "icon": "mail",
+                        "link": "/admin/inquiries/inquiry/",
+                    },
+                ],
+            },
+            {
+                "title": "Careers",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Jobs",
+                        "icon": "work",
+                        "link": "/admin/jobs/job/",
+                    },
+                    {
+                        "title": "Applications",
+                        "icon": "description",
+                        "link": "/admin/jobs/jobapplication/",
+                    },
+                ],
+            },
+            {
+                "title": "Admin",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Users",
+                        "icon": "group",
+                        "link": "/admin/accounts/user/",
+                    },
+                ],
+            },
+        ],
     },
 }

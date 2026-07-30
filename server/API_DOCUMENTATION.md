@@ -517,14 +517,12 @@ Response body:
     {
       "name": "Example Client",
       "logo": "/media/clients/logos/example.png",
-      "website": "https://example.org",
-      "description": "A short public description of the client."
+      "website": "https://example.org"
     },
     {
       "name": "Another Client",
       "logo": "/media/clients/logos/another.png",
-      "website": "",
-      "description": ""
+      "website": ""
     }
   ]
 }
@@ -541,7 +539,8 @@ Response body:
 | `results[].name` | string | No | Client organization name. |
 | `results[].logo` | string | No | Client logo URL/path. |
 | `results[].website` | string | No | Client website URL. May be an empty string. |
-| `results[].description` | string | No | Public client description. May be an empty string. |
+
+> **Note:** The `description` field was removed from the `Client` model (migration `0002_remove_client_description`). It is no longer returned by this endpoint.
 
 ## Updates API
 
@@ -1014,17 +1013,33 @@ Requests without a JSON content type are rejected before validation.
 
 ### Request Body
 
-The exact request fields are defined in `JobApplicationCreateSerializer`, which wasn't included with the files shared in this session, so the full field list can't be confirmed here. From `views.py`, the endpoint validates a `job` field (used to look up the job being applied to) and reports a specific error when the job is closed:
-
 ```json
 {
-  "job": [
-    "Applications for this position are closed."
-  ]
+  "job": "frontend-engineer",
+  "name": "Jane Doe",
+  "email": "jane@example.com",
+  "phone": "+919876543210",
+  "current_company": "Acme Corp",
+  "years_of_experience": "2 Years",
+  "portfolio_url": "https://janedoe.example",
+  "resume_drive_link": "https://drive.google.com/file/d/abc123/view",
+  "cover_letter": "I would love to join IKAAI INDIA and contribute to impactful projects."
 }
 ```
 
-Share `serializers.py` for the `jobs` app and this section can be filled in completely (field names, types, required/optional, max lengths).
+### Request Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `job` | string | Yes | Slug of the job opening being applied to. |
+| `name` | string | Yes | Applicant full name. |
+| `email` | string | Yes | Applicant email address. |
+| `phone` | string | Yes | Applicant phone number (max 50 characters). |
+| `current_company` | string | No | Current employer name. |
+| `years_of_experience` | string | No | Experience description, e.g. `"2 Years"`. |
+| `portfolio_url` | string | No | Applicant portfolio URL. |
+| `resume_drive_link` | string | Yes | Google Drive or Google Docs link to the resume. Links from other domains are rejected. |
+| `cover_letter` | string | No | Free-text cover letter. |
 
 ### Success Response
 
@@ -1258,11 +1273,13 @@ curl "http://127.0.0.1:8000/api/jobs/jobs/frontend-engineer/"
 curl -X POST "http://127.0.0.1:8000/api/jobs/job-applications/" \
   -H "Content-Type: application/json" \
   -d '{
-    "job": "frontend-engineer"
-  }'
-```
-
-> The example body above only shows the field confirmed from `views.py` (`job`). Add the remaining applicant fields once `serializers.py` for the `jobs` app is available.
+    "job": "frontend-engineer",
+    "name": "Jane Doe",
+    "email": "jane@example.com",
+    "phone": "+919876543210",
+    "resume_drive_link": "https://drive.google.com/file/d/abc123/view",
+    "cover_letter": "I would love to join IKAAI INDIA."
+  }'```
 
 ## JavaScript Fetch Examples
 

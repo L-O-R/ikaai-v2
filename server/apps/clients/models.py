@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from common.models import BaseModel
 
@@ -10,10 +11,12 @@ class Client(BaseModel):
     logo = models.ImageField(upload_to="clients/logos/")
     display_order = models.PositiveIntegerField(default=0)
     website = models.URLField(blank=True)
-    description = models.TextField(blank=True)
 
     class Meta:
         ordering = ("display_order", "name")
 
     def __str__(self) -> str:
         return self.name
+
+    def get_absolute_url(self) -> str:
+        return reverse("admin:clients_client_change", args=[self.pk])

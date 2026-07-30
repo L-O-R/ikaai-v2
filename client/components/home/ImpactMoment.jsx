@@ -7,33 +7,31 @@ export default function ImpactMoment() {
                 {/* Image */}
                 <div className="relative min-h-screen py-20 flex items-center">
                     <Image
-                        src="/emotional.png"
-                        alt="Mother helping her daughter study in a rural Indian village."
+                        src="/hero/village-primary-school-community.jpg"
+                        alt="Building Stronger Communities Through Knowledge."
                         fill
                         priority={false}
                         className="object-cover"
                     />
 
                     {/* Overlay */}
-                    <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/35 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/50 to-black/20" />
 
                     {/* Content */}
-                    <div className="container relative z-10 flex h-full items-end">
+                    <div className="container mx-auto relative z-10 flex h-full items-end">
                         <div className="max-w-4xl">
                             <p className="mb-stack-md font-label-caps text-label-caps uppercase tracking-[0.2em] text-primary-fixed">
-                                Beyond the Data
+                                Beyond Research
                             </p>
 
                             <h2 className="font-display-lg text-headline-lg text-on-primary">
-                                Real change begins with understanding.
+                                Every insight begins with people.
                             </h2>
 
-                            <div className="mt-stack-lg h-[2px] w-24 bg-primary-fixed" />
-
-                            <p className="mt-stack-lg max-w-xl font-body-lg text-body-lg text-surface/90 flex flex-col gap-2 ">
-                                <span>Behind every survey is a conversation.</span>
-                                <span>Behind every conversation is a family.</span>
-                                <span>Behind every family is a future worth investing in.</span>
+                            <p className="mt-stack-lg max-w-xl font-body-lg text-body-lg text-surface/90 space-y-2 flex flex-col">
+                                <span>Behind every statistic is a story.</span>
+                                <span>Behind every household is a lived reality.</span>
+                                <span>Behind every community is the opportunity to create lasting change.</span>
                             </p>
                         </div>
                     </div>

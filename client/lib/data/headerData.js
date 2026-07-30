@@ -6,7 +6,7 @@ export const navLinks = [
             { label: 'About Us', href: '/about' },
             { label: 'Meet Our Team', href: '/about/team' },
             { label: 'Life at IKAAI', href: '/about/life' },
-            { label: 'Join Us', href: '/careers' },
+
         ],
     },
     { label: 'Media', href: '/media', type: 'link' },
@@ -19,6 +19,7 @@ export const navLinks = [
         items: [
             { label: 'Want a Survey', href: 'https://forms.google.com/your-survey', external: true },
             { label: 'Get in Touch', href: '/contact' },
+            { label: 'Join Us', href: '/careers' },
         ],
     },
 ]
