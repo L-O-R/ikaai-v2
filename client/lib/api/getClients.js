@@ -10,7 +10,8 @@ export const normalizeClient = (client) => ({
 
 export const getClients = async () => {
   const response = await apiClient.get("/clients/");
-  const list = response.data?.results || [];
+  const data = response.data;
+  const list = Array.isArray(data) ? data : (data?.results || []);
   return list.map(normalizeClient);
 };
 

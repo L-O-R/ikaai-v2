@@ -101,10 +101,10 @@ const MediaGallery = () => {
         <>
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 p-5 w-full">
-                <p className="font-body-md text-sm text-white/95 leading-relaxed line-clamp-3 max-w-xs">
+                <p className="font-sans text-sm text-white/95 leading-relaxed line-clamp-3 max-w-xs">
                     {item.desc}
                 </p>
-                <span className="inline-block mt-2 font-label-caps text-[10px] uppercase tracking-widest text-white/50">
+                <span className="inline-block mt-2 font-sans text-[10px] uppercase tracking-widest text-white/50">
                     Click to enlarge
                 </span>
             </div>
@@ -116,17 +116,17 @@ const MediaGallery = () => {
 
     return (
         <section className="py-section-mobile md:py-section-desktop  bg-surface">
-            <div className="container mx-auto">
+            <div className="container-size">
                 {/* Header */}
                 <div className="text-center mb-12 md:mb-16">
-                    <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-4">
+                    <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Gallery
                     </span>
-                    <h2 className="font-headline-lg text-headline-md text-on-surface">
+                    <h2 className="font-display text-headline-md text-on-surface">
                         Moments That Matter
                     </h2>
                     <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />
-                    <p className="font-body-md text-body-md text-text-secondary max-w-2xl mx-auto mt-4">
+                    <p className="font-sans text-body-md text-text-secondary max-w-2xl mx-auto mt-4">
                         A collection of images from our work across rural India — capturing the spirit of community,
                         collaboration, and sustainable change.
                     </p>
@@ -179,10 +179,10 @@ const MediaGallery = () => {
 
                         {/* Lightbox text — clearly visible with background */}
                         <div className="mt-6 px-4 py-3 bg-black/40 backdrop-blur-sm rounded-xl border border-white/10 max-w-2xl mx-auto">
-                            <p className="font-headline-md text-xl text-white text-center leading-relaxed">
+                            <p className="font-display text-xl text-white text-center leading-relaxed">
                                 {selectedImage.desc}
                             </p>
-                            <p className="font-label-caps text-[10px] uppercase tracking-widest text-white/40 text-center mt-2">
+                            <p className="font-sans text-[10px] uppercase tracking-widest text-white/40 text-center mt-2">
                                 {selectedImage.alt}
                             </p>
                         </div>

@@ -34,18 +34,18 @@ const ProjectDetailPage = async ({ params }) => {
                 <div className="container">
                     <div className='flex justify-between items-center mb-4'>
                         <div className='flex items-center gap-2'>
-                            <Link href="/work" className="flex items-center gap-2 text-body-sm font-body-lg hover:text-primary transition-colors duration-300">
+                            <Link href="/work" className="flex items-center gap-2 text-body-sm font-sans hover:text-primary transition-colors duration-300">
                                 <span className="material-symbols-outlined">arrow_back</span>
                                 <span>Back to work</span>
                             </Link>
                         </div>
                     </div>
                     {project.location && (
-                        <span className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mb-3">
+                        <span className="font-sans text-label-caps uppercase text-text-muted tracking-widest block mb-3">
                             {project.location}
                         </span>
                     )}
-                    <h1 className="font-headline-lg text-headline-lg text-on-surface">
+                    <h1 className="font-display text-headline-lg text-on-surface">
                         {project.title}
                     </h1>
                 </div>
@@ -54,14 +54,14 @@ const ProjectDetailPage = async ({ params }) => {
             {/* Description Block */}
             {project.description && (
                 <section className="bg-surface border-b border-border-neutral py-16 space-y-12">
-                    <div className="container mx-auto ">
-                        <p className="font-body-lg text-body-lg text-on-surface/80 leading-relaxed">
+                    <div className="container-size ">
+                        <p className="font-sans text-body-lg text-on-surface/80 leading-relaxed">
                             {project.description}
                         </p>
                     </div>
                     {project.statistics && project.statistics.length > 0 && (
                         <div className='container'>
-                            <span className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mb-3">
+                            <span className="font-sans text-label-caps uppercase text-text-muted tracking-widest block mb-3">
                                 Impact Numbers
                             </span>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -70,10 +70,10 @@ const ProjectDetailPage = async ({ params }) => {
                                         <span className="material-symbols-outlined text-primary/60 block mb-0.5">
                                             {stat.material_symbol || 'trending_up'}
                                         </span>
-                                        <span className="font-statistic-num text-headline-sm font-bold text-primary block">
+                                        <span className="font-display text-headline-sm font-bold text-primary block">
                                             {stat.value}
                                         </span>
-                                        <span className="font-label-caps text-sm font-semibold text-text-muted">
+                                        <span className="font-sans text-sm font-semibold text-text-muted">
                                             {stat.title}
                                         </span>
                                     </div>
@@ -87,7 +87,7 @@ const ProjectDetailPage = async ({ params }) => {
             {/* CAROUSEL INJECTION AT 1 IMAGE PER SCREEN CONTAINER */}
             {mainImage && (
                 <section className="py-12 md:py-16 bg-surface border-b border-border-neutral">
-                    <div className="container mx-auto">
+                    <div className="container-size">
                         {hasGallery ? (
                             <ProjectCarousel gallery={project.gallery} projectTitle={project.title} />
                         ) : (
@@ -111,16 +111,16 @@ const ProjectDetailPage = async ({ params }) => {
 
             {/* Contact Call to Action */}
             <section className="py-16 md:py-20  bg-primary text-white text-center">
-                <div className="container mx-auto">
-                    <h3 className="font-headline-md text-headline-md text-white mb-4">
+                <div className="container-size">
+                    <h3 className="font-display text-headline-md text-white mb-4">
                         Interested in Similar Work?
                     </h3>
-                    <p className="font-body-md text-white/80 max-w-2xl mx-auto mb-6">
+                    <p className="font-sans text-white/80 max-w-2xl mx-auto mb-6">
                         Let's discuss how we can help you with your research and development needs.
                     </p>
                     <Link
                         href="/contact"
-                        className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-label-caps text-label-caps uppercase rounded-xl hover:bg-warm-beige transition-colors shadow-lg"
+                        className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-sans text-label-caps uppercase rounded-xl hover:bg-warm-beige transition-colors shadow-lg"
                     >
                         Get in Touch
                     </Link>

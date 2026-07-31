@@ -22,10 +22,10 @@ const BlogCard = ({ blog }) => (
                 {blog.categoryName && <span>{blog.categoryName}</span>}
                 <span>{blog.reading_time} min read</span>
             </div>
-            <h2 className="font-headline-md text-xl text-on-surface transition-colors duration-300 group-hover:text-primary">
+            <h2 className="font-display text-xl text-on-surface transition-colors duration-300 group-hover:text-primary">
                 {blog.title}
             </h2>
-            <p className="mt-3 line-clamp-3 font-body-md text-body-md text-text-secondary">
+            <p className="mt-3 line-clamp-3 font-sans text-body-md text-text-secondary">
                 {blog.excerpt}
             </p>
         </div>

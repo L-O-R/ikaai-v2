@@ -28,6 +28,7 @@ class ClientListAPIView(ListAPIView):
 
     serializer_class = ClientSerializer
     permission_classes = (AllowAny,)
+    pagination_class = None
 
     def get_queryset(self):
         return get_active_clients()

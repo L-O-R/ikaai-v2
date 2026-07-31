@@ -82,7 +82,7 @@ const ProjectsPage = () => {
         <main className="bg-surface">
             <WorkHeader />
             <section className="bg-warm-beige pt-section-mobile pb-6 ">
-                <div className="container mx-auto">
+                <div className="container-size">
                     <div className="max-w-xl mb-12">
                         <div className="relative">
                             <span className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -95,13 +95,13 @@ const ProjectsPage = () => {
                                 placeholder="Search by title, client, or location..."
                                 value={searchTerm}
                                 onChange={handleSearchChange}
-                                className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-border-neutral bg-surface-container-low focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 font-body-md text-body-md text-on-surface placeholder:text-text-muted"
+                                className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-border-neutral bg-surface-container-low focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 font-sans text-body-md text-on-surface placeholder:text-text-muted"
                             />
                         </div>
                     </div>
 
                     <div className="text-center">
-                        <span className="font-body-md text-body-md text-text-muted">
+                        <span className="font-sans text-body-md text-text-muted">
                             {isLoading
                                 ? 'Loading projects...'
                                 : `Showing ${projects.length} of ${totalProjects} projects`}

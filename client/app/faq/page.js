@@ -104,7 +104,7 @@ export default function FAQPage() {
             >
                 <div className="absolute inset-0 pointer-events-none opacity-[0.02] bg-[radial-gradient(#1b1b1b_1px,transparent_1px)] bg-size-[16px_16px]" />
 
-                <div className="container mx-auto relative z-10 text-center md:text-left">
+                <div className="container-size relative z-10 text-center md:text-left">
                     <div className="max-w-4xl">
                         <span className="text-label-caps block text-text-muted mb-3 uppercase tracking-[0.15em] font-semibold">
                             Resources & Support
@@ -127,7 +127,7 @@ export default function FAQPage() {
                 className="py-section-mobile md:py-section-desktop"
                 aria-label="FAQ Directory"
             >
-                <div className="container mx-auto ">
+                <div className="container-size ">
                     <div className="max-w-7xl mx-auto">
                         {/* Search input */}
                         <div className="relative mb-stack-md">
@@ -200,7 +200,7 @@ export default function FAQPage() {
                 className="py-section-mobile md:py-section-desktop border-t border-border-neutral bg-surface-container-low"
                 aria-labelledby="faq-cta-title"
             >
-                <div className="container mx-auto px-gutter text-center">
+                <div className="container-size px-gutter text-center">
                     <div className="max-w-2xl mx-auto space-y-6">
                         <div className="w-12 h-12 rounded-full bg-warm-beige flex items-center justify-center mx-auto" aria-hidden="true">
                             <span className="material-symbols-outlined text-primary !text-[24px]">

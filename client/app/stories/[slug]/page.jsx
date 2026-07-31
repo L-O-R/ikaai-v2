@@ -12,12 +12,12 @@ export async function generateStaticParams() {
 
 const markdownComponents = {
   h1: ({ children }) => (
-    <h1 className="mt-12 mb-4 font-headline-lg text-headline-lg text-on-surface">
+    <h1 className="mt-12 mb-4 font-display text-headline-lg text-on-surface">
       {children}
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="mt-10 mb-4 font-headline-md text-headline-md text-on-surface">
+    <h2 className="mt-10 mb-4 font-display text-headline-md text-on-surface">
       {children}
     </h2>
   ),
@@ -27,7 +27,7 @@ const markdownComponents = {
     </h3>
   ),
   p: ({ children }) => (
-    <p className="mb-5 font-body-md text-body-md leading-relaxed text-on-surface/80">
+    <p className="mb-5 font-sans text-body-md leading-relaxed text-on-surface/80">
       {children}
     </p>
   ),
@@ -42,17 +42,17 @@ const markdownComponents = {
     </a>
   ),
   ul: ({ children }) => (
-    <ul className="mb-6 list-disc pl-6 font-body-md text-body-md text-on-surface/80 space-y-1">
+    <ul className="mb-6 list-disc pl-6 font-sans text-body-md text-on-surface/80 space-y-1">
       {children}
     </ul>
   ),
   ol: ({ children }) => (
-    <ol className="mb-6 list-decimal pl-6 font-body-md text-body-md text-on-surface/80 space-y-1">
+    <ol className="mb-6 list-decimal pl-6 font-sans text-body-md text-on-surface/80 space-y-1">
       {children}
     </ol>
   ),
   blockquote: ({ children }) => (
-    <blockquote className="my-8 border-l-4 border-primary pl-5 text-on-surface/80 font-body-md text-body-md italic">
+    <blockquote className="my-8 border-l-4 border-primary pl-5 text-on-surface/80 font-sans text-body-md italic">
       {children}
     </blockquote>
   ),
@@ -113,31 +113,31 @@ const BlogDetailPage = async ({ params }) => {
     <main className="bg-white">
       {/* Hero Section */}
       <section className="pt-section-mobile md:pt-section-desktop pb-10 border-b border-border-neutral">
-        <div className="container mx-auto">
+        <div className="container-size">
           {/* Back link */}
           <Link
             href="/stories"
-            className="inline-flex items-center gap-2 font-body-md text-body-md text-text-secondary hover:text-primary transition-colors mb-6"
+            className="inline-flex items-center gap-2 font-sans text-body-md text-text-secondary hover:text-primary transition-colors mb-6"
           >
             <span className="material-symbols-outlined text-sm">arrow_back</span>
             <span>Back to stories</span>
           </Link>
 
           {/* Meta */}
-          <div className="flex flex-wrap items-center gap-3 text-label-caps font-label-caps uppercase text-text-muted">
+          <div className="flex flex-wrap items-center gap-3 text-label-caps font-sans uppercase text-text-muted">
             {blog.categoryName && <span>{blog.categoryName}</span>}
             {blog.author && <span>• {blog.author}</span>}
             <span>• {blog.reading_time} min read</span>
           </div>
 
           {/* Title */}
-          <h1 className="font-headline-lg text-headline-lg text-on-surface max-w-4xl mt-4">
+          <h1 className="font-display text-headline-lg text-on-surface max-w-4xl mt-4">
             {blog.title}
           </h1>
 
           {/* Excerpt */}
           {blog.excerpt && (
-            <p className="mt-4 max-w-3xl font-body-lg text-body-lg text-text-secondary leading-relaxed">
+            <p className="mt-4 max-w-3xl font-sans text-body-lg text-text-secondary leading-relaxed">
               {blog.excerpt}
             </p>
           )}
@@ -147,7 +147,7 @@ const BlogDetailPage = async ({ params }) => {
       {/* Featured Image */}
       {blog.featuredImage && (
         <section className="py-10">
-          <div className="container mx-auto">
+          <div className="container-size">
             <div className="relative h-72 md:h-[480px] rounded-2xl overflow-hidden shadow-lg border border-border-neutral bg-surface-container-low">
               <Image
                 src={blog.featuredImage}
@@ -164,7 +164,7 @@ const BlogDetailPage = async ({ params }) => {
 
       {/* Content */}
       <section className="pb-section-mobile md:pb-section-desktop">
-        <article className="container mx-auto">
+        <article className="container-size">
           <ReactMarkdown components={markdownComponents}>
             {blog.content}
           </ReactMarkdown>
@@ -174,11 +174,11 @@ const BlogDetailPage = async ({ params }) => {
       {/* Related Blogs */}
       {blog.related_blogs?.length > 0 && (
         <section className="border-t border-border-neutral py-section-mobile md:py-section-desktop bg-surface-container-low">
-          <div className="container mx-auto">
-            <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
+          <div className="container-size">
+            <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-3">
               Related
             </span>
-            <h2 className="font-headline-md text-headline-md text-on-surface mb-8">
+            <h2 className="font-display text-headline-md text-on-surface mb-8">
               More stories
             </h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -188,13 +188,13 @@ const BlogDetailPage = async ({ params }) => {
                   href={`/stories/${related.slug}`}
                   className="group rounded-2xl border border-border-neutral bg-white p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                 >
-                  <span className="font-label-caps text-label-caps uppercase text-text-muted tracking-wider">
+                  <span className="font-sans text-label-caps uppercase text-text-muted tracking-wider">
                     {related.categoryName || "Story"}
                   </span>
                   <h3 className="mt-3 font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
                     {related.title}
                   </h3>
-                  <p className="mt-3 line-clamp-3 font-body-md text-body-md text-text-secondary leading-relaxed">
+                  <p className="mt-3 line-clamp-3 font-sans text-body-md text-text-secondary leading-relaxed">
                     {related.excerpt}
                   </p>
                 </Link>

@@ -29,16 +29,16 @@ const perksData = [
 const PerksBenefits = () => {
     return (
         <section className="py-section-mobile md:py-section-desktop  bg-warm-beige">
-            <div className="container mx-auto">
+            <div className="container-size">
                 <div className="text-center mb-12 md:mb-16">
-                    <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-4">
+                    <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Perks & Benefits
                     </span>
-                    <h2 className="font-headline-lg text-headline-md text-on-surface">
+                    <h2 className="font-display text-headline-md text-on-surface">
                         We Take Care of Our People
                     </h2>
                     <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />
-                    <p className="font-body-md text-body-md text-text-secondary max-w-2xl mx-auto mt-4">
+                    <p className="font-sans text-body-md text-text-secondary max-w-2xl mx-auto mt-4">
                         We believe that doing meaningful work goes hand-in-hand with feeling supported, valued, and
                         empowered.
                     </p>
@@ -50,8 +50,8 @@ const PerksBenefits = () => {
                             <div className="w-14 h-14 rounded-full bg-primary-container/10 flex items-center justify-center mx-auto mb-4 shrink-0">
                                 <span className="material-symbols-outlined text-3xl text-primary">{perk.icon}</span>
                             </div>
-                            <h3 className="font-headline-md text-xl text-on-surface mb-3">{perk.title}</h3>
-                            <p className="font-body-md text-body-md text-text-secondary leading-relaxed flex-grow">
+                            <h3 className="font-display text-xl text-on-surface mb-3">{perk.title}</h3>
+                            <p className="font-sans text-body-md text-text-secondary leading-relaxed flex-grow">
                                 {perk.description}
                             </p>
                         </div>

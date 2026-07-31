@@ -3,7 +3,7 @@ import "./globals.css";
 
 import Header from "@/components/shared/header/Header";
 import Footer from "@/components/shared/Footer";
-import { HeaderThemeProvider } from "./HeaderThemeProvider";
+import ScrollToTop from "@/components/shared/ScrollToTop";
 
 const epilogue = Epilogue({
   variable: "--font-epilogue",
@@ -59,12 +59,12 @@ export const metadata = {
   metadataBase: new URL("https://ikaaiindia.in"),
 
   title: {
-    default: "IKAAI INDIA | Research & Social Impact Assessment",
+    default: "Lead with Ikaai",
     template: "%s | IKAAI INDIA",
   },
 
   description:
-    "IKAAI INDIA is a research-driven organization delivering impact assessments, policy studies, and community development solutions across India.",
+    "We unite research, technology and insight from the ground to the boardroom, so you can make informed decisions with confidence.",
 
   applicationName: "IKAAI INDIA",
 
@@ -168,9 +168,9 @@ export const metadata = {
     locale: "en_IN",
     url: "https://ikaaiindia.in",
     siteName: "IKAAI INDIA",
-    title: "IKAAI INDIA | Research & Social Impact Assessment",
+    title: "Lead with Ikaai",
     description:
-      "IKAAI INDIA is a research-driven organization delivering impact assessments, policy studies, and community development solutions across India.",
+      "We unite research, technology and insight from the ground to the boardroom, so you can make informed decisions with confidence.",
     images: [
       {
         url: "/og-image.jpg",
@@ -183,9 +183,9 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "IKAAI INDIA | Research & Social Impact Assessment",
+    title: "Lead with Ikaai",
     description:
-      "IKAAI INDIA is a research-driven organization delivering impact assessments, policy studies, and community development solutions across India.",
+      "We unite research, technology and insight from the ground to the boardroom, so you can make informed decisions with confidence.",
     images: ["/og-image.jpg"],
   },
 
@@ -228,11 +228,11 @@ export default function RootLayout({ children }) {
       </head>
 
       <body className="min-h-full flex flex-col">
-        <HeaderThemeProvider>
-          <Header />
-          {children}
-          <Footer />
-        </HeaderThemeProvider>
+
+        <Header />
+        {children}
+        <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );

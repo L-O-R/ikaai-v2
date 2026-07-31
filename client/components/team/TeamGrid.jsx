@@ -83,10 +83,10 @@ function TeamSection({ eyebrow, title, members }) {
     return (
         <div>
             <div className="text-center mb-10 md:mb-12">
-                <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-4">
+                <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
                     {eyebrow}
                 </span>
-                <h2 className="font-headline-lg text-headline-lg text-on-surface">
+                <h2 className="font-display text-headline-lg text-on-surface">
                     {title}
                 </h2>
 
@@ -104,10 +104,10 @@ function TeamSection({ eyebrow, title, members }) {
 const TeamGrid = () => {
     return (
         <section className="py-section-mobile md:py-section-desktop bg-surface space-y-16 md:space-y-24">
-            <div className="container mx-auto">
+            <div className="container-size">
                 <TeamSection eyebrow="Meet the Team" title="Experts in Action" members={coreTeam} />
             </div>
-            <div className="container mx-auto">
+            <div className="container-size">
                 <TeamSection
                     eyebrow="Beyond the Core Team"
                     title="Associates & Advisors"

@@ -24,8 +24,8 @@ const HeroSection = () => {
     }, [])
 
     return (
-        <section className="relative min-h-screen flex overflow-hidden pt-32 pb-12 text-on-secondary">
-            <div className="absolute inset-0 z-0">
+        <section className="relative min-h-screen flex overflow-hidden pt-32 pb-12 text-on-secondary ">
+            <div className="absolute inset-0 z-0 ">
                 {images.map((img, index) => (
                     <div
                         key={img.src}
@@ -43,12 +43,12 @@ const HeroSection = () => {
                     </div>
                 ))}
 
-                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-b from-on-surface/20 via-20% via-black/60 to-black/30" />
             </div>
 
             <div className="max-w-container-max w-full mx-auto z-10 flex flex-col justify-between relative">
                 <div>
-                    <h1 className="text-headline-xl  font-headline-lg">
+                    <h1 className="text-headline-xl  font-display">
                         ikaai India
                     </h1>
                     <p className="text-xl md:text-3xl lg:-mt-6 ml-1 md:ml-2 lg:ml-4">Research and Consultancy</p>
@@ -68,8 +68,8 @@ const HeroSection = () => {
                     </ul>
                 </div>
 
-                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-4 text-white/70 text-sm font-body-md tracking-wider">
-                    <span className="font-label-caps text-xs tracking-widest">
+                <div className="hidden absolute bottom-2 left-1/2 -translate-x-1/2 md:flex items-center gap-4 text-white/70 text-body-sm font-sans tracking-wider">
+                    <span className="font-sans text-xs tracking-widest">
                         {String(currentIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
                     </span>
                     <span>{images[currentIndex].label}</span>

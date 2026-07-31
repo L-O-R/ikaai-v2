@@ -63,12 +63,12 @@ const timelineData = [
 const Timeline = () => {
     return (
         <section className="py-section-mobile md:py-section-desktop  bg-surface">
-            <div className="container mx-auto">
+            <div className="container-size">
                 <div className="text-center mb-12 md:mb-16">
-                    <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-4">
+                    <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Our Journey
                     </span>
-                    <h2 className="font-headline-lg text-headline-md text-on-surface">
+                    <h2 className="font-display text-headline-md text-on-surface">
                         Timeline of Impact
                     </h2>
                     <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />
@@ -89,13 +89,13 @@ const Timeline = () => {
                                     {/* Content */}
                                     <div className={`pl-12 md:pl-0 md:w-1/2 ${isEven ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
                                         <div className="bg-surface rounded-2xl p-6 md:p-8 border border-border-neutral hover-lift transition-all duration-300">
-                                            <span className="font-headline-md text-headline-sm text-primary block">
+                                            <span className="font-display text-headline-sm text-primary block">
                                                 {item.year}
                                             </span>
-                                            <h3 className="font-headline-md text-lg text-on-surface mt-2">
+                                            <h3 className="font-display text-lg text-on-surface mt-2">
                                                 {item.title}
                                             </h3>
-                                            <p className="font-body-md text-body-md text-text-secondary mt-2 leading-relaxed">
+                                            <p className="font-sans text-body-md text-text-secondary mt-2 leading-relaxed">
                                                 {item.description}
                                             </p>
                                         </div>

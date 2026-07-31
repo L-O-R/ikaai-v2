@@ -53,7 +53,7 @@ export default function ProjectCarousel({ gallery, projectTitle }) {
                             {/* Caption overlay */}
                             {item.caption && (
                                 <div className="absolute bottom-0 left-0 right-0 p-6 pt-16 bg-linear-to-t from-black/70 via-black/20 to-transparent z-20">
-                                    <p className="font-body-md text-body-md text-white/90">
+                                    <p className="font-sans text-body-md text-white/90">
                                         {item.caption}
                                     </p>
                                 </div>

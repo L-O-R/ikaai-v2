@@ -27,12 +27,12 @@ const eventsData = [
 const LifeEvents = () => {
     return (
         <section className="py-section-mobile md:py-section-desktop  bg-warm-beige">
-            <div className="container mx-auto">
+            <div className="container-size">
                 <div className="text-center mb-12 md:mb-16">
-                    <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-4">
+                    <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Life in Action
                     </span>
-                    <h2 className="font-headline-lg text-headline-md text-on-surface">
+                    <h2 className="font-display text-headline-md text-on-surface">
                         Moments That Matter
                     </h2>
                     <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />
@@ -45,8 +45,8 @@ const LifeEvents = () => {
                                 <span className="material-symbols-outlined text-2xl text-primary">{event.icon}</span>
                             </div>
                             <div>
-                                <h3 className="font-headline-md text-lg text-on-surface mb-2">{event.title}</h3>
-                                <p className="font-body-md text-body-md text-text-secondary leading-relaxed">
+                                <h3 className="font-display text-lg text-on-surface mb-2">{event.title}</h3>
+                                <p className="font-sans text-body-md text-text-secondary leading-relaxed">
                                     {event.description}
                                 </p>
                             </div>

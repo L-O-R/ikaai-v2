@@ -22,24 +22,24 @@ const ServiceCard = ({ service, index }) => {
 
                     {/* Number Identifier */}
                     <div className="md:col-span-1 flex flex-col items-start">
-                        <span className="font-headline-md text-4xl md:text-5xl lg:text-6xl font-bold leading-none text-primary/30 group-hover:text-primary transition-all duration-300">
+                        <span className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-none text-primary/30 group-hover:text-primary transition-all duration-300">
                             {String(index + 1).padStart(2, '0')}
                         </span>
                     </div>
 
                     {/* Main Content */}
                     <div className="md:col-span-11 space-y-4">
-                        <h3 className="font-headline-md text-2xl md:text-3xl lg:text-4xl text-on-surface group-hover:text-primary transition-colors duration-300">
+                        <h3 className="font-display text-2xl md:text-3xl lg:text-4xl text-on-surface group-hover:text-primary transition-colors duration-300">
                             {service.title}
                         </h3>
 
                         {service.tagline && (
-                            <p className="font-label-caps text-body-sm font-bold uppercase tracking-wider text-earth-copper">
+                            <p className="font-sans text-body-sm font-bold uppercase tracking-wider text-earth-copper">
                                 {service.tagline}
                             </p>
                         )}
 
-                        <p className="font-body-md text-body-md text-text-secondary leading-relaxed max-w-3xl">
+                        <p className="font-sans text-body-md text-text-secondary leading-relaxed max-w-3xl">
                             {service.description}
                         </p>
 
@@ -61,7 +61,7 @@ const ServiceCard = ({ service, index }) => {
                 {allServices.length > 0 && (
                     <div className="border-t border-border-neutral pt-5 space-y-3">
                         <div className="flex items-center justify-between">
-                            <span className="font-label-caps text-xs uppercase tracking-widest text-text-muted font-bold block">
+                            <span className="font-sans text-xs uppercase tracking-widest text-text-muted font-bold block">
                                 Key Service Offerings ({allServices.length})
                             </span>
 
@@ -69,7 +69,7 @@ const ServiceCard = ({ service, index }) => {
                                 <button
                                     type="button"
                                     onClick={() => setIsExpanded(!isExpanded)}
-                                    className="font-label-caps text-xs uppercase tracking-wider text-primary font-bold hover:underline flex items-center gap-1 cursor-pointer"
+                                    className="font-sans text-xs uppercase tracking-wider text-primary font-bold hover:underline flex items-center gap-1 cursor-pointer"
                                 >
                                     {isExpanded ? (
                                         <>
@@ -91,7 +91,7 @@ const ServiceCard = ({ service, index }) => {
                             {visibleServices.map((item) => (
                                 <span
                                     key={item}
-                                    className="font-label-caps text-xs uppercase tracking-wider text-primary font-bold px-3.5 py-1.5 bg-surface-container-high border border-primary/30 rounded-full shadow-2xs"
+                                    className="font-sans text-xs uppercase tracking-wider text-primary font-bold px-3.5 py-1.5 bg-surface-container-high border border-primary/30 rounded-full shadow-2xs"
                                 >
                                     {item}
                                 </span>
@@ -101,7 +101,7 @@ const ServiceCard = ({ service, index }) => {
                                 <button
                                     type="button"
                                     onClick={() => setIsExpanded(true)}
-                                    className="font-label-caps text-xs uppercase tracking-wider text-on-surface font-semibold px-3.5 py-1.5 bg-warm-beige border border-border-neutral rounded-full hover:border-primary hover:text-primary transition-all cursor-pointer"
+                                    className="font-sans text-xs uppercase tracking-wider text-on-surface font-semibold px-3.5 py-1.5 bg-warm-beige border border-border-neutral rounded-full hover:border-primary hover:text-primary transition-all cursor-pointer"
                                 >
                                     +{remainingCount} More
                                 </button>
@@ -113,14 +113,14 @@ const ServiceCard = ({ service, index }) => {
                 {/* Bottom Section: Deliverables */}
                 {service.deliverables && service.deliverables.length > 0 && (
                     <div className="border-t border-border-neutral pt-4">
-                        <span className="font-label-caps text-xs uppercase tracking-widest text-text-muted block mb-2 font-bold">
+                        <span className="font-sans text-xs uppercase tracking-widest text-text-muted block mb-2 font-bold">
                             Key Deliverables
                         </span>
                         <div className="flex flex-wrap gap-2">
                             {service.deliverables.map((item) => (
                                 <span
                                     key={item}
-                                    className="font-body-md text-xs text-on-surface bg-surface-container-low font-medium px-3 py-1 rounded-md border border-border-neutral flex items-center gap-1.5"
+                                    className="font-sans text-xs text-on-surface bg-surface-container-low font-medium px-3 py-1 rounded-md border border-border-neutral flex items-center gap-1.5"
                                 >
                                     <span className="material-symbols-outlined text-sm text-primary font-bold">
                                         check

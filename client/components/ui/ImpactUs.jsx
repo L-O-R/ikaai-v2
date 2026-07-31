@@ -80,7 +80,7 @@ const ImpactUs = () => {
   if (isLoading) {
     return (
       <div ref={containerRef} className="w-full py-16 z-10">
-        <div className="container mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center ">
+        <div className="container-size grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center ">
           {[0, 1, 2, 3].map((item) => (
             <div key={item} className="flex flex-col gap-3 items-center">
               <div className="h-14 w-24 rounded-xl bg-surface-container-high animate-pulse" />
@@ -95,7 +95,7 @@ const ImpactUs = () => {
   if (error || stats.length === 0) {
     return (
       <div ref={containerRef} className="w-full py-16 z-10">
-        <p className="font-body-md text-body-md text-text-muted text-center px-4">
+        <p className="font-sans text-body-md text-text-muted text-center px-4">
           {error || "Impact statistics are not available right now."}
         </p>
       </div>
@@ -104,14 +104,14 @@ const ImpactUs = () => {
 
   return (
     <div ref={containerRef} className="w-full py-16 z-10">
-      <div className="container mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center ">
+      <div className="container-size grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center ">
         {stats.map((stat, idx) => (
           <div key={stat.label} className="flex flex-col gap-1">
-            <span className="font-statistic-num  font-semibold text-statistic-num text-primary">
+            <span className="font-display  font-semibold text-statistic-num text-primary">
               {counts[idx]}
               {stat.suffix}
             </span>
-            <span className="font-label-caps text-sm font-semibold md:text-label-caps uppercase tracking-widest text-text-muted">
+            <span className="font-sans text-sm font-semibold md:text-label-caps uppercase tracking-widest text-text-muted">
               {stat.label}
             </span>
           </div>

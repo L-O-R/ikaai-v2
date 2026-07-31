@@ -80,7 +80,7 @@ const StoriesPage = () => {
       <PageHero {...heroData.stories} />
 
       <section className="bg-warm-beige py-8">
-        <div className="container mx-auto">
+        <div className="container-size">
           <div className="relative max-w-xl">
             <span className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <span className="material-symbols-outlined text-text-muted text-xl">
@@ -92,14 +92,14 @@ const StoriesPage = () => {
               placeholder="Search stories..."
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
-              className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-border-neutral bg-surface-container-low focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 font-body-md text-body-md text-on-surface placeholder:text-text-muted"
+              className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-border-neutral bg-surface-container-low focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 font-sans text-body-md text-on-surface placeholder:text-text-muted"
             />
           </div>
         </div>
       </section>
 
       <section className="py-section-mobile md:py-section-desktop">
-        <div className="container mx-auto">
+        <div className="container-size">
           {isLoading && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {loadingCards.map((key) => (
@@ -112,13 +112,13 @@ const StoriesPage = () => {
           )}
 
           {!isLoading && error && (
-            <p className="font-body-md text-body-md text-text-secondary">
+            <p className="font-sans text-body-md text-text-secondary">
               {error}
             </p>
           )}
 
           {!isLoading && !error && blogs.length === 0 && (
-            <p className="font-body-md text-body-md text-text-secondary">
+            <p className="font-sans text-body-md text-text-secondary">
               No stories found.
             </p>
           )}
@@ -138,7 +138,7 @@ const StoriesPage = () => {
                       key={page}
                       type="button"
                       onClick={() => setCurrentPage(page)}
-                      className={`h-10 min-w-10 rounded-full border px-4 font-body-md text-body-sm transition-colors ${currentPage === page
+                      className={`h-10 min-w-10 rounded-full border px-4 font-sans text-body-sm transition-colors ${currentPage === page
                         ? "border-primary bg-primary text-white"
                         : "border-border-neutral bg-surface-container-low text-on-surface hover:bg-surface-container-high"
                         }`}

@@ -10,12 +10,12 @@ const coreValues = [
 const MissionVision = () => {
     return (
         <section className="py-section-mobile md:py-section-desktop bg-warm-beige">
-            <div className="container mx-auto px-gutter">
+            <div className="container-size px-gutter">
                 <div className="text-center mb-12 md:mb-16">
-                    <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-4">
+                    <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Our Compass
                     </span>
-                    <h2 className="font-headline-lg text-headline-lg text-on-surface">
+                    <h2 className="font-display text-headline-lg text-on-surface">
                         Mission &amp; Vision
                     </h2>
                 </div>
@@ -25,8 +25,8 @@ const MissionVision = () => {
                         <div className="w-14 h-14 rounded-full bg-primary-container/10 flex items-center justify-center mb-6 shrink-0">
                             <span className="material-symbols-outlined text-3xl text-primary">flag</span>
                         </div>
-                        <h3 className="font-headline-md text-headline-sm text-on-surface mb-4">Our Mission</h3>
-                        <p className="font-body-md text-body-md text-text-secondary leading-relaxed">
+                        <h3 className="font-display text-headline-sm text-on-surface mb-4">Our Mission</h3>
+                        <p className="font-sans text-body-md text-text-secondary leading-relaxed">
                             Our mission is to partner with governments, development organisations,
                             corporates, research institutions, and communities to deliver
                             innovative research, AI-enabled analytics, advisory, monitoring &amp;
@@ -42,15 +42,15 @@ const MissionVision = () => {
                         <div className="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center mb-6 shrink-0">
                             <span className="material-symbols-outlined text-3xl text-white">visibility</span>
                         </div>
-                        <h3 className="font-headline-md text-headline-sm text-white mb-4">Our Vision</h3>
-                        <p className="font-body-lg text-body-lg text-white/90 leading-relaxed">
+                        <h3 className="font-display text-headline-sm text-white mb-4">Our Vision</h3>
+                        <p className="font-sans text-body-lg text-white/90 leading-relaxed">
                             To be a trusted global partner in advancing evidence-based governance,
                             sustainable development, and social impact through research,
                             innovation, technology, and advisory solutions.
                         </p>
                         <div className="mt-auto pt-8 flex items-center gap-3 text-white/70">
                             <span className="material-symbols-outlined text-[20px]!" aria-hidden="true">public</span>
-                            <span className="font-label-caps text-label-caps uppercase tracking-widest">
+                            <span className="font-sans text-label-caps uppercase tracking-widest">
                                 Guided by evidence. Driven by impact.
                             </span>
                         </div>
@@ -67,7 +67,7 @@ const MissionVision = () => {
                             <span className="material-symbols-outlined text-headline-sm! px-4 py-2 border border-border-neutral/60 rounded-sm group-hover:border-white group-hover:text-white group-hover:bg-primary transition-all duration-300 shrink-0">
                                 {value.icon}
                             </span>
-                            <span className="font-label-caps text-label-caps uppercase text-on-surface tracking-widest leading-snug cursor-default">
+                            <span className="font-sans text-label-caps uppercase text-on-surface tracking-widest leading-snug cursor-default">
                                 {value.label}
                             </span>
                         </div>

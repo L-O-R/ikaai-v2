@@ -49,7 +49,7 @@ const ContactForm = () => {
 
   return (
     <div className="bg-surface-container-low rounded-2xl p-6 md:p-8 lg:p-10 border border-border-neutral">
-      <h3 className="font-headline-md text-headline-sm text-on-surface mb-6">
+      <h3 className="font-display text-headline-sm text-on-surface mb-6">
         Send Us a Message
       </h3>
 
@@ -60,16 +60,16 @@ const ContactForm = () => {
               check_circle
             </span>
           </div>
-          <h4 className="font-headline-md text-xl text-on-surface mb-2">
+          <h4 className="font-display text-xl text-on-surface mb-2">
             Thank You!
           </h4>
-          <p className="font-body-md text-body-md text-text-secondary">
+          <p className="font-sans text-body-md text-text-secondary">
             Your message has been sent. We'll get back to you within 24 hours.
           </p>
           <button
             type="button"
             onClick={() => setIsSubmitted(false)}
-            className="mt-6 font-label-caps text-label-caps uppercase text-primary hover:text-primary/80 transition-colors"
+            className="mt-6 font-sans text-label-caps uppercase text-primary hover:text-primary/80 transition-colors"
           >
             Send Another Message
           </button>
@@ -77,14 +77,14 @@ const ContactForm = () => {
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5">
           {submitError && (
-            <div className="rounded-xl border border-error-container bg-error-container/30 px-4 py-3 font-body-md text-body-md text-on-error-container">
+            <div className="rounded-xl border border-error-container bg-error-container/30 px-4 py-3 font-sans text-body-md text-on-error-container">
               {submitError}
             </div>
           )}
           <div>
             <label
               htmlFor="name"
-              className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mb-2"
+              className="font-sans text-label-caps uppercase text-text-muted tracking-widest block mb-2"
             >
               Full Name
             </label>
@@ -95,11 +95,11 @@ const ContactForm = () => {
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-surface border border-border-neutral rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors font-body-md text-body-md text-on-surface placeholder:text-text-muted/50"
+              className="w-full px-4 py-3 bg-surface border border-border-neutral rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors font-sans text-body-md text-on-surface placeholder:text-text-muted/50"
               placeholder="Your full name"
             />
             {getFieldError(formErrors, "name") && (
-              <p className="mt-2 font-body-md text-sm text-error">
+              <p className="mt-2 font-sans text-sm text-error">
                 {getFieldError(formErrors, "name")}
               </p>
             )}
@@ -108,7 +108,7 @@ const ContactForm = () => {
           <div>
             <label
               htmlFor="email"
-              className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mb-2"
+              className="font-sans text-label-caps uppercase text-text-muted tracking-widest block mb-2"
             >
               Email Address
             </label>
@@ -119,11 +119,11 @@ const ContactForm = () => {
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-surface border border-border-neutral rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors font-body-md text-body-md text-on-surface placeholder:text-text-muted/50"
+              className="w-full px-4 py-3 bg-surface border border-border-neutral rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors font-sans text-body-md text-on-surface placeholder:text-text-muted/50"
               placeholder="you@example.com"
             />
             {getFieldError(formErrors, "email") && (
-              <p className="mt-2 font-body-md text-sm text-error">
+              <p className="mt-2 font-sans text-sm text-error">
                 {getFieldError(formErrors, "email")}
               </p>
             )}
@@ -132,7 +132,7 @@ const ContactForm = () => {
           <div>
             <label
               htmlFor="subject"
-              className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mb-2"
+              className="font-sans text-label-caps uppercase text-text-muted tracking-widest block mb-2"
             >
               Subject
             </label>
@@ -142,7 +142,7 @@ const ContactForm = () => {
               required
               value={formData.subject}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-surface border border-border-neutral rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors font-body-md text-body-md text-on-surface appearance-none"
+              className="w-full px-4 py-3 bg-surface border border-border-neutral rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors font-sans text-body-md text-on-surface appearance-none"
             >
               <option value="">Select a subject</option>
               <option value="Research Partnership">Research Partnership</option>
@@ -152,7 +152,7 @@ const ContactForm = () => {
               <option value="General Inquiry">General Inquiry</option>
             </select>
             {getFieldError(formErrors, "subject") && (
-              <p className="mt-2 font-body-md text-sm text-error">
+              <p className="mt-2 font-sans text-sm text-error">
                 {getFieldError(formErrors, "subject")}
               </p>
             )}
@@ -161,7 +161,7 @@ const ContactForm = () => {
           <div>
             <label
               htmlFor="message"
-              className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mb-2"
+              className="font-sans text-label-caps uppercase text-text-muted tracking-widest block mb-2"
             >
               Message
             </label>
@@ -172,11 +172,11 @@ const ContactForm = () => {
               required
               value={formData.message}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-surface border border-border-neutral rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors font-body-md text-body-md text-on-surface placeholder:text-text-muted/50 resize-none"
+              className="w-full px-4 py-3 bg-surface border border-border-neutral rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors font-sans text-body-md text-on-surface placeholder:text-text-muted/50 resize-none"
               placeholder="Tell us how we can help..."
             />
             {getFieldError(formErrors, "message") && (
-              <p className="mt-2 font-body-md text-sm text-error">
+              <p className="mt-2 font-sans text-sm text-error">
                 {getFieldError(formErrors, "message")}
               </p>
             )}
@@ -185,7 +185,7 @@ const ContactForm = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full inline-flex items-center justify-center px-8 py-4 bg-primary text-on-primary font-label-caps text-label-caps uppercase rounded-xl hover:bg-primary-container transition-colors shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full inline-flex items-center justify-center px-8 py-4 bg-primary text-on-primary font-sans text-label-caps uppercase rounded-xl hover:bg-primary-container transition-colors shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
           >
             {isSubmitting ? (
               <>

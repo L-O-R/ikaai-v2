@@ -35,15 +35,15 @@ const Projects = () => {
             className="py-section-mobile md:pt-section-desktop  bg-warm-beige"
             id="projects-section"
         >
-            <div className="container mx-auto">
+            <div className="container-size">
                 <div className="mb-12">
-                    <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
+                    <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-3">
                         Our Projects
                     </span>
-                    <h2 className="font-headline-lg text-headline-lg text-on-surface">
+                    <h2 className="font-display text-headline-lg text-on-surface">
                         Making Impact Across India
                     </h2>
-                    <p className="font-body-md text-body-md text-text-secondary max-w-xl mt-4">
+                    <p className="font-sans text-body-md text-text-secondary max-w-xl mt-4">
                         From rural development to urban sanitation, see how we are helping
                         communities thrive.
                     </p>
@@ -59,7 +59,7 @@ const Projects = () => {
                         ))}
                     </div>
                 ) : error ? (
-                    <p className="font-body-md text-body-md text-text-muted">{error}</p>
+                    <p className="font-sans text-body-md text-text-muted">{error}</p>
                 ) : featured.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                         {featured.map((project) => (
@@ -69,7 +69,7 @@ const Projects = () => {
                         ))}
                     </div>
                 ) : (
-                    <p className="font-body-md text-body-md text-text-muted">
+                    <p className="font-sans text-body-md text-text-muted">
                         Featured projects will appear here once they are published.
                     </p>
                 )}

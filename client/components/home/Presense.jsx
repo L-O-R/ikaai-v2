@@ -350,10 +350,10 @@ const Presence = memo(() => {
             {stateEntries.map(({ name, count }) => (
                 <div key={name} className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-primary" />
-                    <span className="font-body-md text-body-md text-on-surface">
+                    <span className="font-sans text-body-md text-on-surface">
                         {name.charAt(0).toUpperCase() + name.slice(1)}
                     </span>
-                    <span className="font-label-caps text-label-caps text-text-muted">
+                    <span className="font-sans text-label-caps text-text-muted">
                         ({count})
                     </span>
                 </div>
@@ -368,41 +368,41 @@ const Presence = memo(() => {
             className="py-section-mobile md:py-section-desktop bg-surface overflow-hidden"
             id="presence-section"
         >
-            <div className="container mx-auto">
+            <div className="container-size">
                 <div className="flex flex-col gap-10 md:gap-14 items-start max-w-4xl mx-auto">
                     {/* Text block */}
                     <div className="space-y-6 w-full text-center">
                         <div>
-                            <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
+                            <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-3">
                                 Research Network
                             </span>
-                            <h2 className="font-headline-lg text-headline-lg text-on-surface">
+                            <h2 className="font-display text-headline-lg text-on-surface">
                                 Connecting communities through evidence, research, and action across India.
                             </h2>
                         </div>
 
                         <div className="grid grid-cols-3 gap-4 pt-2 max-w-md mx-auto">
                             <div>
-                                <span className="font-statistic-num text-4xl text-primary block">
+                                <span className="font-display text-4xl text-primary block">
                                     {stateCount}
                                 </span>
-                                <span className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mt-1">
+                                <span className="font-sans text-label-caps uppercase text-text-muted tracking-widest block mt-1">
                                     States
                                 </span>
                             </div>
                             <div>
-                                <span className="font-statistic-num text-4xl text-primary block">
+                                <span className="font-display text-4xl text-primary block">
                                     {projectCount}
                                 </span>
-                                <span className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mt-1">
+                                <span className="font-sans text-label-caps uppercase text-text-muted tracking-widest block mt-1">
                                     Projects
                                 </span>
                             </div>
                             <div>
-                                <span className="font-statistic-num text-4xl text-primary block">
+                                <span className="font-display text-4xl text-primary block">
                                     {yearsCount}+
                                 </span>
-                                <span className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mt-1">
+                                <span className="font-sans text-label-caps uppercase text-text-muted tracking-widest block mt-1">
                                     Years
                                 </span>
                             </div>
@@ -410,7 +410,7 @@ const Presence = memo(() => {
 
                         <Link
                             href="/work"
-                            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-on-primary font-label-caps text-label-caps uppercase rounded-xl hover:bg-primary-container transition-colors"
+                            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-on-primary font-sans text-label-caps uppercase rounded-xl hover:bg-primary-container transition-colors"
                         >
                             Explore Our Work
                             <span className="material-symbols-outlined text-sm">
@@ -424,7 +424,7 @@ const Presence = memo(() => {
                         {isLoading ? (
                             <div className="aspect-[5/4] rounded-2xl bg-surface-container-high animate-pulse" />
                         ) : error ? (
-                            <div className="rounded-xl border border-error-container bg-error-container/30 px-4 py-3 font-body-md text-body-md text-on-error-container">
+                            <div className="rounded-xl border border-error-container bg-error-container/30 px-4 py-3 font-sans text-body-md text-on-error-container">
                                 {error}
                             </div>
                         ) : isMobile ? (
@@ -436,10 +436,10 @@ const Presence = memo(() => {
                                     ref={tooltipRef}
                                     className="absolute hidden pointer-events-none z-20 bg-inverse-surface text-inverse-on-surface rounded-xl px-4 py-3 min-w-[140px] shadow-lg"
                                 >
-                                    <p id="tooltip-state" className="font-headline-md text-sm text-inverse-on-surface" />
+                                    <p id="tooltip-state" className="font-display text-sm text-inverse-on-surface" />
                                     <p
                                         id="tooltip-projects"
-                                        className="font-label-caps text-[10px] uppercase tracking-widest text-inverse-on-surface/60 mt-1"
+                                        className="font-sans text-[10px] uppercase tracking-widest text-inverse-on-surface/60 mt-1"
                                     />
                                 </div>
                             </div>

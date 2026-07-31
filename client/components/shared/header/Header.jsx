@@ -7,33 +7,6 @@ import { usePathname } from 'next/navigation'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import Dropdown from './DropDown';
 import MobileAccordion from './MobileAccordian';
-import { pageConfig } from './appconfig';
-
-/**
- * Helper utility to match patterns like "/work/*" against dynamic current pathnames
- */
-const getPageConfig = (pathname) => {
-    // 1. Check for immediate static exact matches
-    if (pageConfig[pathname]) {
-        return pageConfig[pathname];
-    }
-
-    // 2. Loop through config to find and evaluate wildcard '*' strings
-    const configKeys = Object.keys(pageConfig);
-    for (const key of configKeys) {
-        if (key.includes('*')) {
-            const regexString = `^${key.replace(/\/+/g, '\\/').replace(/\*/g, '.*')}$`;
-            const regex = new RegExp(regexString);
-
-            if (regex.test(pathname)) {
-                return pageConfig[key];
-            }
-        }
-    }
-
-    // Fallback default theme if route is completely absent from config mappings
-    return { header: "light" };
-};
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -41,10 +14,6 @@ const Header = () => {
     const [mobileOpenAccordion, setMobileOpenAccordion] = useState(null)
     const pathname = usePathname()
     const navRef = useRef(null);
-
-    /* FIX: Evaluates the current dynamic pathname against wildcard definitions */
-    const currentConfig = getPageConfig(pathname);
-    const headerTheme = currentConfig?.header ?? "light";
 
     useEffect(() => {
         setIsMobileMenuOpen(false)
@@ -89,12 +58,14 @@ const Header = () => {
 
     return (
         <header>
-            <nav className={`absolute top-0 left-0 w-full max-w-full z-50 transition-all duration-300 ease-in-out py-5 ${headerTheme === 'dark' ? 'text-on-surface' : 'text-white'} overflow-x-clip`} id="main-nav">
+
+            <nav className="bg-warm-beige border-b border-border-neutral/50 shadow-xs fixed top-0 left-0 w-full max-w-full z-50 transition-all duration-300 ease-in-out py-4 text-on-surface overflow-x-clip" id="main-nav">
                 <div className="flex justify-between items-center w-full max-w-container-max mx-auto relative z-10">
+
                     {/* Logo */}
                     <Link className="flex items-center justify-start gap-2 shrink-0" href="/" onClick={closeMobileMenu}>
                         <Image
-                            className="h-10 w-auto md:h-14 lg:h-16 object-contain"
+                            className="h-10 w-auto md:h-12 lg:h-14 object-contain"
                             alt="IKAAI India Logo"
                             src="/logo.png"
                             width={500}
@@ -104,7 +75,7 @@ const Header = () => {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden lg:flex items-center gap-5 xl:gap-8 flex-wrap justify-end " ref={navRef}>
+                    <div className="hidden lg:flex items-center gap-5 xl:gap-8 flex-wrap justify-end" ref={navRef}>
                         {navLinks.map((link, index) => {
                             if (link.type === 'dropdown') {
                                 const isDropdownActive = link.items?.some(item => pathname === item.href);
@@ -116,7 +87,7 @@ const Header = () => {
                                         isOpen={openDropdown === index}
                                         toggle={() => toggleDropdown(index)}
                                         close={closeDropdown}
-                                        headerTheme={headerTheme}
+                                        headerTheme="dark" // Forces the dropdown to adapt to a light/neutral header style
                                         isActive={isDropdownActive}
                                     />
                                 )
@@ -126,9 +97,9 @@ const Header = () => {
                                 <Link
                                     key={link.label}
                                     href={link.href}
-                                    className={`nav-link font-label-caps text-label-caps uppercase border-b-2 ${isActive
-                                        ? (headerTheme === 'dark' ? 'text-primary border-primary' : 'text-white border-white')
-                                        : (headerTheme === 'dark' ? 'text-on-surface hover:text-on-surface/80 border-transparent hover:border-on-surface/60' : 'text-white hover:text-white/80 border-transparent hover:border-white/60')
+                                    className={`nav-link font-sans text-label-caps uppercase border-b-2 py-1 ${isActive
+                                        ? 'text-primary border-primary'
+                                        : 'text-on-surface hover:text-primary border-transparent hover:border-primary/50'
                                         } transition-colors whitespace-nowrap`}
                                 >
                                     {link.label}
@@ -137,25 +108,25 @@ const Header = () => {
                         })}
                     </div>
 
-                    {/* Mobile Menu Toggle */}
+                    {/* Mobile Menu Toggle Button */}
                     <button
                         type="button"
-                        className="lg:hidden relative z-50 w-12 h-12 flex items-center justify-center focus:outline-none group rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 shrink-0"
+                        className="lg:hidden relative z-50 w-11 h-11 flex items-center justify-center focus:outline-none group rounded-full bg-primary/10 border border-primary/15 hover:bg-primary/20 transition-all duration-300 shrink-0"
                         onClick={toggleMobileMenu}
                         aria-label="Toggle menu"
                         aria-expanded={isMobileMenuOpen}
                     >
                         <div className="relative w-6 h-5">
                             <span
-                                className={`absolute left-0 w-6 h-0.5 bg-white rounded-full transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] origin-center ${isMobileMenuOpen ? 'top-2 rotate-45 w-6' : 'top-0 rotate-0'
+                                className={`absolute left-0 w-6 h-0.5 bg-primary rounded-full transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] origin-center ${isMobileMenuOpen ? 'top-2 rotate-45 w-6' : 'top-0 rotate-0'
                                     }`}
                             />
                             <span
-                                className={`absolute left-1/2 -translate-x-1/2 w-4 h-0.5 bg-white/80 rounded-full transition-all duration-400 ease-out ${isMobileMenuOpen ? 'opacity-0 scale-x-0 w-0' : 'opacity-100 scale-x-100 top-2'
+                                className={`absolute left-1/2 -translate-x-1/2 w-4 h-0.5 bg-primary/80 rounded-full transition-all duration-400 ease-out ${isMobileMenuOpen ? 'opacity-0 scale-x-0 w-0' : 'opacity-100 scale-x-100 top-2'
                                     }`}
                             />
                             <span
-                                className={`absolute left-0 w-6 h-0.5 bg-white rounded-full transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] origin-center ${isMobileMenuOpen ? 'top-2 -rotate-45 w-6' : 'top-4 rotate-0'
+                                className={`absolute left-0 w-6 h-0.5 bg-primary rounded-full transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] origin-center ${isMobileMenuOpen ? 'top-2 -rotate-45 w-6' : 'top-4 rotate-0'
                                     }`}
                             />
                         </div>
@@ -172,10 +143,10 @@ const Header = () => {
                         className={`absolute inset-0 bg-surface/95 backdrop-blur-md transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
                             }`}
                     >
-                        <div className="relative flex flex-col h-full px-6 pt-20 pb-8 overflow-y-auto">
+                        <div className="relative flex flex-col h-full px-6 pt-24 pb-8 overflow-y-auto">
                             <button
                                 type="button"
-                                className="absolute top-4 right-4 lg:hidden z-50 w-12 h-12 flex items-center justify-center focus:outline-none group rounded-full bg-surface-container-low hover:bg-surface-container transition-all duration-300 border border-border-neutral"
+                                className="absolute top-4 right-4 lg:hidden z-50 w-11 h-11 flex items-center justify-center focus:outline-none group rounded-full bg-surface-container-low hover:bg-surface-container transition-all duration-300 border border-border-neutral"
                                 onClick={toggleMobileMenu}
                                 aria-label="Close menu"
                             >
@@ -203,7 +174,7 @@ const Header = () => {
                                         <Link
                                             key={link.label}
                                             href={link.href}
-                                            className={`block py-4 font-display-lg text-2xl transition-colors border-b border-border-neutral last:border-0 ${isActive ? 'text-primary font-medium' : 'text-on-surface hover:text-primary'
+                                            className={`block py-4 font-display text-2xl transition-colors border-b border-border-neutral last:border-0 ${isActive ? 'text-primary font-medium' : 'text-on-surface hover:text-primary'
                                                 }`}
                                             onClick={closeMobileMenu}
                                         >

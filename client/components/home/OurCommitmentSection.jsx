@@ -112,7 +112,7 @@ export default function OurCommitmentSection() {
             {/* Fine texture alignment overlay */}
             <div className="absolute inset-0 pointer-events-none opacity-[0.02] bg-[radial-gradient(#1b1b1b_1px,transparent_1px)] [background-size:16px_16px]" />
 
-            <div className="container mx-auto px-gutter relative z-10">
+            <div className="container-size px-gutter relative z-10">
 
                 {/* Header Row: Flex container to place navigation buttons adjacent to the header */}
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-stack-lg gap-6">

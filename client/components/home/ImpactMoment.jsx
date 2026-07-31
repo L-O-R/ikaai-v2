@@ -18,17 +18,17 @@ export default function ImpactMoment() {
                     <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/50 to-black/20" />
 
                     {/* Content */}
-                    <div className="container mx-auto relative z-10 flex h-full items-end">
+                    <div className="container-size relative z-10 flex h-full items-end">
                         <div className="max-w-4xl">
-                            <p className="mb-stack-md font-label-caps text-label-caps uppercase tracking-[0.2em] text-primary-fixed">
+                            <p className="mb-stack-md font-sans text-label-caps uppercase tracking-[0.2em] text-primary-fixed">
                                 Beyond Research
                             </p>
 
-                            <h2 className="font-display-lg text-headline-lg text-on-primary">
+                            <h2 className="font-display text-headline-lg text-on-primary">
                                 Every insight begins with people.
                             </h2>
 
-                            <p className="mt-stack-lg max-w-xl font-body-lg text-body-lg text-surface/90 space-y-2 flex flex-col">
+                            <p className="mt-stack-lg max-w-xl font-sans text-body-lg text-surface/90 space-y-2 flex flex-col">
                                 <span>Behind every statistic is a story.</span>
                                 <span>Behind every household is a lived reality.</span>
                                 <span>Behind every community is the opportunity to create lasting change.</span>

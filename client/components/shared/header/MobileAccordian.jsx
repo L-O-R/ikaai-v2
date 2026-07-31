@@ -7,9 +7,8 @@ const MobileAccordion = ({ label, items, isOpen, toggle, onNavigate, isActive })
         <div className="border-b border-border-neutral last:border-0">
             <button
                 onClick={toggle}
-                className={`w-full flex items-center justify-between py-4 font-display-lg text-2xl transition-colors focus:outline-none ${
-                    isActive ? 'text-primary font-medium' : 'text-on-surface hover:text-primary'
-                }`}
+                className={`w-full flex items-center justify-between py-4 font-display text-2xl transition-colors focus:outline-none ${isActive ? 'text-primary font-medium' : 'text-on-surface hover:text-primary'
+                    }`}
             >
                 {label}
                 <span className={`material-symbols-outlined text-2xl transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
@@ -27,9 +26,8 @@ const MobileAccordion = ({ label, items, isOpen, toggle, onNavigate, isActive })
                             <NavItemLink
                                 key={item.label}
                                 item={item}
-                                className={`block font-body-lg text-body-lg transition-colors ${
-                                    isItemActive ? 'text-primary font-medium' : 'text-on-surface/70 hover:text-primary'
-                                }`}
+                                className={`block font-sans text-body-lg transition-colors ${isItemActive ? 'text-primary font-medium' : 'text-on-surface/70 hover:text-primary'
+                                    }`}
                                 onNavigate={onNavigate}
                             />
                         )

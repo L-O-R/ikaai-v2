@@ -24,7 +24,7 @@ const WorkGrid = ({
 }) => {
   return (
     <section className="bg-warm-beige ">
-      <div className="pb-section-mobile lg:pb-section-desktop container mx-auto ">
+      <div className="pb-section-mobile lg:pb-section-desktop container-size ">
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-12">
             {loadingCards.map((item) => (
@@ -39,7 +39,7 @@ const WorkGrid = ({
             <span className="material-symbols-outlined text-6xl text-error block mb-4">
               error
             </span>
-            <p className="font-body-lg text-body-lg text-text-secondary">
+            <p className="font-sans text-body-lg text-text-secondary">
               {error}
             </p>
           </div>
@@ -56,13 +56,13 @@ const WorkGrid = ({
             <span className="material-symbols-outlined text-6xl text-text-muted block mb-4">
               search_off
             </span>
-            <p className="font-body-lg text-body-lg text-text-secondary">
+            <p className="font-sans text-body-lg text-text-secondary">
               No projects found matching your search.
             </p>
             <button
               type="button"
               onClick={clearSearch}
-              className="mt-4 font-label-caps text-label-caps uppercase text-primary hover:text-primary/80 transition-colors"
+              className="mt-4 font-sans text-label-caps uppercase text-primary hover:text-primary/80 transition-colors"
             >
               Clear Search
             </button>
@@ -77,7 +77,7 @@ const WorkGrid = ({
               type="button"
               onClick={() => goToPage(currentPage - 1)}
               disabled={currentPage === 1}
-              className={`px-4 py-2 rounded-xl border border-border-neutral font-label-caps text-label-caps transition-all duration-300 flex items-center gap-1 ${currentPage === 1
+              className={`px-4 py-2 rounded-xl border border-border-neutral font-sans text-label-caps transition-all duration-300 flex items-center gap-1 ${currentPage === 1
                 ? "opacity-40 cursor-not-allowed text-text-muted"
                 : "hover:bg-primary hover:text-on-primary hover:border-primary text-on-surface"
                 }`}
@@ -95,7 +95,7 @@ const WorkGrid = ({
                   type="button"
                   key={pageNum}
                   onClick={() => goToPage(pageNum)}
-                  className={`w-10 h-10 rounded-full font-body-md text-body-md transition-all duration-300 ${currentPage === pageNum
+                  className={`w-10 h-10 rounded-full font-sans text-body-md transition-all duration-300 ${currentPage === pageNum
                     ? "bg-primary text-on-primary shadow-md"
                     : "text-on-surface hover:bg-surface-container-high"
                     }`}
@@ -110,7 +110,7 @@ const WorkGrid = ({
               type="button"
               onClick={() => goToPage(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className={`px-4 py-2 rounded-xl border border-border-neutral font-label-caps text-label-caps transition-all duration-300 flex items-center gap-1 ${currentPage === totalPages
+              className={`px-4 py-2 rounded-xl border border-border-neutral font-sans text-label-caps transition-all duration-300 flex items-center gap-1 ${currentPage === totalPages
                 ? "opacity-40 cursor-not-allowed text-text-muted"
                 : "hover:bg-primary hover:text-on-primary hover:border-primary text-on-surface"
                 }`}

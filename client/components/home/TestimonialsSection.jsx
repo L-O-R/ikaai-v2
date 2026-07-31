@@ -61,15 +61,15 @@ const TestimonialsSection = () => {
 
     return (
         <section
-            className="overflow-hidden py-section-mobile md:py-section-desktop  bg-warm-beige"
+            className="overflow-hidden py-section-mobile md:py-section-desktop bg-warm-beige"
             id="testimonial-section"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
-            <div className="container mx-auto">
+            <div className="container-size">
 
-                {/* Slider Viewport — overflow-visible so text doesn't get cut */}
-                <div className="relative overflow-visible">
+                {/* Viewport wrapper with overflow-hidden */}
+                <div className="relative overflow-hidden">
                     <div
                         className="flex transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]"
                         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -77,25 +77,25 @@ const TestimonialsSection = () => {
                         {testimonials.map((testimonial) => (
                             <div
                                 key={testimonial.id}
-                                className="min-w-full shrink-0 px-0"
+                                className="w-full shrink-0 px-4"
                             >
                                 {/* Quote Content */}
                                 <div className="max-w-5xl mx-auto">
-                                    <span className="material-symbols-outlined text-5xl md:text-6xl text-primary/20 mb-4 block">
+                                    <span className="material-symbols-outlined text-headline-lg text-primary/20 mb-3 sm:mb-4 block">
                                         format_quote
                                     </span>
-                                    <blockquote className="font-headline-sm text-headline-sm font-normal text-on-surface leading-[1.2] tracking-tight whitespace-normal wrap-break-word">
+                                    <blockquote className="font-display text-headline-sm font-normal text-on-surface leading-[1.2] tracking-tight whitespace-normal wrap-break-word">
                                         {testimonial.quote}
                                     </blockquote>
-                                    <cite className="not-italic flex items-center gap-4 mt-8">
-                                        <div className="w-14 h-14 md:w-14 md:h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xl md:text-2xl font-bold shrink-0">
+                                    <cite className="not-italic flex items-center gap-3 sm:gap-4 mt-6 sm:mt-8">
+                                        <div className="w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center text-body-lg font-bold shrink-0">
                                             {testimonial.initials}
                                         </div>
                                         <div>
-                                            <span className="font-headline-sm text-xl md:text-2xl font-semibold text-on-surface block">
+                                            <span className="font-display text-body-lg font-semibold text-on-surface block">
                                                 {testimonial.authorName}
                                             </span>
-                                            <span className="font-label-caps text-xs md:text-sm uppercase text-text-secondary tracking-widest">
+                                            <span className="font-sans text-label-caps uppercase text-text-secondary">
                                                 {testimonial.authorTitle}
                                             </span>
                                         </div>
@@ -107,14 +107,14 @@ const TestimonialsSection = () => {
                 </div>
 
                 {/* Navigation Dots */}
-                <div className="flex justify-center gap-2 mt-12 md:mt-16">
+                <div className="flex justify-center gap-2 mt-10 sm:mt-12 md:mt-16">
                     {testimonials.map((_, index) => (
                         <button
                             key={index}
                             onClick={() => goToSlide(index)}
-                            className={`w-2 h-2 rounded-full transition-all duration-500 ease-in-out cursor-pointer ${currentIndex === index
-                                ? 'w-12 h-2.5 bg-primary cursor-default'
-                                : 'bg-border-neutral hover:bg-text-muted'
+                            className={`h-2 rounded-full transition-all duration-500 ease-in-out cursor-pointer ${currentIndex === index
+                                ? 'w-10 sm:w-12 bg-primary cursor-default'
+                                : 'w-2 bg-border-neutral hover:bg-text-muted'
                                 }`}
                             aria-label={`Go to testimonial ${index + 1}`}
                         />

@@ -35,16 +35,16 @@ const Client = () => {
 
     return (
         <section className="py-20 md:py-28 bg-surface overflow-hidden">
-            <div className="container mx-auto ">
+            <div className="container-size ">
                 <div className="mb-12 md:mb-16">
-                    <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
+                    <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-3">
                         Trusted By
                     </span>
-                    <h2 className="font-headline-lg text-headline-lg font-bold tracking-[-0.2rem] text-on-surface">
+                    <h2 className="font-display text-headline-lg font-bold tracking-[-0.2rem] text-on-surface">
                         Clients & Partners
                     </h2>
                     <div className="w-16 h-0.5 bg-harvest-gold/60 mt-4" />
-                    <p className="font-body-lg text-body-lg text-text-secondary max-w-2xl mt-4">
+                    <p className="font-sans text-body-lg text-text-secondary max-w-2xl mt-4">
                         Governments, NGOs, and development agencies that rely on our
                         research and development expertise to drive evidence-based change.
                     </p>
@@ -67,9 +67,9 @@ const Client = () => {
                         ))}
                     </div>
                 ) : error ? (
-                    <p className="font-body-md text-body-md text-text-muted">{error}</p>
+                    <p className="font-sans text-body-md text-text-muted">{error}</p>
                 ) : clients.length === 0 ? (
-                    <p className="font-body-md text-body-md text-text-muted">
+                    <p className="font-sans text-body-md text-text-muted">
                         Client logos will appear here once project clients are published.
                     </p>
                 ) : showMarquee ? (

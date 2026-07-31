@@ -12,11 +12,11 @@ const ServiceShowcase = () => {
 
     return (
         <section className="py-section-mobile md:py-section-desktop  bg-warm-beige">
-            <div className="container mx-auto">
+            <div className="container-size">
 
                 {/* Section intro — minimal */}
                 <div className="text-center mb-16 md:mb-20">
-                    <span className="font-label-caps text-label-caps uppercase text-text-muted tracking-widest block mb-2">
+                    <span className="font-sans text-label-caps uppercase text-text-muted tracking-widest block mb-2">
                         What We Do
                     </span>
                     <div className="w-12 h-0.5 bg-harvest-gold/40 mx-auto" />
@@ -44,10 +44,10 @@ const ServiceShowcase = () => {
 
                     {/* Field Note — overlaid on image */}
                     <div className="absolute bottom-0 left-0 p-8 md:p-12 lg:p-16 max-w-2xl">
-                        <span className="font-label-caps text-body-md uppercase tracking-widest text-harvest-gold/80 block mb-3">
+                        <span className="font-sans text-body-md uppercase tracking-widest text-harvest-gold/80 block mb-3">
                             Field Note
                         </span>
-                        <p className="font-headline-md text-headline-md text-white leading-[1.1] tracking-tight">
+                        <p className="font-display text-headline-md text-white leading-[1.1] tracking-tight">
                             Research begins<br />
                             <span className="text-harvest-gold/70">with listening.</span>
                         </p>

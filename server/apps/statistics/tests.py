@@ -7,12 +7,12 @@ from .serializers import StatisticSerializer
 
 
 class StatisticTests(TestCase):
-    def test_selector_returns_active_ordered_max_four(self):
-        for index in range(5):
+    def test_selector_returns_active_ordered_max_five(self):
+        for index in range(6):
             Statistic.objects.create(
                 title=f"Active statistic {index}",
                 value=index + 1,
-                display_order=5 - index,
+                display_order=6 - index,
                 is_active=True,
             )
         Statistic.objects.create(
@@ -24,15 +24,15 @@ class StatisticTests(TestCase):
 
         statistics = list(get_active_statistics())
 
-        self.assertEqual(len(statistics), 4)
+        self.assertEqual(len(statistics), 5)
         self.assertEqual(
             [statistic.display_order for statistic in statistics],
-            [1, 2, 3, 4],
+            [1, 2, 3, 4, 5],
         )
         self.assertTrue(all(statistic.is_active for statistic in statistics))
 
     def test_active_statistics_limit_validation(self):
-        for index in range(4):
+        for index in range(5):
             Statistic.objects.create(
                 title=f"Active statistic {index}",
                 value=index + 1,
@@ -41,9 +41,9 @@ class StatisticTests(TestCase):
             )
 
         statistic = Statistic(
-            title="Fifth statistic",
-            value=5,
-            display_order=5,
+            title="Sixth statistic",
+            value=6,
+            display_order=6,
             is_active=True,
         )
 

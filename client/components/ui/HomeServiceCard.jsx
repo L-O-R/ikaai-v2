@@ -17,7 +17,7 @@ const ServiceCard = ({ service, index, isOpen, toggleService }) => {
             >
                 {/* Number & Mobile Toggle Icon */}
                 <div className="lg:col-span-1 flex items-start justify-between lg:block">
-                    <span className="font-label-caps uppercase text-primary tracking-widest font-bold text-headline-sm">
+                    <span className="font-sans uppercase text-primary tracking-widest font-bold text-headline-sm">
                         0{index + 1}
                     </span>
                     <span className="lg:hidden text-text-muted group-hover:text-primary transition-all duration-300">
@@ -41,13 +41,13 @@ const ServiceCard = ({ service, index, isOpen, toggleService }) => {
                         {initialItems.map((item) => (
                             <span
                                 key={item}
-                                className="font-label-caps text-xs uppercase tracking-wider text-primary font-bold px-3 py-1 bg-surface-container-high border border-primary/30 rounded-full"
+                                className="font-sans text-xs uppercase tracking-wider text-primary font-bold px-3 py-1 bg-surface-container-high border border-primary/30 rounded-full"
                             >
                                 {item}
                             </span>
                         ))}
                         {!isOpen && remainingItems.length > 0 && (
-                            <span className="font-label-caps text-xs uppercase tracking-wider text-on-surface font-semibold px-3 py-1 bg-warm-beige border border-border-neutral rounded-full">
+                            <span className="font-sans text-xs uppercase tracking-wider text-on-surface font-semibold px-3 py-1 bg-warm-beige border border-border-neutral rounded-full">
                                 +{remainingItems.length} More
                             </span>
                         )}
@@ -55,7 +55,7 @@ const ServiceCard = ({ service, index, isOpen, toggleService }) => {
                             remainingItems.map((item) => (
                                 <span
                                     key={item}
-                                    className="font-label-caps text-xs uppercase tracking-wider text-primary font-bold px-3 py-1 bg-surface-container-high border border-primary/30 rounded-full"
+                                    className="font-sans text-xs uppercase tracking-wider text-primary font-bold px-3 py-1 bg-surface-container-high border border-primary/30 rounded-full"
                                 >
                                     {item}
                                 </span>
@@ -67,12 +67,12 @@ const ServiceCard = ({ service, index, isOpen, toggleService }) => {
                         className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-[500px] opacity-100 mt-3" : "max-h-0 opacity-0"
                             }`}
                     >
-                        <p className="font-body-md text-body-md text-text-secondary leading-relaxed">
+                        <p className="font-sans text-body-md text-text-secondary leading-relaxed">
                             {service.description}
                         </p>
                         <Link
                             href={`/services/#${service.slug}`}
-                            className="inline-flex items-center gap-1 font-label-caps text-label-caps uppercase font-bold text-primary mt-4 group/link hover:underline"
+                            className="inline-flex items-center gap-1 font-sans text-label-caps uppercase font-bold text-primary mt-4 group/link hover:underline"
                         >
                             Learn More
                             <span className="material-symbols-outlined text-sm transition-transform group-hover/link:translate-x-1">
@@ -89,13 +89,13 @@ const ServiceCard = ({ service, index, isOpen, toggleService }) => {
                         {initialItems.map((item) => (
                             <span
                                 key={item}
-                                className="font-label-caps text-xs uppercase tracking-wider text-primary font-bold px-3.5 py-1.5 bg-surface-container-high border border-primary/30 rounded-full shrink-0 shadow-2xs"
+                                className="font-sans text-xs uppercase tracking-wider text-primary font-bold px-3.5 py-1.5 bg-surface-container-high border border-primary/30 rounded-full shrink-0 shadow-2xs"
                             >
                                 {item}
                             </span>
                         ))}
                         {!isOpen && remainingItems.length > 0 && (
-                            <span className="font-label-caps text-xs uppercase tracking-wider text-on-surface font-semibold px-3.5 py-1.5 bg-warm-beige border border-border-neutral rounded-full shrink-0">
+                            <span className="font-sans text-xs uppercase tracking-wider text-on-surface font-semibold px-3.5 py-1.5 bg-warm-beige border border-border-neutral rounded-full shrink-0">
                                 +{remainingItems.length} More
                             </span>
                         )}
@@ -109,7 +109,7 @@ const ServiceCard = ({ service, index, isOpen, toggleService }) => {
                         {remainingItems.map((item) => (
                             <span
                                 key={item}
-                                className="font-label-caps text-xs uppercase tracking-wider text-primary font-bold px-3.5 py-1.5 bg-surface-container-high border border-primary/30 rounded-full shrink-0"
+                                className="font-sans text-xs uppercase tracking-wider text-primary font-bold px-3.5 py-1.5 bg-surface-container-high border border-primary/30 rounded-full shrink-0"
                             >
                                 {item}
                             </span>

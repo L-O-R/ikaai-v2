@@ -26,7 +26,7 @@ const UpdateCard = ({ update }) => (
       </div>
 
       <div className="p-5 min-h-32">
-        <h3 className="font-headline-md text-xl text-on-surface group-hover:text-primary transition-colors duration-300 line-clamp-2">
+        <h3 className="font-display text-xl text-on-surface group-hover:text-primary transition-colors duration-300 line-clamp-2">
           {update.title.split(" ").length > 5
             ? `${update.title.substring(0, 50)}...`
             : update.title}
@@ -94,16 +94,16 @@ const Updates = () => {
       className="py-section-mobile md:py-section-desktop  bg-surface"
       id="updates-section"
     >
-      <div className="container mx-auto">
+      <div className="container-size">
         {/* Header */}
         <div className="mb-12">
-          <span className="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-3">
+          <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-3">
             Updates
           </span>
-          <h2 className="font-headline-lg text-headline-lg text-on-surface">
+          <h2 className="font-display text-headline-lg text-on-surface">
             From Ikaai India
           </h2>
-          <p className="font-body-md text-body-md text-text-secondary max-w-xl mt-4">
+          <p className="font-sans text-body-md text-text-secondary max-w-xl mt-4">
             Stay connected with our latest news, events, and impact stories.
           </p>
         </div>
@@ -120,7 +120,7 @@ const Updates = () => {
         )}
 
         {error && (
-          <p className="font-body-md text-body-md text-text-secondary">
+          <p className="font-sans text-body-md text-text-secondary">
             {error}
           </p>
         )}

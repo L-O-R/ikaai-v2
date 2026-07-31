@@ -34,7 +34,7 @@ const ProjectCard = ({ project }) => {
             onMouseEnter={loadStats}
         >
             <div className="bg-surface p-4 rounded-2xl transition-colors duration-300 flex items-center justify-between group-hover:bg-surface-container-low">
-                <h3 className="font-headline-md text-body-lg font-semibold text-on-surface group-hover:text-primary transition-colors duration-300">
+                <h3 className="font-display text-body-lg font-semibold text-on-surface group-hover:text-primary transition-colors duration-300">
                     {project.title}
                 </h3>
                 <span className="material-symbols-outlined text-primary text-2xl transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0">
@@ -64,7 +64,7 @@ const ProjectCard = ({ project }) => {
                                 />
                             </div>
                         ) : (
-                            <span className="font-label-caps text-label-caps uppercase tracking-widest text-inverse-on-surface/70">
+                            <span className="font-sans text-label-caps uppercase tracking-widest text-inverse-on-surface/70">
                                 {project.client}
                             </span>
                         )}
@@ -73,7 +73,7 @@ const ProjectCard = ({ project }) => {
                     {statsToShow.length > 0 && <div className="absolute inset-x-3 bottom-3 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus:translate-y-0 group-focus:opacity-100 transition-all duration-300">
                         <div className="rounded-xl bg-surface/95 border border-border-neutral p-3 shadow-lg">
                             {isLoadingStats ? (
-                                <p className="font-body-md text-body-md text-text-muted">Loading stats...</p>
+                                <p className="font-sans text-body-md text-text-muted">Loading stats...</p>
                             ) : statsToShow.length > 0 ? (
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                                     {statsToShow.map((stat, index) => (
@@ -81,10 +81,10 @@ const ProjectCard = ({ project }) => {
                                             key={`${stat.title}-${index}`}
                                             className={`${index > 1 ? "hidden md:flex" : "flex"} flex-col gap-1`}
                                         >
-                                            <span className="font-statistic-num text-2xl text-primary leading-none">
+                                            <span className="font-display text-2xl text-primary leading-none">
                                                 {stat.value}
                                             </span>
-                                            <span className="font-label-caps text-[10px] uppercase tracking-widest text-text-muted">
+                                            <span className="font-sans text-[10px] uppercase tracking-widest text-text-muted">
                                                 {stat.title}
                                             </span>
                                         </div>

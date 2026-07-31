@@ -25,7 +25,7 @@ const TeamMember = ({ name, role, bio, tagline, image }) => {
             )}
 
             <div className="absolute top-4 right-4 z-20 max-w-[75%] text-right">
-                <span className="inline-block bg-surface-container-high/95 backdrop-blur-md text-earth-copper border border-primary/30 font-label-caps text-body-sm font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-sm leading-snug">
+                <span className="inline-block bg-surface-container-high/95 backdrop-blur-md text-earth-copper border border-primary/30 font-sans text-body-sm font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-sm leading-snug">
                     {role}
                 </span>
             </div>
@@ -36,11 +36,11 @@ const TeamMember = ({ name, role, bio, tagline, image }) => {
 
 
                 <div className="transition-transform duration-500 ease-out transform group-hover:-translate-y-2">
-                    <h3 className="font-headline-md text-headline-sm text-inverse-on-surface font-bold leading-tight">
+                    <h3 className="font-display text-headline-sm text-inverse-on-surface font-bold leading-tight">
                         {name}
                     </h3>
                     {tagline && (
-                        <p className="font-body-md text-body-sm text-inverse-on-surface/90 mt-1 leading-snug group-hover:hidden transition-all">
+                        <p className="font-sans text-body-sm text-inverse-on-surface/90 mt-1 leading-snug group-hover:hidden transition-all">
                             {tagline}
                         </p>
                     )}
@@ -48,7 +48,7 @@ const TeamMember = ({ name, role, bio, tagline, image }) => {
 
                 <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-out">
                     <div className="overflow-hidden ">
-                        <p className="font-body-md text-body-md text-inverse-on-surface/90 leading-relaxed pt-3 border-t border-white/20 ">
+                        <p className="font-sans text-body-md text-inverse-on-surface/90 leading-relaxed pt-3 border-t border-white/20 ">
                             {bio}
                         </p>
                     </div>

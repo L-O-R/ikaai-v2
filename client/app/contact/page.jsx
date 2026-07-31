@@ -17,7 +17,7 @@ const ContactPage = () => {
     return (
         <main className="bg-surface">
             <ContactHero />
-            <div className="container mx-auto ">
+            <div className="container-size ">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 py-12 md:py-16">
                     <ContactInfo />
                     <ContactForm />
