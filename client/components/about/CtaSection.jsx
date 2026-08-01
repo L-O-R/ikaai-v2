@@ -1,17 +1,17 @@
 
 import React from 'react'
 import Link from 'next/link'
+import SubHeading from '../shared/SubHeading'
 
 const CtaSection = () => {
     return (
         <section className="py-20 md:py-28  bg-primary text-white">
-            <div className="container-size text-center">
+            <div className="container-size text-center max-w-4xl">
                 <SubHeading
-                    text="Join Us in Transforming"
-                    highlightText="Rural India"
+                    text="Join Us in Transforming Rural India"
                     className='flex flex-col'
                 />
-                <p className="font-sans text-body-lg text-white/80 max-w-2xl mx-auto mb-8">
+                <p className="mt-4 font-sans text-body-lg text-white/80 max-w-2xl mx-auto mb-8">
                     Whether you're a researcher, partner, or supporter — your contribution can help create lasting change
                     in communities across India.
                 </p>

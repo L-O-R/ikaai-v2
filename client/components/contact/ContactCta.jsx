@@ -10,8 +10,7 @@ const ContactCta = () => {
         <section className="py-20 md:py-28  bg-primary text-white">
             <div className="container-size text-center">
                 <SubHeading
-                    text="Ready to Make"
-                    highlightText="a Difference?"
+                    text="Ready to Make a Diffrence"
                 />
                 <p className="font-sans text-body-lg text-white/80 max-w-2xl mx-auto mb-8">
                     Whether you're looking to partner with us, commission research, or join our team — we'd love to

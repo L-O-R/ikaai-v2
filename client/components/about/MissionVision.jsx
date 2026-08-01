@@ -1,4 +1,5 @@
 import React from 'react'
+import SubHeading from '../shared/SubHeading'
 
 const coreValues = [
     { icon: 'psychology', label: 'Evidence-Based' },

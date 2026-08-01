@@ -8,8 +8,7 @@ const LifeCta = () => {
         <section className="py-20 md:py-28  bg-surface">
             <div className="container-size text-center">
                 <SubHeading
-                    text="Join Our"
-                    highlightText="Team"
+                    text="Join Our Team"
                 />
                 <p className="font-sans text-body-lg text-text-secondary max-w-2xl mx-auto mb-8">
                     If you're passionate about research, rural development, and making a difference — we'd love to hear
