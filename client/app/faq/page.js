@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { faqData } from '@/lib/data/faqData';
+import SubHeading from '@/components/shared/SubHeading';
 
 // Reusable Accordion Item Component
 function AccordionItem({ id, question, answer, isOpen, onToggle }) {
