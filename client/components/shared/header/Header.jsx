@@ -59,13 +59,13 @@ const Header = () => {
     return (
         <header>
 
-            <nav className="bg-warm-beige border-b border-border-neutral/50 shadow-xs fixed top-0 left-0 w-full max-w-full z-50 transition-all duration-300 ease-in-out py-4 text-on-surface overflow-x-clip" id="main-nav">
+            <nav className="bg-white shadow-xs fixed top-0 left-0 w-full max-w-full z-50 transition-all duration-300 ease-in-out py-2 text-on-surface overflow-x-clip" id="main-nav">
                 <div className="flex justify-between items-center w-full max-w-container-max mx-auto relative z-10">
 
                     {/* Logo */}
                     <Link className="flex items-center justify-start gap-2 shrink-0" href="/" onClick={closeMobileMenu}>
                         <Image
-                            className="h-10 w-auto md:h-12 lg:h-14 object-contain"
+                            className="h-10 w-auto md:h-10 lg:h-12 object-contain"
                             alt="IKAAI India Logo"
                             src="/logo.png"
                             width={500}
@@ -97,7 +97,7 @@ const Header = () => {
                                 <Link
                                     key={link.label}
                                     href={link.href}
-                                    className={`nav-link font-sans text-label-caps uppercase border-b-2 py-1 ${isActive
+                                    className={`nav-link font-sans text-body-sm font-semibold uppercase border-b-2 py-1 ${isActive
                                         ? 'text-primary border-primary'
                                         : 'text-on-surface hover:text-primary border-transparent hover:border-primary/50'
                                         } transition-colors whitespace-nowrap`}

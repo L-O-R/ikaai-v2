@@ -92,7 +92,7 @@ These Google routes are browser redirect routes, not JSON APIs.
 
 ## Projects API
 
-Projects represent public website work/case-study items.
+Projects represent public research and assessment projects.
 
 Only projects with `is_active=True` are returned.
 
@@ -112,8 +112,7 @@ Returns a paginated list of active projects.
 | `page_size` | integer | No | Number of items per page. Default is `12`, maximum is `48`. |
 | `featured` | boolean | No | Filter by featured status. Use `true` or `false`. |
 | `client` | string | No | Exact, case-insensitive client name. |
-| `location` | string | No | Case-insensitive partial location match. |
-| `search` | string | No | Searches project title, client name, and location. |
+| `search` | string | No | Searches project title and client name. |
 | `ordering` | string | No | Sort by `created_at`, `display_order`, or `title`. Prefix with `-` for descending order. |
 
 Default ordering:
@@ -137,11 +136,7 @@ GET /api/projects/?client=Example%20Client
 ```
 
 ```http
-GET /api/projects/?location=Delhi
-```
-
-```http
-GET /api/projects/?search=school&page=2&page_size=6
+GET /api/projects/?search=Nutrition&page=2&page_size=6
 ```
 
 ```http
@@ -167,12 +162,19 @@ Response body:
     {
       "slug": "annual-impact-report",
       "title": "Annual Impact Report",
-      "cover_image": "/media/projects/cover/report.png",
-      "client": "Example Client",
-      "client_logo": "/media/clients/logos/example.png",
-      "location": "Delhi",
-      "featured": true,
-      "short_description": "This is a short public summary of the project."
+      "featured_image": "/media/projects/featured/report.png",
+      "client": {
+        "name": "Example Client",
+        "logo": "/media/clients/logos/example.png",
+        "website": "https://example.org"
+      },
+      "introduction": "This is a short introduction of the research project.",
+      "start_year": 2025,
+      "end_year": null,
+      "coverage": "33 States & Union Territories | 1200 Gram Panchayats",
+      "industry": "Health and Nutrition",
+      "scope_of_work": "CAPI Data Collection\nAnthropometric Measurements",
+      "sample_size": "45k+ Children"
     }
   ]
 }
@@ -188,12 +190,18 @@ Response body:
 | `results` | array | No | List of project objects. |
 | `results[].slug` | string | No | Unique project slug. |
 | `results[].title` | string | No | Project title. |
-| `results[].cover_image` | string | No | Cover image URL/path. |
-| `results[].client` | string | No | Client name. |
-| `results[].client_logo` | string | Yes | Client logo URL/path, or `null` if unavailable. |
-| `results[].location` | string | No | Project location. May be an empty string. |
-| `results[].featured` | boolean | No | Whether the project is featured. |
-| `results[].short_description` | string | No | Description shortened to 160 characters. |
+| `results[].featured_image` | string | No | Featured image URL/path. |
+| `results[].client` | object | No | Related client details. |
+| `results[].client.name` | string | No | Client name. |
+| `results[].client.logo` | string | No | Client logo URL/path. |
+| `results[].client.website` | string | No | Client website URL. May be empty. |
+| `results[].introduction` | string | No | Project introduction. May be empty. |
+| `results[].start_year` | integer | No | Start year of the project. |
+| `results[].end_year` | integer | Yes | End year of the project, or `null`. |
+| `results[].coverage` | string | No | Geographic or scale coverage. |
+| `results[].industry` | string | No | Relevant industry. |
+| `results[].scope_of_work` | string | No | Description of the scope of work. |
+| `results[].sample_size` | string | No | Sample size metrics. |
 
 ### Retrieve Project Detail
 
@@ -229,23 +237,24 @@ Response body:
 {
   "slug": "annual-impact-report",
   "title": "Annual Impact Report",
-  "cover_image": "/media/projects/cover/report.png",
-  "client": "Example Client",
-  "client_logo": "/media/clients/logos/example.png",
-  "description": "Full project description shown on the project detail page.",
-  "location": "Delhi",
-  "featured": true,
+  "featured_image": "/media/projects/featured/report.png",
+  "client": {
+    "name": "Example Client",
+    "logo": "/media/clients/logos/example.png",
+    "website": "https://example.org"
+  },
+  "introduction": "This is a detailed introduction of the research project.",
+  "start_year": 2025,
+  "end_year": null,
+  "coverage": "33 States & Union Territories | 1200 Gram Panchayats",
+  "industry": "Health and Nutrition",
+  "scope_of_work": "CAPI Data Collection\nAnthropometric Measurements",
+  "sample_size": "45k+ Children",
   "statistics": [
     {
       "title": "People Reached",
       "value": "12000",
       "material_symbol": "groups"
-    }
-  ],
-  "gallery": [
-    {
-      "image": "/media/projects/gallery/project-image.png",
-      "caption": "Community workshop"
     }
   ]
 }
@@ -257,19 +266,22 @@ Response body:
 | --- | --- | --- | --- |
 | `slug` | string | No | Unique project slug. |
 | `title` | string | No | Project title. |
-| `cover_image` | string | No | Cover image URL/path. |
-| `client` | string | No | Client name. |
-| `client_logo` | string | Yes | Client logo URL/path, or `null` if unavailable. |
-| `description` | string | No | Full project description. May be an empty string. |
-| `location` | string | No | Project location. May be an empty string. |
-| `featured` | boolean | No | Whether the project is featured. |
+| `featured_image` | string | No | Featured image URL/path. |
+| `client` | object | No | Related client details. |
+| `client.name` | string | No | Client name. |
+| `client.logo` | string | No | Client logo URL/path. |
+| `client.website` | string | No | Client website URL. |
+| `introduction` | string | No | Project introduction. |
+| `start_year` | integer | No | Start year of the project. |
+| `end_year` | integer | Yes | End year of the project, or `null`. |
+| `coverage` | string | No | Geographic or scale coverage. |
+| `industry` | string | No | Relevant industry. |
+| `scope_of_work` | string | No | Description of the scope of work. |
+| `sample_size` | string | No | Sample size metrics. |
 | `statistics` | array | No | Project-specific statistics ordered by `display_order`. |
 | `statistics[].title` | string | No | Statistic label. |
 | `statistics[].value` | string | No | Statistic value as text. |
 | `statistics[].material_symbol` | string | No | Material Symbols icon name. |
-| `gallery` | array | No | Project gallery images ordered by `display_order`. |
-| `gallery[].image` | string | No | Gallery image URL/path. |
-| `gallery[].caption` | string | No | Image caption. May be an empty string. |
 
 ### Not Found Response
 

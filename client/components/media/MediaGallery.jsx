@@ -3,73 +3,200 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Masonry from './Masonry'
+import SubHeading from '../shared/SubHeading'
 
 
 const mediaImages = [
     {
-        id: '1',
-        img: '/media/1.jpeg',
-        alt: 'Field research in rural India',
-        desc: 'Researchers collecting data and engaging with rural communities during a field visit in Rajasthan.',
-        height: 600,
-    },
-    {
-        id: '3',
-        img: '/media/3.jpeg',
-        alt: 'Community engagement session',
-        desc: 'Community members actively participating in a planning session to shape local development priorities.',
-        height: 560,
-    },
-    {
-        id: '4',
-        img: '/media/4.jpeg',
-        alt: 'Women self-help group meeting',
-        desc: 'Women entrepreneurs collaborating to build sustainable livelihoods through collective enterprise.',
-        height: 460,
-    },
-    {
-        id: '5',
-        img: '/media/5.jpeg',
-        alt: 'Farmer training workshop',
-        desc: 'Farmers learning climate-resilient practices to improve crop yields and protect their land.',
-        height: 640,
-    },
-    {
-        id: '6',
-        img: '/media/9.jpeg',
-        alt: 'Children in rural school',
-        desc: 'Young students in a rural classroom, eager to learn and build a brighter future.',
-        height: 500,
-    },
-    {
-        id: '7',
-        img: '/media/7.jpeg',
-        alt: 'Team at work in the field',
-        desc: 'The IKAAI team working alongside community members to document local knowledge and insights.',
+        id: "1",
+        img: "/media/1.jpg",
+        alt: "Researchers conducting household interviews in Delhi JJ clusters",
+        desc: "Household interviews being conducted with residents of JJ clusters in Delhi",
         height: 620,
     },
     {
-        id: '8',
-        img: '/media/8.jpeg',
-        alt: 'Community celebration',
-        desc: 'A vibrant celebration marking a milestone achieved through collective community effort and collaboration.',
-        height: 540,
+        id: "2",
+        img: "/media/2.png",
+        alt: "Interview with mothers at an Anganwadi centre",
+        desc: "Interviews being conducted with mothers of children aged 0-6 years at Anganwadi centres",
+        height: 560,
     },
     {
-        id: '9',
-        img: '/media/10.jpeg',
-        alt: 'Community celebration',
-        desc: 'A vibrant celebration marking a milestone achieved through collective community effort and collaboration.',
+        id: "3",
+        img: "/media/3.jpg",
+        alt: "Senior citizen participating in a field interview",
+        desc: "Interviews being conducted with senior citizens to capture their views and experiences",
         height: 600,
     },
     {
-        id: '10',
-        img: '/media/11.jpeg',
-        alt: 'Community celebration',
-        desc: 'A vibrant celebration marking a milestone achieved through collective community effort and collaboration.',
+        id: "4",
+        img: "/media/4.jpg",
+        alt: "Interview with visually impaired students during research",
+        desc: "Interviews being conducted with visually impaired students to understand their experiences",
+        height: 540,
+    },
+    {
+        id: "5",
+        img: "/media/5.jpg",
+        alt: "Taxpayer survey at GST office in Kolkata",
+        desc: "Interviews with taxpayers at the GST office in Kolkata",
+        height: 640,
+    },
+    {
+        id: "6",
+        img: "/media/6.jpg",
+        alt: "KAP survey for Lok Sabha elections in Uttar Pradesh",
+        desc: "KAP survey being conducted for Lok Sabha elections in Uttar Pradesh",
+        height: 500,
+    },
+    {
+        id: "7",
+        img: "/media/7.jpg",
+        alt: "Key informant interviews with faculty and staff",
+        desc: "Key informant interviews being conducted with faculty and staff in colleges and schools",
+        height: 650,
+    },
+    {
+        id: "8",
+        img: "/media/8.jpg",
+        alt: "Site verification and stakeholder interaction",
+        desc: "Site verification and stake holder interaction.",
         height: 520,
     },
-]
+    {
+        id: "9",
+        img: "/media/9.jpg",
+        alt: "Site visit at State Transmission Utility in Andhra Pradesh",
+        desc: "Site visit at STU in Andhra Pradesh",
+        height: 610,
+    },
+    {
+        id: "10",
+        img: "/media/10.png",
+        alt: "Community engagement during field research",
+        desc: "A vibrant celebration marking a milestone achieved through collective community effort and collaboration.",
+        height: 560,
+    },
+    {
+        id: "11",
+        img: "/media/11.png",
+        alt: "Impact assessment site visit to State Transmission Utility",
+        desc: "Site visit to STUs as part of the impact assessment of an energy sector project",
+        height: 600,
+    },
+    {
+        id: "12",
+        img: "/media/12.jpg",
+        alt: "Stakeholder consultation at APTRANSCO",
+        desc: "Stake holder intercation at APTRANSCO",
+        height: 540,
+    },
+    {
+        id: "13",
+        img: "/media/13.jpg",
+        alt: "Interview with adolescent girls during field study",
+        desc: "team conducting an interview with adolescent girls as part of the study",
+        height: 590,
+    },
+    {
+        id: "14",
+        img: "/media/14.png",
+        alt: "Field researchers interviewing adolescent girls",
+        desc: "team conducting an interview with adolescent girls as part of the study",
+        height: 560,
+    },
+    {
+        id: "15",
+        img: "/media/15.png",
+        alt: "Third-party assessment at Anganwadi centre in Jammu and Kashmir",
+        desc: "Third-party assessment being conducted at Anganwadi centres in Jammu & Kashmir",
+        height: 630,
+    },
+    {
+        id: "16",
+        img: "/media/16.jpg",
+        alt: "Renewable energy transmission infrastructure project",
+        desc: "Transmission infrastructure constructed under renewable energy sector project",
+        height: 500,
+    },
+    {
+        id: "17",
+        img: "/media/17.jpg",
+        alt: "Power transmission infrastructure under renewable energy initiative",
+        desc: "Transmission system infrastructure built under renewable energy sector project",
+        height: 580,
+    },
+    {
+        id: "18",
+        img: "/media/18.jpg",
+        alt: "Anthropometric assessment of children in Manipur",
+        desc: "Anthropometric assessments of children being conducted in Manipur",
+        height: 620,
+    },
+    {
+        id: "19",
+        img: "/media/19.png",
+        alt: "In-depth interview with a senior citizen respondent",
+        desc: "An in-depth interview being conducted with a senior citizen respondent",
+        height: 560,
+    },
+    {
+        id: "20",
+        img: "/media/20.jpg",
+        alt: "Anthropometric measurements at Anganwadi centres",
+        desc: "Anthropometric measurements being recorded for children at Angandwadi centres across India",
+        height: 640,
+    },
+    {
+        id: "21",
+        img: "/media/21.jpg",
+        alt: "CSR impact assessment in West Bengal",
+        desc: "CSR impact assessment being conducted in West Bengal",
+        height: 570,
+    },
+    {
+        id: "22",
+        img: "/media/22.png",
+        alt: "Dietary recall and KAP assessment with mothers in Maharashtra",
+        desc: "Dietary recall exercise and KAP assessment being conducted with mothers of 0-6 years in Maharashtra",
+        height: 620,
+    },
+    {
+        id: "23",
+        img: "/media/23.png",
+        alt: "Endline assessment at Anganwadi centre",
+        desc: "Endline assessment being carried out at Anganwadi centres for the malnutrition project",
+        height: 540,
+    },
+    {
+        id: "24",
+        img: "/media/24.jpg",
+        alt: "Field assessment for malnutrition project",
+        desc: "Endline assessment being carried out at Anganwadi centres for the malnutrition project",
+        height: 610,
+    },
+    {
+        id: "25",
+        img: "/media/25.jpg",
+        alt: "Face-to-face interview with social welfare department beneficiaries",
+        desc: "Face-to-face interviews being conducted with SWDs as part of the evaluation study",
+        height: 560,
+    },
+    {
+        id: "26",
+        img: "/media/26.png",
+        alt: "Field team at State Transmission Utility in Andhra Pradesh",
+        desc: "Field team on-site at a State Transmission Utility (STU), Andhra Pradesh for the assessment",
+        height: 630,
+    },
+    {
+        id: "27",
+        img: "/media/27.jpg",
+        alt: "Household survey in Delhi informal settlements",
+        desc: "Household interviews being conducted with residents of JJ clusters in Delhi",
+        height: 590,
+    },
+];
 
 const MediaGallery = () => {
     const [selectedImage, setSelectedImage] = useState(null)
@@ -122,10 +249,10 @@ const MediaGallery = () => {
                     <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Gallery
                     </span>
-                    <h2 className="font-display text-headline-md text-on-surface">
-                        Moments That Matter
-                    </h2>
-                    <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />
+                    <SubHeading
+                        text="Moments That"
+                        highlightText="Matter"
+                    />
                     <p className="font-sans text-body-md text-text-secondary max-w-2xl mx-auto mt-4">
                         A collection of images from our work across rural India — capturing the spirit of community,
                         collaboration, and sustainable change.
@@ -172,7 +299,7 @@ const MediaGallery = () => {
                                 alt={selectedImage.alt}
                                 fill
                                 className="object-contain"
-                                sizes="100vw"
+                                sizes="(min-width: 1024px) 1024px, (min-width: 768px) calc(100vw - 4rem), calc(100vw - 2rem)"
                                 priority
                             />
                         </div>

@@ -1,13 +1,25 @@
 import { resolveMediaUrl } from "./apiMedia";
 
-export const normalizeProject = (project) => ({
-    ...project,
-    id: project.slug,
-    img: resolveMediaUrl(project.cover_image),
-    clientLogo: resolveMediaUrl(project.client_logo),
-    isFeatured: project.featured,
-    statistics: project.statistics || [],
-});
+export const normalizeProject = (project) => {
+    if (!project) return null;
+    const clientData = project.client || {};
+    return {
+        ...project,
+        id: project.slug,
+        img: resolveMediaUrl(project.featured_image),
+        client: clientData.name || "",
+        clientLogo: resolveMediaUrl(clientData.logo),
+        clientWebsite: clientData.website || "",
+        statistics: project.statistics || [],
+        startYear: project.start_year,
+        endYear: project.end_year,
+        coverage: project.coverage,
+        industry: project.industry,
+        scopeOfWork: project.scope_of_work,
+        sampleSize: project.sample_size,
+        introduction: project.introduction,
+    };
+};
 
 export const normalizeProjectPage = (page) => ({
     ...page,

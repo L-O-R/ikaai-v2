@@ -5,14 +5,14 @@ export const navLinks = [
         items: [
             { label: 'About Us', href: '/about' },
             { label: 'Meet Our Team', href: '/about/team' },
-            { label: 'Life at IKAAI', href: '/about/life' },
+            { label: 'Life at Ikaai', href: '/about/life' },
 
         ],
     },
+    { label: 'Solutions', href: '/services', type: 'link' },
+    { label: 'Projects', href: '/work', type: 'link' },
     { label: 'Media', href: '/media', type: 'link' },
-    { label: 'Services', href: '/services', type: 'link' },
-    { label: 'Our Work', href: '/work', type: 'link' },
-    { label: 'Stories', href: '/stories', type: 'link' },
+    { label: 'Blog', href: '/stories', type: 'link' },
     {
         label: 'Contact',
         type: 'dropdown',

@@ -3,7 +3,6 @@
 import React from 'react'
 
 const beliefsData = {
-    title: "What We Believe In",
     beliefs: [
         {
             title: "We are integrated",
@@ -57,9 +56,10 @@ const BeliefSection = () => {
                     <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Our Values
                     </span>
-                    <h2 className="font-display text-headline-md text-on-surface">
-                        {beliefsData.title}
-                    </h2>
+                    <SubHeading
+                        text="What We"
+                        highlightText="Believe In"
+                    />
                     <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />
                 </div>
 

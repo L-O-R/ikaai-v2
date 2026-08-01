@@ -1,6 +1,6 @@
 from django.db.models import Prefetch, QuerySet
 
-from .models import Project, ProjectImage, ProjectStat
+from .models import Project, ProjectStat
 
 
 def get_projects() -> QuerySet[Project]:
@@ -10,7 +10,6 @@ def get_projects() -> QuerySet[Project]:
         .select_related("client")
         .prefetch_related(
             Prefetch("stats", queryset=ProjectStat.objects.order_by("display_order")),
-            Prefetch("images", queryset=ProjectImage.objects.order_by("display_order")),
         )
     )
 

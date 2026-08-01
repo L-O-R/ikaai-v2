@@ -5,6 +5,7 @@ import { getErrorMessage } from "@/lib/api/apiErrors";
 import { getFeaturedProjects } from "@/lib/api/getFeaturedProjects";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import SubHeading from "../shared/SubHeading";
 
 const Projects = () => {
     const [featured, setFeatured] = useState([]);
@@ -40,9 +41,10 @@ const Projects = () => {
                     <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-3">
                         Our Projects
                     </span>
-                    <h2 className="font-display text-headline-lg text-on-surface">
-                        Making Impact Across India
-                    </h2>
+                    <SubHeading
+                        text="Making Impact"
+                        highlightText="Across India"
+                    />
                     <p className="font-sans text-body-md text-text-secondary max-w-xl mt-4">
                         From rural development to urban sanitation, see how we are helping
                         communities thrive.

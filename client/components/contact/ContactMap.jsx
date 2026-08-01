@@ -2,6 +2,7 @@
 'use client'
 
 import React from 'react'
+import SubHeading from '../shared/SubHeading'
 
 const ContactMap = () => {
     return (
@@ -11,9 +12,10 @@ const ContactMap = () => {
                     <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-3">
                         Find Us
                     </span>
-                    <h2 className="font-display text-headline-md text-on-surface">
-                        Our Location
-                    </h2>
+                    <SubHeading
+                        text="Our"
+                        highlightText="Location"
+                    />
                     <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />
                 </div>
 

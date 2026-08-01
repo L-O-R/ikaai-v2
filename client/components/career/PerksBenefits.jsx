@@ -2,6 +2,7 @@
 'use client'
 
 import React from 'react'
+import SubHeading from '../shared/SubHeading'
 
 const perksData = [
     {
@@ -34,10 +35,10 @@ const PerksBenefits = () => {
                     <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Perks & Benefits
                     </span>
-                    <h2 className="font-display text-headline-md text-on-surface">
-                        We Take Care of Our People
-                    </h2>
-                    <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />
+                    <SubHeading
+                        text="We Take Care of Our"
+                        highlightText="People"
+                    />
                     <p className="font-sans text-body-md text-text-secondary max-w-2xl mx-auto mt-4">
                         We believe that doing meaningful work goes hand-in-hand with feeling supported, valued, and
                         empowered.

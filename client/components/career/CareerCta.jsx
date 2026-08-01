@@ -3,14 +3,16 @@
 
 import React from 'react'
 import Link from 'next/link'
+import SubHeading from '../shared/SubHeading'
 
 const CareerCta = () => {
     return (
         <section className="py-20 md:py-28  bg-primary text-white">
             <div className="container-size text-center">
-                <h2 className="font-display text-headline-md text-white mb-6">
-                    Ready to Make an Impact?
-                </h2>
+                <SubHeading
+                    text="Ready to"
+                    highlightText="Make an Impact?"
+                />
                 <p className="font-sans text-body-lg text-white/80 max-w-2xl mx-auto mb-8">
                     Join us in our mission to transform rural communities through research, innovation, and
                     community-driven action.

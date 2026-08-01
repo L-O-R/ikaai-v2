@@ -2,10 +2,22 @@
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
-import "./Masonry.css";
+// Responsive column tiers. Evaluated top-down, first match wins.
+// xl (>=1280px): 4 cols · lg (>=1024px): 3 cols · sm (>=640px): 2 cols
+// below 640px (mobile): falls through to defaultValue below.
+const COLUMN_QUERIES = [
+  "(min-width:1280px)",
+  "(min-width:1024px)",
+  "(min-width:640px)",
+];
+const COLUMN_VALUES = [4, 3, 2];
+const MOBILE_COLUMNS = 2; // used as defaultValue so phones still get real masonry, not a single stack
 
-const COLUMN_QUERIES = ["(min-width:1024px)", "(min-width:640px)"];
-const COLUMN_VALUES = [3, 2];
+// The height values in the data set were authored for roughly a 400px-wide
+// column. Scale them proportionally to the actual column width so aspect
+// ratios stay correct at every breakpoint instead of producing tall, skinny
+// slivers on narrow (mobile) columns.
+const REFERENCE_COLUMN_WIDTH = 400;
 
 const useMedia = (queries, values, defaultValue) => {
   const [value, setValue] = useState(defaultValue);
@@ -76,7 +88,7 @@ const Masonry = ({
   onItemClick,
   renderOverlay,
 }) => {
-  const columns = useMedia(COLUMN_QUERIES, COLUMN_VALUES, 1);
+  const columns = useMedia(COLUMN_QUERIES, COLUMN_VALUES, MOBILE_COLUMNS);
 
   const [containerRef, { width }] = useMeasure();
   const [imagesReady, setImagesReady] = useState(false);
@@ -154,7 +166,10 @@ const Masonry = ({
     return items.map((child) => {
       const col = colHeights.indexOf(Math.min(...colHeights));
       const x = columnWidth * col;
-      const height = child.height;
+      // Scale the authored height to the real column width so the aspect
+      // ratio holds at every breakpoint instead of staying a fixed pixel
+      // value regardless of how narrow the column actually is.
+      const height = child.height * (columnWidth / REFERENCE_COLUMN_WIDTH);
       const y = colHeights[col];
 
       colHeights[col] += height;
@@ -179,7 +194,7 @@ const Masonry = ({
   return (
     <div
       ref={containerRef}
-      className="list"
+      className="relative w-full h-full"
       style={{ height: maxContainerHeight || "auto" }}
     >
       {grid.map((item, index) => {
@@ -189,7 +204,6 @@ const Masonry = ({
         const currentPos = imagesReady ? { x: item.x, y: item.y } : initialPos;
 
         const itemStyle = {
-          position: "absolute",
           transform: `translate3d(${currentPos.x}px, ${currentPos.y}px, 0) scale(${scale})`,
           width: `${item.w}px`,
           height: `${item.h}px`,
@@ -226,7 +240,7 @@ const Masonry = ({
             key={item.id}
             type="button"
             data-key={item.id}
-            className="item-wrapper"
+            className="group absolute top-0 left-0 will-change-[transform,width,height,opacity] p-1.5 cursor-pointer border-0 bg-transparent text-inherit text-left [font:inherit]"
             style={itemStyle}
             onClick={handleClick}
             onKeyDown={handleKeyDown}
@@ -234,27 +248,19 @@ const Masonry = ({
             onMouseLeave={() => setHoveredId(null)}
           >
             <div
-              className="item-img"
+              className="relative w-full h-full bg-cover bg-center uppercase text-[10px] leading-2.5 rounded-[10px] overflow-hidden shadow-[0px_10px_50px_-10px_rgb(from_var(--color-inverse-surface)_r_g_b/0.2)]"
               style={{ backgroundImage: `url(${item.img})` }}
             >
               {colorShiftOnHover && (
                 <div
-                  className="color-overlay"
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    opacity: isHovered ? 0.3 : 0,
-                    pointerEvents: "none",
-                    borderRadius: "8px",
-                    transition: "opacity 0.3s ease",
-                  }}
+                  className={`absolute inset-0 rounded-lg pointer-events-none transition-opacity duration-300 ease-in-out bg-linear-to-t from-inverse-surface/90 via-inverse-surface/60 to-inverse-surface/10 ${isHovered ? "opacity-100" : "opacity-0"
+                    }`}
                 />
               )}
               {renderOverlay && (
-                <div className="item-overlay">{renderOverlay(item)}</div>
+                <div className="absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-400 ease-in-out group-hover:opacity-100">
+                  {renderOverlay(item)}
+                </div>
               )}
             </div>
           </button>

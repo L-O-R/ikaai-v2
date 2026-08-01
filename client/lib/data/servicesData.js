@@ -2,7 +2,7 @@ export const servicesData = [
     {
         id: 1,
         icon: "assessment",
-        title: "Monitoring, Evaluation & Learning (MEL)",
+        title: "Monitoring & Evaluation",
         tagline: "Measure performance. Evaluate impact. Enable better decisions.",
         slug: "monitoring-evaluation-learning",
         services: [
@@ -97,7 +97,7 @@ export const servicesData = [
     {
         id: 3,
         icon: "volunteer_activism",
-        title: "CSR Advisory & Sustainability",
+        title: "CSR & Sustainability Advisory",
         tagline: "Empower communities. Strengthen businesses. Create lasting impact.",
         slug: "csr-advisory-sustainability",
         services: [
@@ -138,7 +138,7 @@ export const servicesData = [
     {
         id: 4,
         icon: "policy",
-        title: "Government Advisory & Public Policy",
+        title: "Government & Public Policy Advisory",
         tagline: "Better policies. Stronger institutions. Lasting outcomes.",
         slug: "government-advisory-public-policy",
         services: [
@@ -179,7 +179,7 @@ export const servicesData = [
     {
         id: 5,
         icon: "school",
-        title: "Capacity Building & Skill Development",
+        title: "Capacity Building & Skill Development Solutions",
         tagline: "Build skills. Strengthen institutions. Enable growth.",
         slug: "capacity-building-skill-development",
         services: [
@@ -220,7 +220,7 @@ export const servicesData = [
     {
         id: 6,
         icon: "groups",
-        title: "Manpower & Field Operations",
+        title: "Manpower & Field Solutions",
         tagline: "Deploy talent. Execute efficiently. Deliver excellence.",
         slug: "manpower-field-operations",
         services: [

@@ -1,5 +1,6 @@
 
 import React from 'react'
+import SubHeading from '../shared/SubHeading'
 
 const cultureValues = [
     {
@@ -32,10 +33,10 @@ const LifeCulture = () => {
                     <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Our Culture
                     </span>
-                    <h2 className="font-display text-headline-md text-on-surface">
-                        How We Work
-                    </h2>
-                    <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />
+                    <SubHeading
+                        text="How We"
+                        highlightText="Work"
+                    />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">

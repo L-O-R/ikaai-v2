@@ -2,6 +2,7 @@
 'use client'
 
 import React from 'react'
+import SubHeading from '../shared/SubHeading'
 
 const whyJoinData = [
     {
@@ -34,9 +35,10 @@ const WhyJoinUs = () => {
                     <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Why Join Us
                     </span>
-                    <h2 className="font-display text-headline-md text-on-surface">
-                        Be Part of Something Bigger
-                    </h2>
+                    <SubHeading
+                        text="Be Part Of Something"
+                        highlightText="Bigger"
+                    />
                     <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />
                 </div>
 
@@ -47,7 +49,7 @@ const WhyJoinUs = () => {
                                 <span className="material-symbols-outlined text-3xl text-primary">{item.icon}</span>
                             </div>
                             <h3 className="font-display text-xl text-on-surface mb-3">{item.title}</h3>
-                            <p className="font-sans text-body-md text-text-secondary leading-relaxed flex-grow">
+                            <p className="font-sans text-body-md text-text-secondary leading-relaxed grow">
                                 {item.description}
                             </p>
                         </div>

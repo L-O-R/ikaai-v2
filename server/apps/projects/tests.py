@@ -19,8 +19,9 @@ class ProjectTests(TestCase):
     def test_slug_is_generated_once(self):
         project = Project.objects.create(
             title="Annual Impact Report",
-            cover_image="projects/cover/report.png",
+            featured_image="projects/featured/report.png",
             client=self.client,
+            start_year=2025,
         )
         original_slug = project.slug
 
@@ -33,17 +34,19 @@ class ProjectTests(TestCase):
         for index in range(4):
             Project.objects.create(
                 title=f"Featured {index}",
-                cover_image=f"projects/cover/{index}.png",
+                featured_image=f"projects/featured/{index}.png",
                 client=self.client,
                 is_featured=True,
                 display_order=index,
+                start_year=2025,
             )
 
         project = Project(
             title="Fifth featured",
-            cover_image="projects/cover/fifth.png",
+            featured_image="projects/featured/fifth.png",
             client=self.client,
             is_featured=True,
+            start_year=2025,
         )
 
         with self.assertRaises(ValidationError):
@@ -52,16 +55,18 @@ class ProjectTests(TestCase):
     def test_selectors_return_active_projects(self):
         active = Project.objects.create(
             title="Active project",
-            cover_image="projects/cover/active.png",
+            featured_image="projects/featured/active.png",
             client=self.client,
             display_order=1,
+            start_year=2025,
         )
         inactive = Project.objects.create(
             title="Inactive project",
-            cover_image="projects/cover/inactive.png",
+            featured_image="projects/featured/inactive.png",
             client=self.client,
             is_active=False,
             display_order=0,
+            start_year=2025,
         )
 
         self.assertEqual(list(get_projects()), [active])
@@ -72,10 +77,10 @@ class ProjectTests(TestCase):
     def test_serializers_expose_public_fields_only(self):
         project = Project.objects.create(
             title="Serializer project",
-            cover_image="projects/cover/serializer.png",
+            featured_image="projects/featured/serializer.png",
             client=self.client,
-            description="This is a long description for truncation testing.",
-            location="Delhi",
+            introduction="This is a long introduction.",
+            start_year=2025,
         )
 
         list_serializer = ProjectListSerializer(project)
@@ -86,12 +91,15 @@ class ProjectTests(TestCase):
             {
                 "slug",
                 "title",
-                "cover_image",
+                "featured_image",
                 "client",
-                "client_logo",
-                "location",
-                "featured",
-                "short_description",
+                "introduction",
+                "start_year",
+                "end_year",
+                "coverage",
+                "industry",
+                "scope_of_work",
+                "sample_size",
             },
         )
-        self.assertIn("description", detail_serializer.fields)
+        self.assertIn("statistics", detail_serializer.fields)

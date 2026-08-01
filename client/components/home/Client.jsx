@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getErrorMessage } from "@/lib/api/apiErrors";
 import { getClients } from "@/lib/api/getClients";
 import LogoLoop from "../ui/LogoLoop";
+import SubHeading from "../shared/SubHeading";
 
 const Client = () => {
     const [clients, setClients] = useState([]);
@@ -40,13 +41,13 @@ const Client = () => {
                     <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-3">
                         Trusted By
                     </span>
-                    <h2 className="font-display text-headline-lg font-bold tracking-[-0.2rem] text-on-surface">
-                        Clients & Partners
-                    </h2>
-                    <div className="w-16 h-0.5 bg-harvest-gold/60 mt-4" />
+                    <SubHeading
+                        text="Clients &"
+                        highlightText="Partners"
+                    />
+
                     <p className="font-sans text-body-lg text-text-secondary max-w-2xl mt-4">
-                        Governments, NGOs, and development agencies that rely on our
-                        research and development expertise to drive evidence-based change.
+                        Empowering governments, institutions, and development partners with the knowledge, innovation, and solutions to create lasting change.
                     </p>
                 </div>
 

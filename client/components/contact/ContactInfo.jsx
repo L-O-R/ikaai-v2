@@ -39,9 +39,10 @@ const ContactInfo = () => {
                 <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-3">
                     Contact Information
                 </span>
-                <h2 className="font-display text-headline-md text-on-surface mb-4">
-                    Get in Touch
-                </h2>
+                <SubHeading
+                    text="Get in"
+                    highlightText="Touch"
+                />
                 <div className="w-16 h-0.5 bg-harvest-gold/60 mb-6" />
                 <p className="font-sans text-body-md text-text-secondary leading-relaxed">
                     We're here to help. Whether you're a researcher, partner, or community member — reach out and

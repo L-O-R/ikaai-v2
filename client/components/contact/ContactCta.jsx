@@ -3,14 +3,16 @@
 
 import React from 'react'
 import Link from 'next/link'
+import SubHeading from '../shared/SubHeading'
 
 const ContactCta = () => {
     return (
         <section className="py-20 md:py-28  bg-primary text-white">
             <div className="container-size text-center">
-                <h2 className="font-display text-headline-md text-white mb-6">
-                    Ready to Make a Difference?
-                </h2>
+                <SubHeading
+                    text="Ready to Make"
+                    highlightText="a Difference?"
+                />
                 <p className="font-sans text-body-lg text-white/80 max-w-2xl mx-auto mb-8">
                     Whether you're looking to partner with us, commission research, or join our team — we'd love to
                     hear from you.

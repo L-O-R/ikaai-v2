@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import SubHeading from '../shared/SubHeading'
 
 const CtaSection = () => {
     return (
@@ -18,14 +19,20 @@ const CtaSection = () => {
                 <div className="absolute inset-0 bg-white/5 mix-blend-soft-light" />
             </div>
 
-            <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-6">
-                <div className="w-12 h-0.5 bg-harvest-gold/80" />
-                <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-white">
-                    Every partnership begins with a conversation.
-                </h2>
+            <div className="relative z-10 max-w-4xl flex flex-col items-start gap-6 px-section-mobile">
+                <p className="mb-stack-md font-sans text-label-caps uppercase tracking-[0.2em] text-primary-fixed">
+                    Beyond Research
+                </p>
 
-                <p className="font-sans text-body-md text-white/85 max-w-3xl leading-relaxed">
-                    Whether you're a government agency, CSR foundation, development partner, academic institution, or nonprofit, we collaborate to transform research into measurable social impact.
+                <SubHeading
+                    text="Every insight begins with people"
+                    className='text-left'
+                />
+
+                <p className="mt-stack-lg max-w-xl text-left font-sans text-body-lg text-surface/90 space-y-2 flex flex-col">
+                    <span>Behind every statistic is a story.</span>
+                    <span>Behind every household is a lived reality.</span>
+                    <span>Behind every community is the opportunity to create lasting change.</span>
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 mt-4">

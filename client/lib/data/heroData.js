@@ -21,7 +21,7 @@ export const heroData = {
       "Be part of a passionate team dedicated to evidence-based research and sustainable development. Together, we're creating lasting change for rural communities across India.",
   },
   life: {
-    eyebrow: "Life at IKAAI",
+    eyebrow: "Life at Ikaai",
     title: "A Culture of",
     highlight: "Purpose & Passion",
     description:
@@ -56,7 +56,7 @@ export const heroData = {
       "A diverse team of researchers, development practitioners, and changemakers united by a common purpose - creating sustainable change in rural India.",
   },
   stories: {
-    eyebrow: "Stories",
+    eyebrow: "Blog",
     title: "Ideas, insights",
     highlight: "and field notes",
     description:

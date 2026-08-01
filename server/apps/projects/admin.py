@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from common.admin import BaseAdmin, ImagePreviewMixin
 
-from .models import Project, ProjectImage, ProjectStat
+from .models import Project, ProjectStat
 
 
 class ProjectStatInline(admin.TabularInline):
@@ -18,31 +18,14 @@ class ProjectStatInline(admin.TabularInline):
     ordering = ("display_order",)
 
 
-class ProjectImageInline(ImagePreviewMixin, admin.TabularInline):
-    model = ProjectImage
-    extra = 0
-    preview_image_field = "image"
-    preview_image_label = "Project image"
-    fields = (
-        "image_preview",
-        "image",
-        "caption",
-        "display_order",
-        "is_active",
-    )
-    readonly_fields = ("image_preview",)
-    ordering = ("display_order",)
-
-
 @admin.register(Project)
 class ProjectAdmin(ImagePreviewMixin, BaseAdmin):
-    preview_image_field = "cover_image"
-    preview_image_label = "Project cover"
+    preview_image_field = "featured_image"
+    preview_image_label = "Project featured image"
 
     search_fields = (
         "title",
         "client__name",
-        "location",
     )
     list_filter = (
         "is_featured",
@@ -54,7 +37,6 @@ class ProjectAdmin(ImagePreviewMixin, BaseAdmin):
         "image_preview",
         "title",
         "client",
-        "location",
         "is_featured",
         "is_active",
         "display_order",
@@ -68,31 +50,42 @@ class ProjectAdmin(ImagePreviewMixin, BaseAdmin):
     )
     inlines = (
         ProjectStatInline,
-        ProjectImageInline,
     )
 
     fieldsets = (
         (
-            "Project",
+            "Basic Information",
             {
                 "fields": (
                     "title",
                     "slug",
                     "client",
-                    "cover_image",
+                    "featured_image",
                     "image_preview",
-                    "description",
-                    "location",
+                    "introduction",
                 )
             },
         ),
         (
-            "Visibility",
+            "Project Information",
+            {
+                "fields": (
+                    "start_year",
+                    "end_year",
+                    "coverage",
+                    "industry",
+                    "scope_of_work",
+                    "sample_size",
+                )
+            },
+        ),
+        (
+            "Settings",
             {
                 "fields": (
                     "is_featured",
-                    "is_active",
                     "display_order",
+                    "is_active",
                 )
             },
         ),

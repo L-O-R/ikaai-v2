@@ -1,5 +1,6 @@
 
 import React from 'react'
+import SubHeading from '../shared/SubHeading'
 
 const eventsData = [
     {
@@ -32,10 +33,10 @@ const LifeEvents = () => {
                     <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Life in Action
                     </span>
-                    <h2 className="font-display text-headline-md text-on-surface">
-                        Moments That Matter
-                    </h2>
-                    <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />
+                    <SubHeading
+                        text="Moments That"
+                        highlightText="Matter"
+                    />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">

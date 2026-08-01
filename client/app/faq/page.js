@@ -203,18 +203,16 @@ export default function FAQPage() {
                 <div className="container-size px-gutter text-center">
                     <div className="max-w-2xl mx-auto space-y-6">
                         <div className="w-12 h-12 rounded-full bg-warm-beige flex items-center justify-center mx-auto" aria-hidden="true">
-                            <span className="material-symbols-outlined text-primary !text-[24px]">
+                            <span className="material-symbols-outlined text-primary text-[24px]!">
                                 help_outline
                             </span>
                         </div>
 
                         <div className="space-y-2">
-                            <h2
-                                id="faq-cta-title"
-                                className="text-headline-md text-on-surface font-bold tracking-tight"
-                            >
-                                Still have questions?
-                            </h2>
+                            <SubHeading
+                                text="Still have"
+                                highlightText=" questions?"
+                            />
                             <p className="text-body-md text-text-secondary leading-relaxed max-w-md mx-auto">
                                 If you require further support, specific research details, or partnership inquiries, please contact our team directly.
                             </p>

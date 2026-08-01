@@ -93,7 +93,7 @@
   --text-label-caps--letter-spacing: 0.1em;
   --text-label-caps--font-weight: 700;
 
-  --text-headline-xl: clamp(4.25rem, 12vw + 1rem, 16.5rem);
+  --text-headline-xl: clamp(4rem, 10vw + 1rem, 14.5rem);
   --text-headline-xl--line-height: 1em;
   --text-headline-xl--letter-spacing: -0.02em;
   --text-headline-xl--font-weight: 700;
@@ -176,8 +176,26 @@ html {
 }
 
 ::selection {
+  background-color: var(--color-on-background);
+  color: var(--color-background);
+}
+
+.text-primary::selection,
+.text-primary *::selection {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.text-text-muted::selection,
+.text-text-muted *::selection {
   background-color: var(--color-text-muted);
-  mix-blend-mode: difference;
+  color: var(--color-background);
+}
+
+.text-white::selection,
+.text-white *::selection {
+  background-color: #ffffff;
+  color: var(--color-on-background);
 }
 
 .material-symbols-outlined {
@@ -243,6 +261,10 @@ html {
 }
 
 /* Custom Utilities (Native Tailwind v4 @utility) */
+@utility text-stroke-neutral {
+  -webkit-text-stroke: 1.2px var(--color-border-neutral);
+}
+
 @utility container-size {
   width: 100%;
   margin-inline: auto;

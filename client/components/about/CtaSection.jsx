@@ -6,9 +6,11 @@ const CtaSection = () => {
     return (
         <section className="py-20 md:py-28  bg-primary text-white">
             <div className="container-size text-center">
-                <h2 className="font-display text-headline-md text-white mb-6">
-                    Join Us in Transforming Rural India
-                </h2>
+                <SubHeading
+                    text="Join Us in Transforming"
+                    highlightText="Rural India"
+                    className='flex flex-col'
+                />
                 <p className="font-sans text-body-lg text-white/80 max-w-2xl mx-auto mb-8">
                     Whether you're a researcher, partner, or supporter — your contribution can help create lasting change
                     in communities across India.

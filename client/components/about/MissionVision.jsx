@@ -15,9 +15,10 @@ const MissionVision = () => {
                     <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Our Compass
                     </span>
-                    <h2 className="font-display text-headline-lg text-on-surface">
-                        Mission &amp; Vision
-                    </h2>
+                    <SubHeading
+                        text="Mission &"
+                        highlightText="Vision"
+                    />
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-8 items-stretch">
                     {/* Mission */}

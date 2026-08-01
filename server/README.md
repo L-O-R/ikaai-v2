@@ -2,7 +2,7 @@
 
 Backend server for the IKAAI INDIA content management system. The project is a Django 5 application with Django REST Framework APIs, Google-only admin authentication, PostgreSQL storage, media uploads, and an Unfold-powered admin interface.
 
-The server manages website content such as clients, projects, project galleries, project statistics, organization-wide statistics, public inquiries submitted from the website, homepage updates/announcements, blog posts, and job openings with applications.
+The server manages website content such as clients, projects, project statistics, organization-wide statistics, public inquiries submitted from the website, homepage updates/announcements, blog posts, and job openings with applications.
 
 ## Table of Contents
 
@@ -65,8 +65,7 @@ The project intentionally favors clean, predictable Django patterns over unneces
 - Admin-provisioned users only; Google login does not auto-create staff users.
 - Unfold-themed Django Admin with a custom dashboard showing live model counts and quick-action links.
 - Grouped sidebar navigation in the admin panel covering Content, Enquiries, Careers, and Admin sections.
-- Project management with cover image, client, description, location, featured flag, and display ordering.
-- Project gallery images.
+- Research project management with featured image, client, introduction, year, coverage, industry, scope of work, sample size, featured flag, and display ordering.
 - Per-project statistics with Material Symbols icon names.
 - Reusable clients with logos — `description` field removed; clients are identified by name and logo only.
 - Public inquiry submission endpoint with email notification support.
@@ -169,10 +168,15 @@ Important fields:
 
 - `title`
 - `slug`
-- `cover_image`
+- `featured_image`
 - `client`
-- `description`
-- `location`
+- `introduction`
+- `start_year`
+- `end_year`
+- `coverage`
+- `industry`
+- `scope_of_work`
+- `sample_size`
 - `is_featured`
 - `display_order`
 - `is_active`
@@ -184,7 +188,7 @@ Important behavior:
 - Slugs are unique.
 - Public APIs expose only active projects.
 - Maximum 4 active featured projects are allowed.
-- Project detail includes gallery images and project statistics.
+- Project detail includes statistics and research metadata.
 
 Public routes:
 

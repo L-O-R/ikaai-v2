@@ -23,7 +23,7 @@ class ProjectListAPIView(ListAPIView):
     pagination_class = ProjectPagination
     filter_backends = (DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter)
     filterset_class = ProjectFilter
-    search_fields = ("title", "client__name", "location")
+    search_fields = ("title", "client__name")
     ordering_fields = ("created_at", "display_order", "title")
     ordering = ("display_order", "title")
 

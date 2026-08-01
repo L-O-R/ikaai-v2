@@ -68,9 +68,10 @@ const Timeline = () => {
                     <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Our Journey
                     </span>
-                    <h2 className="font-display text-headline-md text-on-surface">
-                        Timeline of Impact
-                    </h2>
+                    <SubHeading
+                        text="Timeline"
+                        highlightText="of Impact"
+                    />
                     <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />
                 </div>
 

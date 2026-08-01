@@ -1,14 +1,16 @@
 
 import React from 'react'
 import Link from 'next/link'
+import SubHeading from '../shared/SubHeading'
 
 const LifeCta = () => {
     return (
         <section className="py-20 md:py-28  bg-surface">
             <div className="container-size text-center">
-                <h2 className="font-display text-headline-md text-on-surface mb-6">
-                    Join Our Team
-                </h2>
+                <SubHeading
+                    text="Join Our"
+                    highlightText="Team"
+                />
                 <p className="font-sans text-body-lg text-text-secondary max-w-2xl mx-auto mb-8">
                     If you're passionate about research, rural development, and making a difference — we'd love to hear
                     from you.

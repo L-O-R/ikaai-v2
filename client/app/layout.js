@@ -212,6 +212,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       className={`${epilogue.variable} ${manrope.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <head>
         <link
@@ -227,7 +228,7 @@ export default function RootLayout({ children }) {
         />
       </head>
 
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
 
         <Header />
         {children}

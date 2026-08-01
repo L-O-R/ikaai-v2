@@ -11,14 +11,22 @@ class Project(BaseModel):
 
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True, blank=True)
-    cover_image = models.ImageField(upload_to="projects/cover/")
+    featured_image = models.ImageField(upload_to="projects/featured/")
     client = models.ForeignKey(
         "clients.Client",
         on_delete=models.PROTECT,
         related_name="projects",
     )
-    description = models.TextField(blank=True)
-    location = models.CharField(max_length=200, blank=True)
+    introduction = models.TextField(blank=True)
+    start_year = models.PositiveSmallIntegerField()
+    end_year = models.PositiveSmallIntegerField(
+        null=True,
+        blank=True,
+    )
+    coverage = models.TextField(blank=True)
+    industry = models.CharField(max_length=255, blank=True)
+    scope_of_work = models.TextField(blank=True)
+    sample_size = models.TextField(blank=True)
     is_featured = models.BooleanField(default=False)
     display_order = models.PositiveIntegerField(default=0)
 
@@ -61,22 +69,3 @@ class ProjectStat(BaseModel):
 
     def __str__(self) -> str:
         return self.title
-
-
-class ProjectImage(BaseModel):
-    """Additional gallery image for a project."""
-
-    project = models.ForeignKey(
-        Project,
-        on_delete=models.CASCADE,
-        related_name="images",
-    )
-    image = models.ImageField(upload_to="projects/gallery/")
-    caption = models.CharField(max_length=255, blank=True)
-    display_order = models.PositiveIntegerField(default=0)
-
-    class Meta:
-        ordering = ("display_order",)
-
-    def __str__(self) -> str:
-        return f"{self.project.title} image"

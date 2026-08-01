@@ -3,6 +3,7 @@
 import { servicesData } from "@/lib/data/servicesData";
 import { useState } from "react";
 import ServiceCard from "../ui/HomeServiceCard";
+import SubHeading from "../shared/SubHeading";
 const Services = () => {
     const [openIndex, setOpenIndex] = useState(0);
 
@@ -21,17 +22,13 @@ const Services = () => {
                 {/* Header - unchanged */}
                 <div className="grid grid-cols-1 gap-gutter items-end border-b border-border-neutral pb-8 md:pb-12 lg:pb-14 mb-0">
                     <div>
-                        <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-3">
-                            Our Services
+                        <span className="font-sans text-label-caps uppercase text-text-muted tracking-widest block mb-3">
+                            What we do
                         </span>
-                        <h2 className="font-display text-headline-lg text-on-surface">
-                            Capabilities We Offer
-                        </h2>
-                    </div>
-                    <div className="md:pb-2 mt-4 lg:mt-0">
-                        <p className="font-sans text-body-lg text-text-secondary">
-                            Helping governments, NGOs, CSR foundations and development agencies make evidence-based decisions.
-                        </p>
+                        <SubHeading
+                            text="Solutions"
+                            highlightText=""
+                        />
                     </div>
                 </div>
 

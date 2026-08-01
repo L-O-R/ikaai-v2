@@ -1,5 +1,6 @@
 'use client'
 import React, { useRef, useState, useEffect } from 'react';
+import SubHeading from '../shared/SubHeading';
 
 // Unified list of commitments with corresponding Material Symbols names
 const commitments = [
@@ -116,16 +117,14 @@ export default function OurCommitmentSection() {
 
                 {/* Header Row: Flex container to place navigation buttons adjacent to the header */}
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-stack-lg gap-6">
-                    <div className="max-w-2xl">
+                    <div className="max-w-4xl">
                         <span className="text-label-caps block text-text-muted mb-2 uppercase tracking-[0.15em] font-semibold">
-                            Our Commitment
+                            Our Commitments
                         </span>
-                        <h2
-                            id="commitments-heading"
-                            className="text-headline-lg text-on-surface font-bold tracking-tight mb-stack-sm leading-[1.2em]"
-                        >
-                            National Development Priorities
-                        </h2>
+                        <SubHeading
+                            text="National"
+                            highlightText="Development Priorities"
+                        />
                         <p className="text-body-lg text-text-secondary leading-relaxed">
                             Aligning institutional research capabilities with strategic frameworks and sustainable execution pathways to drive systemic, evidence-based change.
                         </p>

@@ -10,7 +10,7 @@ const Footer = () => {
                     {/* Left Column – Brand & Description */}
                     <div className="md:col-span-3 ">
                         <h2 className="font-display text-headline-lg text-inverse-on-surface">
-                            Ikaai India
+                            ikaai India
                         </h2>
                         <p className="mb-8 font-sans text-body-lg font-semibold uppercase tracking-widest text-inverse-on-surface mt-1">
                             Research and Consultancy
@@ -104,7 +104,9 @@ const Footer = () => {
                             <div className="flex items-start gap-3">
                                 <span className="material-symbols-outlined text-base mt-0.5">location_on</span>
                                 <span className="font-sans text-body-md">
-                                    B-11/10 Ground Floor, Sector 18 Rohini,<br />
+                                    Ground Floor, B-11/10,
+                                    <br />
+                                    Sector 18 Rohini,<br />
                                     New Delhi 110089, INDIA
                                 </span>
                             </div>

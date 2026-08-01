@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { getUpdates } from "@/lib/api/getUpdates";
+import SubHeading from "../shared/SubHeading";
 
 const fallbackImage = "/updates/outline-india.jpg";
 
@@ -100,9 +101,10 @@ const Updates = () => {
           <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-3">
             Updates
           </span>
-          <h2 className="font-display text-headline-lg text-on-surface">
-            From Ikaai India
-          </h2>
+          <SubHeading
+            text="From Ikaai"
+            highlightText="India"
+          />
           <p className="font-sans text-body-md text-text-secondary max-w-xl mt-4">
             Stay connected with our latest news, events, and impact stories.
           </p>

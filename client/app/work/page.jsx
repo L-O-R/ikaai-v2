@@ -92,7 +92,7 @@ const ProjectsPage = () => {
                             </span>
                             <input
                                 type="text"
-                                placeholder="Search by title, client, or location..."
+                                placeholder="Search by title or client..."
                                 value={searchTerm}
                                 onChange={handleSearchChange}
                                 className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-border-neutral bg-surface-container-low focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 font-sans text-body-md text-on-surface placeholder:text-text-muted"

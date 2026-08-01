@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SubHeading from "../shared/SubHeading";
 
 export default function ImpactMoment() {
     return (
@@ -24,9 +25,10 @@ export default function ImpactMoment() {
                                 Beyond Research
                             </p>
 
-                            <h2 className="font-display text-headline-lg text-on-primary">
-                                Every insight begins with people.
-                            </h2>
+                            <SubHeading
+                                text="Every insight begins with people"
+                                className="flex flex-col text-white!"
+                            />
 
                             <p className="mt-stack-lg max-w-xl font-sans text-body-lg text-surface/90 space-y-2 flex flex-col">
                                 <span>Behind every statistic is a story.</span>

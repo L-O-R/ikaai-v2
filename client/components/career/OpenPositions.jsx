@@ -66,9 +66,10 @@ const OpenPositions = () => {
                     <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
                         Open Positions
                     </span>
-                    <h2 className="font-display text-headline-lg text-on-surface">
-                        Join Our Team
-                    </h2>
+                    <SubHeading
+                        text="Join Our"
+                        highlightText="Team"
+                    />
                     <div className="w-16 h-0.5 bg-harvest-gold/60 mx-auto mt-4" />
                     <p className="font-sans text-body-md text-text-secondary max-w-2xl mx-auto mt-4">
                         We're looking for passionate individuals who want to make a difference. Explore our current
