@@ -1,11 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getErrorMessage } from "@/lib/api/apiErrors";
 import { getClients } from "@/lib/api/getClients";
 import LogoLoop from "../ui/LogoLoop";
 import SubHeading from "../shared/SubHeading";
+
+// Split into `parts` groups as evenly as possible (round-robin), so each
+// marquee column gets its own distinct set of logos instead of every
+// column repeating the full list.
+const splitIntoParts = (items, parts) => {
+    const groups = Array.from({ length: parts }, () => []);
+    items.forEach((item, index) => {
+        groups[index % parts].push(item);
+    });
+    return groups;
+};
 
 const Client = () => {
     const [clients, setClients] = useState([]);
@@ -32,7 +43,13 @@ const Client = () => {
         };
     }, []);
 
-    const showMarquee = clients.length > 6;
+    // Three separate, non-overlapping groups — one per marquee column.
+    const columns = useMemo(() => splitIntoParts(clients, 3), [clients]);
+
+    // Only run the marquee once every column actually has enough logos
+    // (3+) to loop convincingly. Otherwise fall back to a plain grid.
+    const smallestColumn = Math.min(...columns.map((c) => c.length));
+    const showMarquee = clients.length > 0 && smallestColumn >= 3;
 
     return (
         <section className="py-20 md:py-28 bg-surface overflow-hidden">
@@ -77,7 +94,7 @@ const Client = () => {
                     <div className="grid grid-cols-3 gap-4 md:gap-8 h-[400px] md:h-[480px]">
                         <div className="overflow-hidden">
                             <LogoLoop
-                                logos={clients}
+                                logos={columns[0]}
                                 direction="up"
                                 logoHeight={120}
                                 gap={36}
@@ -88,7 +105,7 @@ const Client = () => {
                         </div>
                         <div className="overflow-hidden">
                             <LogoLoop
-                                logos={clients}
+                                logos={columns[1]}
                                 direction="down"
                                 logoHeight={120}
                                 gap={36}
@@ -99,7 +116,7 @@ const Client = () => {
                         </div>
                         <div className="overflow-hidden">
                             <LogoLoop
-                                logos={clients}
+                                logos={columns[2]}
                                 direction="up"
                                 logoHeight={120}
                                 gap={36}

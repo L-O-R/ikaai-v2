@@ -18,7 +18,10 @@ class Project(BaseModel):
         related_name="projects",
     )
     introduction = models.TextField(blank=True)
-    start_year = models.PositiveSmallIntegerField()
+    start_year = models.PositiveSmallIntegerField(
+        null=True,
+        blank=True,
+    )
     end_year = models.PositiveSmallIntegerField(
         null=True,
         blank=True,
