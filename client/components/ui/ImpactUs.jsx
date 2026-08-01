@@ -81,7 +81,7 @@ const ImpactUs = () => {
     return (
       <div ref={containerRef} className="w-full py-16 z-10">
         <div className="container-size grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12 text-center ">
-          {[0, 1, 2, 3].map((item) => (
+          {[0, 1, 2, 3, 4].map((item) => (
             <div key={item} className="flex flex-col gap-3 items-center">
               <div className="h-14 w-24 rounded-xl bg-surface-container-high animate-pulse" />
               <div className="h-4 w-32 rounded bg-surface-container-high animate-pulse" />
@@ -104,7 +104,7 @@ const ImpactUs = () => {
 
   return (
     <div ref={containerRef} className="w-full py-16 z-10">
-      <div className="container-size grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center ">
+      <div className="container-size grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12 text-center ">
         {stats.map((stat, idx) => (
           <div key={stat.label} className="flex flex-col gap-1">
             <span className="font-display  font-semibold text-statistic-num text-primary">
