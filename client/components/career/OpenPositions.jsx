@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useState, useCallback } from 'react'
 import { getJobs } from '@/lib/api/getJobs'
 import JobApplicationForm from './JobApplicationForm'
+import SubHeading from '../shared/SubHeading'
 
 const OpenPositions = () => {
     const [jobs, setJobs] = useState([])

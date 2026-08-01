@@ -10,8 +10,7 @@ const CareerCta = () => {
         <section className="py-20 md:py-28  bg-primary text-white">
             <div className="container-size text-center">
                 <SubHeading
-                    text="Ready to"
-                    highlightText="Make an Impact?"
+                    text="Ready to Make an Impact?"
                 />
                 <p className="font-sans text-body-lg text-white/80 max-w-2xl mx-auto mb-8">
                     Join us in our mission to transform rural communities through research, innovation, and

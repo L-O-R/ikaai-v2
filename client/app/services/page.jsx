@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { ServicesHero, ServiceShowcase } from '@/components/services'
+import { ServicesHero, ServiceShowcase, ServicesCta } from '@/components/services'
 
 export const metadata = {
     title: 'Our Services | IKAAI India',
@@ -12,6 +12,7 @@ const ServicesPage = () => {
         <main className="bg-surface">
             <ServicesHero />
             <ServiceShowcase />
+            <ServicesCta />
         </main>
     )
 }
