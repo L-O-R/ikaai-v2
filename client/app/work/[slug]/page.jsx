@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getProjectDetail } from '@/lib/api/getProjectDetail'
 import { getProjects } from '@/lib/api/getProjects'
+import ProjectCard from '@/components/ui/ProjectCard'
 
 export const revalidate = 3600
 
@@ -71,7 +72,7 @@ const ProjectDetailPage = async ({ params }) => {
             {/* Title + Introduction + Details Section (Matching the mock design layout) */}
             <section className="bg-surface py-12 md:py-20">
                 <div className="container-size">
-                    
+
                     {/* Main Project Title */}
                     <h1 className="font-display text-display-lg text-on-surface font-bold tracking-tight mb-16 leading-tight max-w-5xl">
                         {project.title}
@@ -79,7 +80,7 @@ const ProjectDetailPage = async ({ params }) => {
 
                     {/* Content Grid */}
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-                        
+
                         {/* Left Column: Introduction badge */}
                         <div className="lg:col-span-4">
                             <div className="inline-flex items-center gap-2 text-on-surface font-sans text-body-md font-semibold tracking-wider">
@@ -90,7 +91,7 @@ const ProjectDetailPage = async ({ params }) => {
 
                         {/* Right Column: Paragraph + Metadata Table + Logos */}
                         <div className="lg:col-span-8 flex flex-col gap-10">
-                            
+
                             {/* Introduction text */}
                             {project.introduction && (
                                 <p className="font-sans text-body-lg text-on-surface/90 leading-relaxed font-normal">
@@ -186,41 +187,13 @@ const ProjectDetailPage = async ({ params }) => {
                         </span>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                             {otherProjects.map((proj) => (
-                                <Link 
-                                    key={proj.slug} 
+                                <Link
+                                    key={proj.title}
                                     href={`/work/${proj.slug}`}
-                                    className="group flex flex-col bg-surface rounded-2xl overflow-hidden border border-border-neutral hover-lift transition-all duration-300"
                                 >
-                                    {proj.img && (
-                                        <div className="relative w-full h-48 sm:h-64 overflow-hidden">
-                                            <Image
-                                                src={proj.img}
-                                                alt={proj.title}
-                                                fill
-                                                className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                                sizes="(max-width: 768px) 100vw, 50vw"
-                                            />
-                                        </div>
-                                    )}
-                                    <div className="p-6 md:p-8 flex flex-col flex-1">
-                                        {proj.industry && (
-                                            <span className="font-sans text-label-caps text-xs text-primary uppercase tracking-wider mb-2 block">
-                                                {proj.industry}
-                                            </span>
-                                        )}
-                                        <h3 className="font-display text-headline-sm text-on-surface group-hover:text-primary transition-colors duration-200 line-clamp-2 mb-3">
-                                            {proj.title}
-                                        </h3>
-                                        {proj.introduction && (
-                                            <p className="font-sans text-body-sm text-text-muted line-clamp-3 mb-6">
-                                                {proj.introduction}
-                                            </p>
-                                        )}
-                                        <div className="mt-auto flex items-center gap-2 text-primary font-sans text-body-sm font-semibold group-hover:translate-x-1 transition-transform duration-200">
-                                            <span>View Project</span>
-                                            <span className="material-symbols-outlined text-base">arrow_forward</span>
-                                        </div>
-                                    </div>
+                                    <ProjectCard
+                                        project={proj}
+                                    />
                                 </Link>
                             ))}
                         </div>
