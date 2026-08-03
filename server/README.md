@@ -171,8 +171,6 @@ Important fields:
 - `featured_image`
 - `client`
 - `introduction`
-- `start_year`
-- `end_year`
 - `coverage`
 - `industry`
 - `scope_of_work`

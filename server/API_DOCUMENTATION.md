@@ -169,8 +169,6 @@ Response body:
         "website": "https://example.org"
       },
       "introduction": "This is a short introduction of the research project.",
-      "start_year": 2025,
-      "end_year": null,
       "coverage": "33 States & Union Territories | 1200 Gram Panchayats",
       "industry": "Health and Nutrition",
       "scope_of_work": "CAPI Data Collection\nAnthropometric Measurements",
@@ -196,8 +194,6 @@ Response body:
 | `results[].client.logo` | string | No | Client logo URL/path. |
 | `results[].client.website` | string | No | Client website URL. May be empty. |
 | `results[].introduction` | string | No | Project introduction. May be empty. |
-| `results[].start_year` | integer | No | Start year of the project. |
-| `results[].end_year` | integer | Yes | End year of the project, or `null`. |
 | `results[].coverage` | string | No | Geographic or scale coverage. |
 | `results[].industry` | string | No | Relevant industry. |
 | `results[].scope_of_work` | string | No | Description of the scope of work. |
@@ -244,8 +240,6 @@ Response body:
     "website": "https://example.org"
   },
   "introduction": "This is a detailed introduction of the research project.",
-  "start_year": 2025,
-  "end_year": null,
   "coverage": "33 States & Union Territories | 1200 Gram Panchayats",
   "industry": "Health and Nutrition",
   "scope_of_work": "CAPI Data Collection\nAnthropometric Measurements",
@@ -272,8 +266,6 @@ Response body:
 | `client.logo` | string | No | Client logo URL/path. |
 | `client.website` | string | No | Client website URL. |
 | `introduction` | string | No | Project introduction. |
-| `start_year` | integer | No | Start year of the project. |
-| `end_year` | integer | Yes | End year of the project, or `null`. |
 | `coverage` | string | No | Geographic or scale coverage. |
 | `industry` | string | No | Relevant industry. |
 | `scope_of_work` | string | No | Description of the scope of work. |

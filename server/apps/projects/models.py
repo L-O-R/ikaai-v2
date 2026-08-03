@@ -18,14 +18,6 @@ class Project(BaseModel):
         related_name="projects",
     )
     introduction = models.TextField(blank=True)
-    start_year = models.PositiveSmallIntegerField(
-        null=True,
-        blank=True,
-    )
-    end_year = models.PositiveSmallIntegerField(
-        null=True,
-        blank=True,
-    )
     coverage = models.TextField(blank=True)
     industry = models.CharField(max_length=255, blank=True)
     scope_of_work = models.TextField(blank=True)

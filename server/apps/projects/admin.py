@@ -70,8 +70,6 @@ class ProjectAdmin(ImagePreviewMixin, BaseAdmin):
             "Project Information",
             {
                 "fields": (
-                    "start_year",
-                    "end_year",
                     "coverage",
                     "industry",
                     "scope_of_work",

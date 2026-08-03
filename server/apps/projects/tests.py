@@ -21,7 +21,6 @@ class ProjectTests(TestCase):
             title="Annual Impact Report",
             featured_image="projects/featured/report.png",
             client=self.client,
-            start_year=2025,
         )
         original_slug = project.slug
 
@@ -38,7 +37,6 @@ class ProjectTests(TestCase):
                 client=self.client,
                 is_featured=True,
                 display_order=index,
-                start_year=2025,
             )
 
         project = Project(
@@ -46,7 +44,6 @@ class ProjectTests(TestCase):
             featured_image="projects/featured/fifth.png",
             client=self.client,
             is_featured=True,
-            start_year=2025,
         )
 
         with self.assertRaises(ValidationError):
@@ -58,7 +55,6 @@ class ProjectTests(TestCase):
             featured_image="projects/featured/active.png",
             client=self.client,
             display_order=1,
-            start_year=2025,
         )
         inactive = Project.objects.create(
             title="Inactive project",
@@ -66,7 +62,6 @@ class ProjectTests(TestCase):
             client=self.client,
             is_active=False,
             display_order=0,
-            start_year=2025,
         )
 
         self.assertEqual(list(get_projects()), [active])
@@ -80,7 +75,6 @@ class ProjectTests(TestCase):
             featured_image="projects/featured/serializer.png",
             client=self.client,
             introduction="This is a long introduction.",
-            start_year=2025,
         )
 
         list_serializer = ProjectListSerializer(project)
@@ -94,8 +88,6 @@ class ProjectTests(TestCase):
                 "featured_image",
                 "client",
                 "introduction",
-                "start_year",
-                "end_year",
                 "coverage",
                 "industry",
                 "scope_of_work",

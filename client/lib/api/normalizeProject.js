@@ -11,8 +11,6 @@ export const normalizeProject = (project) => {
         clientLogo: resolveMediaUrl(clientData.logo),
         clientWebsite: clientData.website || "",
         statistics: project.statistics || [],
-        startYear: project.start_year,
-        endYear: project.end_year,
         coverage: project.coverage,
         industry: project.industry,
         scopeOfWork: project.scope_of_work,

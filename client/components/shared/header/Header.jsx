@@ -67,7 +67,7 @@ const Header = () => {
                         <Image
                             className="h-10 w-auto md:h-10 lg:h-12 object-contain"
                             alt="IKAAI India Logo"
-                            src="/logo.png"
+                            src="/logo_no_bg.png"
                             width={500}
                             height={500}
                             priority

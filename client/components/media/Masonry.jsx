@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 
 // Responsive column tiers. Evaluated top-down, first match wins.
 // xl (>=1280px): 4 cols · lg (>=1024px): 3 cols · sm (>=640px): 2 cols
@@ -61,19 +62,6 @@ const useMeasure = () => {
   return [ref, size];
 };
 
-const preloadImages = async (urls) => {
-  await Promise.all(
-    urls.map(
-      (src) =>
-        new Promise((resolve) => {
-          const img = new window.Image();
-          img.src = src;
-          img.onload = img.onerror = () => resolve();
-        }),
-    ),
-  );
-};
-
 const Masonry = ({
   items,
   ease = "power3.out",
@@ -91,7 +79,7 @@ const Masonry = ({
   const columns = useMedia(COLUMN_QUERIES, COLUMN_VALUES, MOBILE_COLUMNS);
 
   const [containerRef, { width }] = useMeasure();
-  const [imagesReady, setImagesReady] = useState(false);
+  const imagesReady = true;
   const [hoveredId, setHoveredId] = useState(null);
   const [isRevealed, setIsRevealed] = useState(false);
 
@@ -129,19 +117,6 @@ const Masonry = ({
         return { x: item.x, y: item.y + 100 };
     }
   };
-
-  useEffect(() => {
-    let isCancelled = false;
-    setImagesReady(false);
-
-    preloadImages(items.map((i) => i.img)).then(() => {
-      if (!isCancelled) setImagesReady(true);
-    });
-
-    return () => {
-      isCancelled = true;
-    };
-  }, [items]);
 
   useEffect(() => {
     if (!imagesReady) {
@@ -248,9 +223,15 @@ const Masonry = ({
             onMouseLeave={() => setHoveredId(null)}
           >
             <div
-              className="relative w-full h-full bg-cover bg-center uppercase text-[10px] leading-2.5 rounded-[10px] overflow-hidden shadow-[0px_10px_50px_-10px_rgb(from_var(--color-inverse-surface)_r_g_b/0.2)]"
-              style={{ backgroundImage: `url(${item.img})` }}
+              className="relative w-full h-full uppercase text-[10px] leading-2.5 rounded-[10px] overflow-hidden shadow-[0px_10px_50px_-10px_rgb(from_var(--color-inverse-surface)_r_g_b/0.2)]"
             >
+              <Image
+                src={item.img}
+                alt={item.alt || ""}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, 50vw"
+              />
               {colorShiftOnHover && (
                 <div
                   className={`absolute inset-0 rounded-lg pointer-events-none transition-opacity duration-300 ease-in-out bg-linear-to-t from-inverse-surface/90 via-inverse-surface/60 to-inverse-surface/10 ${isHovered ? "opacity-100" : "opacity-0"

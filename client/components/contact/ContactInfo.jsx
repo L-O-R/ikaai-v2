@@ -13,17 +13,12 @@ const contactDetails = [
     {
         icon: 'phone',
         title: 'Phone',
-        details: ['+91 98765 43210', '+91 98765 43211'],
+        details: ['8448491823'],
     },
     {
         icon: 'mail',
         title: 'Email',
-        details: ['info@ikaai.org', 'research@ikaai.org'],
-    },
-    {
-        icon: 'schedule',
-        title: 'Working Hours',
-        details: ['Monday - Friday', '9:00 AM - 6:00 PM IST'],
+        details: ['info@ikaaiindia.in'],
     },
 ]
 

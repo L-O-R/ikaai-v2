@@ -52,10 +52,6 @@ const ProjectDetailPage = async ({ params }) => {
     }
 
     const featuredImage = project.img || null
-    const yearDisplay = project.endYear
-        ? `${project.startYear}–${project.endYear}`
-        : project.startYear ? `${project.startYear}` : null
-
     return (
         <main className="bg-surface">
 
@@ -101,10 +97,8 @@ const ProjectDetailPage = async ({ params }) => {
 
                             {/* Metadata Table */}
                             <div className="border-t border-border-neutral border-b border-border-neutral">
-                                <MetaRow label="Year" value={yearDisplay} />
                                 <MetaRow label="Industry" value={project.industry} />
                                 <MetaRow label="Scope of work" value={project.scopeOfWork} />
-                                <MetaRow label="Timeline" value={project.endYear && project.startYear ? `${(project.endYear - project.startYear || 1) * 12} Months` : null} />
                                 <MetaRow label="Coverage" value={project.coverage} />
                                 <MetaRow label="Sample Size" value={project.sampleSize} />
                             </div>
