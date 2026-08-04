@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import { servicesData } from '@/lib/data/servicesData'
 import Link from 'next/link'
@@ -63,7 +63,7 @@ const HeroSection = () => {
 
     return (
         // The outer section fills the full viewport height with the header offset
-        <section className="relative flex overflow-hidden" style={{ height: '100svh', paddingTop: 'var(--header-height, 5rem)' }}>
+        <section className="relative flex overflow-hidden" style={{ height: '100svh', paddingTop: '4.2rem' }}>
 
             {/* ── SLIDESHOW CARD ── 2.5% margin each side, rounded corners */}
             <div
@@ -80,7 +80,7 @@ const HeroSection = () => {
                             src={img.src}
                             alt={img.label}
                             fill
-                            className="object-cover"
+                            className="object-cover brightness-110"
                             priority={index === 0}
                             sizes="95vw"
                         />
@@ -89,44 +89,28 @@ const HeroSection = () => {
 
                 {/* ── OVERLAYS ── */}
                 {/* Darker overall overlay and gradients for superior contrast and readability */}
-                <div className="absolute inset-0 bg-black/40" />
-                <div className="absolute inset-0 bg-linear-to-b from-black/55 via-transparent to-black/85" />
-                <div className="absolute inset-0 bg-linear-to-r from-black/50 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-black/20" />
+                <div className="absolute inset-0 bg-linear-to-b from-black/35 via-transparent to-black/60" />
+                <div className="absolute inset-0 bg-linear-to-r from-black/30 via-transparent to-transparent" />
 
                 {/* ── CONTENT LAYER ── */}
                 <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-8 md:p-10 text-white">
 
-                    {/* TOP ROW: Title block (left) & Services list (right) */}
-                    <div className="flex flex-col lg:flex-row justify-between items-start gap-6 w-full">
+                    {/* TOP ROW: Title block */}
+                    <div className="w-full">
                         {/* Title block */}
                         <div>
                             <h1 className="font-display leading-none tracking-tight font-bold text-white drop-shadow-xl text-headline-xl">
                                 ikaai India
                             </h1>
-                            <p className="font-sans text-lg md:text-2xl text-white/95 mt-3 ml-1 font-semibold tracking-wide drop-shadow-md">
+                            <p className="font-sans text-headline-md text-white/95 ml-1 font-semibold tracking-wide drop-shadow-md">
                                 Research and Consultancy
                             </p>
                         </div>
-
-                        {/* Services list */}
-                        <div className=" w-full lg:w-auto mt-4 lg:mt-20">
-                            <ul className="flex flex-col gap-x-4 gap-y-2 lg:gap-x-0 lg:space-y-1.5 list-none">
-                                {servicesData.map((service, index) => (
-                                    <li key={index}>
-                                        <Link
-                                            href={`/services#${service.slug}`}
-                                            className="font-sans text-body-md text-white hover:text-emerald-300 font-semibold tracking-wide transition-colors duration-200"
-                                        >
-                                            {service.title}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
                     </div>
 
-                    {/* BOTTOM ROW: Measuring Impact (left) & Pagination (right) */}
-                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 w-full mt-auto">
+                    {/* BOTTOM ROW: impact statement, centered navigation, services */}
+                    <div className="grid w-full grid-cols-1 items-end gap-6 sm:grid-cols-3 mt-auto">
 
                         {/* Measuring impact accross bharat */}
                         <div className="max-w-3xs">
@@ -136,13 +120,14 @@ const HeroSection = () => {
                         </div>
 
                         {/* PAGINATION — bottom right */}
-                        <div className="flex flex-col items-start sm:items-end gap-3 pb-1 shrink-0">
+                        <div className="flex flex-col items-start sm:items-center gap-3 pb-1 shrink-0 sm:justify-self-center">
 
                             {/* Slide dots with animated progress arc */}
                             <div className="flex items-center gap-2">
-                                {images.map((_, idx) => (
+                                {images.map((image, idx) => (
                                     <button
-                                        key={idx}
+                                        key={image.src}
+                                        type="button"
                                         onClick={() => handleGoTo(idx)}
                                         aria-label={`Go to slide ${idx + 1}`}
                                         className="relative w-8 h-1.5 rounded-full overflow-hidden bg-white/30 hover:bg-white/50 cursor-pointer transition-colors duration-200 focus:outline-none"
@@ -173,6 +158,21 @@ const HeroSection = () => {
                                     {images[currentIndex].label}
                                 </span>
                             </div>
+                        </div>
+
+                        <div className="w-full sm:justify-self-end sm:text-right">
+                            <ul className="flex flex-col gap-y-1.5 list-none">
+                                {servicesData.map((service) => (
+                                    <li key={service.slug}>
+                                        <Link
+                                            href={`/services#${service.slug}`}
+                                            className="font-sans text-body-md text-white hover:text-emerald-300 font-semibold tracking-wide transition-colors duration-200"
+                                        >
+                                            {service.title}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </div>

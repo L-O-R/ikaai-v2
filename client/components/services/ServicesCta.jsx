@@ -6,21 +6,21 @@ const ServicesCta = () => {
         <section className="py-20 md:py-28 bg-surface border-t border-border-neutral">
             <div className="container-size">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-surface-container-low rounded-[2.5rem] p-8 md:p-16 border border-border-neutral shadow-xs">
-                    
+
                     {/* Left Column: Heading + Description (Pill badge removed) */}
                     <div className="lg:col-span-7 flex flex-col items-start text-left">
-                        <h2 className="font-display text-display-lg text-on-surface font-extrabold tracking-tight leading-none mb-6">
+                        <h2 className="font-display text-headline-lg text-on-surface font-extrabold tracking-tight leading-none mb-6">
                             Let's build a foundation for <span className="text-primary">measurable change.</span>
                         </h2>
                         <p className="font-sans text-body-lg text-text-secondary leading-relaxed max-w-xl">
-                            We collaborate with governments, development agencies, and corporate foundations across India to design, monitor, and evaluate high-impact initiatives. 
+                            We collaborate with governments, development agencies, and corporate foundations across India to design, monitor, and evaluate high-impact initiatives.
                         </p>
                     </div>
 
                     {/* Right Column: Refined Interactive Action Cards */}
                     <div className="lg:col-span-5 flex flex-col gap-6 w-full">
                         {/* Project Card */}
-                        <Link 
+                        <Link
                             href="/contact?subject=Commission%20Study"
                             className="group bg-white border border-border-neutral p-6 rounded-[2rem] hover:border-primary hover:bg-surface-container/30 transition-all duration-300 flex items-start gap-4 text-left cursor-pointer"
                         >
@@ -38,7 +38,7 @@ const ServicesCta = () => {
                         </Link>
 
                         {/* Network Card */}
-                        <Link 
+                        <Link
                             href="/careers"
                             className="group bg-white border border-border-neutral p-6 rounded-[2rem] hover:border-primary hover:bg-surface-container/30 transition-all duration-300 flex items-start gap-4 text-left cursor-pointer"
                         >

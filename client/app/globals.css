@@ -93,7 +93,7 @@
   --text-label-caps--letter-spacing: 0.1em;
   --text-label-caps--font-weight: 700;
 
-  --text-headline-xl: clamp(4rem, 10vw + 1rem, 14.5rem);
+  --text-headline-xl: clamp(4rem, 11vw + 1rem, 15rem);
   --text-headline-xl--line-height: 1em;
   --text-headline-xl--letter-spacing: -0.02em;
   --text-headline-xl--font-weight: 700;
