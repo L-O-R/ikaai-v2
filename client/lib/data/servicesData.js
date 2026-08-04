@@ -50,7 +50,7 @@ export const servicesData = [
     {
         id: 2,
         icon: "analytics",
-        title: "Research & Data Solutions",
+        title: "Market Research & Data Solutions",
         tagline: "Transform data into knowledge. Knowledge into action.",
         slug: "research-data-solutions",
         services: [

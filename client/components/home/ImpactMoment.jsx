@@ -8,7 +8,7 @@ export default function ImpactMoment() {
                 {/* Image */}
                 <div className="relative min-h-screen py-20 flex items-center">
                     <Image
-                        src="/hero/village-primary-school-community.jpg"
+                        src="/hero/market_research.png"
                         alt="Building Stronger Communities Through Knowledge."
                         fill
                         priority={false}
@@ -22,18 +22,21 @@ export default function ImpactMoment() {
                     <div className="container-size relative z-10 flex h-full items-end">
                         <div className="max-w-4xl">
                             <p className="mb-stack-md font-sans text-label-caps uppercase tracking-[0.2em] text-primary-fixed">
-                                Beyond Research
+                                BEYOND DATA
                             </p>
 
                             <SubHeading
-                                text="Every insight begins with people"
+                                text="Every business decision begins with insight"
                                 className="flex flex-col text-white!"
                             />
 
                             <p className="mt-stack-lg max-w-xl font-sans text-body-lg text-surface/90 space-y-2 flex flex-col">
-                                <span>Behind every statistic is a story.</span>
-                                <span>Behind every household is a lived reality.</span>
-                                <span>Behind every community is the opportunity to create lasting change.</span>
+                                <span>Behind every customer is a need.</span>
+                                <span>Behind every market is an opportunity.</span>
+                                <span>Behind every successful brand is reliable research.</span>
+                            </p>
+                            <p className="mt-stack-lg text-body-lg font-sans text-surface max-w-xl leading-normal ">
+                                We uncover the insights behind consumer behaviour, market trends, and business performance to help organizations innovate, compete, and grow with confidence.
                             </p>
                         </div>
                     </div>

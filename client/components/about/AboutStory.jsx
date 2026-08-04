@@ -5,17 +5,18 @@ const AboutStory = () => {
     return (
         <section className="bg-surface py-section-mobile md:py-section-desktop">
             <div className="container-size px-gutter">
-                <div>
-                    <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
-                        Founders&apos; Message
-                    </span>
 
-                    <h2 className="font-display text-headline-lg font-semibold text-on-surface mb-6">
-                        Every great journey begins with an idea. Ours began with a shared purpose.
-                    </h2>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter items-start mt-12">
-                    <div>
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-gutter items-start mt-12">
+                    <div className='col-span-3'>
+                        <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
+                            Founders&apos; Message
+                        </span>
+
+                        <h2 className="font-display text-headline-lg font-semibold text-on-surface mb-6">
+                            Every great journey begins with an idea. Ours began with a shared purpose.
+                        </h2>
+                    </div>
+                    <div className='col-span-2'>
 
                         <p className="font-sans text-body-md text-text-secondary leading-relaxed mb-4">
                             Our journey started in 2021 with freelance Monitoring &amp;
@@ -34,11 +35,11 @@ const AboutStory = () => {
                             stronger institutions, and meaningful change for society.
                         </p>
                     </div>
-                    <div className="relative">
+                    {/* <div className="relative">
                         <div className="aspect-4/3 rounded-2xl overflow-hidden bg-surface-container-low border border-border-neutral">
                             <div className="w-full h-full flex items-center justify-center text-primary/20">
                                 <Image
-                                    src={'/team/devashish-chauhan.png'}
+                                    src={'/team/neha-sehgal.png'}
                                     alt='devashish-chauhan'
                                     width={500}
                                     height={500}
@@ -47,7 +48,7 @@ const AboutStory = () => {
                             </div>
                         </div>
 
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>

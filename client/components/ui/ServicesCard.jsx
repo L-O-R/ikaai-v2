@@ -44,16 +44,7 @@ const ServiceCard = ({ service, index }) => {
                         </p>
 
                         {/* Audience Info */}
-                        {service.audience && (
-                            <div className="flex items-center gap-2 pt-1 text-body-sm text-text-secondary">
-                                <span className="material-symbols-outlined text-lg text-primary">
-                                    groups
-                                </span>
-                                <span>
-                                    Target Audience: <strong className="text-on-surface font-semibold">{service.audience}</strong>
-                                </span>
-                            </div>
-                        )}
+
                     </div>
                 </div>
 
@@ -69,17 +60,17 @@ const ServiceCard = ({ service, index }) => {
                                 <button
                                     type="button"
                                     onClick={() => setIsExpanded(!isExpanded)}
-                                    className="font-sans text-xs uppercase tracking-wider text-primary font-bold hover:underline flex items-center gap-1 cursor-pointer"
+                                    className="font-sans text-xs uppercase tracking-wider text-primary font-bold flex items-center gap-1 cursor-pointer"
                                 >
                                     {isExpanded ? (
                                         <>
                                             Show Less
-                                            <span className="material-symbols-outlined text-sm">expand_less</span>
+                                            <span className="material-symbols-outlined text-body-sm">expand_less</span>
                                         </>
                                     ) : (
                                         <>
                                             Show All
-                                            <span className="material-symbols-outlined text-sm">expand_more</span>
+                                            <span className="material-symbols-outlined text-body-sm">expand_more</span>
                                         </>
                                     )}
                                 </button>
@@ -87,21 +78,23 @@ const ServiceCard = ({ service, index }) => {
                         </div>
 
                         {/* High-Contrast Tags */}
-                        <div className="flex flex-wrap gap-2 transition-all duration-500 ease-in-out">
-                            {visibleServices.map((item) => (
-                                <span
-                                    key={item}
-                                    className="font-sans text-xs uppercase tracking-wider text-primary font-bold px-3.5 py-1.5 bg-surface-container-high border border-primary/30 rounded-full shadow-2xs"
-                                >
-                                    {item}
-                                </span>
-                            ))}
+                        <div className='flex flex-warp gap-4 items-center' >
+                            <ul className='flex flex-wrap gap-8 transition-all duration-500 ease-in-out'>
+                                {visibleServices.map((item) => (
+                                    <li
+                                        key={item}
+                                        className="list-disc font-sans text-body-sm uppercase tracking-wider text-primary font-bold"
+                                    >
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
 
                             {!isExpanded && remainingCount > 0 && (
                                 <button
                                     type="button"
                                     onClick={() => setIsExpanded(true)}
-                                    className="font-sans text-xs uppercase tracking-wider text-on-surface font-semibold px-3.5 py-1.5 bg-warm-beige border border-border-neutral rounded-full hover:border-primary hover:text-primary transition-all cursor-pointer"
+                                    className="font-sans text-body-sm uppercase tracking-wider text-on-surface font-semibold px-3.5 py-1.5 bg-warm-beige border border-border-neutral rounded-full hover:border-primary hover:text-primary transition-all cursor-pointer"
                                 >
                                     +{remainingCount} More
                                 </button>
@@ -110,27 +103,7 @@ const ServiceCard = ({ service, index }) => {
                     </div>
                 )}
 
-                {/* Bottom Section: Deliverables */}
-                {service.deliverables && service.deliverables.length > 0 && (
-                    <div className="border-t border-border-neutral pt-4">
-                        <span className="font-sans text-xs uppercase tracking-widest text-text-muted block mb-2 font-bold">
-                            Key Deliverables
-                        </span>
-                        <div className="flex flex-wrap gap-2">
-                            {service.deliverables.map((item) => (
-                                <span
-                                    key={item}
-                                    className="font-sans text-xs text-on-surface bg-surface-container-low font-medium px-3 py-1 rounded-md border border-border-neutral flex items-center gap-1.5"
-                                >
-                                    <span className="material-symbols-outlined text-sm text-primary font-bold">
-                                        check
-                                    </span>
-                                    {item}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                )}
+
 
             </div>
         </div>

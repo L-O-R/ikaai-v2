@@ -67,7 +67,7 @@ const HeroSection = () => {
 
             {/* ── SLIDESHOW CARD ── 2.5% margin each side, rounded corners */}
             <div
-                className="relative flex-1 overflow-hidden mx-6 mb-6 rounded-3xl"
+                className="relative flex-1 overflow-hidden mx-3 sm:mx-6 mb-3 sm:mb-6 rounded-3xl"
             >
                 {/* ── IMAGES ── */}
                 {images.map((img, index) => (
@@ -113,14 +113,14 @@ const HeroSection = () => {
                     <div className="grid w-full grid-cols-1 items-end gap-6 sm:grid-cols-3 mt-auto">
 
                         {/* Measuring impact accross bharat */}
-                        <div className="max-w-3xs">
+                        <div className="hidden sm:block max-w-3xs order-2 sm:order-1">
                             <p className="font-sans text-body-md tracking-widest text-white/95 capitalize drop-shadow-md pl-3 leading-normal">
                                 Measuring impact accross bharat
                             </p>
                         </div>
 
                         {/* PAGINATION — bottom right */}
-                        <div className="flex flex-col items-start sm:items-center gap-3 pb-1 shrink-0 sm:justify-self-center">
+                        <div className="order-3 sm:order-2 flex flex-col items-start sm:items-center gap-3 pb-1 shrink-0 sm:justify-self-center">
 
                             {/* Slide dots with animated progress arc */}
                             <div className="flex items-center gap-2">
@@ -160,7 +160,7 @@ const HeroSection = () => {
                             </div>
                         </div>
 
-                        <div className="w-full sm:justify-self-end sm:text-right">
+                        <div className="order-1 sm:order-3 w-full sm:justify-self-end sm:text-right">
                             <ul className="flex flex-col gap-y-1.5 list-none">
                                 {servicesData.map((service) => (
                                     <li key={service.slug}>

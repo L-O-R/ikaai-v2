@@ -19,14 +19,14 @@ const CtaSection = () => {
                 <div className="absolute inset-0 bg-white/5 mix-blend-soft-light" />
             </div>
 
-            <div className="relative z-10 max-w-4xl flex flex-col items-start gap-6 px-section-mobile">
+            <div className="relative z-10 container-size flex flex-col items-start gap-6">
                 <p className="mb-stack-md font-sans text-label-caps uppercase tracking-[0.2em] text-primary-fixed">
                     Beyond Research
                 </p>
 
                 <SubHeading
                     text="Every insight begins with people"
-                    className='text-left'
+                    className='text-left max-w-3xl'
                 />
 
                 <p className="mt-stack-lg max-w-xl text-left font-sans text-body-lg text-surface/90 space-y-2 flex flex-col">

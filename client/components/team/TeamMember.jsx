@@ -20,25 +20,27 @@ const TeamMember = ({ name, role, bio, image }) => {
     return (
         <>
             <article className="group flex flex-col items-center text-center">
-                <div className="relative h-52 w-52 rounded-full bg-white p-1.5 ring-4 ring-white  sm:h-80 sm:w-80">
-                    <div className="relative h-full w-full overflow-hidden rounded-full bg-surface-container-high">
+                <div className="relative h-52 w-52 rounded-full  sm:h-80 sm:w-80">
+                    <div className="relative h-full w-full overflow-hidden ">
                         {image ? (
                             <Image
                                 src={image}
                                 alt={name}
                                 fill
                                 sizes="(min-width: 1280px) 250px, 200px"
-                                className="object-cover object-top"
+                                className="object-contain object-bottom z-20"
                             />
                         ) : (
-                            <div className="absolute inset-0 flex items-center justify-center bg-surface-container-high">
-                                <span className="material-symbols-outlined text-6xl text-text-muted">person</span>
+                            <div className="absolute top-[55%] left-1/2 transform -translate-x-1/2 flex items-center justify-center z-20">
+                                <span className="material-symbols-outlined text-display-lg! text-text-muted">person</span>
                             </div>
                         )}
+                        {/*  */}
+                        <div className='absolute top-15 lg:top-23 left-0 overflow-hidden w-full h-full rounded-full ring-4 ring-white z-10 bg-surface-container-high'></div>
                     </div>
                 </div>
 
-                <div className="mt-5 flex flex-col items-center">
+                <div className="relative mt-5 flex flex-col items-center">
                     <h3 className="font-display text-body-lg text-primary font-extrabold tracking-wide uppercase leading-tight">
                         {name}
                     </h3>
@@ -50,7 +52,7 @@ const TeamMember = ({ name, role, bio, image }) => {
                             <button
                                 type="button"
                                 onClick={() => setShowBio(true)}
-                                className="flex h-7 w-7 items-center justify-center rounded-full border border-border-neutral text-primary opacity-0 transition-all group-hover:opacity-100 hover:border-primary hover:bg-primary hover:text-white focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary cursor-pointer"
+                                className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex h-7 w-7 items-center justify-center rounded-full border border-border-neutral text-primary opacity-0 transition-all group-hover:opacity-100 hover:border-primary hover:bg-primary hover:text-white focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary cursor-pointer"
                                 aria-label={`Read more about ${name}`}
                             >
                                 <span className="material-symbols-outlined text-sm" aria-hidden="true">arrow_forward</span>

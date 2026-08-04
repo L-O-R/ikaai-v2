@@ -7,7 +7,7 @@ const coreTeam = [
         role: "CEO",
         tagline: "12+ years in government policy and applied research",
         bio: "With over 12 years in government policy and applied research, she has coordinated India's Free Trade Agreement negotiations at the Ministry of Commerce and led evaluation studies across healthcare, energy, and rural livelihoods. As Director at Ikaai India Research, she brings policy fluency and on-ground research rigor to every engagement the firm takes on.",
-        image: "/team/neha-sehgal.jpeg",
+        image: "/team/neha-sehgal.png",
     },
     {
         name: "Devashish Chauhan",
@@ -17,47 +17,40 @@ const coreTeam = [
         image: "/team/devashish-chauhan.png",
     },
     {
-        name: "Poonam Chauhan",
-        role: "Accounts Manager",
-        tagline: "Managing financial operations and audit readiness",
-        bio: "Poonam leads corporate finance, budget oversight, and accounts compliance at Ikaai. She ensures strict alignment with financial regulations, client reporting frameworks, and operational audits, bringing rigorous accounting discipline to the foundation.",
-        image: null,
-    },
-    {
-        name: "Aman Sehgal",
-        role: "Operations Manager",
-        tagline: "Overseeing logistics, field setups, and timelines",
-        bio: "Aman coordinates field survey logistics, resource allocation, and project timelines. He works closely with research teams to ensure seamless deployment of surveyors and equipment across diverse geographical landscapes, maintaining high operational efficiency.",
-        image: null,
-    },
-    {
         name: "Gehna Sahni",
         role: "Research Associate",
         tagline: "Research across health, education, gender and public policy",
         bio: "She specializes in social research, monitoring and evaluation, and impact assessment. She has contributed to research studies across public health, nutrition, education, gender, and community development, supporting research design, field coordination, data analysis, and report writing. Her research interests include gender, education, Indian Knowledge Systems (IKS), social exclusion and inclusion, and public policy.",
-        image: "/team/gehna-sahani.jpeg",
+        image: "/team/gehna-sahani.png",
     },
     {
         name: "Khushi Rastogi",
         role: "Research Associate",
         tagline: "Evidence-based research and programme evaluation",
         bio: "Khushi is a Research Associate with a strong interest in evidence-based research, programme evaluation, and development initiatives, and is skilled in conducting literature reviews, data analysis, and translating research findings into actionable insights that support informed decision-making.",
-        image: "/team/khushi-rastogi.jpeg",
+        image: "/team/khushi-rastogi.png",
+    },
+    {
+        name: "Poonam Chauhan",
+        role: "Accounts Manager",
+        tagline: "Managing financial operations and audit readiness",
+        bio: "Poonam leads corporate finance, budget oversight, and accounts compliance at Ikaai. She ensures strict alignment with financial regulations, client reporting frameworks, and operational audits, bringing rigorous accounting discipline to the foundation.",
+        image: "/team/poonam-mam.png",
+    },
+    {
+        name: "Aman Sehgal",
+        role: "Operations Manager",
+        tagline: "Overseeing logistics, field setups, and timelines",
+        bio: "Aman coordinates field survey logistics, resource allocation, and project timelines. He works closely with research teams to ensure seamless deployment of surveyors and equipment across diverse geographical landscapes, maintaining high operational efficiency.",
+        image: "/team/aman-sehgal.png",
     },
     {
         name: "Vinay Kumar",
         role: "Field Manager",
         tagline: "Leading field survey operations and quality assurance",
         bio: "Vinay manages field teams and ensures data quality checks during large-scale surveys. He leads training workshops for enumerators and implements on-ground quality assurance protocols to safeguard data integrity and surveyor compliance.",
-        image: null,
+        image: "/team/vinay-kumar.png",
     },
-    {
-        name: "Angel Garg",
-        role: "Assistant",
-        tagline: "Supporting administrative tasks and research logistics",
-        bio: "Angel supports Ikaai's daily operations, handling administrative coordination, research material preparation, and team schedules. She works cross-functionally to ensure high efficiency in headquarter operations.",
-        image: null,
-    }
 ]
 
 const associates = [
@@ -66,14 +59,14 @@ const associates = [
         role: "Consultancy Advisor",
         tagline: "40+ years in farm mechanization and agri-policy advisory",
         bio: "He brings over four decades of experience in farm mechanization and agricultural engineering, and has served as an Advisor to NITI Aayog, NCAER, and WAPCOS on national studies covering irrigation, mechanization, and rural livelihoods. His work has shaped policy recommendations on farm machinery, water use efficiency, and agri-based rural development across India.",
-        image: "/team/shish-pal-bansal.jpeg",
+        image: null,
     },
     {
         name: "Sourabh Khurana",
         role: "CSR & Sustainability Consultant",
         tagline: "8+ years driving CSR and sustainability programmes",
         bio: "He brings over 8 years of experience across CSR, sustainability, and programme management, having led large-scale interventions spanning scholarships, volunteer engagement, and fund governance at organizations like the Raman Kant Munjal Foundation and National CSR Network. Currently at Cotton Connect, he continues to drive structured, evidence-based approaches to sustainable impact.",
-        image: "/team/sourabh-khurana.jpeg",
+        image: "/team/sourabh-khurana.png",
     },
     {
         name: "Aditi",
@@ -87,7 +80,7 @@ const associates = [
         role: "Legal Associate",
         tagline: "Precision in every clause, protection in every decision",
         bio: "Precision in every clause. Protection in every decision. Nishchaya has supported organizations in mitigating risk, structuring agreements, and navigating regulatory requirements with precision and diligence. Their attention to detail and sound legal judgment make them a trusted resource in safeguarding the organization's interests while enabling smooth business operations.",
-        image: "/team/nishchaya-nigam.jpeg",
+        image: "/team/nishchaya-nigam.png",
     },
     {
         name: "NHRG Associate",
