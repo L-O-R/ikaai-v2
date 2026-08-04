@@ -4,7 +4,7 @@ import SubHeading from '../shared/SubHeading'
 const coreTeam = [
     {
         name: "Neha Sehgal",
-        role: "CEO",
+        role: "Chief Executive Officer",
         tagline: "12+ years in government policy and applied research",
         bio: "With over 12 years in government policy and applied research, she has coordinated India's Free Trade Agreement negotiations at the Ministry of Commerce and led evaluation studies across healthcare, energy, and rural livelihoods. As Director at Ikaai India Research, she brings policy fluency and on-ground research rigor to every engagement the firm takes on.",
         image: "/team/neha-sehgal.png",
@@ -14,14 +14,14 @@ const coreTeam = [
         role: "Director",
         tagline: "15+ years bridging government operations and impact research",
         bio: "His career bridges government operations and applied research, having managed coal statistics and parliamentary inputs at the Ministry of Coal before moving into evaluation and operations leadership. As Director at Ikaai India Research, he anchors the firm's operations while driving impact assessments across CSR, energy, and public welfare projects.",
-        image: "/team/devashish-chauhan.png",
+        image: "/team/devashish-chauhan_sir.png",
     },
     {
         name: "Gehna Sahni",
         role: "Research Associate",
         tagline: "Research across health, education, gender and public policy",
         bio: "She specializes in social research, monitoring and evaluation, and impact assessment. She has contributed to research studies across public health, nutrition, education, gender, and community development, supporting research design, field coordination, data analysis, and report writing. Her research interests include gender, education, Indian Knowledge Systems (IKS), social exclusion and inclusion, and public policy.",
-        image: "/team/gehna-sahani.png",
+        image: "/team/gehna-sahani-mam.png",
     },
     {
         name: "Khushi Rastogi",
@@ -73,7 +73,7 @@ const associates = [
         role: "Learning & Wellbeing Consultant",
         tagline: "Social-emotional learning expert across 30+ schools",
         bio: "She specializes in social-emotional learning for schools. She has worked with 30+ schools, including Delhi Public School, Euro Public School, and National Public School, impacting 2,000+ students, 500+ teachers, and 500+ parents. Her sessions tackle real challenges—exam anxiety, screen dependence, and teacher burnout—creating lasting change in how students, teachers, and parents engage with each other.",
-        image: "/team/aditi.png",
+        image: "/team/aditi_mam.png",
     },
     {
         name: "Nishchaya Nigam",
@@ -87,7 +87,7 @@ const associates = [
         role: "CA (Chartered Accountant)",
         tagline: "Every number accounted for, every decision backed by clarity",
         bio: "Every number accounted for. Every decision backed by clarity. They bring precision and sound fiscal judgment to strengthen financial controls and drive informed business decisions. Their meticulous approach makes them a trusted pillar of the organization's financial integrity.",
-        image: "/team/nhrg-associate.png",
+        image: "/team/nhrg-associates.png",
     }
 ]
 

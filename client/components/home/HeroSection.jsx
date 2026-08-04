@@ -9,8 +9,8 @@ const INTERVAL_MS = 6000
 
 const images = [
     { src: '/hero/community-research-field-visit.jpg', label: 'Research Begins With Listening' },
+    { src: '/hero/market_research_hero.jpg', label: 'Business Intelligence & Market Research' },
     { src: '/hero/rural-household-community-engagement.jpg', label: 'Working Together for Inclusive Development' },
-    { src: '/hero/community-dialogue-village-meeting.jpg', label: 'Communities Shape Every Solution' },
     { src: '/hero/mushroom-processing-value-chain.jpg', label: 'From Production to Prosperity' },
 ]
 

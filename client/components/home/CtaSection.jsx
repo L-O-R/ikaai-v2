@@ -11,7 +11,7 @@ const CtaSection = () => {
                     className="w-full h-full object-cover object-center"
                     width={1000}
                     height={1000}
-                    src="/hero/woman-community-survey.jpg"
+                    src="/hero/community-dialogue-village-meeting.jpg"
                     alt="Partner With Communities. Create Lasting Impact"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/70 to-black/20" />
