@@ -1,4 +1,3 @@
-import React from 'react'
 import TeamMember from './TeamMember'
 import SubHeading from '../shared/SubHeading'
 
@@ -100,21 +99,12 @@ const associates = [
 ]
 
 function TeamSection({ eyebrow, title, members }) {
+    const [titleLead, ...titleRemainder] = title.split(' ')
+    const titleHighlight = titleRemainder.join(' ')
+
     return (
         <div className="relative">
-            {/* Background Doodles: Dots and grid lines in top-left (mimicking the decoration style from the screenshot) */}
-            <div className="absolute -top-10 -left-6 w-36 h-36 opacity-10 pointer-events-none select-none hidden lg:block">
-                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                            <circle cx="2" cy="2" r="1.5" fill="var(--color-primary)" />
-                            <line x1="0" y1="2" x2="20" y2="2" stroke="var(--color-primary)" strokeWidth="0.5" />
-                            <line x1="2" y1="0" x2="2" y2="20" stroke="var(--color-primary)" strokeWidth="0.5" />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#dot-grid)" />
-                </svg>
-            </div>
+
 
             {/* Title Section (inspired by layout in the image) */}
             <div className="relative mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border-neutral pb-6 z-10">
@@ -123,18 +113,18 @@ function TeamSection({ eyebrow, title, members }) {
                         {eyebrow}
                     </span>
                     <SubHeading
-                        text={title.split(' ')[0]}
-                        highlightText={title.split(' ')[1] + " " + title.split(' ')[2]}
+                        text={titleLead}
+                        highlightText={titleHighlight}
                     />
                 </div>
-                {/* Outlined Year or Brand element on the right (similar to '2026' in screenshot) */}
+
                 <div className="hidden md:block font-display text-5xl lg:text-7xl font-extrabold text-transparent select-none text-stroke-neutral">
                     IKAAI
                 </div>
             </div>
 
             {/* Team Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 relative z-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 relative z-10">
                 {members.map((member) => (
                     <TeamMember key={member.name} {...member} />
                 ))}

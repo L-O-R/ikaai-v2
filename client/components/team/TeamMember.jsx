@@ -1,97 +1,106 @@
 "use client";
 
 import Image from 'next/image';
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const TeamMember = ({ name, role, bio, tagline, image }) => {
+const TeamMember = ({ name, role, bio, image }) => {
     const [showBio, setShowBio] = useState(false);
 
+    useEffect(() => {
+        const closeOnEscape = (event) => {
+            if (event.key === 'Escape') setShowBio(false);
+        };
+
+        if (showBio) {
+            window.addEventListener('keydown', closeOnEscape);
+            return () => window.removeEventListener('keydown', closeOnEscape);
+        }
+    }, [showBio]);
+
     return (
-        <div className={`group relative bg-white border border-border-neutral p-6 rounded-[2rem] shadow-[6px_6px_0px_0px_var(--color-surface-container)] transition-all duration-300 ease-out flex flex-col items-center text-center overflow-hidden ${showBio ? '' : 'hover:shadow-[2px_3px_0px_0px_var(--color-border-neutral)] hover:-translate-y-1.5 hover:-rotate-1'}`}>
-
-            {/* Top Tape Accent (Tailwind v4 classes, no style tags) */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-3.5 bg-primary/10 rounded-b-md border-x border-b border-primary/20 backdrop-blur-xs z-10" />
-
-            {/* Avatar Section */}
-            <div className="relative w-40 h-40 rounded-full bg-surface-container-high border-4 border-white shadow-md overflow-hidden flex items-center justify-center select-none">
-                {image ? (
-                    <div className="relative w-full h-full bg-surface-dim overflow-hidden">
-                        <Image
-                            src={image}
-                            alt={name}
-                            fill
-                            sizes="(min-width: 1280px) 250px, 200px"
-                            className="object-cover object-top"
-                        />
+        <>
+            <article className="group flex flex-col items-center text-center">
+                <div className="relative h-52 w-52 rounded-full bg-white p-1.5 ring-4 ring-white  sm:h-80 sm:w-80">
+                    <div className="relative h-full w-full overflow-hidden rounded-full bg-surface-container-high">
+                        {image ? (
+                            <Image
+                                src={image}
+                                alt={name}
+                                fill
+                                sizes="(min-width: 1280px) 250px, 200px"
+                                className="object-cover object-top"
+                            />
+                        ) : (
+                            <div className="absolute inset-0 flex items-center justify-center bg-surface-container-high">
+                                <span className="material-symbols-outlined text-6xl text-text-muted">person</span>
+                            </div>
+                        )}
                     </div>
-                ) : (
-                    <div className="absolute inset-0 flex items-center justify-center bg-surface-container-high">
-                        <span className="material-symbols-outlined text-6xl text-text-muted">person</span>
+                </div>
+
+                <div className="mt-5 flex flex-col items-center">
+                    <h3 className="font-display text-body-lg text-primary font-extrabold tracking-wide uppercase leading-tight">
+                        {name}
+                    </h3>
+                    <div className="mt-1 flex items-center gap-2">
+                        <span className="font-sans text-body-md text-text-muted font-bold uppercase tracking-widest">
+                            {role}
+                        </span>
+                        {bio && (
+                            <button
+                                type="button"
+                                onClick={() => setShowBio(true)}
+                                className="flex h-7 w-7 items-center justify-center rounded-full border border-border-neutral text-primary opacity-0 transition-all group-hover:opacity-100 hover:border-primary hover:bg-primary hover:text-white focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary cursor-pointer"
+                                aria-label={`Read more about ${name}`}
+                            >
+                                <span className="material-symbols-outlined text-sm" aria-hidden="true">arrow_forward</span>
+                            </button>
+                        )}
                     </div>
-                )}
-            </div>
+                </div>
+            </article>
 
-            {/* Member Details */}
-            <div className="mt-5 flex flex-col items-center flex-1">
-                <h3 className="font-display text-lg text-primary font-extrabold tracking-wide uppercase leading-tight">
-                    {name}
-                </h3>
-                <span className="font-sans text-xs text-text-muted font-bold uppercase tracking-widest mt-1">
-                    {role}
-                </span>
-                {tagline && (
-                    <p className="font-sans text-body-sm text-text-secondary mt-3 leading-relaxed max-w-[90%] flex-1">
-                        {tagline}
-                    </p>
-                )}
-            </div>
-
-            {/* Read More Button (shown if bio is available) */}
-            {bio && (
-                <button
-                    onClick={() => setShowBio(true)}
-                    className="mt-4 px-4 py-1.5 rounded-full bg-surface-container-high hover:bg-border-neutral text-on-surface font-sans text-xs font-bold tracking-wider transition-colors duration-200 cursor-pointer"
-                >
-                    Read More
-                </button>
-            )}
-
-            {/* Simple pop-up overlay (not a modal, light background, no scrollbars) */}
             {bio && showBio && (
-                <div className="absolute inset-0 bg-surface-container-low p-6 flex flex-col justify-start text-left z-30 transition-all duration-300">
-
-                    {/* Pop-up Header */}
-                    <div className="flex justify-between items-start border-b border-border-neutral pb-3 mb-4">
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+                    <button
+                        type="button"
+                        className="absolute inset-0 bg-on-surface/45 backdrop-blur-sm cursor-default"
+                        onClick={() => setShowBio(false)}
+                        aria-label="Close bio"
+                    />
+                    <section
+                        className="relative z-10 w-full max-w-lg rounded-[2rem] bg-surface p-6 shadow-2xl sm:p-8"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby={`bio-title-${name.replace(/\s+/g, '-').toLowerCase()}`}
+                    >
                         <div>
-                            <h4 className="font-display text-base text-primary font-extrabold uppercase tracking-wide leading-tight">
+                            <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-text-muted">Team member</span>
+                            <h4 id={`bio-title-${name.replace(/\s+/g, '-').toLowerCase()}`} className="mt-1 font-display text-headline-md font-extrabold uppercase tracking-wide text-primary leading-tight">
                                 {name}
                             </h4>
-                            <span className="font-sans text-[10px] text-text-muted font-bold uppercase tracking-widest block mt-0.5">
+                            <span className="mt-1 block font-sans text-body-md font-bold uppercase tracking-widest text-text-muted">
                                 {role}
                             </span>
                         </div>
                         <button
+                            type="button"
                             onClick={() => setShowBio(false)}
-                            className="w-7 h-7 rounded-full bg-white hover:bg-surface-container-high border border-border-neutral flex items-center justify-center text-text-secondary hover:text-on-surface transition-colors cursor-pointer"
+                            className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-border-neutral bg-surface-container-high text-text-secondary transition-colors hover:bg-border-neutral hover:text-on-surface cursor-pointer"
                             aria-label="Close bio"
                         >
                             <span className="material-symbols-outlined text-sm">close</span>
                         </button>
-                    </div>
-
-                    {/* Pop-up Body: highly readable and fits without scrollbars */}
-                    <div className="flex-1 overflow-hidden">
-                        <p className="font-sans text-xs sm:text-body-sm text-on-surface/90 leading-relaxed">
-                            {bio}
-                        </p>
-                    </div>
-
-                    <div className="text-[9px] font-sans tracking-widest uppercase text-text-muted mt-4 text-center border-t border-border-neutral/50 pt-2">
-                        Ikaai India
-                    </div>
+                        <div className="mt-6 border-t border-border-neutral pt-5">
+                            <h5 className="font-sans text-xs font-bold uppercase tracking-widest text-text-muted">Description</h5>
+                            <p className="mt-3 font-sans text-body-md leading-relaxed text-on-surface/90">
+                                {bio}
+                            </p>
+                        </div>
+                    </section>
                 </div>
             )}
-        </div>
+        </>
     );
 };
 
