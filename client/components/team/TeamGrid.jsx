@@ -31,7 +31,7 @@ const coreTeam = [
         image: "/team/khushi-rastogi.png",
     },
     {
-        name: "Poonam Chauhan",
+        name: "Poonam",
         role: "Accounts Manager",
         tagline: "Managing financial operations and audit readiness",
         bio: "Poonam leads corporate finance, budget oversight, and accounts compliance at Ikaai. She ensures strict alignment with financial regulations, client reporting frameworks, and operational audits, bringing rigorous accounting discipline to the foundation.",
@@ -96,11 +96,11 @@ function TeamSection({ eyebrow, title, members }) {
     const titleHighlight = titleRemainder.join(' ')
 
     return (
-        <div className="relative">
+        <div className="relative ">
 
 
             {/* Title Section (inspired by layout in the image) */}
-            <div className="relative mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border-neutral pb-6 z-10">
+            <div className="relative mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4  pb-6 z-10">
                 <div className="flex flex-col gap-2">
                     <span className="inline-self-start max-w-max bg-surface-container-high border border-border-neutral px-4 py-1.5 rounded-full text-text-muted font-sans text-xs uppercase tracking-widest font-bold">
                         {eyebrow}
@@ -128,7 +128,7 @@ function TeamSection({ eyebrow, title, members }) {
 
 const TeamGrid = () => {
     return (
-        <section className="py-section-mobile md:py-section-desktop bg-surface space-y-16 md:space-y-24">
+        <section className="py-section-mobile md:py-section-desktop bg-warm-beige space-y-16 md:space-y-24">
             <div className="container-size">
                 <TeamSection eyebrow="Meet the Team" title="Core Members" members={coreTeam} />
             </div>

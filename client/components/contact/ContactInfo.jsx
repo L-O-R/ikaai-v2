@@ -13,7 +13,7 @@ const contactDetails = [
     {
         icon: 'phone',
         title: 'Phone',
-        details: ['8448491823'],
+        details: ['011-41046676'],
     },
     {
         icon: 'mail',

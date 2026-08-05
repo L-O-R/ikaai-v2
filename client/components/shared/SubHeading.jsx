@@ -2,7 +2,7 @@ import React from 'react'
 
 const SubHeading = ({ text, highlightText, className = "" }) => {
     return (
-        <h2 className={`font-display text-headline-lg text-inverse-text ${className}`}>
+        <h2 className={`font-display text-headline-lg text-inverse-text font-extrabold tracking-tighter ${className}`}>
             {text}
             {highlightText && (
                 <span className="text-text-muted"> {highlightText}</span>

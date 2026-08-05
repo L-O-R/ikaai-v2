@@ -1,144 +1,148 @@
 import React from "react";
 import Link from "next/link";
+// Dynamic Navigation Import
+import { navLinks } from "@/lib/data/headerData";
 
 const Footer = () => {
+    // Resolve dropdowns to their main landing pages and compile a clean flat list
+    const mainLinks = navLinks.map((link) => {
+        if (link.type === "link") {
+            return { label: link.label, href: link.href };
+        }
+
+        // Resolve principal landing path for dropdown sections
+        if (link.label === "About") {
+            return { label: "About", href: "/about" };
+        }
+        if (link.label === "Contact") {
+            return { label: "Contact", href: "/contact" };
+        }
+
+        // Fallback to the first nested item's href if present
+        return { label: link.label, href: link.items?.[0]?.href || "#" };
+    });
+
+    // Assemble the clean navigation array with Home at the start and FAQs at the end
+    const finalNavigation = [
+        { label: "Home", href: "/" },
+        ...mainLinks,
+        { label: "FAQs", href: "/faq" }
+    ];
+
     return (
-        <footer className="bg-inverse-surface text-inverse-on-surface">
-            <div className="max-w-container-max mx-auto  py-12 md:py-16">
-                {/* Main 2-column grid */}
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-16 ">
-                    {/* Left Column – Brand & Description */}
-                    <div className="md:col-span-3 ">
-                        <h2 className="font-display text-headline-lg text-inverse-on-surface">
-                            ikaai India
-                        </h2>
-                        <p className="mb-8 font-sans text-body-lg font-semibold uppercase tracking-widest text-inverse-on-surface mt-1">
-                            Research and Consultancy
-                        </p>
-                        <p className="font-sans text-body-md text-inverse-on-surface/70 max-w-md mt-4 leading-relaxed">
-                            Empowering communities through rigorous research, sustainable
-                            livelihoods, and community-driven development initiatives across
-                            India.
-                        </p>
+        <footer className="bg-white border-t border-slate-100">
+            <div className="max-w-container-max mx-auto px-4 md:px-8 py-16 md:py-24">
+
+                {/* Top Section Layout: Contact (Left), Navigation (Center), Social (Right) */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+
+                    {/* Left: Phone & Email with Custom Plus Icon Detail */}
+                    <div className="md:col-span-5 space-y-4">
+                        <Link href="tel:+918448491823">
+                            <span className="block font-sans text-body-md text-slate-500 font-medium">
+                                +91 8448491823
+                            </span>
+                        </Link>
+
+                        <Link
+                            href="mailto:info@ikaaiindia.in"
+                            className="inline-flex items-center gap-3 group/mail"
+                        >
+                            <span className="font-display text-headline-sm font-bold text-slate-950 underline underline-offset-8 decoration-2 decoration-slate-950 transition-colors group-hover/mail:text-slate-700">
+                                info@ikaaiindia.in
+                            </span>
+                        </Link>
                     </div>
 
-                    {/* Right Column – Explore + Resources + Address */}
-                    <div className="flex flex-col md:col-span-2  w-full">
-                        {/* Explore & Resources grid */}
-                        <div className="grid grid-cols-2 gap-8">
-                            <div>
-                                <h4 className="font-sans text-label-caps uppercase tracking-widest text-inverse-on-surface/40 mb-4">
-                                    Explore
-                                </h4>
-                                <ul className="space-y-3">
-                                    <li>
-                                        <Link
-                                            href="/about"
-                                            className="font-sans text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
-                                        >
-                                            About Us
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            href="/services"
-                                            className="font-sans text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
-                                        >
-                                            Our Programs
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            href="/work"
-                                            className="font-sans text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
-                                        >
-                                            Impact & Reach
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            href="/stories"
-                                            className="font-sans text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
-                                        >
-                                            Success Stories
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 className="font-sans text-label-caps uppercase tracking-widest text-inverse-on-surface/40 mb-4">
-                                    Resources
-                                </h4>
-                                <ul className="space-y-3">
+                    {/* Center: Clean Simplified Navigation Stack */}
+                    <div className="md:col-span-4 lg:col-span-3">
+                        <h4 className="font-sans text-body-sm uppercase tracking-widest text-slate-400 font-bold mb-4">
+                            Navigation
+                        </h4>
+                        <ul className="space-y-3">
+                            {finalNavigation.map((item) => (
+                                <li key={item.label}>
+                                    <Link
+                                        href={item.href}
+                                        className="font-sans text-body-md text-slate-600 hover:text-slate-950 font-medium transition-colors"
+                                    >
+                                        {item.label}
+                                    </Link>
 
-                                    <li>
-                                        <Link
-                                            href="/careers"
-                                            className="font-sans text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
-                                        >
-                                            Careers
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            href="/faq"
-                                            className="font-sans text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
-                                        >
-                                            FAQs
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            href="/contact"
-                                            className="font-sans text-body-md text-inverse-on-surface/70 hover:text-inverse-on-surface transition-colors"
-                                        >
-                                            Contact
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
 
-                        {/* Address block – below the links */}
-                        <div className="mt-8 pt-6 border-t border-inverse-on-surface/10 space-y-2 text-inverse-on-surface/60">
-                            <div className="flex items-start gap-3">
-                                <span className="material-symbols-outlined text-base mt-0.5">location_on</span>
-                                <span className="font-sans text-body-md">
-                                    Ground Floor, B-11/10,
-                                    <br />
-                                    Sector 18 Rohini,<br />
-                                    New Delhi 110089, INDIA
-                                </span>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <span className="material-symbols-outlined text-base">phone</span>
-                                <span className="font-sans text-body-md">8448491823</span>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <span className="material-symbols-outlined text-base">mail</span>
-                                <span className="font-sans text-body-md">info@ikaaiindia.in</span>
-                            </div>
+                    {/* Right: Social Header and Clean SVG Icon Set */}
+                    <div className="md:col-span-3 lg:col-span-4">
+                        <h4 className="font-sans text-body-sm uppercase tracking-widest text-slate-400 font-bold mb-4">
+                            Social
+                        </h4>
+                        <div className="flex items-center gap-5 text-slate-600">
+                            {/* LinkedIn */}
+                            <Link
+                                href="https://www.linkedin.com/company/ikaai-india/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-slate-950 transition-all hover:scale-110"
+                                aria-label="LinkedIn Profile"
+                            >
+                                <svg className="w-12 h-12 fill-current" viewBox="0 0 24 24">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                            </Link>
+
+                            {/* Instagram */}
+                            <Link
+                                href="https://www.instagram.com/ikaaiindia.official/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-slate-950 transition-all hover:scale-110"
+                                aria-label="Instagram Profile"
+                            >
+                                <svg className="w-12 h-12 fill-current" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                </svg>
+                            </Link>
+
+                            {/* YouTube */}
+                            <Link
+                                href="https://www.youtube.com/@ikaaiindia.official"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-slate-950 transition-all hover:scale-110"
+                                aria-label="YouTube Channel"
+                            >
+                                <svg className="w-12 h-12 fill-current" viewBox="0 0 24 24">
+                                    <path d="M23.498 6.163c-.272-1.016-1.07-1.815-2.085-2.087-1.837-.495-9.21-.495-9.21-.495s-7.373 0-9.21.495c-1.017.272-1.814 1.071-2.086 2.087-.496 1.839-.496 5.679-.496 5.679s0 3.84.496 5.68c.272 1.015 1.069 1.814 2.086 2.086 1.837.495 9.21.495 9.21.495s7.373 0 9.21-.495c1.015-.272 1.813-1.071 2.085-2.086.496-1.84.496-5.68.496-5.68s0-3.84-.496-5.679zm-14.161 9.514v-7.354l6.45 3.677-6.45 3.677z" />
+                                </svg>
+                            </Link>
                         </div>
+                    </div>
+
+                </div>
+
+                {/* Massive Signature Brand Panel (Aligns exactly to the bottom right) */}
+                <div className="mt-20 md:mt-32 flex flex-col items-end w-full">
+                    <div className="text-right select-none">
+                        <h1 className="font-display text-headline-xl font-bold text-slate-950 tracking-tight leading-none">
+                            Ikaai India
+                        </h1>
+                        <p className="font-sans text-xl md:text-3xl font-bold text-slate-950 mt-2 tracking-wide">
+                            Research and Consulting
+                        </p>
                     </div>
                 </div>
 
-                {/* Bottom Bar – small and gray */}
-                <div className="border-t border-inverse-on-surface/10 mt-12 pt-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-inverse-on-surface/40 text-xs">
-                    <p className="font-sans text-body-sm">
-                        &copy; 2023 IKAAI India. All rights reserved.
+            </div>
+
+            {/* Bottom Credit Panel (Pure Black Bar) */}
+            <div className="bg-slate-950 py-6 text-slate-400">
+                <div className="max-w-container-max mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+                    <p className="font-sans text-body-sm tracking-wide text-slate-400">
+                        &copy; {new Date().getFullYear()} IKAAI India. All rights reserved.
                     </p>
-                    <div className="flex gap-6">
-                        <span
-                            className="font-sans text-body-sm uppercase tracking-widest text-inverse-on-surface/20 cursor-not-allowed select-none"
-                        >
-                            Privacy Policy
-                        </span>
-                        <span
-                            className="font-sans text-body-sm uppercase tracking-widest text-inverse-on-surface/20 cursor-not-allowed select-none"
-                        >
-                            Terms of Service
-                        </span>
-                    </div>
                 </div>
             </div>
         </footer>

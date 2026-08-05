@@ -63,7 +63,7 @@ const timelineData = [
 
 const Timeline = () => {
     return (
-        <section className="py-section-mobile md:py-section-desktop  bg-surface">
+        <section className="py-section-mobile md:py-section-desktop  bg-warm-beige">
             <div className="container-size">
                 <div className="text-center mb-12 md:mb-16">
                     <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">

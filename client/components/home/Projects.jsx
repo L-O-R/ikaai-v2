@@ -33,22 +33,17 @@ const Projects = () => {
 
     return (
         <section
-            className="py-section-mobile md:pt-section-desktop  bg-warm-beige"
+            className="py-section-mobile md:pt-section-desktop  bg-surface"
             id="projects-section"
         >
             <div className="container-size">
                 <div className="mb-12">
-                    <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-3">
-                        Our Projects
+                    <span className="font-sans text-headline-md capitalize  text-text-muted tracking-tighter block">
+                        Selected
                     </span>
-                    <SubHeading
-                        text="Making Impact"
-                        highlightText="Across India"
-                    />
-                    <p className="font-sans text-body-md text-text-secondary max-w-xl mt-4">
-                        From rural development to urban sanitation, see how we are helping
-                        communities thrive.
-                    </p>
+                    <h2 className="font-display text-headline-xl2 font-extrabold tracking-tighter text-on-surface leading-none">Projects
+                        <span className="ml-3 inline-block w-4 h-4 rounded-full bg-on-surface"></span>
+                    </h2>
                 </div>
 
                 {isLoading ? (
@@ -65,8 +60,10 @@ const Projects = () => {
                 ) : featured.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                         {featured.map((project) => (
-                            <Link href={`/work/${project.slug}`} key={project.id}>
-                                <ProjectCard project={project} />
+                            <Link href={`/projects/${project.slug}`} key={project.id}>
+                                <ProjectCard project={project}
+                                    bg_color={"bg-surface-container-low"}
+                                />
                             </Link>
                         ))}
                     </div>

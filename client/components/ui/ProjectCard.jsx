@@ -4,7 +4,7 @@ import { getProjectDetail } from "@/lib/api/getProjectDetail";
 import Image from "next/image";
 import { useState } from "react";
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, bg_color }) => {
     const [statistics, setStatistics] = useState(project.statistics || []);
     const [isLoadingStats, setIsLoadingStats] = useState(false);
     const [hasRequestedStats, setHasRequestedStats] = useState(Boolean(project.statistics?.length));
@@ -30,14 +30,18 @@ const ProjectCard = ({ project }) => {
 
     return (
         <div
-            className="group relative overflow-hidden space-y-2 cursor-pointer"
+            className="group relative overflow-hidden space-y-2 cursor-pointer w-full"
             onMouseEnter={loadStats}
         >
-            <div className="bg-surface p-4 rounded-2xl transition-colors duration-300 flex items-center justify-between group-hover:bg-surface-container-low">
-                <h3 className="font-display text-body-lg font-semibold text-on-surface group-hover:text-primary transition-colors duration-300">
+
+            <div className={`${bg_color} text-on-surface p-4 rounded-2xl transition-all duration-300 flex items-center justify-between h-24 group-hover:bg-primary group-hover:text-surface`}>
+
+                <h3 className="font-display text-body-lg font-semibold line-clamp-2 flex-1 pr-4 transition-colors duration-300 leading-snug">
                     {project.title}
                 </h3>
-                <span className="material-symbols-outlined text-primary text-2xl transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0">
+
+
+                <span className="material-symbols-outlined text-black text-headline-lg transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-surface shrink-0">
                     arrow_forward
                 </span>
             </div>
@@ -69,30 +73,6 @@ const ProjectCard = ({ project }) => {
                             </span>
                         )}
                     </div>
-
-                    {statsToShow.length > 0 && <div className="absolute inset-x-3 bottom-3 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus:translate-y-0 group-focus:opacity-100 transition-all duration-300">
-                        <div className="rounded-xl bg-surface/95 border border-border-neutral p-3 shadow-lg">
-                            {isLoadingStats ? (
-                                <p className="font-sans text-body-md text-text-muted">Loading stats...</p>
-                            ) : statsToShow.length > 0 ? (
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                    {statsToShow.map((stat, index) => (
-                                        <div
-                                            key={`${stat.title}-${index}`}
-                                            className={`${index > 1 ? "hidden md:flex" : "flex"} flex-col gap-1`}
-                                        >
-                                            <span className="font-display text-2xl text-primary leading-none">
-                                                {stat.value}
-                                            </span>
-                                            <span className="font-sans text-[10px] uppercase tracking-widest text-text-muted">
-                                                {stat.title}
-                                            </span>
-                                        </div>
-                                    ))}
-                                </div>
-                            ) : ("")}
-                        </div>
-                    </div>}
                 </div>
             </div>
         </div>

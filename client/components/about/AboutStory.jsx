@@ -3,7 +3,7 @@ import React from 'react'
 
 const AboutStory = () => {
     return (
-        <section className="bg-surface py-section-mobile md:py-section-desktop">
+        <section className="bg-warm-beige py-section-mobile md:py-section-desktop">
             <div className="container-size px-gutter">
 
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-gutter items-start mt-12">

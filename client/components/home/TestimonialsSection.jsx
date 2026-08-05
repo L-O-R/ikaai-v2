@@ -61,7 +61,7 @@ const TestimonialsSection = () => {
 
     return (
         <section
-            className="overflow-hidden py-section-mobile md:py-section-desktop bg-warm-beige"
+            className="overflow-hidden py-section-mobile md:py-section-desktop bg-surface"
             id="testimonial-section"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}

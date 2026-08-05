@@ -97,13 +97,13 @@ const HeroSection = () => {
                 <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-8 md:p-10 text-white">
 
                     {/* TOP ROW: Title block */}
-                    <div className="w-full">
+                    <div className="">
                         {/* Title block */}
-                        <div>
-                            <h1 className="font-display leading-none tracking-tight font-bold text-white drop-shadow-xl text-headline-xl">
-                                ikaai India
+                        <div className=' w-max'>
+                            <h1 className="font-display leading-none tracking-tighter font-extrabold text-white drop-shadow-xl text-headline-xl">
+                                Ikaai India
                             </h1>
-                            <p className="font-sans text-headline-md text-white/95 ml-1 font-semibold tracking-wide drop-shadow-md">
+                            <p className="font-sans text-headline-md text-white/95 ml-1 font-semibold tracking-wide drop-shadow-md text-right">
                                 Research and Consultancy
                             </p>
                         </div>

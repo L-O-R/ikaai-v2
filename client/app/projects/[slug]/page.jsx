@@ -58,7 +58,7 @@ const ProjectDetailPage = async ({ params }) => {
             {/* Back Navigation */}
             <div className="bg-surface border-b border-border-neutral pt-section-mobile md:pt-section-desktop pb-0">
                 <div className="container-size pb-6">
-                    <Link href="/work" className="inline-flex items-center gap-2 text-body-sm font-sans text-text-muted hover:text-primary transition-colors duration-300">
+                    <Link href="/projects" className="inline-flex items-center gap-2 text-body-sm font-sans text-text-muted hover:text-primary transition-colors duration-300">
                         <span className="material-symbols-outlined text-base">arrow_back</span>
                         <span>Back to projects</span>
                     </Link>
@@ -183,10 +183,11 @@ const ProjectDetailPage = async ({ params }) => {
                             {otherProjects.map((proj) => (
                                 <Link
                                     key={proj.title}
-                                    href={`/work/${proj.slug}`}
+                                    href={`/projects/${proj.slug}`}
                                 >
                                     <ProjectCard
                                         project={proj}
+                                        bg_color={`bg-surface-container-low`}
                                     />
                                 </Link>
                             ))}
@@ -196,12 +197,12 @@ const ProjectDetailPage = async ({ params }) => {
             )}
 
             {/* Contact Call to Action */}
-            <section className="py-16 md:py-24 bg-primary text-white text-center">
+            <section className="py-16 md:py-24 bg-surface text-center">
                 <div className="container-size">
-                    <h3 className="font-display text-headline-md text-white mb-4">
+                    <h3 className="font-display text-headline-md text-on-surface mb-4">
                         Interested in Similar Research?
                     </h3>
-                    <p className="font-sans text-white/80 max-w-2xl mx-auto mb-8">
+                    <p className="font-sans text-text-muted max-w-2xl mx-auto mb-8">
                         Let's discuss how we can help you with your research and assessment needs.
                     </p>
                     <Link

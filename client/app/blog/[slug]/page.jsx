@@ -116,7 +116,7 @@ const BlogDetailPage = async ({ params }) => {
         <div className="container-size">
           {/* Back link */}
           <Link
-            href="/stories"
+            href="/blog"
             className="inline-flex items-center gap-2 font-sans text-body-md text-text-secondary hover:text-primary transition-colors mb-6"
           >
             <span className="material-symbols-outlined text-sm">arrow_back</span>
@@ -185,7 +185,7 @@ const BlogDetailPage = async ({ params }) => {
               {blog.related_blogs.map((related) => (
                 <Link
                   key={related.slug}
-                  href={`/stories/${related.slug}`}
+                  href={`/blog/${related.slug}`}
                   className="group rounded-2xl border border-border-neutral bg-white p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                 >
                   <span className="font-sans text-label-caps uppercase text-text-muted tracking-wider">

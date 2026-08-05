@@ -25,10 +25,9 @@ const Services = () => {
                         <span className="font-sans text-label-caps uppercase text-text-muted tracking-widest block mb-3">
                             What we do
                         </span>
-                        <SubHeading
-                            text="Solutions"
-                            highlightText=""
-                        />
+                        <h2 className="font-display text-headline-xl2 font-extrabold tracking-tighter text-on-surface leading-none">Solutions
+                            <span className="ml-3 inline-block w-4 h-4 rounded-full bg-on-surface"></span>
+                        </h2>
                     </div>
                 </div>
 

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const BlogCard = ({ blog }) => (
     <Link
-        href={`/stories/${blog.slug}`}
+        href={`/blog/${blog.slug}`}
         className="group block h-full overflow-hidden rounded-2xl border border-border-neutral bg-surface-container-low transition-shadow duration-300 hover:shadow-lg"
     >
         <div className="relative aspect-4/3 overflow-hidden bg-surface-container-high">

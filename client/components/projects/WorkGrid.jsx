@@ -46,8 +46,9 @@ const WorkGrid = ({
         ) : currentProjects.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-12">
             {currentProjects.map((project) => (
-              <Link href={`/work/${project.slug}`} key={project.id}>
-                <ProjectCard project={project} />
+              <Link href={`/projects/${project.slug}`} key={project.id}>
+                <ProjectCard project={project}
+                  bg_color={'bg-surface'} />
               </Link>
             ))}
           </div>

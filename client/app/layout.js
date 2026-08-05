@@ -1,12 +1,12 @@
-import { Epilogue, Manrope } from "next/font/google";
+import { Epilogue, Manrope, Inter } from "next/font/google";
 import "./globals.css";
 
 import Header from "@/components/shared/header/Header";
 import Footer from "@/components/shared/Footer";
 import ScrollToTop from "@/components/shared/ScrollToTop";
 
-const epilogue = Epilogue({
-  variable: "--font-epilogue",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -211,7 +211,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${epilogue.variable} ${manrope.variable} h-full antialiased`}
+      className={`${inter.variable} ${manrope.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

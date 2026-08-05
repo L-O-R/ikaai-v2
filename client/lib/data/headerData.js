@@ -10,14 +10,14 @@ export const navLinks = [
         ],
     },
     { label: 'Solutions', href: '/services', type: 'link' },
-    { label: 'Projects', href: '/work', type: 'link' },
+    { label: 'Projects', href: '/projects', type: 'link' },
     { label: 'Media', href: '/media', type: 'link' },
-    { label: 'Blog', href: '/stories', type: 'link' },
+    { label: 'Blog', href: '/blog', type: 'link' },
     {
         label: 'Contact',
         type: 'dropdown',
         items: [
-            { label: 'Want a Survey', href: 'https://forms.google.com/your-survey', external: true },
+            { label: 'Want a Survey', href: 'https://docs.google.com/forms/d/e/1FAIpQLSdEJU5a7WVLR-SEuPuk3IQPcXWDDTP5J92yW_q2gi2bPmGYgg/viewform?usp=sharing&ouid=100914497929313730290', external: true },
             { label: 'Get in Touch', href: '/contact' },
             { label: 'Join Us', href: '/careers' },
         ],

@@ -17,7 +17,7 @@ const MediaCta = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link
-                        href="/stories"
+                        href="/blog"
                         className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-sans text-label-caps uppercase rounded-xl hover:bg-surface-container-lowest transition-colors shadow-lg"
                     >
                         Read Our Stories

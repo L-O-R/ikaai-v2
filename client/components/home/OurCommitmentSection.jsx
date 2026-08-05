@@ -107,7 +107,7 @@ export default function OurCommitmentSection() {
 
     return (
         <section
-            className="bg-surface py-section-mobile md:py-section-desktop border-t border-border-neutral relative overflow-hidden"
+            className="bg-warm-beige py-section-mobile md:py-section-desktop  relative overflow-hidden"
             aria-labelledby="commitments-heading"
         >
             {/* Fine texture alignment overlay */}
@@ -175,7 +175,7 @@ export default function OurCommitmentSection() {
                     {commitments.map((commitment, index) => (
                         <article
                             key={index}
-                            className="group flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-start bg-surface-container-lowest border border-border-neutral rounded-xl p-stack-md md:p-8 hover:shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-all duration-300 ease-out hover-lift relative"
+                            className="group shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-start bg-surface border border-border-neutral rounded-xl p-stack-md md:p-8 hover:shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-all duration-300 ease-out hover-lift relative"
                         >
                             {/* Card Header with Material Icon */}
                             <div className="mb-6 flex items-center justify-between">

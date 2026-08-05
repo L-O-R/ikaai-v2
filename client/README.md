@@ -26,8 +26,8 @@ The Next.js App Router is structured across all core organizational routes:
 | `/about/team` | Team members, researchers, and advisory board | [`app/about/team/page.jsx`](file:///e:/ikaai-v2/client/app/about/team/page.jsx) | Page Metadata |
 | `/about/life` | Organizational culture, field values, and life at IKAAI | [`app/about/life/page.jsx`](file:///e:/ikaai-v2/client/app/about/life/page.jsx) | Page Metadata |
 | `/services` | Research, monitoring & evaluation (M&E), baseline studies, and capacity building | [`app/services/page.jsx`](file:///e:/ikaai-v2/client/app/services/page.jsx) | Page Metadata |
-| `/work` | Interactive projects portfolio with backend search & pagination | [`app/work/page.jsx`](file:///e:/ikaai-v2/client/app/work/page.jsx) | [`app/work/layout.jsx`](file:///e:/ikaai-v2/client/app/work/layout.jsx) |
-| `/stories` | Blog articles & impact stories with live search & pagination | [`app/stories/page.jsx`](file:///e:/ikaai-v2/client/app/stories/page.jsx) | [`app/stories/layout.jsx`](file:///e:/ikaai-v2/client/app/stories/layout.jsx) |
+| `/projects` | Interactive projects portfolio with backend search & pagination | [`app/projects/page.jsx`](file:///e:/ikaai-v2/client/app/projects/page.jsx) | [`app/projects/layout.jsx`](file:///e:/ikaai-v2/client/app/projects/layout.jsx) |
+| `/blog` | Blog articles & impact stories with live search & pagination | [`app/blog/page.jsx`](file:///e:/ikaai-v2/client/app/blog/page.jsx) | [`app/blog/layout.jsx`](file:///e:/ikaai-v2/client/app/blog/layout.jsx) |
 | `/careers` | Career opportunities, perks, culture, and open positions | [`app/careers/page.jsx`](file:///e:/ikaai-v2/client/app/careers/page.jsx) | Page Metadata |
 | `/media` | Field photo gallery, visual assets, and media archives | [`app/media/page.jsx`](file:///e:/ikaai-v2/client/app/media/page.jsx) | Page Metadata |
 | `/contact` | Inquiry form, contact details, map location, and office info | [`app/contact/page.jsx`](file:///e:/ikaai-v2/client/app/contact/page.jsx) | Page Metadata |

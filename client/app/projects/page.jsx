@@ -1,10 +1,11 @@
 'use client';
 
-import WorkHeader from '@/components/work/WorkHeader';
-import WorkGrid from '@/components/work/WorkGrid';
+
 import { getProjects } from '@/lib/api/getProjects';
 import { getErrorMessage } from '@/lib/api/apiErrors';
 import { useEffect, useMemo, useState } from 'react';
+import WorkGrid from '@/components/projects/WorkGrid';
+import WorkHeader from '@/components/projects/WorkHeader';
 
 const ProjectsPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
