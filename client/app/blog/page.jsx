@@ -76,10 +76,10 @@ const StoriesPage = () => {
   );
 
   return (
-    <main className="bg-surface">
+    <main>
       <PageHero {...heroData.stories} />
 
-      <section className="bg-warm-beige py-8">
+      <section className="bg-surface py-8">
         <div className="container-size">
           <div className="relative max-w-xl">
             <span className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -98,7 +98,7 @@ const StoriesPage = () => {
         </div>
       </section>
 
-      <section className="py-section-mobile md:py-section-desktop">
+      <section className="py-section-mobile md:py-section-desktop bg-surface">
         <div className="container-size">
           {isLoading && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">

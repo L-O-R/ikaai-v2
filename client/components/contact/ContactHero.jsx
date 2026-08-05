@@ -1,10 +1,9 @@
 "use client";
 
 import PageHero from "@/components/ui/PageHero";
-import { heroData } from "@/lib/data/heroData";
 
-const ContactHero = () => {
-  return <PageHero {...heroData.contact} />;
+const ContactHero = ({ eyebrow, title }) => {
+  return <PageHero eyebrow={eyebrow} title={title} />;
 };
 
 export default ContactHero;

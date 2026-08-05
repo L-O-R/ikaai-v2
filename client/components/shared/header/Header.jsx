@@ -59,13 +59,13 @@ const Header = () => {
     return (
         <header>
 
-            <nav className="bg-white shadow-xs fixed top-0 left-0 w-full max-w-full z-50 transition-all duration-300 ease-in-out py-2 text-on-surface overflow-x-clip" id="main-nav">
+            <nav className="bg-white fixed top-0 left-0 w-full max-w-full px-4 md:px-6 z-50 transition-all duration-300 ease-in-out py-2 text-on-surface overflow-x-clip" id="main-nav">
                 <div className="flex justify-between items-center w-full max-w-container-max mx-auto relative z-10">
 
                     {/* Logo */}
                     <Link className="flex items-center justify-start gap-2 shrink-0" href="/" onClick={closeMobileMenu}>
                         <Image
-                            className="h-10 w-auto md:h-10 lg:h-12 object-contain"
+                            className="h-10 w-auto md:h-10 lg:h-10 object-contain"
                             alt="IKAAI India Logo"
                             src="/logo_no_bg.png"
                             width={500}

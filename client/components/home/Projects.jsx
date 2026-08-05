@@ -5,7 +5,6 @@ import { getErrorMessage } from "@/lib/api/apiErrors";
 import { getFeaturedProjects } from "@/lib/api/getFeaturedProjects";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import SubHeading from "../shared/SubHeading";
 
 const Projects = () => {
     const [featured, setFeatured] = useState([]);
@@ -33,16 +32,17 @@ const Projects = () => {
 
     return (
         <section
-            className="py-section-mobile md:pt-section-desktop  bg-surface"
+            className="py-section-mobile md:py-section-desktop bg-background"
             id="projects-section"
         >
             <div className="container-size">
                 <div className="mb-12">
-                    <span className="font-sans text-headline-md capitalize  text-text-muted tracking-tighter block">
+                    <span className="font-sans text-headline-sm uppercase tracking-widest text-text-muted block mb-2">
                         Selected
                     </span>
-                    <h2 className="font-display text-headline-xl2 font-extrabold tracking-tighter text-on-surface leading-none">Projects
-                        <span className="ml-3 inline-block w-4 h-4 rounded-full bg-on-surface"></span>
+                    <h2 className="font-display text-headline-xl2 font-extrabold tracking-tighter text-on-surface leading-none">
+                        Projects
+                        <span className="ml-3 inline-block w-3.5 h-3.5 rounded-full bg-primary animate-pulse" />
                     </h2>
                 </div>
 
@@ -50,8 +50,9 @@ const Projects = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                         {[0, 1, 2, 3].map((item) => (
                             <div key={item} className="space-y-2">
-                                <div className="h-16 rounded-2xl bg-surface-container-high animate-pulse" />
-                                <div className="aspect-4/3 rounded-2xl bg-surface-container-high animate-pulse" />
+                                {/* Using valid bg-surface-container from your final @theme */}
+                                <div className="h-24 rounded-2xl bg-surface-container animate-pulse" />
+                                <div className="aspect-[4/3] rounded-2xl bg-surface-container animate-pulse" />
                             </div>
                         ))}
                     </div>
@@ -61,8 +62,9 @@ const Projects = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                         {featured.map((project) => (
                             <Link href={`/projects/${project.slug}`} key={project.id}>
-                                <ProjectCard project={project}
-                                    bg_color={"bg-surface-container-low"}
+                                <ProjectCard
+                                    project={project}
+                                    bg_color="bg-warm-beige" /* Contributes beautiful contrast on white bg */
                                 />
                             </Link>
                         ))}

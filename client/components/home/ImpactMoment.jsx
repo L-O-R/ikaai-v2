@@ -21,7 +21,7 @@ export default function ImpactMoment() {
                     {/* Content */}
                     <div className="container-size relative z-10 flex h-full items-end">
                         <div className="max-w-4xl">
-                            <p className="mb-stack-md font-sans text-label-caps uppercase tracking-[0.2em] text-primary-fixed">
+                            <p className="mb-stack-md font-sans text-label-caps uppercase tracking-tight text-on-primary">
                                 BEYOND DATA
                             </p>
 
@@ -35,7 +35,7 @@ export default function ImpactMoment() {
                                 <span>Behind every market is an opportunity.</span>
                                 <span>Behind every successful brand is reliable research.</span>
                             </p>
-                            <p className="mt-stack-lg text-body-lg font-sans text-surface max-w-xl leading-normal ">
+                            <p className="mt-stack-lg text-body-lg font-sans text-surface max-w-4xl leading-normal ">
                                 We uncover the insights behind consumer behaviour, market trends, and business performance to help organizations innovate, compete, and grow with confidence.
                             </p>
                         </div>

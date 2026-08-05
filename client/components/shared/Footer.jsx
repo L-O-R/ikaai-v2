@@ -9,8 +9,6 @@ const Footer = () => {
         if (link.type === "link") {
             return { label: link.label, href: link.href };
         }
-
-        // Resolve principal landing path for dropdown sections
         if (link.label === "About") {
             return { label: "About", href: "/about" };
         }
@@ -18,7 +16,6 @@ const Footer = () => {
             return { label: "Contact", href: "/contact" };
         }
 
-        // Fallback to the first nested item's href if present
         return { label: link.label, href: link.items?.[0]?.href || "#" };
     });
 
@@ -38,17 +35,25 @@ const Footer = () => {
 
                     {/* Left: Phone & Email with Custom Plus Icon Detail */}
                     <div className="md:col-span-5 space-y-4">
-                        <Link href="tel:+918448491823">
-                            <span className="block font-sans text-body-md text-slate-500 font-medium">
-                                +91 8448491823
-                            </span>
-                        </Link>
+                        <div className="flex gap-2">
+                            <Link href="tel:+918448491823">
+                                <span className="block font-sans text-body-md text-slate-500 font-medium hover:text-on-surface">
+                                    +91 8448491823
+                                </span>
+                            </Link>
+                            <span className="inline-block w-0.5 h-6 bg-border-neutral my-auto transform rotate-15"></span>
+                            <Link href="tel:011-41046676">
+                                <span className="block font-sans text-body-md text-slate-500 font-medium hover:text-on-surface">
+                                    011-41046676
+                                </span>
+                            </Link>
+                        </div>
 
                         <Link
                             href="mailto:info@ikaaiindia.in"
                             className="inline-flex items-center gap-3 group/mail"
                         >
-                            <span className="font-display text-headline-sm font-bold text-slate-950 underline underline-offset-8 decoration-2 decoration-slate-950 transition-colors group-hover/mail:text-slate-700">
+                            <span className="font-display text-headline-md font-bold text-slate-950 underline underline-offset-8 decoration-2 decoration-slate-950 transition-colors group-hover/mail:text-slate-700">
                                 info@ikaaiindia.in
                             </span>
                         </Link>
@@ -126,11 +131,11 @@ const Footer = () => {
                 {/* Massive Signature Brand Panel (Aligns exactly to the bottom right) */}
                 <div className="mt-20 md:mt-32 flex flex-col items-end w-full">
                     <div className="text-right select-none">
-                        <h1 className="font-display text-headline-xl font-bold text-slate-950 tracking-tight leading-none">
-                            Ikaai India
-                        </h1>
-                        <p className="font-sans text-xl md:text-3xl font-bold text-slate-950 mt-2 tracking-wide">
-                            Research and Consulting
+                        <h2 className="font-display leading-none tracking-tighter font-extrabold text-on-surface drop-shadow-xl text-headline-xl">
+                            ikaai India
+                        </h2>
+                        <p className="font-sans text-headline-md text-on-surface/95 ml-1 font-semibold tracking-wide drop-shadow-md text-right">
+                            Research and Consultancy
                         </p>
                     </div>
                 </div>

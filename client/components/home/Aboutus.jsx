@@ -4,7 +4,7 @@ import SubHeading from '../shared/SubHeading'
 
 const Aboutus = () => {
     return (
-        <section className="py-section-mobile md:py-section-desktop  bg-warm-beige">
+        <section className="py-section-mobile md:py-section-desktop  bg-surface">
             <div className="container-size grid grid-cols-1 md:grid-cols-12 gap-gutter md:mb-16">
                 <div className="md:col-span-6">
 

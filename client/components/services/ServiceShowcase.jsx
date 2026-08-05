@@ -14,14 +14,6 @@ const ServiceShowcase = () => {
         <section className="py-section-mobile md:py-section-desktop  bg-warm-beige">
             <div className="container-size">
 
-                {/* Section intro — minimal */}
-                <div className="text-center mb-16 md:mb-20">
-                    <span className="font-sans text-label-caps uppercase text-text-muted tracking-widest block mb-2">
-                        What We Do
-                    </span>
-                    <div className="w-12 h-0.5 bg-harvest-gold/40 mx-auto" />
-                </div>
-
                 {/* Service Cards — Group 1 */}
                 <div className="space-y-6 md:space-y-8 mb-16 md:mb-20">
                     {firstGroup.map((service, index) => (

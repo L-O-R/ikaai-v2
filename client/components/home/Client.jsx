@@ -7,9 +7,6 @@ import { getClients } from "@/lib/api/getClients";
 import LogoLoop from "../ui/LogoLoop";
 import SubHeading from "../shared/SubHeading";
 
-// Split into `parts` groups as evenly as possible (round-robin), so each
-// marquee column gets its own distinct set of logos instead of every
-// column repeating the full list.
 const splitIntoParts = (items, parts) => {
     const groups = Array.from({ length: parts }, () => []);
     items.forEach((item, index) => {
@@ -43,19 +40,16 @@ const Client = () => {
         };
     }, []);
 
-    // Three separate, non-overlapping groups — one per marquee column.
     const columns = useMemo(() => splitIntoParts(clients, 3), [clients]);
 
-    // Only run the marquee once every column actually has enough logos
-    // (3+) to loop convincingly. Otherwise fall back to a plain grid.
     const smallestColumn = Math.min(...columns.map((c) => c.length));
     const showMarquee = clients.length > 0 && smallestColumn >= 3;
 
     return (
-        <section className="py-20 md:py-28 bg-surface overflow-hidden">
+        <section className="py-section-mobile md:py-section-desktop bg-background overflow-hidden">
             <div className="container-size ">
                 <div className="mb-12 md:mb-16">
-                    <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-3">
+                    <span className="font-sans text-label-caps uppercase text-primary tracking-tight block mb-3">
                         Trusted By
                     </span>
                     <SubHeading
@@ -63,9 +57,6 @@ const Client = () => {
                         highlightText="Partners"
                     />
 
-                    <p className="font-sans text-body-lg text-text-secondary max-w-2xl mt-4">
-                        Empowering governments, institutions, and development partners with the knowledge, innovation, and solutions to create lasting change.
-                    </p>
                 </div>
 
                 {isLoading ? (

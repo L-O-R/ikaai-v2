@@ -33,32 +33,31 @@ const ProjectCard = ({ project, bg_color }) => {
             className="group relative overflow-hidden space-y-2 cursor-pointer w-full"
             onMouseEnter={loadStats}
         >
-
-            <div className={`${bg_color} text-on-surface p-4 rounded-2xl transition-all duration-300 flex items-center justify-between h-24 group-hover:bg-primary group-hover:text-surface`}>
+            <div className={`${bg_color} text-on-surface p-4 rounded-2xl transition-all duration-300 flex items-center justify-between h-24 group-hover:bg-primary group-hover:text-on-primary`}>
 
                 <h3 className="font-display text-body-lg font-semibold line-clamp-2 flex-1 pr-4 transition-colors duration-300 leading-snug">
                     {project.title}
                 </h3>
 
-
-                <span className="material-symbols-outlined text-black text-headline-lg transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-surface shrink-0">
+                <span className="material-symbols-outlined text-text-secondary text-headline-lg transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] opacity-40 group-hover:opacity-100 group-hover:translate-x-1 group-hover:text-on-primary shrink-0">
                     arrow_forward
                 </span>
             </div>
 
             <div className="bg-surface p-2 rounded-2xl">
-                <div className="aspect-4/3 relative overflow-hidden rounded-xl group-hover:scale-[1.02] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+                <div className="aspect-4/3 relative overflow-hidden rounded-xl">
+
                     <Image
                         width={500}
                         height={500}
                         src={imageSrc}
                         alt={project.title}
-                        className="w-full h-full object-cover transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 group-hover:blur-xs"
+                        className="w-full h-full object-cover transition-all duration-700 ease-out scale-100 group-hover:scale-115 group-hover:blur-[1.5px]"
                     />
 
                     <div className="absolute inset-0 bg-inverse-surface/30 group-hover:bg-inverse-surface/70 flex items-center justify-center pointer-events-none transition-all duration-500 rounded-xl">
                         {project.clientLogo ? (
-                            <div className="transition-transform duration-500 group-hover:scale-110">
+                            <div className="transition-transform duration-500 scale-110 group-hover:scale-90">
                                 <Image
                                     width={200}
                                     height={200}
@@ -68,11 +67,12 @@ const ProjectCard = ({ project, bg_color }) => {
                                 />
                             </div>
                         ) : (
-                            <span className="font-sans text-label-caps uppercase tracking-widest text-inverse-on-surface/70">
+                            <span className="font-sans text-label-caps uppercase tracking-widest text-inverse-on-surface/70 transition-transform duration-500 scale-105 group-hover:scale-90">
                                 {project.client}
                             </span>
                         )}
                     </div>
+
                 </div>
             </div>
         </div>

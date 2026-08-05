@@ -101,7 +101,7 @@ const HeroSection = () => {
                         {/* Title block */}
                         <div className=' w-max'>
                             <h1 className="font-display leading-none tracking-tighter font-extrabold text-white drop-shadow-xl text-headline-xl">
-                                Ikaai India
+                                ikaai India
                             </h1>
                             <p className="font-sans text-headline-md text-white/95 ml-1 font-semibold tracking-wide drop-shadow-md text-right">
                                 Research and Consultancy

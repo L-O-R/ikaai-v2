@@ -1,33 +1,24 @@
 "use client";
 
-const PageHero = ({ eyebrow, title, highlight, description }) => {
+const PageHero = ({ eyebrow, title, description }) => {
   return (
-    <section className="relative min-h-screen flex items-center  mb-12 bg-surface">
-      <div className="max-w-container-max mx-auto w-full">
-        <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-3">
-          {eyebrow}
-        </span>
-        <h1 className="font-display text-headline-lg text-on-background mb-4">
-          {title}
-          <br />
-          <span className="text-text-secondary">{highlight}</span>
-        </h1>
-        <div className="max-w-[15%] h-0.5 bg-harvest-gold/60 mb-8" />
-        <p className="font-sans text-body-lg text-text-secondary max-w-5xl leading-normal">
-          {description}
-        </p>
+    <section className="relative min-h-[60vh] flex items-end pb-section-desktop px-4 md:px-6 bg-background">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-gutter w-full ">
+        <div className="md:col-span-3 space-y-1">
+          <span className="font-sans text-headline-sm uppercase text-text-muted tracking-tight block">
+            {eyebrow}
+          </span>
+          <h1 className="font-display text-headline-xl2 text-on-background mb-4">
+            {title}
+            <span className="w-3 h-3 md:w-5 md:h-5 rounded-full bg-on-surface inline-block ml-2"></span>
+          </h1>
+        </div>
+        <div className="md:col-span-2 flex items-end pb-4 ">
+          <p className="font-sans text-body-md text-on-surface/90">{description}</p>
+        </div>
+
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-text-muted">
-        <span className="font-sans text-[10px] uppercase tracking-widest">
-          Scroll
-        </span>
-        <div className="animate-scroll-down">
-          <span className="material-symbols-outlined text-2xl">
-            expand_more
-          </span>
-        </div>
-      </div>
     </section>
   );
 };

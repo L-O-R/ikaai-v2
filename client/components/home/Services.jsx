@@ -15,14 +15,14 @@ const Services = () => {
 
     return (
         <section
-            className="py-section-mobile md:py-section-desktop  bg-warm-beige"
+            className="py-section-mobile md:py-section-desktop  bg-surface"
             id="services-section"
         >
             <div className="container-size">
                 {/* Header - unchanged */}
                 <div className="grid grid-cols-1 gap-gutter items-end border-b border-border-neutral pb-8 md:pb-12 lg:pb-14 mb-0">
                     <div>
-                        <span className="font-sans text-label-caps uppercase text-text-muted tracking-widest block mb-3">
+                        <span className="font-sans text-headline-md capitalize text-text-muted tracking-tighter block mb-3">
                             What we do
                         </span>
                         <h2 className="font-display text-headline-xl2 font-extrabold tracking-tighter text-on-surface leading-none">Solutions
