@@ -9,7 +9,7 @@ const INTERVAL_MS = 6000
 
 const images = [
     { src: '/hero/community-research-field-visit.jpg', label: 'Research Begins With Listening' },
-    { src: '/hero/market_research_hero.jpg', label: 'Business Intelligence & Market Research' },
+    { src: '/hero/market_research_ikaai.jpg', label: 'Business Intelligence & Market Research' },
     { src: '/hero/rural-household-community-engagement.jpg', label: 'Working Together for Inclusive Development' },
     { src: '/hero/mushroom-processing-value-chain.jpg', label: 'From Production to Prosperity' },
 ]
@@ -115,7 +115,7 @@ const HeroSection = () => {
                         {/* Measuring impact accross bharat */}
                         <div className="hidden sm:block max-w-3xs order-2 sm:order-1">
                             <p className="font-sans text-body-md tracking-widest text-white/95 capitalize drop-shadow-md pl-3 leading-normal">
-                                Measuring impact accross bharat
+                                Measuring impact across bharat
                             </p>
                         </div>
 

@@ -36,14 +36,32 @@ const Projects = () => {
             id="projects-section"
         >
             <div className="container-size">
-                <div className="mb-12">
-                    <span className="font-sans text-headline-sm uppercase tracking-widest text-text-muted block mb-2">
-                        Selected
-                    </span>
-                    <h2 className="font-display text-headline-xl2 font-extrabold tracking-tighter text-on-surface leading-none">
-                        Projects
-                        <span className="ml-3 inline-block w-3.5 h-3.5 rounded-full bg-primary animate-pulse" />
-                    </h2>
+                {/* 
+                  Header Wrapper:
+                  - Flex layout to position heading on the left and the CTA link on the right.
+                  - Stacks vertically on mobile and aligns side-by-side on larger viewports.
+                */}
+                <div className="mb-12 md:mb-18 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 ">
+                    <div>
+                        <span className="font-sans text-headline-sm uppercase tracking-widest text-text-muted block mb-2">
+                            Selected
+                        </span>
+                        <h2 className="font-display text-headline-xl2 font-extrabold tracking-tighter text-on-surface leading-none">
+                            Projects
+                            <span className="ml-3 inline-block w-3.5 h-3.5 rounded-full bg-on-surface" />
+                        </h2>
+                    </div>
+
+                    {/* View All Projects CTA Link */}
+                    <Link
+                        href="/projects"
+                        className="font-sans text-label-caps uppercase font-bold text-primary inline-flex items-center gap-1 group/btn shrink-0 pb-1"
+                    >
+                        View All Projects
+                        <span className="material-symbols-outlined text-sm transition-transform group-hover/btn:translate-x-1">
+                            arrow_forward
+                        </span>
+                    </Link>
                 </div>
 
                 {isLoading ? (
@@ -52,7 +70,7 @@ const Projects = () => {
                             <div key={item} className="space-y-2">
                                 {/* Using valid bg-surface-container from your final @theme */}
                                 <div className="h-24 rounded-2xl bg-surface-container animate-pulse" />
-                                <div className="aspect-[4/3] rounded-2xl bg-surface-container animate-pulse" />
+                                <div className="aspect-4/3 rounded-2xl bg-surface-container animate-pulse" />
                             </div>
                         ))}
                     </div>
