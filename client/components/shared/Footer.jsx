@@ -145,7 +145,7 @@ const Footer = () => {
             <div className="bg-slate-950 px-4 md:px-8 py-6 text-slate-400 flex flex-col md:flex-row justify-between gap-4 items-end">
                 <div className="  flex flex-col justify-between gap-2 text-xs">
                     <p className="font-sans text-body-sm tracking-wide text-slate-400">
-                        &copy; {new Date().getFullYear()} IKAAI India Research Pvt. Ltd. All rights reserved.
+                        &copy; {new Date().getFullYear()} Ikaai India Research Pvt. Ltd. All rights reserved.
                     </p>
                     <p className="font-sans text-body-sm tracking-wide text-slate-400">
                         Designed & Developed with <span className="text-red-500">&#10084;</span> by Dhivardhana Solutions.

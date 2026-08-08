@@ -30,7 +30,7 @@ export const heroData = {
       "A glimpse into the communities, people, and moments that define our work across rural India. Each image tells a story of resilience, collaboration, and transformation.",
   },
   services: {
-    eyebrow: "Our Services",
+    eyebrow: "What we Do",
     title: "Solutions",
     description:
       "Helping governments, NGOs, CSR foundations and development agencies make evidence-based decisions through rigorous research and strategic advisory.",
@@ -42,7 +42,7 @@ export const heroData = {
       "A diverse team of researchers, development practitioners, and changemakers united by a common purpose - creating sustainable change in rural India.",
   },
   work: {
-    eyebrow: "Our Work",
+    eyebrow: "Selected",
     title: "Projects",
     description:
       "A diverse team of researchers, development practitioners, and changemakers united by a common purpose - creating sustainable change in rural India.",
