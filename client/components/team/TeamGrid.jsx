@@ -14,7 +14,7 @@ const coreTeam = [
         role: "Director",
         tagline: "15+ years bridging government operations and impact research",
         bio: "His career bridges government operations and applied research, having managed coal statistics and parliamentary inputs at the Ministry of Coal before moving into evaluation and operations leadership. As Director at Ikaai India Research, he anchors the firm's operations while driving impact assessments across CSR, energy, and public welfare projects.",
-        image: "/team/devashish-chauhan_sir.png",
+        image: "/team/devashish-chauhan.png",
     },
     {
         name: "Gehna Sahni",
