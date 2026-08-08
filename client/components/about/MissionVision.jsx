@@ -24,8 +24,8 @@ const MissionVision = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-8 items-stretch">
                     {/* Mission */}
                     <div className="lg:col-span-3 flex flex-col bg-surface-container-low rounded-2xl p-8 md:p-10 border border-border-neutral hover-lift transition-all duration-300">
-                        <div className="w-14 h-14 rounded-full bg-primary-container/10 flex items-center justify-center mb-6 shrink-0">
-                            <span className="material-symbols-outlined text-3xl text-primary">flag</span>
+                        <div className="w-14 h-14 rounded-full bg-warm-beige flex items-center justify-center mb-6 shrink-0">
+                            <span className="material-symbols-outlined text-headline-sm text-primary">flag</span>
                         </div>
                         <h3 className="font-display text-headline-sm text-on-surface mb-4">Our Mission</h3>
                         <p className="font-sans text-body-md text-text-secondary leading-relaxed">
@@ -40,19 +40,19 @@ const MissionVision = () => {
                     </div>
 
                     {/* Vision */}
-                    <div className="lg:col-span-2 flex flex-col bg-primary-container text-white rounded-2xl p-8 md:p-10 border border-primary/20 hover-lift transition-all duration-300">
-                        <div className="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center mb-6 shrink-0">
-                            <span className="material-symbols-outlined text-3xl text-white">visibility</span>
+                    <div className="lg:col-span-2 flex flex-col bg-warm-beige text-white rounded-2xl p-8 md:p-10 border border-primary/20 hover-lift transition-all duration-300">
+                        <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center mb-6 shrink-0">
+                            <span className="material-symbols-outlined text-headline-sm text-on-surface">visibility</span>
                         </div>
-                        <h3 className="font-display text-headline-sm text-white mb-4">Our Vision</h3>
-                        <p className="font-sans text-body-lg text-white/90 leading-relaxed">
+                        <h3 className="font-display text-headline-sm text-on-surface mb-4">Our Vision</h3>
+                        <p className="font-sans text-body-lg text-on-surface/90 leading-relaxed">
                             To be a trusted global partner in advancing evidence-based governance,
                             sustainable development, and social impact through research,
                             innovation, technology, and advisory solutions.
                         </p>
-                        <div className="mt-auto pt-8 flex items-center gap-3 text-white/70">
-                            <span className="material-symbols-outlined text-[20px]!" aria-hidden="true">public</span>
-                            <span className="font-sans text-label-caps uppercase tracking-widest">
+                        <div className="mt-auto pt-8 flex items-center gap-1 text-on-surface/70">
+                            <span className="material-symbols-outlined text-body-lg!" aria-hidden="true">public</span>
+                            <span className="font-sans text-body-md font-bold capitalize tracking-tight">
                                 Guided by evidence. Driven by impact.
                             </span>
                         </div>

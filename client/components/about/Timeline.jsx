@@ -78,7 +78,7 @@ const Timeline = () => {
 
                 <div className="relative">
                     {/* Vertical line */}
-                    <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary-container/20 -translate-x-1/2" />
+                    <div className="absolute left-4 md:left-1/2 top-26 bottom-26 w-0.5 bg-primary/20 -translate-x-1/2" />
 
                     <div className="space-y-8 md:space-y-12">
                         {timelineData.map((item, index) => {
@@ -86,7 +86,7 @@ const Timeline = () => {
                             return (
                                 <div key={item.year} className={`relative flex flex-col md:flex-row ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                                     {/* Dot */}
-                                    <div className="absolute left-4 md:left-1/2 top-0 w-4 h-4 rounded-full bg-primary border-4 border-white -translate-x-1/2 z-10" />
+                                    <div className="absolute left-4 md:left-1/2 top-1/2 w-4 h-4 rounded-full bg-primary border-4 border-primary -translate-x-1/2 z-10" />
 
                                     {/* Content */}
                                     <div className={`pl-12 md:pl-0 md:w-1/2 ${isEven ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>

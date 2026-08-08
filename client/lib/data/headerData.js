@@ -12,7 +12,7 @@ export const navLinks = [
     { label: 'Solutions', href: '/services', type: 'link' },
     { label: 'Projects', href: '/projects', type: 'link' },
     { label: 'Media', href: '/media', type: 'link' },
-    { label: 'Blog', href: '/blog', type: 'link' },
+    { label: 'Blogs', href: '/blog', type: 'link' },
     {
         label: 'Contact',
         type: 'dropdown',
