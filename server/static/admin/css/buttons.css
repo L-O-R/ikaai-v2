@@ -1,3 +1,8 @@
+/* =========================================================
+   Buttons — consistent hierarchy across the admin
+   ========================================================= */
+
+/* ── Remove letter-spacing on all button-like elements ── */
 .button,
 button,
 input[type="submit"],
@@ -7,6 +12,29 @@ input[type="button"],
     letter-spacing: 0 !important;
 }
 
+/* ── Base button sizing and transitions ───────────────── */
+.button,
+input[type="submit"],
+input[type="button"],
+.submit-row input[type="submit"],
+.submit-row a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+    padding: 0.55rem 1.25rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    border-radius: var(--border-radius, 0.25rem) !important;
+    border: 1px solid transparent !important;
+    cursor: pointer !important;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, opacity 0.15s !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+    min-height: 2.5rem !important;
+}
+
+/* ── Focus ring ───────────────────────────────────────── */
 .button:focus-visible,
 button:focus-visible,
 input[type="submit"]:focus-visible,
@@ -17,16 +45,156 @@ input[type="button"]:focus-visible,
     outline-offset: 2px !important;
 }
 
-.object-tools {
-    padding: 0.75rem !important;
+/* ── Primary action button ────────────────────────────── */
+.button.default,
+input[type="submit"].default,
+.submit-row input[name="_save"] {
+    background: var(--admin-primary) !important;
+    border-color: var(--admin-primary) !important;
+    color: #ffffff !important;
 }
 
-.object-tools a {
-    background: var(--color-base-50) !important;
-    border: 1px solid var(--admin-border) !important;
+.button.default:hover,
+input[type="submit"].default:hover,
+.submit-row input[name="_save"]:hover {
+    background: var(--admin-primary-strong) !important;
+    border-color: var(--admin-primary-strong) !important;
+}
+
+/* ── Secondary action buttons (save & continue, etc.) ── */
+.submit-row input[name="_continue"],
+.submit-row input[name="_addanother"] {
+    background: var(--admin-surface) !important;
+    border-color: var(--admin-border-strong) !important;
     color: var(--admin-text) !important;
 }
 
-.object-tools a:hover {
+.submit-row input[name="_continue"]:hover,
+.submit-row input[name="_addanother"]:hover {
+    border-color: var(--admin-primary) !important;
     color: var(--admin-primary) !important;
+    background: color-mix(in srgb, var(--admin-primary) 5%, var(--admin-surface)) !important;
+}
+
+/* ── Danger / delete button ───────────────────────────── */
+.submit-row a.deletelink,
+.deletelink,
+.button.danger {
+    background: color-mix(in srgb, var(--admin-danger) 8%, transparent) !important;
+    border-color: var(--admin-danger) !important;
+    color: var(--admin-danger) !important;
+}
+
+.submit-row a.deletelink:hover,
+.deletelink:hover,
+.button.danger:hover {
+    background: color-mix(in srgb, var(--admin-danger) 15%, transparent) !important;
+}
+
+/* ── Disabled state ───────────────────────────────────── */
+.button:disabled,
+input[type="submit"]:disabled,
+input[type="button"]:disabled,
+button:disabled {
+    opacity: 0.45 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+}
+
+/* ── Object tools (top-right list page actions) ───────── */
+.object-tools {
+    padding: 0.75rem 0 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    justify-content: flex-end !important;
+}
+
+.object-tools a {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+    background: var(--admin-surface) !important;
+    border: 1px solid var(--admin-border-strong) !important;
+    color: var(--admin-text) !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: var(--border-radius, 0.25rem) !important;
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: border-color 0.15s, color 0.15s, background 0.15s !important;
+}
+
+.object-tools a:hover {
+    border-color: var(--admin-primary) !important;
+    color: var(--admin-primary) !important;
+    background: color-mix(in srgb, var(--admin-primary) 5%, var(--admin-surface)) !important;
+}
+
+/* ── Prominent "Add <Model>" action button ────────────── */
+.object-tools a.addlink,
+.object-tools a[href$="/add/"],
+a.addlink {
+    background: var(--admin-primary) !important;
+    border-color: var(--admin-primary) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    padding: 0.55rem 1.25rem !important;
+    font-size: 0.875rem !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+.object-tools a.addlink:hover,
+.object-tools a[href$="/add/"]:hover,
+a.addlink:hover {
+    background: var(--admin-primary-strong) !important;
+    border-color: var(--admin-primary-strong) !important;
+    color: #ffffff !important;
+}
+
+/* ── Submit row styling ───────────────────────────────── */
+.submit-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    flex-wrap: wrap !important;
+    padding: 1rem 1.25rem !important;
+    background: var(--admin-surface-elevated) !important;
+    border-top: 1px solid var(--admin-border) !important;
+    border-radius: 0 0 var(--border-radius, 0.25rem) var(--border-radius, 0.25rem) !important;
+}
+
+/* ── Dark mode button overrides ───────────────────────── */
+html.dark .submit-row input[name="_continue"],
+html.dark .submit-row input[name="_addanother"] {
+    background: var(--admin-surface-elevated) !important;
+    border-color: var(--admin-border-strong) !important;
+    color: var(--admin-text) !important;
+}
+
+html.dark .object-tools a {
+    background: var(--admin-surface-elevated) !important;
+    border-color: var(--admin-border-strong) !important;
+    color: var(--admin-text) !important;
+}
+
+html.dark .object-tools a:hover {
+    border-color: var(--admin-primary) !important;
+    color: var(--admin-primary) !important;
+}
+
+html.dark .object-tools a.addlink,
+html.dark .object-tools a[href$="/add/"],
+html.dark a.addlink {
+    background: var(--admin-primary) !important;
+    border-color: var(--admin-primary) !important;
+    color: #000000 !important;
+}
+
+html.dark .object-tools a.addlink:hover,
+html.dark .object-tools a[href$="/add/"]:hover,
+html.dark a.addlink:hover {
+    background: var(--admin-primary-strong) !important;
+    border-color: var(--admin-primary-strong) !important;
+    color: #000000 !important;
 }

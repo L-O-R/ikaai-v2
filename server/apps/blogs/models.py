@@ -37,7 +37,7 @@ class Blog(BaseModel):
 
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True, blank=True)
-    excerpt = models.CharField(max_length=500)
+    excerpt = models.CharField(max_length=500, verbose_name="Short description")
     featured_image = models.ImageField(upload_to="blogs/")
     content = models.TextField()
     category = models.ForeignKey(

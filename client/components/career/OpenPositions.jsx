@@ -114,17 +114,17 @@ const OpenPositions = () => {
                                                 {job.title}
                                             </h3>
                                             <div className="flex flex-wrap items-center gap-3 mt-1">
-                                                <span className="font-sans text-label-caps uppercase text-text-muted flex items-center gap-1">
+                                                <span className="font-sans text-body-sm capitalize text-text-muted flex items-center gap-1">
                                                     <span className="material-symbols-outlined text-sm">location_on</span>
                                                     {job.location}
                                                 </span>
                                                 <span className="w-1 h-1 rounded-full bg-text-muted" />
-                                                <span className="font-sans text-label-caps uppercase text-text-muted flex items-center gap-1">
+                                                <span className="font-sans text-body-sm capitalize text-text-muted flex items-center gap-1">
                                                     <span className="material-symbols-outlined text-sm">work</span>
                                                     {job.employment_type}
                                                 </span>
                                                 <span className="w-1 h-1 rounded-full bg-text-muted" />
-                                                <span className="font-sans text-label-caps uppercase text-primary/70">
+                                                <span className="font-sans text-body-sm capitalize text-primary">
                                                     {job.department}
                                                 </span>
                                             </div>
@@ -172,9 +172,9 @@ const OpenPositions = () => {
                                                     <button
                                                         type="button"
                                                         onClick={handleApplied}
-                                                        className="rounded-full border border-border-neutral px-4 py-2 font-sans text-label-caps uppercase text-text-secondary transition hover:border-primary hover:text-primary"
+                                                        className="rounded-full border border-border-neutral px-4 py-2 font-sans text-headline-sm cursor-pointer uppercase text-text-secondary transition hover:border-primary hover:text-primary"
                                                     >
-                                                        Close
+                                                        &times;
                                                     </button>
                                                 </div>
                                                 <JobApplicationForm jobSlug={selectedJobSlug || job.slug} onSubmitted={handleApplied} />
@@ -190,7 +190,7 @@ const OpenPositions = () => {
                 <div className="text-center mt-12">
                     <p className="font-sans text-body-md text-text-secondary">
                         Don't see a role that fits?{' '}
-                        <a href="mailto:careers@ikaai.org" className="text-primary hover:underline font-semibold">
+                        <a href="mailto:info@ikaaiindia.in" className="text-primary hover:underline font-semibold">
                             Send us your CV
                         </a>{' '}
                         and we'll keep you in mind for future opportunities.

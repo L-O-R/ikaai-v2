@@ -2,10 +2,10 @@
 
 const PageHero = ({ eyebrow, title, description }) => {
   return (
-    <section className="relative min-h-[60vh] flex items-end pb-section-desktop px-4 md:px-6 bg-background">
+    <section className="relative min-h-[80vh] flex items-end py-section-desktop px-4 md:px-6 bg-background">
       <div className="grid grid-cols-1 md:grid-cols-5 gap-gutter w-full ">
         <div className="md:col-span-3 space-y-1">
-          <span className="font-sans text-headline-sm uppercase text-text-muted tracking-tight block">
+          <span className="font-sans text-headline-sm capitalize text-text-muted tracking-tighter block mb-3">
             {eyebrow}
           </span>
           <h1 className="font-display text-headline-xl2 text-on-background mb-4">

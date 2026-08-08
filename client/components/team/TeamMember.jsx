@@ -21,7 +21,7 @@ const TeamMember = ({ name, role, bio, image }) => {
         <>
             <article className="group flex flex-col items-center text-center">
                 <div className="relative h-52 w-52 rounded-full  sm:h-80 sm:w-80">
-                    <div className="relative h-full w-full overflow-hidden ">
+                    <div className="relative h-full w-full  overflow-y-clip">
                         {image ? (
                             <Image
                                 src={image}
@@ -36,7 +36,7 @@ const TeamMember = ({ name, role, bio, image }) => {
                             </div>
                         )}
                         {/*  */}
-                        <div className='absolute top-15 lg:top-23 left-0 overflow-hidden w-full h-full rounded-full ring-4 ring-white z-10 bg-surface-container-high'></div>
+                        <div className='absolute top-15 lg:top-23 left-0 overflow-hidden w-full h-full rounded-full ring-4 ring-white z-10 bg-gray-100'></div>
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@ const TeamMember = ({ name, role, bio, image }) => {
                         aria-label="Close bio"
                     />
                     <section
-                        className="relative z-10 w-full max-w-lg rounded-[2rem] bg-surface p-6 shadow-2xl sm:p-8"
+                        className="relative z-10 w-full max-w-lg rounded-4xl bg-surface p-6 shadow-2xl sm:p-8"
                         role="dialog"
                         aria-modal="true"
                         aria-labelledby={`bio-title-${name.replace(/\s+/g, '-').toLowerCase()}`}

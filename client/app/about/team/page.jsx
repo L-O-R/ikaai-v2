@@ -4,7 +4,7 @@ import TeamHero from '@/components/team/TeamHero'
 import React from 'react'
 
 export const metadata = {
-    title: 'Our Team | IKAAI India',
+    title: 'Our Team',
     description: 'Meet the passionate team behind IKAAI India — researchers, development practitioners, and changemakers.',
 }
 

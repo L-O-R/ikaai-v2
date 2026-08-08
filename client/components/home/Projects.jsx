@@ -43,7 +43,7 @@ const Projects = () => {
                 */}
                 <div className="mb-12 md:mb-18 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 ">
                     <div>
-                        <span className="font-sans text-headline-sm uppercase tracking-widest text-text-muted block mb-2">
+                        <span className="font-sans text-headline-md capitalize text-text-muted tracking-tighter block mb-3">
                             Selected
                         </span>
                         <h2 className="font-display text-headline-xl2 font-extrabold tracking-tighter text-on-surface leading-none">
@@ -81,7 +81,7 @@ const Projects = () => {
                         {featured.map((project) => (
                             <Link href={`/projects/${project.slug}`} key={project.id}>
                                 <ProjectCard
-                                    project={project}
+                                    project={project} // ProjectCard renders project_logo with fallback to section_logo
                                     bg_color="bg-warm-beige" /* Contributes beautiful contrast on white bg */
                                 />
                             </Link>

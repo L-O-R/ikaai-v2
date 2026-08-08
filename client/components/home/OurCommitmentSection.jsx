@@ -118,12 +118,12 @@ export default function OurCommitmentSection() {
                 {/* Header Row: Flex container to place navigation buttons adjacent to the header */}
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-stack-lg gap-6">
                     <div className="max-w-4xl">
-                        <span className="text-label-caps block text-text-muted mb-2 uppercase tracking-[0.15em] font-semibold">
+                        <span className="font-sans text-label-caps capitalize text-text-muted tracking-tighter block mb-3">
                             Our Commitments
                         </span>
                         <SubHeading
-                            text="National"
-                            highlightText="Development Priorities"
+                            text="National Development"
+                            highlightText=" Priorities"
                         />
                         <p className="text-body-lg text-text-secondary leading-relaxed">
                             Aligning institutional research capabilities with strategic frameworks and sustainable execution pathways to drive systemic, evidence-based change.
@@ -202,17 +202,10 @@ export default function OurCommitmentSection() {
                                 </p>
                             </div>
 
-                            {/* Persistent Rightward Transition Icon */}
-                            <div className="absolute bottom-6 right-6 opacity-0 translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" aria-hidden="true">
-                                <span className="material-symbols-outlined text-primary !text-[20px]">
-                                    arrow_forward
-                                </span>
-                            </div>
                         </article>
                     ))}
                 </div>
 
-                {/* Bottom Dot Progress Bar matching original landing page patterns */}
                 <div className="flex justify-center items-center gap-2 mt-4" aria-hidden="true">
                     {commitments.map((_, dotIndex) => {
                         const isVisible = dotIndex <= maxScrollIndex;

@@ -3,8 +3,11 @@ import { resolveMediaUrl } from "./apiMedia";
 
 export const normalizeClient = (client) => ({
   ...client,
-  logo: resolveMediaUrl(client.logo),
-  src: resolveMediaUrl(client.logo),
+  section_logo: resolveMediaUrl(client.section_logo),
+  project_logo: resolveMediaUrl(client.project_logo),
+  client_section_image: resolveMediaUrl(client.client_section_image),
+  project_image: resolveMediaUrl(client.project_image),
+  src: resolveMediaUrl(client.client_section_image) || resolveMediaUrl(client.section_logo),
   alt: client.name,
 });
 

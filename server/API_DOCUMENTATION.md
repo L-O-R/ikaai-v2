@@ -79,6 +79,7 @@ These Google routes are browser redirect routes, not JSON APIs.
 | Method | Endpoint | Authentication | Purpose |
 | --- | --- | --- | --- |
 | `GET` | `/api/projects/` | Public | List active projects. |
+| `GET` | `/api/projects/other/` | Public | List active other projects. |
 | `GET` | `/api/projects/{slug}/` | Public | Retrieve one active project. |
 | `POST` | `/api/inquiries/` | Public | Submit an inquiry. |
 | `GET` | `/api/statistics/` | Public | List active organization statistics. |
@@ -295,6 +296,54 @@ Common reasons:
 
 - Slug does not exist.
 - Project exists but `is_active=False`.
+
+### List Other Projects
+
+```http
+GET /api/projects/other/
+```
+
+Returns an unpaginated list of active other project items.
+
+### Query Parameters
+
+No query parameters are currently supported.
+
+### Example Request
+
+```http
+GET /api/projects/other/
+```
+
+### Success Response
+
+Status:
+
+```text
+200 OK
+```
+
+Response body:
+
+```json
+[
+  {
+    "id": "e838d77a-2a1c-4b5b-8d76-e4a8497fa918",
+    "title": "Baseline Assessment of Secondary Schools",
+    "description": "Comprehensive baseline evaluation covering infrastructure, teacher capacity, and learning outcomes across rural district schools.",
+    "section": "Education & Infrastructure"
+  }
+]
+```
+
+### Response Fields
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | string | No | Unique UUID of the other project record. |
+| `title` | string | No | Project title. |
+| `description` | string | No | Short project description. |
+| `section` | string | No | Section or category label. |
 
 ## Inquiries API
 

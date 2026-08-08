@@ -49,6 +49,7 @@ class JobDetailAPIView(RetrieveAPIView):
 
 class JobApplicationCreateAPIView(APIView):
     permission_classes = (AllowAny,)
+    authentication_classes = ()
     http_method_names = ("post",)
 
     def post(self, request, *args, **kwargs):

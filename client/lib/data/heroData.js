@@ -13,7 +13,7 @@ export const heroData = {
   },
   careers: {
     eyebrow: "Careers",
-    title: "Join Us in",
+    title: "Join Us",
     description:
       "Be part of a passionate team dedicated to evidence-based research and sustainable development. Together, we're creating lasting change for rural communities across India.",
   },

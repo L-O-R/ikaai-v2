@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const metadata = {
-    title: 'Our Projects & Work | IKAAI India',
+    title: 'Projects',
     description: 'Discover IKAAI India\'s portfolio of research projects, impact evaluations, baseline studies, and social surveys conducted across India.',
 };
 

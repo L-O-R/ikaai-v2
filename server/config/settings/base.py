@@ -256,6 +256,8 @@ UNFOLD = {
     },
     "STYLES": [
         "/static/admin/css/admin.css",
+        "/static/admin/css/badges.css",
+        "/static/admin/css/empty-states.css",
     ],
     "LOGIN": {
         "image": {
@@ -276,6 +278,11 @@ UNFOLD = {
                         "title": "Projects",
                         "icon": "folder_open",
                         "link": "/admin/projects/project/",
+                    },
+                    {
+                        "title": "Other Projects",
+                        "icon": "folder_open",
+                        "link": "/admin/projects/otherproject/",
                     },
                     {
                         "title": "Clients",

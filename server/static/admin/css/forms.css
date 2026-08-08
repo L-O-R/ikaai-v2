@@ -5,6 +5,10 @@
 input[type="checkbox"],
 input[type="radio"] {
     accent-color: var(--admin-primary) !important;
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 1rem !important;
+    outline: none !important;
 }
 
 .aligned .form-row,
@@ -23,11 +27,11 @@ input[type="radio"] {
     padding-inline: 1rem !important;
 }
 
-.form-row > div {
+.form-row>div {
     margin-bottom: 0.9rem !important;
 }
 
-.form-row > div:last-child {
+.form-row>div:last-child {
     margin-bottom: 0 !important;
 }
 
@@ -37,22 +41,43 @@ input[type="radio"] {
     font-weight: 700 !important;
 }
 
+.form-row label.required::after {
+    content: " *" !important;
+    color: var(--admin-danger) !important;
+    font-weight: 700 !important;
+}
+
+
+
 .errorlist {
     color: var(--admin-danger) !important;
+    font-size: 0.8125rem !important;
+    margin-top: 0.35rem !important;
 }
 
 .form-row .help,
 .form-row .helptext {
     margin-top: 0.4rem !important;
-    line-height: 1.45 !important;
+    line-height: 1.5 !important;
+    font-size: 0.8125rem !important;
+    color: var(--admin-text-muted) !important;
+    display: block !important;
+    border-left: 2px solid var(--admin-border) !important;
+    padding-left: 0.5rem !important;
 }
 
 .fieldBox .readonly,
 .readonly {
-    display: flex !important;
+    display: inline-flex !important;
     align-items: center !important;
-    min-height: 2.75rem !important;
-    padding: 0.625rem 0.875rem !important;
+    min-height: 2.25rem !important;
+    padding: 0.4rem 0.75rem !important;
+    background: var(--admin-surface-elevated) !important;
+    border: 1px solid var(--admin-border) !important;
+    border-radius: var(--border-radius) !important;
+    font-size: 0.875rem !important;
+    color: var(--admin-text) !important;
+    font-weight: 500 !important;
 }
 
 .vCheckboxLabel {
@@ -60,9 +85,41 @@ input[type="radio"] {
     color: var(--admin-text) !important;
 }
 
-/* =========================================================
-   Text inputs, selects, textareas
-   ========================================================= */
+.fieldset-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.6rem !important;
+    margin-bottom: 1.25rem !important;
+    padding-bottom: 0.75rem !important;
+    border-bottom: 1px solid var(--admin-border) !important;
+}
+
+.fieldset-header-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    border-radius: 0.375rem !important;
+    background: color-mix(in srgb, var(--admin-primary) 10%, transparent) !important;
+    color: var(--admin-primary) !important;
+    font-size: 1.125rem !important;
+    flex-shrink: 0 !important;
+}
+
+.fieldset-header-text h3 {
+    font-size: 0.875rem !important;
+    font-weight: 700 !important;
+    color: var(--admin-text) !important;
+    margin: 0 !important;
+}
+
+.fieldset-header-text p {
+    font-size: 0.75rem !important;
+    color: var(--admin-text-muted) !important;
+    margin: 0.1rem 0 0 !important;
+}
+
 
 input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([x-ref="searchInput"]),
 select,
@@ -83,7 +140,12 @@ textarea,
     min-height: 2.75rem !important;
     padding: 0.65rem 0.875rem !important;
     box-shadow: none !important;
-    min-width: 30%;
+    min-width: max-content;
+    transition: border-color 0.15s, box-shadow 0.15s !important;
+}
+
+input[type="text"] {
+    min-width: 30% !important;
 }
 
 input:focus,
@@ -94,68 +156,84 @@ textarea:focus {
     border-color: var(--admin-focus) !important;
 }
 
+/* Placeholder colour */
+input::placeholder,
+textarea::placeholder {
+    color: var(--admin-text-muted) !important;
+    opacity: 0.65 !important;
+}
+
 /* =========================================================
    Date / Time widget — calendar & clock trigger buttons
-   (Unfold renders id="calendarlink0"/"clocklink0" anchors
-   containing <span class="date-icon"> / <span class="clock-icon">)
    ========================================================= */
 
-/* Inline the shortcut strip with the input */
+.datetime-wrap {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    flex-wrap: wrap !important;
+}
+
 .datetimeshortcuts {
     display: inline-flex !important;
     align-items: center !important;
     gap: 0.3rem !important;
     vertical-align: middle !important;
+    margin-left: 0.3rem !important;
 }
 
-/* Hide "Today" / "Now" text links and the pipe separators */
+.vDateField+.datetimeshortcuts+.vTimeField,
+.vTimeField {
+    margin-left: 0.75rem !important;
+}
+
+/* Hide "Today" / "Now" text links and pipe separators */
 .datetimeshortcuts a:not([id^="calendarlink"]):not([id^="clocklink"]) {
     display: none !important;
 }
 
-/* Button shell — matches any calendarlink0, calendarlink1 … */
+/* Calendar / Clock icon buttons */
 a[id^="calendarlink"],
 a[id^="clocklink"] {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 2.25rem !important;
-    height: 2.25rem !important;
+    width: 2rem !important;
+    height: 2rem !important;
     border: 1px solid var(--admin-border-strong) !important;
     border-radius: var(--border-radius) !important;
     background: var(--admin-surface) !important;
-    color: var(--admin-text) !important;
+    color: var(--admin-text-muted) !important;
     text-decoration: none !important;
     cursor: pointer !important;
     transition: background 0.15s, border-color 0.15s, color 0.15s !important;
     flex-shrink: 0 !important;
+    margin-top: 5px;
 }
 
 a[id^="calendarlink"]:hover,
 a[id^="clocklink"]:hover {
-    border-color: var(--admin-primary) !important;
     color: var(--admin-primary) !important;
-    background: color-mix(in srgb, var(--admin-primary) 8%, transparent) !important;
 }
 
-/* Calendar icon — the <span class="date-icon"> inside the anchor */
 .date-icon {
     display: inline-block !important;
-    width: 1.1rem !important;
-    height: 1.1rem !important;
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    color: var(--admin-text-muted) !important;
     background-color: currentColor !important;
-    -webkit-mask: url(/static/admin/img/icon-calendar.svg) no-repeat center / contain !important;
-    mask: url(/static/admin/img/icon-calendar.svg) no-repeat center / contain !important;
+    -webkit-mask: url(/static/admin/images/icon-calender.svg) no-repeat center / contain !important;
+    mask: url(/static/admin/images/icon-calender.svg) no-repeat center / contain !important;
 }
 
-/* Clock icon — the <span class="clock-icon"> inside the anchor */
 .clock-icon {
     display: inline-block !important;
-    width: 1.1rem !important;
-    height: 1.1rem !important;
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    color: var(--admin-text-muted) !important;
     background-color: currentColor !important;
-    -webkit-mask: url(/static/admin/img/icon-clock.svg) no-repeat center / contain !important;
-    mask: url(/static/admin/img/icon-clock.svg) no-repeat center / contain !important;
+    -webkit-mask: url(/static/admin/images/icon-time.svg) no-repeat center / contain !important;
+    mask: url(/static/admin/images/icon-time.svg) no-repeat center / contain !important;
 }
 
 /* =========================================================
@@ -172,12 +250,12 @@ a.related-lookup {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 2.25rem !important;
-    height: 2.25rem !important;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
     border: 1px solid var(--admin-border-strong) !important;
     border-radius: var(--border-radius) !important;
     background: var(--admin-surface) !important;
-    color: var(--admin-text) !important;
+    color: var(--admin-text-muted) !important;
     cursor: pointer !important;
     text-decoration: none !important;
     transition: background 0.15s, border-color 0.15s, color 0.15s !important;
@@ -197,7 +275,6 @@ a.related-lookup {
     color: var(--admin-primary) !important;
 }
 
-/* Delete/clear icon button specific colour */
 .delete-related,
 .related-widget-wrapper .clear-related {
     border-color: var(--admin-danger) !important;
@@ -211,7 +288,7 @@ a.related-lookup {
     color: var(--admin-danger) !important;
 }
 
-/* Hide raw <img> tags Django injects inside FK/M2M widget buttons */
+/* Hide raw <img> Django injects inside FK/M2M widget buttons */
 .related-lookup img,
 a.related-lookup img,
 .add-related img,
@@ -222,64 +299,59 @@ a.related-lookup img,
     display: none !important;
 }
 
-/* Lookup/Search icon mask */
+/* Icon pseudo-elements */
 .related-lookup::before,
 a.related-lookup::before {
     content: "" !important;
     display: inline-block !important;
-    width: 1.1rem !important;
-    height: 1.1rem !important;
+    width: 1.125rem !important;
+    height: 1.125rem !important;
     background-color: currentColor !important;
     -webkit-mask: url(/static/admin/img/search.svg) no-repeat center / contain !important;
     mask: url(/static/admin/img/search.svg) no-repeat center / contain !important;
 }
 
-/* Add icon mask (+) */
 .add-related::before {
     content: "" !important;
     display: inline-block !important;
-    width: 1.1rem !important;
-    height: 1.1rem !important;
+    width: 1.125rem !important;
+    height: 1.125rem !important;
     background-color: currentColor !important;
     -webkit-mask: url(/static/admin/img/icon-addlink.svg) no-repeat center / contain !important;
     mask: url(/static/admin/img/icon-addlink.svg) no-repeat center / contain !important;
 }
 
-/* Change icon mask (pencil) */
 .change-related::before {
     content: "" !important;
     display: inline-block !important;
-    width: 1.1rem !important;
-    height: 1.1rem !important;
+    width: 1.125rem !important;
+    height: 1.125rem !important;
     background-color: currentColor !important;
     -webkit-mask: url(/static/admin/img/icon-changelink.svg) no-repeat center / contain !important;
     mask: url(/static/admin/img/icon-changelink.svg) no-repeat center / contain !important;
 }
 
-/* Delete/Clear icon mask (✕) */
 .delete-related::before,
 .related-widget-wrapper .clear-related::before {
     content: "" !important;
     display: inline-block !important;
-    width: 1.1rem !important;
-    height: 1.1rem !important;
+    width: 1.125rem !important;
+    height: 1.125rem !important;
     background-color: currentColor !important;
     -webkit-mask: url(/static/admin/img/icon-deletelink.svg) no-repeat center / contain !important;
     mask: url(/static/admin/img/icon-deletelink.svg) no-repeat center / contain !important;
 }
 
-/* View related icon mask */
 .view-related::before {
     content: "" !important;
     display: inline-block !important;
-    width: 1.1rem !important;
-    height: 1.1rem !important;
+    width: 1.125rem !important;
+    height: 1.125rem !important;
     background-color: currentColor !important;
     -webkit-mask: url(/static/admin/img/icon-viewlink.svg) no-repeat center / contain !important;
     mask: url(/static/admin/img/icon-viewlink.svg) no-repeat center / contain !important;
 }
 
-/* Wrapper keeps input + icon buttons in one row */
 .related-widget-wrapper {
     display: inline-flex !important;
     align-items: center !important;
@@ -289,7 +361,7 @@ a.related-lookup::before {
 }
 
 /* =========================================================
-   View-on-site link (the eye icon in the object history bar)
+   View-on-site link
    ========================================================= */
 
 .object-tools a[href*="site"],
@@ -308,13 +380,12 @@ a.related-lookup::before {
 .object-tools a[href*="site"]::before {
     content: "" !important;
     display: inline-block !important;
-    width: 1.1rem !important;
-    height: 1.1rem !important;
+    width: 1.125rem !important;
+    height: 1.125rem !important;
     background-color: currentColor !important;
     -webkit-mask: url(/static/admin/img/icon-viewlink.svg) no-repeat center / contain !important;
     mask: url(/static/admin/img/icon-viewlink.svg) no-repeat center / contain !important;
 }
-
 
 /* =========================================================
    Date hierarchy breadcrumb strip
@@ -347,4 +418,108 @@ a.related-lookup::before {
     border: none !important;
     background: transparent !important;
     color: var(--admin-text-muted) !important;
+}
+
+/* =========================================================
+   Tabular Inline — premium row styling
+   ========================================================= */
+
+.inline-group {
+    border: 1px solid var(--admin-border) !important;
+    border-radius: var(--border-radius) !important;
+    overflow: hidden !important;
+    margin-top: 1.5rem !important;
+}
+
+.inline-group h2 {
+    padding: 0.75rem 1.25rem !important;
+    background: var(--admin-surface-elevated) !important;
+    border-bottom: 1px solid var(--admin-border) !important;
+    font-size: 0.875rem !important;
+    font-weight: 700 !important;
+    color: var(--admin-text) !important;
+    margin: 0 !important;
+}
+
+.inline-group table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+}
+
+.inline-group table th {
+    background: var(--admin-surface-elevated) !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    color: var(--admin-text-muted) !important;
+    padding: 0.65rem 0.875rem !important;
+    border-bottom: 1px solid var(--admin-border) !important;
+    text-align: left !important;
+}
+
+.inline-group table td {
+    padding: 0.75rem 0.875rem !important;
+    border-bottom: 1px solid var(--admin-border) !important;
+    vertical-align: middle !important;
+    font-size: 0.875rem !important;
+}
+
+.inline-group table tr:last-child td {
+    border-bottom: none !important;
+}
+
+.inline-group table tr:hover td {
+    background: color-mix(in srgb, var(--admin-primary) 4%, transparent) !important;
+}
+
+/* Add row button in inline */
+.add-row a,
+.inline-group .add-row {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    padding: 0.5rem 0.875rem !important;
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    color: var(--admin-primary) !important;
+    border-top: 1px solid var(--admin-border) !important;
+    background: var(--admin-surface-elevated) !important;
+    width: 100% !important;
+    cursor: pointer !important;
+    transition: color 0.15s !important;
+    text-decoration: none !important;
+}
+
+.add-row a:hover {
+    color: var(--admin-primary-strong) !important;
+}
+
+/* =========================================================
+   Character counter helper (SEO fields etc.)
+   ========================================================= */
+
+.char-counter-wrap {
+    position: relative !important;
+}
+
+.char-counter {
+    position: absolute !important;
+    bottom: 0.5rem !important;
+    right: 0.75rem !important;
+    font-size: 0.7rem !important;
+    color: var(--admin-text-muted) !important;
+    pointer-events: none !important;
+}
+
+.char-counter.over-limit {
+    color: var(--admin-danger) !important;
+}
+
+.char-counter.near-limit {
+    color: var(--admin-warning) !important;
+}
+
+.char-counter.ideal {
+    color: var(--admin-success) !important;
 }

@@ -187,10 +187,12 @@ Important behavior:
 - Public APIs expose only active projects.
 - Maximum 4 active featured projects are allowed.
 - Project detail includes statistics and research metadata.
+- `OtherProject` model stores compact research items (`title`, `description`, `section`) displayed on the public projects showcase.
 
 Public routes:
 
 - `GET /api/projects/`
+- `GET /api/projects/other/`
 - `GET /api/projects/<slug>/`
 
 ### inquiries
@@ -515,6 +517,7 @@ Default local URLs:
 - Admin: `http://127.0.0.1:8000/admin/`
 - Google login: `http://127.0.0.1:8000/accounts/google/login/`
 - Projects API: `http://127.0.0.1:8000/api/projects/`
+- Other Projects API: `http://127.0.0.1:8000/api/projects/other/`
 - Inquiries API: `http://127.0.0.1:8000/api/inquiries/`
 - Statistics API: `http://127.0.0.1:8000/api/statistics/`
 - Clients API: `http://127.0.0.1:8000/api/clients/`
@@ -652,6 +655,7 @@ Current public endpoints:
 | Method | Endpoint | Purpose |
 | --- | --- | --- |
 | `GET` | `/api/projects/` | List active projects. |
+| `GET` | `/api/projects/other/` | List active other projects. |
 | `GET` | `/api/projects/<slug>/` | Get one active project by slug. |
 | `POST` | `/api/inquiries/` | Submit a public inquiry. |
 | `GET` | `/api/statistics/` | List active public statistics. |

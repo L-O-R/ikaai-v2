@@ -64,3 +64,17 @@ class ProjectStat(BaseModel):
 
     def __str__(self) -> str:
         return self.title
+
+
+class OtherProject(BaseModel):
+    """Simple other project representation containing fewer fields."""
+
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    section = models.CharField(max_length=255, verbose_name="Sector")
+
+    class Meta:
+        ordering = ("-created_at",)
+
+    def __str__(self) -> str:
+        return self.title

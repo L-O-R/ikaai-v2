@@ -7,55 +7,156 @@
 <div class="flex flex-col gap-8 py-6">
 
   {# ── Welcome header ──────────────────────────────────────────────── #}
-  <div>
-    <h1 class="text-2xl font-bold text-important-light dark:text-important-dark mb-1">
-      Welcome to IKAAI INDIA CMS
-    </h1>
-    <p class="text-sm text-font-default-light dark:text-font-default-dark">
-      Manage all your content, projects, inquiries, and careers from one place.
-    </p>
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div>
+      <h1 class="text-2xl font-bold text-important-light dark:text-important-dark mb-1">
+        Welcome to IKAAI CMS
+      </h1>
+      <p class="text-sm text-font-default-light dark:text-font-default-dark">
+        Manage all your content, projects, inquiries, and careers from one place.
+      </p>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="/admin/projects/project/add/"
+         class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-default bg-primary-600 text-white text-sm font-medium hover:bg-primary-700 transition-colors no-underline shadow-xs">
+        <span class="material-symbols-outlined text-[1.125rem]">add</span>
+        New Project
+      </a>
+      <a href="/admin/blogs/blog/add/"
+         class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-default border border-base-300 dark:border-base-700 bg-white dark:bg-base-900 text-sm font-medium text-font-default-light dark:text-font-default-dark hover:border-primary-600 hover:text-primary-600 transition-colors no-underline">
+        <span class="material-symbols-outlined text-[1.125rem]">edit_note</span>
+        New Post
+      </a>
+    </div>
   </div>
 
   {# ── Stats grid ──────────────────────────────────────────────────── #}
-  <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
     {% for stat in dashboard_stats %}
-      {% component "unfold/components/card.html" with href=stat.url %}
-        <div class="flex flex-col gap-2">
-          <span class="material-symbols-outlined text-primary-600 text-[1.5rem]!">
-            {{ stat.icon }}
-          </span>
-          <span class="text-3xl font-bold text-important-light dark:text-important-dark leading-none">
-            {{ stat.count }}
-          </span>
-          <span class="text-xs font-semibold text-font-default-light dark:text-font-default-dark uppercase tracking-wide">
-            {{ stat.label }}
-          </span>
+      <div class="group relative flex flex-col justify-between p-5 rounded-default border border-base-200 dark:border-base-800 bg-white dark:bg-base-900 shadow-xs hover:border-primary-600/50 dark:hover:border-primary-600/50 transition-all duration-150">
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center gap-2.5">
+            <div class="flex items-center justify-center w-10 h-10 rounded-default bg-primary-600/10 text-primary-600 dark:bg-primary-600/20 dark:text-primary-400">
+              <span class="material-symbols-outlined text-[1.35rem]!">{{ stat.icon }}</span>
+            </div>
+            <div>
+              <span class="text-xs font-semibold text-font-default-light dark:text-font-default-dark uppercase tracking-wider block">
+                {{ stat.label }}
+              </span>
+              <span class="text-2xl font-bold text-important-light dark:text-important-dark leading-none">
+                {{ stat.count }}
+              </span>
+            </div>
+          </div>
+          {% if stat.add_url %}
+            <a href="{{ stat.add_url }}"
+               title="Add {{ stat.label }}"
+               class="flex items-center justify-center w-7 h-7 rounded-default text-font-default-light dark:text-font-default-dark hover:bg-base-100 dark:hover:bg-base-800 hover:text-primary-600 transition-colors no-underline">
+              <span class="material-symbols-outlined text-[1.125rem]!">add</span>
+            </a>
+          {% endif %}
         </div>
-      {% endcomponent %}
+
+        <div class="flex items-center justify-between pt-2 border-t border-base-100 dark:border-base-800 text-xs">
+          <span class="badge badge-neutral text-[0.7rem]">{{ stat.sub_label }}</span>
+          <a href="{{ stat.url }}" class="text-primary-600 dark:text-primary-400 font-semibold hover:underline no-underline flex items-center gap-0.5">
+            View all
+            <span class="material-symbols-outlined text-[0.875rem]!">arrow_forward</span>
+          </a>
+        </div>
+      </div>
     {% endfor %}
 
   </div>
 
-  {# ── Quick links ─────────────────────────────────────────────────── #}
+  {# ── Quick actions bar ───────────────────────────────────────────── #}
   <div>
-    <h2 class="text-base font-semibold text-important-light dark:text-important-dark mb-3">
+    <h2 class="text-base font-semibold text-important-light dark:text-important-dark mb-3 flex items-center gap-2">
+      <span class="material-symbols-outlined text-primary-600 text-[1.25rem]">flash_on</span>
       Quick Actions
     </h2>
-    <div class="flex flex-wrap gap-3">
+    <div class="flex flex-wrap gap-2.5">
       {% for link in quick_links %}
       <a href="{{ link.url }}"
-         class="inline-flex items-center gap-1.5 px-4 py-2 rounded-default border
-                border-base-200 dark:border-base-700 bg-white dark:bg-base-900
-                text-sm font-medium text-font-default-light dark:text-font-default-dark
+         class="inline-flex items-center gap-2 px-3.5 py-2 rounded-default border
+                border-base-200 dark:border-base-800 bg-white dark:bg-base-900
+                text-xs font-semibold text-font-default-light dark:text-font-default-dark
                 hover:border-primary-600 hover:text-primary-600
                 dark:hover:border-primary-600 dark:hover:text-primary-600
-                transition-colors duration-150 no-underline">
-        <span class="material-symbols-outlined text-[1rem]!">{{ link.icon }}</span>
+                transition-colors duration-150 no-underline shadow-2xs">
+        <span class="material-symbols-outlined text-[1rem]! text-primary-600">{{ link.icon }}</span>
         {{ link.label }}
       </a>
       {% endfor %}
     </div>
+  </div>
+
+  {# ── Recent Activity Tables ──────────────────────────────────────── #}
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-2">
+
+    {# ── Recent Inquiries ── #}
+    <div class="flex flex-col rounded-default border border-base-200 dark:border-base-800 bg-white dark:bg-base-900 p-5 shadow-xs">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary-600 text-[1.25rem]">mark_email_unread</span>
+          <h3 class="text-sm font-bold text-important-light dark:text-important-dark m-0">Recent Inquiries</h3>
+        </div>
+        <a href="/admin/inquiries/inquiry/" class="text-xs text-primary-600 dark:text-primary-400 font-semibold no-underline hover:underline">View all</a>
+      </div>
+
+      {% if recent_inquiries %}
+        <div class="divide-y divide-base-100 dark:divide-base-800">
+          {% for inquiry in recent_inquiries %}
+            <div class="py-2.5 flex items-center justify-between text-xs gap-3">
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-2 mb-0.5">
+                  <span class="font-bold text-important-light dark:text-important-dark truncate">{{ inquiry.name }}</span>
+                  {% if not inquiry.is_read %}
+                    <span class="badge badge-primary text-[0.65rem] py-0 px-1.5">Unread</span>
+                  {% endif %}
+                </div>
+                <p class="text-font-default-light dark:text-font-default-dark truncate m-0">{{ inquiry.subject }}</p>
+              </div>
+              <span class="text-font-default-light dark:text-font-default-dark whitespace-nowrap text-[0.7rem]">{{ inquiry.created_at|date:"M d, H:i" }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="text-xs text-font-default-light dark:text-font-default-dark text-center py-6">No recent inquiries.</p>
+      {% endif %}
+    </div>
+
+    {# ── Recent Applications ── #}
+    <div class="flex flex-col rounded-default border border-base-200 dark:border-base-800 bg-white dark:bg-base-900 p-5 shadow-xs">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary-600 text-[1.25rem]">badge</span>
+          <h3 class="text-sm font-bold text-important-light dark:text-important-dark m-0">Recent Applications</h3>
+        </div>
+        <a href="/admin/jobs/jobapplication/" class="text-xs text-primary-600 dark:text-primary-400 font-semibold no-underline hover:underline">View all</a>
+      </div>
+
+      {% if recent_applications %}
+        <div class="divide-y divide-base-100 dark:divide-base-800">
+          {% for app in recent_applications %}
+            <div class="py-2.5 flex items-center justify-between text-xs gap-3">
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-2 mb-0.5">
+                  <span class="font-bold text-important-light dark:text-important-dark truncate">{{ app.name }}</span>
+                  <span class="badge badge-neutral text-[0.65rem] py-0 px-1.5">{{ app.status }}</span>
+                </div>
+                <p class="text-font-default-light dark:text-font-default-dark truncate m-0">{{ app.job.title }}</p>
+              </div>
+              <span class="text-font-default-light dark:text-font-default-dark whitespace-nowrap text-[0.7rem]">{{ app.created_at|date:"M d" }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="text-xs text-font-default-light dark:text-font-default-dark text-center py-6">No recent applications.</p>
+      {% endif %}
+    </div>
+
   </div>
 
 </div>

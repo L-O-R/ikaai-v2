@@ -7,7 +7,7 @@ import Timeline from '@/components/about/Timeline'
 import React from 'react'
 
 export const metadata = {
-    title: 'About IKAAI India | Research & Rural Development',
+    title: 'About Us',
     description: 'Learn about IKAAI India — our mission, vision, and journey in transforming rural communities through research and evidence-based development.',
 }
 

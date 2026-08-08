@@ -34,16 +34,16 @@ const JobApplicationForm = ({ jobSlug }) => {
     const validateForm = () => {
         const errors = {}
 
-        // Strict Phone Validation (Matches international or local 10-12 digit formats)
+        // Strict Phone Validation
         const phoneRegex = /^(\+?\d{1,3}[- ]?)?\d{10,12}$/
         if (!phoneRegex.test(formData.phone.replace(/\s+/g, ''))) {
             errors.phone = 'Please enter a valid 10 to 12-digit phone number.'
         }
 
-        // Strict Google Drive Structural Validation
-        const driveRegex = /drive\.google\.com\/(file\/d\/([a-zA-Z0-9_-]+)|open\?id=([a-zA-Z0-9_-]+))/
-        if (!driveRegex.test(formData.resume_drive_link)) {
-            errors.resume_drive_link = 'Please provide a valid document path matching a drive.google.com share link.'
+        // Comprehensive Google Drive / Docs Validation
+        const driveRegex = /^(https?:\/\/)?(www\.)?(drive|docs)\.google\.com\/(file\/d\/|document\/d\/|spreadsheets\/d\/|presentation\/d\/|open\?id=|uc\?id=)([a-zA-Z0-9_-]+)/
+        if (!driveRegex.test(formData.resume_drive_link.trim())) {
+            errors.resume_drive_link = 'Please provide a valid Google Drive or Google Docs share link.'
         }
 
         return errors
@@ -139,7 +139,7 @@ const JobApplicationForm = ({ jobSlug }) => {
                     <input name="years_of_experience" value={formData.years_of_experience} onChange={handleChange} disabled={isDisabled} className="w-full rounded-xl border border-border-neutral bg-white px-3 py-2 disabled:bg-neutral-100 disabled:text-text-muted" />
                 </label>
                 <label className="block text-sm text-text-secondary">
-                    <span className="mb-2 block font-medium text-on-surface">Portfolio URL</span>
+                    <span className="mb-2 block font-medium text-on-surface">Portfolio / LinkedIn Link</span>
                     <input type="url" name="portfolio_url" value={formData.portfolio_url} onChange={handleChange} disabled={isDisabled} className="w-full rounded-xl border border-border-neutral bg-white px-3 py-2 disabled:bg-neutral-100 disabled:text-text-muted" />
                     {getFieldError(formErrors, 'portfolio_url') ? <p className="mt-1 text-xs text-red-600 font-medium">{getFieldError(formErrors, 'portfolio_url')}</p> : null}
                 </label>
@@ -164,8 +164,8 @@ const JobApplicationForm = ({ jobSlug }) => {
                 type="submit"
                 disabled={isDisabled}
                 className={`inline-flex items-center rounded-full px-6 py-3 text-sm font-semibold text-white transition ${isSuccess
-                        ? 'bg-green-600 cursor-not-allowed opacity-90'
-                        : 'bg-primary hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed'
+                    ? 'bg-green-600 cursor-not-allowed opacity-90'
+                    : 'bg-primary hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed'
                     }`}
             >
                 {isSubmitting ? 'Submitting...' : isSuccess ? 'Application Received ✓' : 'Apply Now'}

@@ -102,7 +102,7 @@ function TeamSection({ eyebrow, title, members }) {
             {/* Title Section (inspired by layout in the image) */}
             <div className="relative mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4  pb-6 z-10">
                 <div className="flex flex-col gap-2">
-                    <span className="inline-self-start max-w-max bg-surface-container-high border border-border-neutral px-4 py-1.5 rounded-full text-text-muted font-sans text-xs uppercase tracking-widest font-bold">
+                    <span className="font-sans text-label-caps capitalize text-text-muted tracking-tighter block">
                         {eyebrow}
                     </span>
                     <SubHeading
@@ -117,7 +117,7 @@ function TeamSection({ eyebrow, title, members }) {
             </div>
 
             {/* Team Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 relative z-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-12 relative z-10">
                 {members.map((member) => (
                     <TeamMember key={member.name} {...member} />
                 ))}
@@ -128,7 +128,7 @@ function TeamSection({ eyebrow, title, members }) {
 
 const TeamGrid = () => {
     return (
-        <section className="py-section-mobile md:py-section-desktop bg-warm-beige space-y-16 md:space-y-24">
+        <section className="py-section-mobile md:py-section-desktop bg-surface space-y-16 md:space-y-24">
             <div className="container-size">
                 <TeamSection eyebrow="Meet the Team" title="Core Members" members={coreTeam} />
             </div>

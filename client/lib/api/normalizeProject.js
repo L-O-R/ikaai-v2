@@ -8,7 +8,7 @@ export const normalizeProject = (project) => {
         id: project.slug,
         img: resolveMediaUrl(project.featured_image),
         client: clientData.name || "",
-        clientLogo: resolveMediaUrl(clientData.logo),
+        clientLogo: resolveMediaUrl(clientData.project_logo) || resolveMediaUrl(clientData.section_logo),
         clientWebsite: clientData.website || "",
         statistics: project.statistics || [],
         coverage: project.coverage,

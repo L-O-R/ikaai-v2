@@ -6,7 +6,8 @@ from rest_framework.pagination import PageNumberPagination
 
 from .filters import ProjectFilter
 from .selectors import get_project_by_slug, get_projects
-from .serializers import ProjectDetailSerializer, ProjectListSerializer
+from .models import OtherProject
+from .serializers import ProjectDetailSerializer, ProjectListSerializer, OtherProjectSerializer
 
 
 class ProjectPagination(PageNumberPagination):
@@ -40,5 +41,15 @@ class ProjectDetailAPIView(RetrieveAPIView):
 
     def get_queryset(self):
         return get_projects()
+
+
+class OtherProjectListAPIView(ListAPIView):
+    """Read-only public list of active other projects."""
+
+    queryset = OtherProject.objects.filter(is_active=True).order_by("-created_at")
+    serializer_class = OtherProjectSerializer
+    permission_classes = (AllowAny,)
+    authentication_classes = ()
+    pagination_class = None
 
 

@@ -11,6 +11,7 @@ class InquiryCreateAPIView(APIView):
     """Write-only public inquiry endpoint."""
 
     permission_classes = (AllowAny,)
+    authentication_classes = ()
     serializer_class = InquiryCreateSerializer
     http_method_names = ("post",)
 

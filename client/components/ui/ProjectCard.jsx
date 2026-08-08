@@ -45,32 +45,35 @@ const ProjectCard = ({ project, bg_color }) => {
             </div>
 
             <div className="bg-surface p-2 rounded-2xl">
-                <div className="aspect-4/3 relative overflow-hidden rounded-xl">
+                <div className="aspect-4/3 relative rounded-xl">
 
                     <Image
                         width={500}
                         height={500}
                         src={imageSrc}
                         alt={project.title}
-                        className="w-full h-full object-cover transition-all duration-700 ease-out scale-100 group-hover:scale-115 group-hover:blur-[1.5px]"
+                        className="w-full h-full object-cover rounded-xl transition-all duration-700 ease-out scale-100 group-hover:scale-102 group-hover:brightness-45 group-hover:contrast-105"
                     />
 
-                    <div className="absolute inset-0 bg-inverse-surface/30 group-hover:bg-inverse-surface/70 flex items-center justify-center pointer-events-none transition-all duration-500 rounded-xl">
-                        {project.clientLogo ? (
-                            <div className="transition-transform duration-500 scale-110 group-hover:scale-90">
+
+
+                    {/* Floating Client Logo/Name Badge */}
+                    <div className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+                        <div className=" backdrop-blur-md transition-all duration-500 ease-out group-hover:scale-110 group-hover:shadow-2xl group-hover:bg-surface/95 group-hover:border-primary/40 flex items-center justify-center max-w-[85%]">
+                            {project.clientLogo ? (
                                 <Image
                                     width={200}
                                     height={200}
                                     src={project.clientLogo}
                                     alt={`${project.client || "Client"} logo`}
-                                    className="h-30 w-auto object-contain opacity-40 group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                                    className="h-30 max-w-37.5 w-auto object-contain transition-transform duration-500"
                                 />
-                            </div>
-                        ) : (
-                            <span className="font-sans text-label-caps uppercase tracking-widest text-inverse-on-surface/70 transition-transform duration-500 scale-105 group-hover:scale-90">
-                                {project.client}
-                            </span>
-                        )}
+                            ) : (
+                                <span className="font-sans text-xs font-bold uppercase tracking-widest text-on-surface transition-transform duration-500">
+                                    {project.client}
+                                </span>
+                            )}
+                        </div>
                     </div>
 
                 </div>

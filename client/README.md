@@ -27,7 +27,9 @@ The Next.js App Router is structured across all core organizational routes:
 | `/about/life` | Organizational culture, field values, and life at IKAAI | [`app/about/life/page.jsx`](file:///e:/ikaai-v2/client/app/about/life/page.jsx) | Page Metadata |
 | `/services` | Research, monitoring & evaluation (M&E), baseline studies, and capacity building | [`app/services/page.jsx`](file:///e:/ikaai-v2/client/app/services/page.jsx) | Page Metadata |
 | `/projects` | Interactive projects portfolio with backend search & pagination | [`app/projects/page.jsx`](file:///e:/ikaai-v2/client/app/projects/page.jsx) | [`app/projects/layout.jsx`](file:///e:/ikaai-v2/client/app/projects/layout.jsx) |
+| `/projects/[slug]` | Individual project detail view showcasing statistics and metadata | [`app/projects/[slug]/page.jsx`](file:///e:/ikaai-v2/client/app/projects/[slug]/page.jsx) | Dynamic Metadata |
 | `/blog` | Blog articles & impact stories with live search & pagination | [`app/blog/page.jsx`](file:///e:/ikaai-v2/client/app/blog/page.jsx) | [`app/blog/layout.jsx`](file:///e:/ikaai-v2/client/app/blog/layout.jsx) |
+| `/blog/[slug]` | Full blog article detail view with related posts & SEO tags | [`app/blog/[slug]/page.jsx`](file:///e:/ikaai-v2/client/app/blog/[slug]/page.jsx) | Dynamic Metadata |
 | `/careers` | Career opportunities, perks, culture, and open positions | [`app/careers/page.jsx`](file:///e:/ikaai-v2/client/app/careers/page.jsx) | Page Metadata |
 | `/media` | Field photo gallery, visual assets, and media archives | [`app/media/page.jsx`](file:///e:/ikaai-v2/client/app/media/page.jsx) | Page Metadata |
 | `/contact` | Inquiry form, contact details, map location, and office info | [`app/contact/page.jsx`](file:///e:/ikaai-v2/client/app/contact/page.jsx) | Page Metadata |
@@ -37,12 +39,12 @@ The Next.js App Router is structured across all core organizational routes:
 
 ## 📱 Web Manifest & PWA Configuration
 
-The web application manifest is defined at [`app/site.webmanifest`](file:///e:/ikaai-v2/client/app/site.webmanifest) and referenced globally in [`app/layout.js`](file:///e:/ikaai-v2/client/app/layout.js):
+The web application manifest is defined at [`public/site.webmanifest`](file:///e:/ikaai-v2/client/public/site.webmanifest) and referenced globally in [`app/layout.js`](file:///e:/ikaai-v2/client/app/layout.js):
 
-- **File Path**: `client/app/site.webmanifest`
+- **File Path**: `client/public/site.webmanifest`
 - **Application Display**: `standalone` mode
-- **Theme & Background Color**: `#ffffff`
-- **Favicons & Touch Icons**: Linked from `/favicon/` (`16x16`, `32x32`, `48x48`, `180x180`)
+- **Theme & Background Color**: `#ffffff` / `#00511e`
+- **Favicons & Touch Icons**: Served directly from root `/public` (`/favicon.ico`, `/favicon-16x16.png`, `/favicon-32x32.png`, `/favicon-48x48.png`, `/apple-touch-icon.png`, `/icon.png`, `/icon.svg`, `/android-chrome-192x192.png`, `/android-chrome-512x512.png`) for seamless Google search bot indexing.
 
 ---
 
@@ -54,8 +56,9 @@ IKAAI INDIA implements full GEO and SEO optimizations for search crawlers and AI
    - Organization level `NGO` schema embedded in `app/layout.js`.
    - `FAQPage` schema embedded in `app/faq/page.js`.
 2. **Metadata Architecture**:
-   - Server-rendered pages (`about`, `services`, `careers`, `contact`, `media`, `about/team`, `about/life`) export static `metadata`.
-   - Client-rendered pages (`work`, `stories`, `faq`) use dedicated route layout wrappers (`layout.jsx`) to export server metadata.
+   - Clean, simplified titles across pages (`About Us`, `Services`, `Projects`, `Blog`, `Careers`, `Contact Us`, `FAQ`, `Media`, `Our Team`, `Life at IKAAI`) appended with standard `%s | IKAAI INDIA` template.
+   - Server-rendered pages export clean static `metadata`.
+   - Client-rendered pages use dedicated route layout wrappers (`layout.jsx`) to export server metadata.
 3. **Robots & AI Crawling**: Configured with `max-image-preview: "large"`, `max-snippet: -1`, and canonical base URL (`https://ikaaiindia.in`).
 
 ---
@@ -91,9 +94,16 @@ npm run build
 ## 🔌 Django Backend Integration
 
 The client interfaces with Django REST endpoints (`lib/api/`):
-- `GET /api/statistics/`
-- `GET /api/clients/`
-- `GET /api/projects/`
-- `GET /api/projects/{slug}/`
-- `GET /api/blogs/`
-- `POST /api/inquiries/`
+- `GET /api/statistics/` — Organization statistics
+- `GET /api/clients/` — Client logos and list
+- `GET /api/projects/` — Projects listing with pagination and search
+- `GET /api/projects/{slug}/` — Detailed project breakdown and stats
+- `GET /api/projects/other/` — Other research projects list
+- `GET /api/blogs/` — Published blog posts
+- `GET /api/blogs/{slug}/` — Blog post article detail
+- `GET /api/updates/` — Public announcements/updates
+- `GET /api/jobs/jobs/` — Open career positions
+- `GET /api/jobs/jobs/{slug}/` — Job description details
+- `POST /api/inquiries/` — Public inquiry submission
+- `POST /api/jobs/job-applications/` — Job application submission
+

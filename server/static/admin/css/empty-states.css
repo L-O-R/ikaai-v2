@@ -1,0 +1,109 @@
+/* =========================================================
+   Empty States — CSS-only implementation
+   Shows a styled message when the results table has 0 rows.
+   The .results element gets the .no-results modifier class
+   via the existing Django template when count == 0.
+   ========================================================= */
+
+/* When the tbody has no rows, show the empty state via CSS */
+.results tbody:empty::after,
+.results table:not(:has(tbody tr)) + .empty-state,
+.no-results-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--admin-text-muted);
+    gap: 0.75rem;
+}
+
+/* Django renders a <p class="paginator"> with count 0 and a separate
+   "No <model> to display" message. We style that default message. */
+#changelist .help,
+.change-list-results > p,
+.paginator + p {
+    /* Not the droid we're looking for */
+}
+
+/* The real empty state hook: when Django renders no object rows,
+   the results table thead still appears but tbody is empty.
+   We add styling to the parent container. */
+#changelist-form .results table tbody:not(:has(tr)) {
+    display: table-row-group;
+}
+
+#changelist-form .results table tbody:not(:has(tr))::after {
+    content: "";
+    display: table-row;
+    height: 1px;
+}
+
+/* Standalone empty state component (used in custom templates) */
+.admin-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 2rem;
+    text-align: center;
+    gap: 1rem;
+}
+
+.admin-empty-state-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--admin-primary) 10%, transparent);
+    color: var(--admin-primary);
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.admin-empty-state-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin: 0;
+}
+
+.admin-empty-state-desc {
+    font-size: 0.875rem;
+    color: var(--admin-text-muted);
+    max-width: 28rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.admin-empty-state-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.25rem;
+    border-radius: var(--border-radius, 0.25rem);
+    background: var(--admin-primary);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s, opacity 0.15s;
+    margin-top: 0.5rem;
+}
+
+.admin-empty-state-action:hover {
+    opacity: 0.88;
+    color: #fff;
+}
+
+/* Style Django's default "No objects" message */
+#changelist-form .paginator ~ p,
+.change-list #changelist .results p {
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--admin-text-muted);
+    font-size: 0.9375rem;
+}

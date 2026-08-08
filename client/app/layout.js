@@ -23,7 +23,7 @@ const organizationJsonLd = {
   "name": "IKAAI INDIA",
   "alternateName": "Ikaai India Foundation",
   "url": "https://ikaaiindia.in",
-  "logo": "https://ikaaiindia.in/favicon/icon.png",
+  "logo": "https://ikaaiindia.in/icon.png",
   "description": "IKAAI INDIA is a research-driven development organization dedicated to impact assessment, social research, policy evaluation, and sustainable transformation across India.",
   "slogan": "Unlocking Insights, Transforming Lives.",
   "knowsAbout": [
@@ -59,7 +59,7 @@ export const metadata = {
   metadataBase: new URL("https://ikaaiindia.in"),
 
   title: {
-    default: "Lead with Ikaai",
+    default: "IKAAI INDIA",
     template: "%s | IKAAI INDIA",
   },
 
@@ -114,33 +114,33 @@ export const metadata = {
 
   icons: {
     icon: [
-      { url: "/favicon/favicon.ico" },
+      { url: "/favicon.ico" },
       {
-        url: "/favicon/favicon-16x16.png",
+        url: "/favicon-16x16.png",
         sizes: "16x16",
         type: "image/png",
       },
       {
-        url: "/favicon/favicon-32x32.png",
+        url: "/favicon-32x32.png",
         sizes: "32x32",
         type: "image/png",
       },
       {
-        url: "/favicon/favicon-48x48.png",
+        url: "/favicon-48x48.png",
         sizes: "48x48",
         type: "image/png",
       },
       {
-        url: "/favicon/icon.svg",
+        url: "/icon.svg",
         type: "image/svg+xml",
       },
     ],
 
-    shortcut: "/favicon/favicon.ico",
+    shortcut: "/favicon.ico",
 
     apple: [
       {
-        url: "/favicon/apple-touch-icon.png",
+        url: "/apple-touch-icon.png",
         sizes: "180x180",
       },
     ],
@@ -148,13 +148,13 @@ export const metadata = {
     other: [
       {
         rel: "icon",
-        url: "/favicon/android-chrome-192x192.png",
+        url: "/android-chrome-192x192.png",
         sizes: "192x192",
         type: "image/png",
       },
       {
         rel: "icon",
-        url: "/favicon/android-chrome-512x512.png",
+        url: "/android-chrome-512x512.png",
         sizes: "512x512",
         type: "image/png",
       },

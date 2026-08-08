@@ -7,7 +7,7 @@ import LifeHero from '@/components/life/LifeHero'
 import React from 'react'
 
 export const metadata = {
-    title: 'Life at IKAAI | IKAAI India',
+    title: 'Life at IKAAI',
     description: 'Discover the culture, values, and people that make IKAAI India a great place to work.',
 }
 

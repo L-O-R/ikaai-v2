@@ -8,7 +8,20 @@ class Client(BaseModel):
     """Reusable client organization."""
 
     name = models.CharField(max_length=200, unique=True)
-    logo = models.ImageField(upload_to="clients/logos/")
+    section_logo = models.ImageField(
+        upload_to="clients/logos/",
+        blank=True,
+        null=True,
+        help_text="Logo displayed in the homepage client section strip.",
+    )
+    project_logo = models.ImageField(
+        upload_to="clients/project-logos/",
+        blank=True,
+        null=True,
+        help_text="Logo displayed on project cards. Falls back to section_logo if empty.",
+    )
+    client_section_image = models.ImageField(upload_to="clients/sections/", blank=True, null=True)
+    project_image = models.ImageField(upload_to="clients/projects/", blank=True, null=True)
     display_order = models.PositiveIntegerField(default=0)
     website = models.URLField(blank=True)
 

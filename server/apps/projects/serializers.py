@@ -2,7 +2,7 @@ from django.utils.text import Truncator
 from rest_framework import serializers
 
 from apps.clients.models import Client
-from .models import Project, ProjectStat
+from .models import Project, ProjectStat, OtherProject
 
 
 class ClientSerializer(serializers.ModelSerializer):
@@ -10,7 +10,10 @@ class ClientSerializer(serializers.ModelSerializer):
         model = Client
         fields = (
             "name",
-            "logo",
+            "section_logo",
+            "project_logo",
+            "client_section_image",
+            "project_image",
             "website",
         )
 
@@ -60,4 +63,15 @@ class ProjectDetailSerializer(serializers.ModelSerializer):
             "scope_of_work",
             "sample_size",
             "statistics",
+        )
+
+
+class OtherProjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OtherProject
+        fields = (
+            "id",
+            "title",
+            "description",
+            "section",
         )

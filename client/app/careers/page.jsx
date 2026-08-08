@@ -4,12 +4,11 @@ import {
     CareerHero,
     WhyJoinUs,
     OpenPositions,
-    PerksBenefits,
     CareerCta
 } from '@/components/career'
 
 export const metadata = {
-    title: 'Careers | IKAAI India',
+    title: 'Careers',
     description: 'Join IKAAI India in transforming rural communities through research and development. Explore our open positions and make a difference.',
 }
 
@@ -19,7 +18,6 @@ const CareersPage = () => {
             <CareerHero />
             <WhyJoinUs />
             <OpenPositions />
-            <PerksBenefits />
             <CareerCta />
         </main>
     )

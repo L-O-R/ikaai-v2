@@ -1,12 +1,20 @@
 from django.contrib import admin
+from django.utils.html import format_html
 
 from common.admin import BaseAdmin, ImagePreviewMixin
 
+from .forms import UpdateAdminForm
 from .models import Update
 
 
 @admin.register(Update)
 class UpdateAdmin(ImagePreviewMixin, BaseAdmin):
+    form = UpdateAdminForm
+    actions = None
+    actions_on_top = False
+    actions_on_bottom = False
+    actions_selection_counter = False
+
     preview_image_field = "image"
     preview_image_label = "Update image"
 
@@ -16,20 +24,20 @@ class UpdateAdmin(ImagePreviewMixin, BaseAdmin):
     list_display = (
         "image_preview",
         "title",
-        "link",
-        "display_order",
+        "link_chip",
         "published_at",
-        "is_active",
+        "status_badge",
     )
-    list_editable = ("display_order",)
+    list_editable = ()
     readonly_fields = (
+        "id",
         "created_at",
         "updated_at",
         "image_preview",
     )
     fieldsets = (
         (
-            "Update",
+            "Update Content",
             {
                 "fields": (
                     "title",
@@ -41,21 +49,38 @@ class UpdateAdmin(ImagePreviewMixin, BaseAdmin):
             },
         ),
         (
-            "Visibility",
+            "Visibility & Ordering",
             {
                 "fields": (
-                    "is_active",
                     "display_order",
+                    "is_active",
                 )
             },
         ),
         (
-            "Audit",
+            "Metadata",
             {
                 "fields": (
+                    "id",
                     "created_at",
                     "updated_at",
                 )
             },
         ),
     )
+
+    @admin.display(description="Link")
+    def link_chip(self, obj):
+        if obj.link:
+            return format_html(
+                '<a href="{}" target="_blank" rel="noopener noreferrer" class="admin-link-chip">'
+                '<span class="material-symbols-outlined link-chip-icon">open_in_new</span> Link</a>',
+                obj.link,
+            )
+        return "-"
+
+    @admin.display(description="Status")
+    def status_badge(self, obj):
+        if obj.is_active:
+            return format_html('<span class="badge badge-success"><span class="badge-dot"></span>Active</span>')
+        return format_html('<span class="badge badge-neutral">Inactive</span>')

@@ -6,7 +6,6 @@ import ImpactMoment from "@/components/home/ImpactMoment";
 import OurCommitmentSection from "@/components/home/OurCommitmentSection";
 import Projects from "@/components/home/Projects";
 import Services from "@/components/home/Services";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
 import Updates from "@/components/home/Updates";
 
 export default function Home() {
@@ -20,7 +19,6 @@ export default function Home() {
       <Projects />
       <OurCommitmentSection />
       <Updates />
-      <TestimonialsSection />
       <CtaSection />
     </main>
   );

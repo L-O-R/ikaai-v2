@@ -20,7 +20,7 @@ const CtaSection = () => {
             </div>
 
             <div className="relative z-10 container-size flex flex-col items-start gap-6">
-                <p className="mb-stack-md font-sans text-label-caps uppercase tracking-[0.2em] text-primary-fixed">
+                <p className="font-sans text-headline-md capitalize text-background tracking-tighter block">
                     Beyond Research
                 </p>
 

@@ -9,7 +9,7 @@ import {
 import { heroData } from "@/lib/data/heroData";
 
 export const metadata = {
-    title: "Contact IKAAI India | Get in Touch",
+    title: "Contact Us",
     description:
         "Reach out to IKAAI India for research partnerships, surveys, or to learn more about our work in rural development.",
 };

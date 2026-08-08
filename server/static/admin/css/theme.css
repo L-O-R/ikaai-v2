@@ -1,19 +1,34 @@
 :root {
-    /* Light mode – direct hex values from your Tailwind config */
-    --admin-surface: #fcf9f8;               /* surface */
-    --admin-surface-elevated: #f6f3f2;      /* surface-container-low */
-    --admin-border: #bfcabb;                /* outline-variant */
-    --admin-border-strong: #707a6e;         /* outline */
-    --admin-text: #000;                  /* on-surface */
-    --admin-text-muted: #757575;            /* text-muted */
-    --admin-primary: #00511e;               /* primary */
-    --admin-primary-strong: #0d6b2d;        /* primary-container */
-    --admin-focus: #00511e;                 /* primary */
-    --admin-danger: #ba1a1a;                /* error */
-    --admin-sidebar-width: 13.75rem;        /* kept as a var because it's a length */
+    /* ── Surface & backgrounds ───────────────────────────────── */
+    --admin-surface: #fcf9f8;               /* page background */
+    --admin-surface-elevated: #f6f3f2;      /* card / sidebar bg */
+    --admin-surface-overlay: #ffffff;       /* modal, dropdown bg */
+
+    /* ── Borders ─────────────────────────────────────────────── */
+    --admin-border: #bfcabb;                /* subtle border */
+    --admin-border-strong: #707a6e;         /* input / strong border */
+
+    /* ── Text ────────────────────────────────────────────────── */
+    --admin-text: #1b1b1b;                  /* primary text */
+    --admin-text-muted: #757575;            /* secondary / helper text */
+
+    /* ── Brand ───────────────────────────────────────────────── */
+    --admin-primary: #00511e;               /* primary action */
+    --admin-primary-strong: #0d6b2d;        /* hover / active */
+    --admin-focus: #00511e;                 /* focus ring */
+
+    /* ── Semantic status tokens ──────────────────────────────── */
+    --admin-success: #15803d;               /* published, active, hired */
+    --admin-warning: #b45309;               /* draft, pending, shortlisted */
+    --admin-danger: #b91c1c;                /* error, rejected, delete */
+    --admin-info: #1d4ed8;                  /* info, new, neutral-positive */
+    --admin-neutral: #6b7280;               /* archived, muted states */
+
+    /* ── Sidebar ─────────────────────────────────────────────── */
+    --admin-sidebar-width: 13.75rem;
 }
 
-/* Typography overrides */
+/* ── Typography ──────────────────────────────────────────── */
 html,
 body {
     font-family: var(--font-manrope) !important;
@@ -44,35 +59,142 @@ body {
 .dashboard #content {
     border: none;
     box-shadow: none;
-    border-radius: 0.25rem !important; /* hardcoded to your DEFAULT border-radius */
+    border-radius: 0.25rem !important;
 }
 
-
-
-
-/* Sidebar */
+/* ── Sidebar ─────────────────────────────────────────────── */
 #nav-sidebar {
-
     flex: 0 0 var(--admin-sidebar-width) !important;
     background: var(--admin-surface-elevated) !important;
     border-right: 1px solid var(--admin-border) !important;
 }
 
-fieldset > div{
+fieldset > div {
     border: none;
 }
 
+/* ── Dropdown / select min-width fix ─────────────────────── */
+select,
+.vForeignKeyRawIdAdminField,
+.RelatedObjectLookups {
+    min-width: 16rem !important;
+}
 
-/* Class‑based dark mode (if you toggle .dark on <html>) */
+.select2-container {
+    min-width: 16rem !important;
+}
+
+/* =========================================================
+   DARK MODE — class-based (.dark on <html>)
+   ========================================================= */
 html.dark {
-    --admin-surface: #303030;
-    --admin-surface-elevated: #3a3a3a;
-    --admin-border: #707a6e;
-    --admin-border-strong: #8a9488;
+    --admin-surface: #1b1b1b;
+    --admin-surface-elevated: #252525;
+    --admin-surface-overlay: #2e2e2e;
+    --admin-border: #3f493f;
+    --admin-border-strong: #5a6659;
     --admin-text: #f3f0ef;
-    --admin-text-muted: #d0cdcc;
+    --admin-text-muted: #a8a8a8;
+
+    /* Brand */
     --admin-primary: #84d98e;
     --admin-primary-strong: #92e99c;
     --admin-focus: #84d98e;
-    --admin-danger: #ba1a1a;
+
+    /* Semantic */
+    --admin-success: #4ade80;
+    --admin-warning: #fbbf24;
+    --admin-danger: #f87171;
+    --admin-info: #60a5fa;
+    --admin-neutral: #9ca3af;
+}
+
+/* Dark mode — button & icon visibility */
+html.dark .button,
+html.dark button:not([class*="bg-"]):not([type="submit"]),
+html.dark input[type="submit"],
+html.dark input[type="button"] {
+    color: var(--admin-text) !important;
+    background: var(--admin-surface-elevated) !important;
+    border-color: var(--admin-border-strong) !important;
+}
+
+html.dark .button.default,
+html.dark input[type="submit"].default {
+    background: var(--admin-primary) !important;
+    color: #000 !important;
+    border-color: var(--admin-primary) !important;
+}
+
+html.dark .button:hover,
+html.dark button:not([class*="bg-"]):not([type="submit"]):hover {
+    border-color: var(--admin-primary) !important;
+    color: var(--admin-primary) !important;
+}
+
+/* Dark mode icon colours */
+html.dark .material-symbols-outlined,
+html.dark .material-symbols-rounded {
+    color: var(--admin-text) !important;
+}
+
+/* Dark mode select options */
+html.dark select option {
+    background: var(--admin-surface-elevated) !important;
+    color: var(--admin-text) !important;
+}
+
+/* Dark mode calendar/clock popup panels */
+html.dark #calendarbox,
+html.dark #clockbox,
+html.dark .calendar,
+html.dark .clockbox {
+    background: var(--admin-surface-elevated) !important;
+    border-color: var(--admin-border-strong) !important;
+    color: var(--admin-text) !important;
+}
+
+html.dark .calendar caption,
+html.dark .calendar th,
+html.dark .calendar td a {
+    color: var(--admin-text) !important;
+}
+
+html.dark .calendar td a:hover,
+html.dark .clockbox .timelist li a:hover {
+    background: var(--admin-primary) !important;
+    color: #000 !important;
+}
+
+/* Dark mode badge adjustments */
+html.dark .badge-success {
+    background: color-mix(in srgb, var(--admin-success) 15%, transparent) !important;
+    border-color: color-mix(in srgb, var(--admin-success) 35%, transparent) !important;
+}
+
+html.dark .badge-warning {
+    background: color-mix(in srgb, var(--admin-warning) 15%, transparent) !important;
+    border-color: color-mix(in srgb, var(--admin-warning) 35%, transparent) !important;
+}
+
+html.dark .badge-danger {
+    background: color-mix(in srgb, var(--admin-danger) 15%, transparent) !important;
+    border-color: color-mix(in srgb, var(--admin-danger) 35%, transparent) !important;
+}
+
+html.dark .badge-info {
+    background: color-mix(in srgb, var(--admin-info) 15%, transparent) !important;
+    border-color: color-mix(in srgb, var(--admin-info) 35%, transparent) !important;
+}
+
+html.dark .badge-primary {
+    background: color-mix(in srgb, var(--admin-primary) 15%, transparent) !important;
+    border-color: color-mix(in srgb, var(--admin-primary) 35%, transparent) !important;
+}
+
+/* Dark mode metadata card */
+html.dark .metadata-card,
+html.dark .metadata-row {
+    background: var(--admin-surface-elevated) !important;
+    border-color: var(--admin-border) !important;
 }

@@ -18,7 +18,10 @@ class ClientSerializer(serializers.ModelSerializer):
         model = Client
         fields = (
             "name",
-            "logo",
+            "section_logo",
+            "project_logo",
+            "client_section_image",
+            "project_image",
             "website",
         )
 

@@ -98,7 +98,7 @@ const Updates = () => {
       <div className="container-size">
         {/* Header */}
         <div className="mb-12">
-          <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-3">
+          <span className="font-sans text-label-caps capitalize text-text-muted tracking-tighter block mb-3">
             Updates
           </span>
           <SubHeading

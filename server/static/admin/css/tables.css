@@ -1,27 +1,174 @@
+/* =========================================================
+   Tables — list pages / change list
+   ========================================================= */
+
 .results table,
 .change-list table,
 .dashboard table {
     width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
 }
 
+/* ── Column cells ─────────────────────────────────── */
 .results th,
 .results td,
 .change-list th,
 .change-list td {
     padding: 0.875rem 1rem !important;
+    vertical-align: middle !important;
 }
 
+/* ── Header row ───────────────────────────────────── */
 .results thead th,
 .change-list thead th {
-    background: var(--color-base-100) !important;
+    background: var(--admin-surface-elevated) !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    color: var(--admin-text-muted) !important;
+    border-bottom: 2px solid var(--admin-border) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 2 !important;
+    white-space: nowrap !important;
 }
 
+/* ── Sort arrows ──────────────────────────────────── */
+.results thead th a,
+.change-list thead th a {
+    color: inherit !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.25rem !important;
+}
+
+.results thead th.sorted a,
+.change-list thead th.sorted a {
+    color: var(--admin-primary) !important;
+}
+
+/* ── Body rows — alternating stripe ──────────────── */
 .results tbody tr:nth-child(even),
 .change-list tbody tr:nth-child(even) {
-    background: color-mix(in srgb, var(--color-base-100) 55%, transparent) !important;
+    background: color-mix(in srgb, var(--admin-surface-elevated) 55%, transparent) !important;
 }
 
+/* ── Body rows — hover ────────────────────────────── */
 .results tbody tr:hover,
 .change-list tbody tr:hover {
-    background: color-mix(in srgb, var(--color-primary-50) 35%, transparent) !important;
+    background: color-mix(in srgb, var(--admin-primary) 6%, transparent) !important;
+    transition: background 0.1s !important;
+}
+
+/* ── Body cell text ───────────────────────────────── */
+.results tbody td,
+.change-list tbody td {
+    font-size: 0.875rem !important;
+    color: var(--admin-text) !important;
+    border-bottom: 1px solid var(--admin-border) !important;
+}
+
+/* ── Last row: no bottom border ───────────────────── */
+.results tbody tr:last-child td,
+.change-list tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+/* ── Checkbox column ──────────────────────────────── */
+.results tbody td.action-checkbox,
+.results thead th.action-checkbox-column {
+    width: 2rem !important;
+    min-width: 2rem !important;
+    padding: 0.875rem 0.5rem 0.875rem 1rem !important;
+}
+
+/* ── Link cells ───────────────────────────────────── */
+.results tbody td a,
+.change-list tbody td a {
+    color: var(--admin-text) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: color 0.15s !important;
+}
+
+.results tbody td a:hover,
+.change-list tbody td a:hover {
+    color: var(--admin-primary) !important;
+}
+
+/* ── Responsive table wrapper ─────────────────────── */
+#result_list,
+.change-list .results {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border: 1px solid var(--admin-border) !important;
+    border-radius: var(--border-radius, 0.25rem) !important;
+}
+
+/* ── Pagination styling ───────────────────────────── */
+.paginator {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.875rem !important;
+    color: var(--admin-text-muted) !important;
+    background: var(--admin-surface-elevated) !important;
+    border-top: 1px solid var(--admin-border) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    flex-wrap: wrap !important;
+}
+
+.paginator a {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 0.25rem 0.6rem !important;
+    border: 1px solid var(--admin-border) !important;
+    border-radius: var(--border-radius, 0.25rem) !important;
+    color: var(--admin-text) !important;
+    text-decoration: none !important;
+    font-size: 0.8125rem !important;
+    font-weight: 500 !important;
+    transition: border-color 0.15s, color 0.15s !important;
+}
+
+.paginator a:hover {
+    border-color: var(--admin-primary) !important;
+    color: var(--admin-primary) !important;
+}
+
+.paginator .this-page {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 0.25rem 0.6rem !important;
+    border: 1px solid var(--admin-primary) !important;
+    border-radius: var(--border-radius, 0.25rem) !important;
+    background: var(--admin-primary) !important;
+    color: #fff !important;
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+}
+
+/* Dark mode overrides for table */
+html.dark .results thead th,
+html.dark .change-list thead th {
+    background: var(--admin-surface-elevated) !important;
+    border-bottom-color: var(--admin-border-strong) !important;
+}
+
+html.dark .results tbody td,
+html.dark .change-list tbody td {
+    border-bottom-color: var(--admin-border) !important;
+}
+
+html.dark #result_list,
+html.dark .change-list .results {
+    border-color: var(--admin-border) !important;
+}
+
+html.dark .paginator {
+    background: var(--admin-surface-elevated) !important;
+    border-top-color: var(--admin-border) !important;
 }

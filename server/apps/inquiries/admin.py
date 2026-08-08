@@ -3,13 +3,15 @@ from django.utils.html import format_html
 
 from common.admin import BaseAdmin
 
+from .forms import InquiryAdminForm
 from .models import Inquiry
 from .selectors import get_inquiries
 
 
 @admin.register(Inquiry)
 class InquiryAdmin(BaseAdmin):
-    search_fields = ("name", "email", "subject")
+    form = InquiryAdminForm
+    search_fields = ("name", "email", "subject", "message")
     list_filter = ("is_read", "is_archived", "created_at")
     date_hierarchy = "created_at"
     ordering = ("-created_at",)
@@ -17,16 +19,15 @@ class InquiryAdmin(BaseAdmin):
         "unread_indicator",
         "name",
         "email",
+        "subject",
+        "message_preview",
         "created_at",
-        "is_read",
-        "is_archived",
+        "archive_badge",
     )
-    list_display_links = ("name",)
-    list_editable = (
-        "is_read",
-        "is_archived",
-    )
+    list_display_links = ("name", "subject")
+    list_editable = ()
     readonly_fields = (
+        "id",
         "name",
         "email",
         "subject",
@@ -34,12 +35,14 @@ class InquiryAdmin(BaseAdmin):
         "created_at",
         "updated_at",
     )
-    actions = (
-        "mark_read",
-        "mark_unread",
-        "archive_inquiries",
-        "unarchive_inquiries",
-    )
+    # Bulk actions — re-enable the action bar for this model
+    actions = ("mark_read", "mark_unread", "archive_inquiries", "unarchive_inquiries")
+    actions_on_top = True
+
+    # Inquiries arrive only from the public form — no manual add
+    def has_add_permission(self, request):
+        return False
+
     fieldsets = (
         (
             "Inquiry Details",
@@ -53,7 +56,7 @@ class InquiryAdmin(BaseAdmin):
             },
         ),
         (
-            "Status",
+            "Status & Archive",
             {
                 "fields": (
                     "is_read",
@@ -62,12 +65,9 @@ class InquiryAdmin(BaseAdmin):
             },
         ),
         (
-            "Audit",
+            "Metadata",
             {
-                "fields": (
-                    "created_at",
-                    "updated_at",
-                )
+                "fields": ("id", "created_at", "updated_at"),
             },
         ),
     )
@@ -75,35 +75,38 @@ class InquiryAdmin(BaseAdmin):
     def get_queryset(self, request):
         return get_inquiries()
 
-    @admin.display(description="Unread")
+    @admin.display(description="Status")
     def unread_indicator(self, obj):
         if obj.is_read:
-            return format_html(
-                '<span style="color:var(--color-font-default-light);font-weight:600;">Read</span>'
-            )
-
+            return format_html('<span class="badge badge-neutral">Read</span>')
         return format_html(
-            (
-                '<span style="display:inline-flex;align-items:center;gap:.4rem;'
-                'color:var(--color-primary-600);font-weight:700;">'
-                '<span style="width:.55rem;height:.55rem;border-radius:999px;'
-                'background:var(--color-primary-600);display:inline-block;"></span>'
-                'Unread</span>'
-            )
+            '<span class="badge badge-primary" aria-label="Unread inquiry"><span class="badge-dot"></span>Unread</span>'
         )
 
-    @admin.action(description="Mark selected inquiries as read")
+    @admin.display(description="Archive State")
+    def archive_badge(self, obj):
+        if obj.is_archived:
+            return format_html('<span class="badge badge-neutral">Archived</span>')
+        return format_html('<span class="badge badge-success">Active</span>')
+
+    @admin.display(description="Message Preview")
+    def message_preview(self, obj):
+        if len(obj.message) > 60:
+            return f"{obj.message[:60]}..."
+        return obj.message
+
+    @admin.action(description="Mark selected as read")
     def mark_read(self, request, queryset):
         queryset.update(is_read=True)
 
-    @admin.action(description="Mark selected inquiries as unread")
+    @admin.action(description="Mark selected as unread")
     def mark_unread(self, request, queryset):
         queryset.update(is_read=False)
 
-    @admin.action(description="Archive selected inquiries")
+    @admin.action(description="Archive selected")
     def archive_inquiries(self, request, queryset):
         queryset.update(is_archived=True)
 
-    @admin.action(description="Unarchive selected inquiries")
+    @admin.action(description="Unarchive selected")
     def unarchive_inquiries(self, request, queryset):
         queryset.update(is_archived=False)

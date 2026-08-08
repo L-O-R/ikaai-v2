@@ -49,7 +49,7 @@ const Client = () => {
         <section className="py-section-mobile md:py-section-desktop bg-background overflow-hidden">
             <div className="container-size ">
                 <div className="mb-12 md:mb-16">
-                    <span className="font-sans text-label-caps uppercase text-primary tracking-tight block mb-3">
+                    <span className="font-sans text-label-caps capitalize text-text-muted tracking-tighter block mb-3">
                         Trusted By
                     </span>
                     <SubHeading
@@ -125,7 +125,7 @@ const Client = () => {
                                 className="w-full min-h-36 border border-primary/15 p-4 rounded-xl flex items-center justify-center bg-surface-container-low"
                             >
                                 <Image
-                                    src={client.src}
+                                    src={client.src} // Renders client_section_image with fallback to section_logo
                                     alt={client.alt}
                                     width={160}
                                     height={96}

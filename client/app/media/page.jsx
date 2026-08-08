@@ -7,7 +7,7 @@ import {
 } from '@/components/media'
 
 export const metadata = {
-    title: 'Media | IKAAI India',
+    title: 'Media',
     description: 'Explore our visual stories — moments from the field, community engagement, and the people behind IKAAI India\'s work in rural development.',
 }
 
