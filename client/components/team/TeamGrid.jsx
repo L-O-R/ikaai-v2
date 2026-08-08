@@ -38,7 +38,7 @@ const coreTeam = [
         image: "/team/poonam-mam.png",
     },
     {
-        name: "Aman Sehgal",
+        name: "Aman Kumar",
         role: "Operations Manager",
         tagline: "Overseeing logistics, field setups, and timelines",
         bio: "Aman coordinates field survey logistics, resource allocation, and project timelines. He works closely with research teams to ensure seamless deployment of surveyors and equipment across diverse geographical landscapes, maintaining high operational efficiency.",

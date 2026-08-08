@@ -76,6 +76,14 @@ const Header = () => {
 
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center gap-5 xl:gap-8 flex-wrap justify-end" ref={navRef}>
+                        {pathname !== '/' && (
+                            <Link
+                                href="/"
+                                className="nav-link font-sans text-body-sm font-semibold uppercase border-b-2 py-1 text-on-surface hover:text-primary border-transparent hover:border-primary/50 transition-colors whitespace-nowrap"
+                            >
+                                Home
+                            </Link>
+                        )}
                         {navLinks.map((link, index) => {
                             if (link.type === 'dropdown') {
                                 const isDropdownActive = link.items?.some(item => pathname === item.href);
@@ -154,6 +162,15 @@ const Header = () => {
                             </button>
 
                             <div className="flex flex-col flex-1 justify-center max-w-sm mx-auto w-full">
+                                {pathname !== '/' && (
+                                    <Link
+                                        href="/"
+                                        className="block py-4 font-display text-2xl transition-colors border-b border-border-neutral text-on-surface hover:text-primary"
+                                        onClick={closeMobileMenu}
+                                    >
+                                        Home
+                                    </Link>
+                                )}
                                 {navLinks.map((link, index) => {
                                     if (link.type === 'dropdown') {
                                         const isDropdownActive = link.items?.some(item => pathname === item.href);

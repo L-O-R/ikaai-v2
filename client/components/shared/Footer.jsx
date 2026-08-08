@@ -152,7 +152,7 @@ const Footer = () => {
                     </p>
                 </div>
                 <div>
-                    <p>An ISO 9001:2015 Certified Company</p>
+                    <p className="text-white">An ISO 9001:2015 Certified Company</p>
                 </div>
             </div>
         </footer>

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { servicesData } from '@/lib/data/servicesData'
 import Link from 'next/link'
 
-const INTERVAL_MS = 6000
+const INTERVAL_MS = 3000
 
 const images = [
     { src: '/hero/community-research-field-visit.jpg', label: 'Research Begins With Listening' },
