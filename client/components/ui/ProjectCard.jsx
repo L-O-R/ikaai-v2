@@ -59,7 +59,7 @@ const ProjectCard = ({ project, bg_color }) => {
 
                     {/* Floating Client Logo/Name Badge */}
                     <div className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
-                        <div className=" transition-all duration-500 ease-out group-hover:scale-110 flex items-center justify-center max-w-[85%]">
+                        <div className=" transition-all duration-500 ease-out group-hover:scale-110 flex items-center justify-center max-w-[95%]">
                             {project.clientLogo ? (
                                 <Image
                                     width={200}
