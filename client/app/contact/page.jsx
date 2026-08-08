@@ -19,7 +19,7 @@ const ContactPage = () => {
         <main>
             <section className="bg-background min-h-[45vh] flex items-end">
                 <div className="container-size space-y-1 ">
-                    <span className="font-sans text-headline-sm uppercase text-text-muted tracking-tight block">
+                    <span className="font-sans text-headline-sm capitalize text-text-muted tracking-tighter mb-3 block">
                         {heroData.contact.eyebrow}
                     </span>
                     <h1 className="font-display text-headline-xl2 text-on-background mb-4">
