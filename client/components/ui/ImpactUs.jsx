@@ -1,8 +1,8 @@
 "use client";
 
-import { getStatistics } from "@/lib/api/getStatistics";
-import { getErrorMessage } from "@/lib/api/apiErrors";
 import { useEffect, useRef, useState } from "react";
+import { getErrorMessage } from "@/lib/api/apiErrors";
+import { getStatistics } from "@/lib/api/getStatistics";
 
 const easeOut = (t) => 1 - (1 - t) ** 3;
 
@@ -57,11 +57,7 @@ const ImpactUs = () => {
       const progress = Math.min(elapsed / duration, 1);
       const easedProgress = easeOut(progress);
 
-      setCounts(
-        targets.map((target) =>
-          Math.round(target * easedProgress)
-        )
-      );
+      setCounts(targets.map((target) => Math.round(target * easedProgress)));
 
       if (progress < 1) {
         animationFrameRef.current = requestAnimationFrame(animate);

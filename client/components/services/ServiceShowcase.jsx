@@ -1,61 +1,68 @@
-// components/services/ServiceShowcase.jsx
-'use client'
+"use client";
 
-import React from 'react'
-import Image from 'next/image'
-import { servicesData } from '@/lib/data/servicesData'
-import ServiceCard from '../ui/ServicesCard'
+import Image from "next/image";
+import React from "react";
+import { servicesData } from "@/lib/data/servicesData";
+import ScrollReveal from "../ui/ScrollReveal";
+import ServiceCard from "../ui/ServicesCard";
 
 const ServiceShowcase = () => {
-    const firstGroup = servicesData.slice(0, 3)
-    const secondGroup = servicesData.slice(3)
+  const firstGroup = servicesData.slice(0, 3);
+  const secondGroup = servicesData.slice(3);
 
-    return (
-        <section className="py-section-mobile md:py-section-desktop  bg-warm-beige">
-            <div className="container-size">
+  return (
+    <section className="py-section-mobile md:py-section-desktop bg-warm-beige">
+      <div className="container-size">
+        {/* Service Cards — Group 1 */}
+        <div className="space-y-6 md:space-y-8 mb-16 md:mb-20">
+          {firstGroup.map((service, index) => (
+            <ScrollReveal key={service.id} delay={index * 0.1}>
+              <ServiceCard service={service} index={index} />
+            </ScrollReveal>
+          ))}
+        </div>
 
-                {/* Service Cards — Group 1 */}
-                <div className="space-y-6 md:space-y-8 mb-16 md:mb-20">
-                    {firstGroup.map((service, index) => (
-                        <ServiceCard key={service.id} service={service} index={index} />
-                    ))}
-                </div>
+        {/* Full-width Documentary Image + Field Note */}
+        <ScrollReveal className="relative w-full mb-16 md:mb-20">
+          <div
+            className="relative w-full overflow-hidden rounded-2xl"
+            style={{ aspectRatio: "16/7" }}
+          >
+            <Image
+              src="/hero/woman-community-survey.jpg"
+              alt="Field researcher interviewing a rural woman"
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+          </div>
 
-                {/* Full-width Documentary Image + Field Note */}
-                <div className="relative w-full mb-16 md:mb-20">
-                    <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '16/7' }}>
-                        <Image
-                            src="/hero/woman-community-survey.jpg"
-                            alt="Field researcher interviewing a rural woman"
-                            fill
-                            className="object-cover"
-                            sizes="100vw"
-                        />
-                        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
-                    </div>
+          {/* Field Note — overlaid on image */}
+          <div className="absolute bottom-0 left-0 p-8 md:p-12 lg:p-16 max-w-2xl">
+            <span className="font-sans text-body-md uppercase tracking-widest text-harvest-gold/80 block mb-3">
+              Field Note
+            </span>
+            <p className="font-display text-headline-md text-white leading-[1.1] tracking-tight">
+              Research begins
+              <br />
+              <span className="text-harvest-gold/70">with listening.</span>
+            </p>
+            <div className="w-16 h-0.5 bg-harvest-gold/50 mt-4" />
+          </div>
+        </ScrollReveal>
 
-                    {/* Field Note — overlaid on image */}
-                    <div className="absolute bottom-0 left-0 p-8 md:p-12 lg:p-16 max-w-2xl">
-                        <span className="font-sans text-body-md uppercase tracking-widest text-harvest-gold/80 block mb-3">
-                            Field Note
-                        </span>
-                        <p className="font-display text-headline-md text-white leading-[1.1] tracking-tight">
-                            Research begins<br />
-                            <span className="text-harvest-gold/70">with listening.</span>
-                        </p>
-                        <div className="w-16 h-0.5 bg-harvest-gold/50 mt-4" />
-                    </div>
-                </div>
+        {/* Service Cards — Group 2 */}
+        <div className="space-y-6 md:space-y-8">
+          {secondGroup.map((service, index) => (
+            <ScrollReveal key={service.id} delay={index * 0.1}>
+              <ServiceCard service={service} index={index + 3} />
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
-                {/* Service Cards — Group 2 */}
-                <div className="space-y-6 md:space-y-8">
-                    {secondGroup.map((service, index) => (
-                        <ServiceCard key={service.id} service={service} index={index + 3} />
-                    ))}
-                </div>
-            </div>
-        </section>
-    )
-}
-
-export default ServiceShowcase
+export default ServiceShowcase;

@@ -1,8 +1,8 @@
-import { Epilogue, Manrope, Inter } from "next/font/google";
+import { Epilogue, Inter, Manrope } from "next/font/google";
 import "./globals.css";
 
-import Header from "@/components/shared/header/Header";
 import Footer from "@/components/shared/Footer";
+import Header from "@/components/shared/header/Header";
 import ScrollToTop from "@/components/shared/ScrollToTop";
 
 const inter = Inter({
@@ -20,13 +20,14 @@ const manrope = Manrope({
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "NGO",
-  "name": "IKAAI INDIA",
-  "alternateName": "Ikaai India Foundation",
-  "url": "https://ikaaiindia.in",
-  "logo": "https://ikaaiindia.in/icon.png",
-  "description": "IKAAI INDIA is a research-driven development organization dedicated to impact assessment, social research, policy evaluation, and sustainable transformation across India.",
-  "slogan": "Unlocking Insights, Transforming Lives.",
-  "knowsAbout": [
+  name: "IKAAI INDIA",
+  alternateName: "Ikaai India Foundation",
+  url: "https://ikaaiindia.in",
+  logo: "https://ikaaiindia.in/icon.png",
+  description:
+    "IKAAI INDIA is a research-driven development organization dedicated to impact assessment, social research, policy evaluation, and sustainable transformation across India.",
+  slogan: "Unlocking Insights, Transforming Lives.",
+  knowsAbout: [
     "Social Research",
     "Impact Assessment",
     "Monitoring & Evaluation (M&E)",
@@ -39,19 +40,19 @@ const organizationJsonLd = {
     "Capacity Building",
     "Data Collection & Analysis",
     "Sustainable Development",
-    "Government & NGO Research Projects"
+    "Government & NGO Research Projects",
   ],
-  "areaServed": {
+  areaServed: {
     "@type": "AdministrativeArea",
-    "name": "India"
+    name: "India",
   },
-  "contactPoint": {
+  contactPoint: {
     "@type": "ContactPoint",
-    "contactType": "customer service",
-    "email": "info@ikaaiindia.org",
-    "areaServed": "IN",
-    "availableLanguage": ["English", "Hindi"]
-  }
+    contactType: "customer service",
+    email: "info@ikaaiindia.org",
+    areaServed: "IN",
+    availableLanguage: ["English", "Hindi"],
+  },
 };
 
 export const metadata = {
@@ -78,7 +79,7 @@ export const metadata = {
     "Livelihood Studies",
     "CSR Research Partner",
     "Sustainable Development India",
-    "Data Collection and Field Analysis"
+    "Data Collection and Field Analysis",
   ],
 
   authors: [
@@ -196,7 +197,6 @@ export const metadata = {
     telephone: false,
   },
 
-
   category: "Social Research & Consulting",
 };
 
@@ -229,7 +229,6 @@ export default function RootLayout({ children }) {
       </head>
 
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
-
         <Header />
         {children}
         <Footer />

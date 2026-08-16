@@ -1,24 +1,20 @@
-
-import React from 'react'
-import {
-    MediaHero,
-    MediaGallery,
-    MediaCta
-} from '@/components/media'
+import React from "react";
+import { MediaCta, MediaGallery, MediaHero } from "@/components/media";
 
 export const metadata = {
-    title: 'Media',
-    description: 'Explore our visual stories — moments from the field, community engagement, and the people behind IKAAI India\'s work in rural development.',
-}
+  title: "Media",
+  description:
+    "Explore our visual stories — moments from the field, community engagement, and the people behind IKAAI India's work in rural development.",
+};
 
 const MediaPage = () => {
-    return (
-        <main className="bg-surface">
-            <MediaHero />
-            <MediaGallery />
-            <MediaCta />
-        </main>
-    )
-}
+  return (
+    <main className="bg-surface">
+      <MediaHero />
+      <MediaGallery />
+      <MediaCta />
+    </main>
+  );
+};
 
-export default MediaPage
+export default MediaPage;

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ProjectCard from "../ui/ProjectCard";
+import ScrollReveal from "../ui/ScrollReveal";
 
 const loadingCards = [
   "project-loading-1",
@@ -45,11 +46,12 @@ const WorkGrid = ({
           </div>
         ) : currentProjects.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-12">
-            {currentProjects.map((project) => (
-              <Link href={`/projects/${project.slug}`} key={project.id}>
-                <ProjectCard project={project}
-                  bg_color={'bg-surface'} />
-              </Link>
+            {currentProjects.map((project, idx) => (
+              <ScrollReveal key={project.id} delay={(idx % 4) * 0.1}>
+                <Link href={`/projects/${project.slug}`}>
+                  <ProjectCard project={project} bg_color={"bg-surface"} />
+                </Link>
+              </ScrollReveal>
             ))}
           </div>
         ) : (
@@ -78,10 +80,11 @@ const WorkGrid = ({
               type="button"
               onClick={() => goToPage(currentPage - 1)}
               disabled={currentPage === 1}
-              className={`px-4 py-2 rounded-xl border border-border-neutral font-sans text-label-caps transition-all duration-300 flex items-center gap-1 ${currentPage === 1
-                ? "opacity-40 cursor-not-allowed text-text-muted"
-                : "hover:bg-primary hover:text-on-primary hover:border-primary text-on-surface"
-                }`}
+              className={`px-4 py-2 rounded-xl border border-border-neutral font-sans text-label-caps transition-all duration-300 flex items-center gap-1 ${
+                currentPage === 1
+                  ? "opacity-40 cursor-not-allowed text-text-muted"
+                  : "hover:bg-primary hover:text-on-primary hover:border-primary text-on-surface"
+              }`}
             >
               <span className="material-symbols-outlined text-sm">
                 chevron_left
@@ -96,10 +99,11 @@ const WorkGrid = ({
                   type="button"
                   key={pageNum}
                   onClick={() => goToPage(pageNum)}
-                  className={`w-10 h-10 rounded-full font-sans text-body-md transition-all duration-300 ${currentPage === pageNum
-                    ? "bg-primary text-on-primary shadow-md"
-                    : "text-on-surface hover:bg-surface-container-high"
-                    }`}
+                  className={`w-10 h-10 rounded-full font-sans text-body-md transition-all duration-300 ${
+                    currentPage === pageNum
+                      ? "bg-primary text-on-primary shadow-md"
+                      : "hover:bg-surface-container text-on-surface"
+                  }`}
                 >
                   {pageNum}
                 </button>
@@ -111,10 +115,11 @@ const WorkGrid = ({
               type="button"
               onClick={() => goToPage(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className={`px-4 py-2 rounded-xl border border-border-neutral font-sans text-label-caps transition-all duration-300 flex items-center gap-1 ${currentPage === totalPages
-                ? "opacity-40 cursor-not-allowed text-text-muted"
-                : "hover:bg-primary hover:text-on-primary hover:border-primary text-on-surface"
-                }`}
+              className={`px-4 py-2 rounded-xl border border-border-neutral font-sans text-label-caps transition-all duration-300 flex items-center gap-1 ${
+                currentPage === totalPages
+                  ? "opacity-40 cursor-not-allowed text-text-muted"
+                  : "hover:bg-primary hover:text-on-primary hover:border-primary text-on-surface"
+              }`}
             >
               Next
               <span className="material-symbols-outlined text-sm">

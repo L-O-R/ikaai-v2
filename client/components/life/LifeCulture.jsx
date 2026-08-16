@@ -1,60 +1,67 @@
-
-import React from 'react'
-import SubHeading from '../shared/SubHeading'
+import React from "react";
+import SubHeading from "../shared/SubHeading";
 
 const cultureValues = [
-    {
-        icon: 'lightbulb',
-        title: 'Curiosity-Driven',
-        description: 'We ask the hard questions, challenge assumptions, and always seek deeper understanding.',
-    },
-    {
-        icon: 'diversity_3',
-        title: 'Collaborative Spirit',
-        description: 'Great ideas come from diverse perspectives. We work across disciplines and geographies.',
-    },
-    {
-        icon: 'school',
-        title: 'Continuous Learning',
-        description: 'We invest in growth — through training, mentorship, and learning from the communities we serve.',
-    },
-    {
-        icon: 'balance',
-        title: 'Wellbeing & Balance',
-        description: 'We believe that sustainable impact starts with a healthy, supported team.',
-    },
-]
+  {
+    icon: "lightbulb",
+    title: "Curiosity-Driven",
+    description:
+      "We ask the hard questions, challenge assumptions, and always seek deeper understanding.",
+  },
+  {
+    icon: "diversity_3",
+    title: "Collaborative Spirit",
+    description:
+      "Great ideas come from diverse perspectives. We work across disciplines and geographies.",
+  },
+  {
+    icon: "school",
+    title: "Continuous Learning",
+    description:
+      "We invest in growth — through training, mentorship, and learning from the communities we serve.",
+  },
+  {
+    icon: "balance",
+    title: "Wellbeing & Balance",
+    description:
+      "We believe that sustainable impact starts with a healthy, supported team.",
+  },
+];
 
 const LifeCulture = () => {
-    return (
-        <section className="py-section-mobile md:py-section-desktop  bg-surface">
-            <div className="container-size">
-                <div className="text-center mb-12 md:mb-16">
-                    <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
-                        Our Culture
-                    </span>
-                    <SubHeading
-                        text="How We"
-                        highlightText="Work"
-                    />
-                </div>
+  return (
+    <section className="py-section-mobile md:py-section-desktop  bg-surface">
+      <div className="container-size">
+        <div className="text-center mb-12 md:mb-16">
+          <span className="font-sans text-label-caps uppercase text-primary tracking-widest block mb-4">
+            Our Culture
+          </span>
+          <SubHeading text="How We" highlightText="Work" />
+        </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                    {cultureValues.map((value) => (
-                        <div key={value.title} className="bg-warm-beige rounded-2xl p-6 md:p-8 border border-border-neutral text-center hover-lift transition-all duration-300">
-                            <div className="w-14 h-14 rounded-full bg-primary-container/10 flex items-center justify-center mx-auto mb-4">
-                                <span className="material-symbols-outlined text-3xl text-primary">{value.icon}</span>
-                            </div>
-                            <h3 className="font-display text-lg text-on-surface mb-3">{value.title}</h3>
-                            <p className="font-sans text-body-md text-text-secondary leading-relaxed">
-                                {value.description}
-                            </p>
-                        </div>
-                    ))}
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {cultureValues.map((value) => (
+            <div
+              key={value.title}
+              className="bg-warm-beige rounded-2xl p-6 md:p-8 border border-border-neutral text-center hover-lift transition-all duration-300"
+            >
+              <div className="w-14 h-14 rounded-full bg-primary-container/10 flex items-center justify-center mx-auto mb-4">
+                <span className="material-symbols-outlined text-3xl text-primary">
+                  {value.icon}
+                </span>
+              </div>
+              <h3 className="font-display text-lg text-on-surface mb-3">
+                {value.title}
+              </h3>
+              <p className="font-sans text-body-md text-text-secondary leading-relaxed">
+                {value.description}
+              </p>
             </div>
-        </section>
-    )
-}
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
-export default LifeCulture
+export default LifeCulture;

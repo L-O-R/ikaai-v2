@@ -11,4 +11,3 @@ export const getUpdates = async () => {
   const list = response.data?.results || [];
   return list.map(normalizeUpdate);
 };
-

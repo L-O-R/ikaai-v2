@@ -78,8 +78,8 @@ export async function generateMetadata({ params }) {
       description: blog.meta_description || blog.excerpt,
       alternates: blog.canonical_url
         ? {
-          canonical: blog.canonical_url,
-        }
+            canonical: blog.canonical_url,
+          }
         : undefined,
       openGraph: {
         title: blog.meta_title || blog.title,
@@ -119,7 +119,9 @@ const BlogDetailPage = async ({ params }) => {
             href="/blog"
             className="inline-flex items-center gap-2 font-sans text-body-md text-text-secondary hover:text-primary transition-colors mb-6"
           >
-            <span className="material-symbols-outlined text-sm">arrow_back</span>
+            <span className="material-symbols-outlined text-sm">
+              arrow_back
+            </span>
             <span>Back to stories</span>
           </Link>
 

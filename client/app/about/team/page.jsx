@@ -1,20 +1,20 @@
-
-import TeamGrid from '@/components/team/TeamGrid'
-import TeamHero from '@/components/team/TeamHero'
-import React from 'react'
+import React from "react";
+import TeamGrid from "@/components/team/TeamGrid";
+import TeamHero from "@/components/team/TeamHero";
 
 export const metadata = {
-    title: 'Our Team',
-    description: 'Meet the passionate team behind IKAAI India — researchers, development practitioners, and changemakers.',
-}
+  title: "Our Team",
+  description:
+    "Meet the passionate team behind IKAAI India — researchers, development practitioners, and changemakers.",
+};
 
 const TeamPage = () => {
-    return (
-        <main className="bg-surface">
-            <TeamHero />
-            <TeamGrid />
-        </main>
-    )
-}
+  return (
+    <main className="bg-surface">
+      <TeamHero />
+      <TeamGrid />
+    </main>
+  );
+};
 
-export default TeamPage
+export default TeamPage;

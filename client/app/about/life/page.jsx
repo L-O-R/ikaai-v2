@@ -1,28 +1,26 @@
-
-import BeliefSection from '@/components/life/BeliefSection'
-import LifeCta from '@/components/life/LifeCta'
-import LifeCulture from '@/components/life/LifeCulture'
-import LifeEvents from '@/components/life/LifeEvents'
-import LifeHero from '@/components/life/LifeHero'
-import React from 'react'
+import React from "react";
+import BeliefSection from "@/components/life/BeliefSection";
+import LifeCta from "@/components/life/LifeCta";
+import LifeCulture from "@/components/life/LifeCulture";
+import LifeEvents from "@/components/life/LifeEvents";
+import LifeHero from "@/components/life/LifeHero";
 
 export const metadata = {
-    title: 'Life at IKAAI',
-    description: 'Discover the culture, values, and people that make IKAAI India a great place to work.',
-}
+  title: "Life at IKAAI",
+  description:
+    "Discover the culture, values, and people that make IKAAI India a great place to work.",
+};
 
 const LifePage = () => {
+  return (
+    <main className="bg-surface">
+      <LifeHero />
+      <BeliefSection />
+      <LifeCulture />
+      <LifeEvents />
+      <LifeCta />
+    </main>
+  );
+};
 
-
-    return (
-        <main className="bg-surface">
-            <LifeHero />
-            <BeliefSection />
-            <LifeCulture />
-            <LifeEvents />
-            <LifeCta />
-        </main>
-    )
-}
-
-export default LifePage
+export default LifePage;

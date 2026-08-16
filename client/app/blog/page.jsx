@@ -3,10 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { getErrorMessage } from "@/lib/api/apiErrors";
-import { getBlogs } from "@/lib/api/getBlogs";
 import BlogCard from "@/components/ui/BlogCard";
 import PageHero from "@/components/ui/PageHero";
+import { getErrorMessage } from "@/lib/api/apiErrors";
+import { getBlogs } from "@/lib/api/getBlogs";
 import { heroData } from "@/lib/data/heroData";
 
 const blogsPerPage = 9;
@@ -18,7 +18,6 @@ const loadingCards = [
   "story-loading-5",
   "story-loading-6",
 ];
-
 
 const StoriesPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -138,10 +137,11 @@ const StoriesPage = () => {
                       key={page}
                       type="button"
                       onClick={() => setCurrentPage(page)}
-                      className={`h-10 min-w-10 rounded-full border px-4 font-sans text-body-sm transition-colors ${currentPage === page
-                        ? "border-primary bg-primary text-white"
-                        : "border-border-neutral bg-surface-container-low text-on-surface hover:bg-surface-container-high"
-                        }`}
+                      className={`h-10 min-w-10 rounded-full border px-4 font-sans text-body-sm transition-colors ${
+                        currentPage === page
+                          ? "border-primary bg-primary text-white"
+                          : "border-border-neutral bg-surface-container-low text-on-surface hover:bg-surface-container-high"
+                      }`}
                       aria-label={`Go to page ${page}`}
                     >
                       {page}

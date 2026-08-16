@@ -1,41 +1,42 @@
+"use client";
 
-'use client'
-
-import React from 'react'
-import Link from 'next/link'
-import SubHeading from '../shared/SubHeading'
+import Link from "next/link";
+import React from "react";
+import SubHeading from "../shared/SubHeading";
+import ScrollReveal from "../ui/ScrollReveal";
 
 const CareerCta = () => {
-    return (
-        <section className="py-20 md:py-28  bg-primary text-white">
-            <div className="container-size text-center">
-                <SubHeading
-                    text="Ready to Make an Impact?"
-                />
-                <p className="font-sans text-body-lg text-white/80 max-w-2xl mx-auto mb-8">
-                    Join us in our mission to transform rural communities through research, innovation, and
-                    community-driven action.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a
-                        href="#open-positions"
-                        className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-sans text-label-caps uppercase rounded-xl hover:bg-surface-container-lowest transition-colors shadow-lg"
-                    >
-                        View Openings
-                    </a>
-                    <Link
-                        href="/contact"
-                        className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-sans text-label-caps uppercase rounded-xl hover:bg-white/10 transition-colors"
-                    >
-                        Get in Touch
-                    </Link>
-                </div>
-                <p className="font-sans text-body-md text-white/60 mt-6">
-                    Know someone who'd be a great fit? Refer them to us at <span className="text-white/80">careers@ikaai.org</span>
-                </p>
-            </div>
-        </section>
-    )
-}
+  return (
+    <section className="py-20 md:py-28 bg-primary text-white">
+      <div className="container-size text-center">
+        <ScrollReveal>
+          <SubHeading text="Ready to Make an Impact?" />
+          <p className="font-sans text-body-lg text-white/80 max-w-2xl mx-auto mb-8">
+            Join us in our mission to transform rural communities through
+            research, innovation, and community-driven action.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#open-positions"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-sans text-label-caps uppercase rounded-xl hover:bg-surface-container-lowest transition-colors shadow-lg"
+            >
+              View Openings
+            </a>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-sans text-label-caps uppercase rounded-xl hover:bg-white/10 transition-colors"
+            >
+              Get in Touch
+            </Link>
+          </div>
+          <p className="font-sans text-body-md text-white/60 mt-6">
+            Know someone who'd be a great fit? Refer them to us at{" "}
+            <span className="text-white/80">careers@ikaai.org</span>
+          </p>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+};
 
-export default CareerCta
+export default CareerCta;

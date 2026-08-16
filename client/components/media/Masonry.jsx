@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
 // Responsive column tiers. Evaluated top-down, first match wins.
 // xl (>=1280px): 4 cols · lg (>=1024px): 3 cols · sm (>=640px): 2 cols
@@ -26,8 +26,7 @@ const useMedia = (queries, values, defaultValue) => {
   useEffect(() => {
     const mediaQueries = queries.map((q) => window.matchMedia(q));
     const get = () =>
-      values[mediaQueries.findIndex((mql) => mql.matches)] ??
-      defaultValue;
+      values[mediaQueries.findIndex((mql) => mql.matches)] ?? defaultValue;
 
     setValue(get());
 
@@ -222,9 +221,7 @@ const Masonry = ({
             onMouseEnter={() => setHoveredId(item.id)}
             onMouseLeave={() => setHoveredId(null)}
           >
-            <div
-              className="relative w-full h-full uppercase text-[10px] leading-2.5 rounded-[10px] overflow-hidden shadow-[0px_10px_50px_-10px_rgb(from_var(--color-inverse-surface)_r_g_b/0.2)]"
-            >
+            <div className="relative w-full h-full uppercase text-[10px] leading-2.5 rounded-[10px] overflow-hidden shadow-[0px_10px_50px_-10px_rgb(from_var(--color-inverse-surface)_r_g_b/0.2)]">
               <Image
                 src={item.img}
                 alt={item.alt || ""}
@@ -234,8 +231,9 @@ const Masonry = ({
               />
               {colorShiftOnHover && (
                 <div
-                  className={`absolute inset-0 rounded-lg pointer-events-none transition-opacity duration-300 ease-in-out bg-linear-to-t from-inverse-surface/90 via-inverse-surface/60 to-inverse-surface/10 ${isHovered ? "opacity-100" : "opacity-0"
-                    }`}
+                  className={`absolute inset-0 rounded-lg pointer-events-none transition-opacity duration-300 ease-in-out bg-linear-to-t from-inverse-surface/90 via-inverse-surface/60 to-inverse-surface/10 ${
+                    isHovered ? "opacity-100" : "opacity-0"
+                  }`}
                 />
               )}
               {renderOverlay && (

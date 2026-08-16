@@ -1,39 +1,35 @@
 export default function robots() {
-    return {
-        rules: [
-            {
-                userAgent: "*",
-                allow: "/",
-                disallow: [
-                    "/admin/",
-                    "/api/",
-                    "/_next/",
-                ],
-            },
+  return {
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/admin/", "/api/", "/_next/"],
+      },
 
-            {
-                userAgent: "GPTBot",
-                allow: "/",
-            },
+      {
+        userAgent: "GPTBot",
+        allow: "/",
+      },
 
-            {
-                userAgent: "Google-Extended",
-                allow: "/",
-            },
+      {
+        userAgent: "Google-Extended",
+        allow: "/",
+      },
 
-            {
-                userAgent: "ClaudeBot",
-                allow: "/",
-            },
+      {
+        userAgent: "ClaudeBot",
+        allow: "/",
+      },
 
-            {
-                userAgent: "CCBot",
-                allow: "/",
-            },
-        ],
+      {
+        userAgent: "CCBot",
+        allow: "/",
+      },
+    ],
 
-        sitemap: "https://ikaaiindia.in/sitemap.xml",
+    sitemap: "https://ikaaiindia.in/sitemap.xml",
 
-        host: "https://ikaaiindia.in",
-    };
+    host: "https://ikaaiindia.in",
+  };
 }

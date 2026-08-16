@@ -4,140 +4,141 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { getErrorMessage } from "@/lib/api/apiErrors";
 import { getClients } from "@/lib/api/getClients";
-import LogoLoop from "../ui/LogoLoop";
 import SubHeading from "../shared/SubHeading";
+import LogoLoop from "../ui/LogoLoop";
+import ScrollReveal from "../ui/ScrollReveal";
 
 const splitIntoParts = (items, parts) => {
-    const groups = Array.from({ length: parts }, () => []);
-    items.forEach((item, index) => {
-        groups[index % parts].push(item);
-    });
-    return groups;
+  const groups = Array.from({ length: parts }, () => []);
+  items.forEach((item, index) => {
+    groups[index % parts].push(item);
+  });
+  return groups;
 };
 
 const Client = () => {
-    const [clients, setClients] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState("");
+  const [clients, setClients] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
-    useEffect(() => {
-        let isMounted = true;
+  useEffect(() => {
+    let isMounted = true;
 
-        getClients()
-            .then((data) => {
-                if (isMounted) setClients(data.filter((client) => client.src));
-            })
-            .catch((err) => {
-                if (isMounted)
-                    setError(getErrorMessage(err, "Unable to load clients."));
-            })
-            .finally(() => {
-                if (isMounted) setIsLoading(false);
-            });
+    getClients()
+      .then((data) => {
+        if (isMounted) setClients(data.filter((client) => client.src));
+      })
+      .catch((err) => {
+        if (isMounted)
+          setError(getErrorMessage(err, "Unable to load clients."));
+      })
+      .finally(() => {
+        if (isMounted) setIsLoading(false);
+      });
 
-        return () => {
-            isMounted = false;
-        };
-    }, []);
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
-    const columns = useMemo(() => splitIntoParts(clients, 3), [clients]);
+  const columns = useMemo(() => splitIntoParts(clients, 3), [clients]);
 
-    const smallestColumn = Math.min(...columns.map((c) => c.length));
-    const showMarquee = clients.length > 0 && smallestColumn >= 3;
+  const smallestColumn = Math.min(...columns.map((c) => c.length));
+  const showMarquee = clients.length > 0 && smallestColumn >= 3;
 
-    return (
-        <section className="py-section-mobile md:py-section-desktop bg-background overflow-hidden">
-            <div className="container-size ">
-                <div className="mb-12 md:mb-16">
-                    <span className="font-sans text-label-caps capitalize text-text-muted tracking-tighter block mb-3">
-                        Trusted By
-                    </span>
-                    <SubHeading
-                        text="Clients &"
-                        highlightText="Partners"
-                    />
+  return (
+    <section className="py-section-mobile md:py-section-desktop bg-background overflow-hidden">
+      <div className="container-size ">
+        <ScrollReveal className="mb-12 md:mb-16">
+          <span className="font-sans text-label-caps capitalize text-text-muted tracking-tighter block mb-3">
+            Trusted By
+          </span>
+          <SubHeading text="Clients &" highlightText="Partners" />
+        </ScrollReveal>
 
-                </div>
-
-                {isLoading ? (
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
-                        {[
-                            "client-loading-1",
-                            "client-loading-2",
-                            "client-loading-3",
-                            "client-loading-4",
-                            "client-loading-5",
-                            "client-loading-6",
-                        ].map((item) => (
-                            <div
-                                key={item}
-                                className="h-36 rounded-xl border border-border-neutral bg-surface-container-high animate-pulse"
-                            />
-                        ))}
-                    </div>
-                ) : error ? (
-                    <p className="font-sans text-body-md text-text-muted">{error}</p>
-                ) : clients.length === 0 ? (
-                    <p className="font-sans text-body-md text-text-muted">
-                        Client logos will appear here once project clients are published.
-                    </p>
-                ) : showMarquee ? (
-                    <div className="grid grid-cols-3 gap-4 md:gap-8 h-[400px] md:h-[480px]">
-                        <div className="overflow-hidden">
-                            <LogoLoop
-                                logos={columns[0]}
-                                direction="up"
-                                logoHeight={120}
-                                gap={36}
-                                speed={8}
-                                pauseOnHover
-                                className="h-full w-full"
-                            />
-                        </div>
-                        <div className="overflow-hidden">
-                            <LogoLoop
-                                logos={columns[1]}
-                                direction="down"
-                                logoHeight={120}
-                                gap={36}
-                                speed={10}
-                                pauseOnHover
-                                className="h-full w-full"
-                            />
-                        </div>
-                        <div className="overflow-hidden">
-                            <LogoLoop
-                                logos={columns[2]}
-                                direction="up"
-                                logoHeight={120}
-                                gap={36}
-                                speed={9}
-                                pauseOnHover
-                                className="h-full w-full"
-                            />
-                        </div>
-                    </div>
-                ) : (
-                    <div className="grid grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 place-items-center">
-                        {clients.map((client) => (
-                            <div
-                                key={client.alt}
-                                className="w-full min-h-36 border border-primary/15 p-4 rounded-xl flex items-center justify-center bg-surface-container-low"
-                            >
-                                <Image
-                                    src={client.src} // Renders client_section_image with fallback to section_logo
-                                    alt={client.alt}
-                                    width={160}
-                                    height={96}
-                                    className="w-full aspect-video object-contain"
-                                />
-                            </div>
-                        ))}
-                    </div>
-                )}
+        {isLoading ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+            {[
+              "client-loading-1",
+              "client-loading-2",
+              "client-loading-3",
+              "client-loading-4",
+              "client-loading-5",
+              "client-loading-6",
+            ].map((item) => (
+              <div
+                key={item}
+                className="h-36 rounded-xl border border-border-neutral bg-surface-container-high animate-pulse"
+              />
+            ))}
+          </div>
+        ) : error ? (
+          <p className="font-sans text-body-md text-text-muted">{error}</p>
+        ) : clients.length === 0 ? (
+          <p className="font-sans text-body-md text-text-muted">
+            Client logos will appear here once project clients are published.
+          </p>
+        ) : showMarquee ? (
+          <ScrollReveal delay={0.15}>
+            <div className="grid grid-cols-3 gap-4 md:gap-8 h-[400px] md:h-[480px]">
+              <div className="overflow-hidden">
+                <LogoLoop
+                  logos={columns[0]}
+                  direction="up"
+                  logoHeight={120}
+                  gap={36}
+                  speed={8}
+                  pauseOnHover
+                  className="h-full w-full"
+                />
+              </div>
+              <div className="overflow-hidden">
+                <LogoLoop
+                  logos={columns[1]}
+                  direction="down"
+                  logoHeight={120}
+                  gap={36}
+                  speed={10}
+                  pauseOnHover
+                  className="h-full w-full"
+                />
+              </div>
+              <div className="overflow-hidden">
+                <LogoLoop
+                  logos={columns[2]}
+                  direction="up"
+                  logoHeight={120}
+                  gap={36}
+                  speed={9}
+                  pauseOnHover
+                  className="h-full w-full"
+                />
+              </div>
             </div>
-        </section>
-    );
+          </ScrollReveal>
+        ) : (
+          <ScrollReveal delay={0.15}>
+            <div className="grid grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 place-items-center">
+              {clients.map((client) => (
+                <div
+                  key={client.alt}
+                  className="w-full min-h-36 border border-primary/15 p-4 rounded-xl flex items-center justify-center bg-surface-container-low"
+                >
+                  <Image
+                    src={client.src}
+                    alt={client.alt}
+                    width={160}
+                    height={96}
+                    className="w-full aspect-video object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        )}
+      </div>
+    </section>
+  );
 };
 
 export default Client;

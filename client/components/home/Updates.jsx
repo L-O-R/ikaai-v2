@@ -101,10 +101,7 @@ const Updates = () => {
           <span className="font-sans text-label-caps capitalize text-text-muted tracking-tighter block mb-3">
             Updates
           </span>
-          <SubHeading
-            text="From Ikaai"
-            highlightText="India"
-          />
+          <SubHeading text="From Ikaai" highlightText="India" />
           <p className="font-sans text-body-md text-text-secondary max-w-xl mt-4">
             Stay connected with our latest news, events, and impact stories.
           </p>
@@ -122,9 +119,7 @@ const Updates = () => {
         )}
 
         {error && (
-          <p className="font-sans text-body-md text-text-secondary">
-            {error}
-          </p>
+          <p className="font-sans text-body-md text-text-secondary">{error}</p>
         )}
 
         {!isLoading && !error && !shouldUseCarousel && (

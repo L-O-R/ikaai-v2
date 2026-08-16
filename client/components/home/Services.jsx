@@ -1,51 +1,58 @@
 "use client";
 
-import { servicesData } from "@/lib/data/servicesData";
 import { useState } from "react";
-import ServiceCard from "../ui/HomeServiceCard";
+import { servicesData } from "@/lib/data/servicesData";
 import SubHeading from "../shared/SubHeading";
+import ServiceCard from "../ui/HomeServiceCard";
+import ScrollReveal from "../ui/ScrollReveal";
+
 const Services = () => {
-    const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(0);
 
-    const toggleService = (index) => {
-        if (openIndex !== index) {
-            setOpenIndex(index);
-        }
-    };
+  const toggleService = (index) => {
+    if (openIndex !== index) {
+      setOpenIndex(index);
+    }
+  };
 
-    return (
-        <section
-            className="py-section-mobile md:py-section-desktop  bg-surface"
-            id="services-section"
-        >
-            <div className="container-size">
-                {/* Header - unchanged */}
-                <div className="grid grid-cols-1 gap-gutter items-end border-b border-border-neutral pb-8 md:pb-12 lg:pb-14 mb-0">
-                    <div>
-                        <span className="font-sans text-headline-md capitalize text-text-muted tracking-tighter block mb-3">
-                            What we do
-                        </span>
-                        <h2 className="font-display text-headline-xl2 font-extrabold tracking-tighter text-on-surface leading-none">Solutions
-                            <span className="ml-3 inline-block w-4 h-4 rounded-full bg-on-surface"></span>
-                        </h2>
-                    </div>
-                </div>
-
-                {/* Services List - using the new card */}
-                <div id="services-list">
-                    {servicesData.slice(0, 7).map((service, idx) => (
-                        <ServiceCard
-                            key={service.id}
-                            service={service}
-                            index={idx}
-                            isOpen={openIndex === idx}
-                            toggleService={toggleService}
-                        />
-                    ))}
-                </div>
+  return (
+    <section
+      className="py-section-mobile md:py-section-desktop bg-surface"
+      id="services-section"
+    >
+      <div className="container-size">
+        {/* Header */}
+        <ScrollReveal>
+          <div className="grid grid-cols-1 gap-gutter items-end border-b border-border-neutral pb-8 md:pb-12 lg:pb-14 mb-0">
+            <div>
+              <span className="font-sans text-headline-md capitalize text-text-muted tracking-tighter block mb-3">
+                What we do
+              </span>
+              <h2 className="font-display text-headline-xl2 font-extrabold tracking-tighter text-on-surface leading-none">
+                Solutions
+                <span className="ml-3 inline-block w-4 h-4 rounded-full bg-on-surface"></span>
+              </h2>
             </div>
-        </section>
-    );
+          </div>
+        </ScrollReveal>
+
+        {/* Services List */}
+        <ScrollReveal delay={0.15}>
+          <div id="services-list">
+            {servicesData.slice(0, 7).map((service, idx) => (
+              <ServiceCard
+                key={service.id}
+                service={service}
+                index={idx}
+                isOpen={openIndex === idx}
+                toggleService={toggleService}
+              />
+            ))}
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
 };
 
 export default Services;

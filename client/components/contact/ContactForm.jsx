@@ -1,8 +1,8 @@
 "use client";
 
-import { createInquiry } from "@/lib/api/createInquiry";
+import { useEffect, useId, useRef, useState } from "react";
 import { getErrorMessage, getFieldError } from "@/lib/api/apiErrors";
-import { useState, useRef, useEffect, useId } from "react";
+import { createInquiry } from "@/lib/api/createInquiry";
 
 const subjectOptions = [
   "Research Partnership",
@@ -68,7 +68,7 @@ const ContactForm = () => {
         e.preventDefault();
         setIsDropdownOpen(true);
         setHighlightedIndex((prev) =>
-          prev < 0 ? subjectOptions.indexOf(formData.subject) : prev
+          prev < 0 ? subjectOptions.indexOf(formData.subject) : prev,
         );
         break;
       case "Escape":
@@ -84,7 +84,9 @@ const ContactForm = () => {
     switch (e.key) {
       case "ArrowDown":
         e.preventDefault();
-        setHighlightedIndex((prev) => Math.min(prev + 1, subjectOptions.length - 1));
+        setHighlightedIndex((prev) =>
+          Math.min(prev + 1, subjectOptions.length - 1),
+        );
         break;
       case "ArrowUp":
         e.preventDefault();
@@ -93,7 +95,8 @@ const ContactForm = () => {
       case "Enter":
       case " ":
         e.preventDefault();
-        if (highlightedIndex >= 0) selectOption(subjectOptions[highlightedIndex]);
+        if (highlightedIndex >= 0)
+          selectOption(subjectOptions[highlightedIndex]);
         break;
       case "Escape":
         e.preventDefault();
@@ -118,7 +121,10 @@ const ContactForm = () => {
     e.preventDefault();
 
     if (!formData.subject) {
-      setFormErrors((prev) => ({ ...prev, subject: "Please select a subject" }));
+      setFormErrors((prev) => ({
+        ...prev,
+        subject: "Please select a subject",
+      }));
       return;
     }
 
@@ -134,7 +140,10 @@ const ContactForm = () => {
     } catch (error) {
       setFormErrors(error.data || {});
       setSubmitError(
-        getErrorMessage(error, "Unable to send your message. Please try again.")
+        getErrorMessage(
+          error,
+          "Unable to send your message. Please try again.",
+        ),
       );
       setIsSubmitting(false);
     }
@@ -182,7 +191,9 @@ const ContactForm = () => {
               value={formData.name}
               onChange={handleChange}
               aria-invalid={!!getFieldError(formErrors, "name")}
-              aria-describedby={getFieldError(formErrors, "name") ? "name-error" : undefined}
+              aria-describedby={
+                getFieldError(formErrors, "name") ? "name-error" : undefined
+              }
               className="w-full bg-transparent border-b border-border-neutral px-2 py-4 text-on-surface focus:outline-none focus:border-on-background font-sans text-body-lg placeholder:text-text-muted/60"
               placeholder="Your name *"
             />
@@ -206,7 +217,9 @@ const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               aria-invalid={!!getFieldError(formErrors, "email")}
-              aria-describedby={getFieldError(formErrors, "email") ? "email-error" : undefined}
+              aria-describedby={
+                getFieldError(formErrors, "email") ? "email-error" : undefined
+              }
               className="w-full bg-transparent border-b border-border-neutral px-2 py-4 text-on-surface focus:outline-none focus:border-on-background font-sans text-body-lg placeholder:text-text-muted/60"
               placeholder="Email *"
             />
@@ -233,7 +246,11 @@ const ContactForm = () => {
               aria-labelledby={`${triggerId}-label ${triggerId}`}
               aria-required="true"
               aria-invalid={!!getFieldError(formErrors, "subject")}
-              aria-describedby={getFieldError(formErrors, "subject") ? "subject-error" : undefined}
+              aria-describedby={
+                getFieldError(formErrors, "subject")
+                  ? "subject-error"
+                  : undefined
+              }
               onClick={() => {
                 setIsDropdownOpen((prev) => !prev);
                 setHighlightedIndex(subjectOptions.indexOf(formData.subject));
@@ -241,13 +258,20 @@ const ContactForm = () => {
               onKeyDown={handleTriggerKeyDown}
               className="w-full border-b border-border-neutral px-2 py-4 text-on-surface focus:outline-none focus:border-on-background font-sans text-body-lg cursor-pointer flex items-center justify-between select-none"
             >
-              <span className={formData.subject ? "text-on-surface font-medium" : "text-text-muted/60"}>
+              <span
+                className={
+                  formData.subject
+                    ? "text-on-surface font-medium"
+                    : "text-text-muted/60"
+                }
+              >
                 {formData.subject || "Select a subject *"}
               </span>
               <span
                 aria-hidden="true"
-                className={`material-symbols-outlined text-text-muted text-2xl font-light transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""
-                  }`}
+                className={`material-symbols-outlined text-text-muted text-2xl font-light transition-transform duration-300 ${
+                  isDropdownOpen ? "rotate-180" : ""
+                }`}
               >
                 expand_more
               </span>
@@ -272,8 +296,9 @@ const ContactForm = () => {
                       aria-selected={isSelected}
                       onMouseEnter={() => setHighlightedIndex(index)}
                       onClick={() => selectOption(option)}
-                      className={`px-4 py-3 font-sans text-body-lg text-on-surface cursor-pointer ${isHighlighted ? "bg-warm-beige" : "hover:bg-warm-beige"
-                        } ${isSelected ? "font-medium" : ""}`}
+                      className={`px-4 py-3 font-sans text-body-lg text-on-surface cursor-pointer ${
+                        isHighlighted ? "bg-warm-beige" : "hover:bg-warm-beige"
+                      } ${isSelected ? "font-medium" : ""}`}
                     >
                       {option}
                     </li>
@@ -283,7 +308,10 @@ const ContactForm = () => {
             )}
 
             {getFieldError(formErrors, "subject") && (
-              <p id="subject-error" className="mt-2 font-sans text-sm text-error">
+              <p
+                id="subject-error"
+                className="mt-2 font-sans text-sm text-error"
+              >
                 {getFieldError(formErrors, "subject")}
               </p>
             )}
@@ -302,12 +330,19 @@ const ContactForm = () => {
               value={formData.message}
               onChange={handleChange}
               aria-invalid={!!getFieldError(formErrors, "message")}
-              aria-describedby={getFieldError(formErrors, "message") ? "message-error" : undefined}
+              aria-describedby={
+                getFieldError(formErrors, "message")
+                  ? "message-error"
+                  : undefined
+              }
               className="w-full bg-transparent border-b border-border-neutral px-2 py-4 text-on-surface focus:outline-none focus:border-on-background font-sans text-body-lg placeholder:text-text-muted/60 resize-none"
               placeholder="Your message"
             />
             {getFieldError(formErrors, "message") && (
-              <p id="message-error" className="mt-2 font-sans text-sm text-error">
+              <p
+                id="message-error"
+                className="mt-2 font-sans text-sm text-error"
+              >
                 {getFieldError(formErrors, "message")}
               </p>
             )}
