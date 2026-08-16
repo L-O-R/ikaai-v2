@@ -90,7 +90,7 @@ const ProjectDetailPage = async ({ params }) => {
               )}
 
               {/* Metadata Table */}
-              <div className="border-t border-border-neutral border-b border-border-neutral">
+              <div className="border-t border-border-neutral border-b">
                 <MetaRow label="Industry" value={project.industry} />
                 <MetaRow label="Scope of work" value={project.scopeOfWork} />
                 <MetaRow label="Coverage" value={project.coverage} />
@@ -101,13 +101,13 @@ const ProjectDetailPage = async ({ params }) => {
               {project.client && (
                 <div className="flex items-center gap-4 mt-2">
                   {project.clientLogo ? (
-                    <div className="relative w-24 h-16 bg-transparent flex items-center justify-start">
+                    <div className="relative w-24 h-16 bg-transparent">
                       <Image
                         src={project.clientLogo}
                         alt={project.client}
                         width={96}
                         height={48}
-                        className="object-contain filter grayscale contrast-125 opacity-85 hover:opacity-100 transition-all duration-300"
+                        className="object-contain"
                       />
                     </div>
                   ) : (
@@ -127,7 +127,7 @@ const ProjectDetailPage = async ({ params }) => {
         <section className="bg-surface-container-low py-12">
           <div className="container-size">
             <ScrollReveal>
-              <div className="relative w-full h-[300px] sm:h-[450px] lg:h-[600px] rounded-2xl overflow-hidden shadow-sm">
+              <div className="relative lg:w-[70%] ml-auto h-75 sm:h-112.5 lg:h-150 rounded-2xl overflow-hidden shadow-sm">
                 <Image
                   src={featuredImage}
                   alt={project.title}
@@ -173,7 +173,7 @@ const ProjectDetailPage = async ({ params }) => {
       )}
 
       {/* Other Projects Showcase (Explore More Projects) */}
-      <section className="bg-surface-container-low border-t border-border-neutral py-16 md:py-24">
+      <section className="bg-surface-container-low border-t border-background py-16 md:py-24">
         <div className="container-size">
           <ScrollReveal>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
@@ -204,7 +204,7 @@ const ProjectDetailPage = async ({ params }) => {
                   <Link href={`/projects/${proj.slug}`}>
                     <ProjectCard
                       project={proj}
-                      bg_color={`bg-surface-container-low`}
+                      bg_color={`bg-warm-beige`}
                     />
                   </Link>
                 </ScrollReveal>
@@ -215,7 +215,7 @@ const ProjectDetailPage = async ({ params }) => {
       </section>
 
       {/* Contact Call to Action */}
-      <section className="py-16 md:py-24 bg-surface text-center">
+      <section className="py-16 md:py-24 bg-warm-beige text-center">
         <div className="container-size">
           <ScrollReveal>
             <h3 className="font-display text-headline-md text-on-surface mb-4">
