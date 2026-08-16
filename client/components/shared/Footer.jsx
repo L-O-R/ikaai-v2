@@ -162,8 +162,10 @@ const Footer = () => {
           </p>
           <p className="font-sans text-body-sm tracking-wide text-slate-400">
             Designed & Developed with{" "}
-            <span className="text-red-500">&#10084;</span> by Dhivardhana
-            Solutions.
+            <span className="text-red-500">&#10084;</span> by{" "}
+            <Link href={'https://dhivardhanasolutions.com/'} target="_blank" className="hover:text-white">
+              Dhivardhana Solutions.
+            </Link>
           </p>
         </div>
         <div>

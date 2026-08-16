@@ -18,7 +18,7 @@ const CtaSection = () => {
           src="/hero/community-dialogue-village-meeting.jpg"
           alt="Partner With Communities. Create Lasting Impact"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/70 to-black/20" />
+        <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/30 to-transparent" />
 
         <div className="absolute inset-0 bg-white/5 mix-blend-soft-light" />
       </div>
