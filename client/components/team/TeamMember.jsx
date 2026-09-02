@@ -54,7 +54,7 @@ const TeamMember = ({ name, role, bio, image }) => {
               <button
                 type="button"
                 onClick={() => setShowBio(true)}
-                className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex h-7 w-7 items-center justify-center rounded-full border border-border-neutral text-primary opacity-0 transition-all group-hover:opacity-100 hover:border-primary hover:bg-primary hover:text-white focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary cursor-pointer"
+                className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex h-7 w-7 items-center justify-center rounded-full border border-border-neutral text-primary lg:opacity-0 transition-all group-hover:opacity-100 hover:border-primary hover:bg-primary hover:text-white focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary cursor-pointer"
                 aria-label={`Read more about ${name}`}
               >
                 <span
