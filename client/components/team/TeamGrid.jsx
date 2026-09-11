@@ -77,7 +77,7 @@ const associates = [
   },
   {
     name: "Nishchaya Nigam",
-    role: "Legal Associate",
+    role: "Legal Advisor",
     tagline: "Precision in every clause, protection in every decision",
     bio: "Precision in every clause. Protection in every decision. Nishchaya has supported organizations in mitigating risk, structuring agreements, and navigating regulatory requirements with precision and diligence. Their attention to detail and sound legal judgment make them a trusted resource in safeguarding the organization's interests while enabling smooth business operations.",
     image: "/team/nishchaya-nigam.png",
