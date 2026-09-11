@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const TeamMember = ({ name, role, bio, image }) => {
+const TeamMember = ({ name, role, subRole, bio, image }) => {
   const [showBio, setShowBio] = useState(false);
 
   useEffect(() => {
@@ -93,9 +93,14 @@ const TeamMember = ({ name, role, bio, image }) => {
               >
                 {name}
               </h4>
-              <span className="mt-1 block font-sans text-body-md font-bold uppercase tracking-widest text-text-muted">
+              <span className="mt-1 block font-sans text-body-sm font-bold uppercase tracking-widest text-text-muted">
                 {role}
               </span>
+              {subRole && (
+                <span className="mt-1 block font-sans text-body-md font-bold uppercase tracking-widest text-text-muted">
+                  {subRole}
+                </span>
+              )}
             </div>
             <button
               type="button"
